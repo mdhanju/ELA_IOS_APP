@@ -441,7 +441,7 @@ public class ConvertionToolbox : NSObject {
                     {
                       return 0
                     }
-                var decimal = Int(str, radix: 16)!
+                let decimal = Int(str, radix: 16)!
                  
                 //print("la valeur en decimal : " + String(decimal)) // 163
                 return decimal

@@ -110,10 +110,24 @@ class SensorTemperatureHumidity: Sensor
            self.batterylevel = batterylevel
            self.sensorTypes = sensorTypes
         self.temperature = temperature.getTemp()
+        self.humidity = humidity
           
        }
     
-
+    func getTemp()->Float
+    {
+        return temperature
+    }
+    
+    func getHum()->Int
+    {
+        return humidity
+    }
+    
+    func getBatterie()->Int
+    {
+        return batterylevel
+    }
     
      func ExecuterCommmande()
     {
@@ -170,7 +184,18 @@ class SensorMagnetic: Sensor
            self.nbrObjet = nbrObjet
            self.etat = etat
        }
+    
+    func getEtat()->Bool
+    {
+        return etat
+    }
       
+    func getNbrObject()->Int
+    {
+        return nbrObjet
+    }
+    
+    
 
     
      func ExecuterCommmande()
