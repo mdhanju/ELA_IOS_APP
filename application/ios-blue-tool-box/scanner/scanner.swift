@@ -100,21 +100,6 @@ class Scanner1: NSObject, CBPeripheralDelegate, CBCentralManagerDelegate {
                     identifier.append(peripheral.identifier.description)
  
         
-       
-
-          //      for key in sensorData!
-          //      {
-                 //   print(key)
-           //         if( cpt == 0 )
-            //        {
-  //print(type(of: key))
-                        
-                        
-                  
-                      
-                    //print(key.key.uuidString)
-                  //      if(sensorData![CBUUID(string: "2A6E")].debugDescription != nil && sensorData![CBUUID(string: "2A58")].debugDescription != nil){
-                        
                         
                         if(sensorData![CBUUID(string: "2A3F")] != nil && sensorData![CBUUID(string: "2A06")] != nil && ConvertionToolbox.convertHexaToEtat(str: sensorData![CBUUID(string: "2A3F")]!.description) == false ){
                           
@@ -129,12 +114,6 @@ class Scanner1: NSObject, CBPeripheralDelegate, CBCentralManagerDelegate {
                         
                         
                         if(sensorData![CBUUID(string: "2A6E")] != nil && sensorData![CBUUID(string: "2A6F")] != nil && sensorData![CBUUID(string: "2A58")] != nil){
-                                    
-                           // var id = SensorFactory.shared().getSensorTemperature(sensorTypes: .SensorTemperatureHumidity, name: peripheral.name ?? "", RSSI: Int(RSSI),batterylevel:
-                                //ConvertHexaToDecimal(str: sensorData![CBUUID(string: "2A58")].debugDescription)ConvertionToolbox.ConvertHexaToDecimal(str: sensorData![CBUUID(string: "2A58")].debugDescription),  temperature: ConvertionToolbox.ConvertTemperature(str: key.key.uuidString))
-                          
-                       //     var id = SensorFactory.shared().getSensorTemperatureHumidity(sensorTypes: .SensorTemperatureHumidity, name: peripheral.name ?? "", RSSI: Int(RSSI), batterylevel:  ConvertionToolbox.ConvertHexaToDecimal(str: sensorData![CBUUID(string: "2A58")].debugDescription), humidity: <#T##Float#>, objectTemperature: <#T##SensorTemperature?#>)
-              //              let temperature = SensorTemperature(name: peripheral.name ?? "", RSSI: Int(RSSI), sensorTypes: .SensorTemperature, temperature: ConvertionToolbox.ConvertTemperature(str: key.key.uuidString))
                             
                             
                             let temperature = SensorTemperature(name: peripheral.name ?? "", RSSI: Int(RSSI), sensorTypes: .SensorTemperature, temperature: Float(ConvertionToolbox.ConvertTemperature(str: sensorData![CBUUID(string: "2A58")].debugDescription)))
@@ -143,29 +122,36 @@ class Scanner1: NSObject, CBPeripheralDelegate, CBCentralManagerDelegate {
                             
                             var id = SensorFactory.shared().getSensorTemperatureHumidity(sensorTypes: .SensorTemperatureHumidity, name: peripheral.name ?? "", RSSI: Int(RSSI), batterylevel: ConvertionToolbox.ConvertHexaToDecimal(str: sensorData![CBUUID(string: "2A58")].debugDescription), humidity: ConvertionToolbox.ConvertHexaToDecimal(str: sensorData![CBUUID(string: "2A6F")].debugDescription), objectTemperature: temperature)
                             
+                            
+                            
                                           }
                         
                          else if(sensorData![CBUUID(string: "2A6E")] != nil && sensorData![CBUUID(string: "2A6F")] != nil){
-                            print("capteur RHT")
-                        }
-                        
-                        
-                        else if(sensorData![CBUUID(string: "2A6E")] != nil && sensorData![CBUUID(string: "2A58")] != nil){
-                    
-                       
-                
-                
-                           // print(sensorData![CBUUID(string: "180F")])
-                            
                            
-                    
-                      /*      var id = SensorFactory.shared().getSensorTemperature(sensorTypes: .SensorTemperature, name: peripheral.name ?? "", RSSI: Int(RSSI),batterylevel:
-                                //ConvertHexaToDecimal(str: sensorData![CBUUID(string: "2A58")].debugDescription)
-                                ConvertionToolbox.ConvertHexaToDecimal(str: sensorData![CBUUID(string: "2A58")].debugDescription)
-                                ,  temperature: ConvertionToolbox.ConvertTemperature(str: key.key.uuidString))
-                            print("battery sensor found !!!!!!!!!!")
-                         */
+                            
+                            
+                              var temp = sensorData![CBUUID(string: "2A6E")]?.debugDescription.dropFirst().dropLast()
+                              var hum = sensorData![CBUUID(string: "2A6F")]?.debugDescription.dropFirst().dropLast()
+                            var tempObjet = SensorTemperature(name: peripheral.name ?? "", RSSI: Int(RSSI), sensorTypes: .SensorTemperature, temperature: ConvertionToolbox.ConvertTemperature(str: String(temp!)))
+                            
+                              print("bravo")
+                              if(temp != nil)
+                              {
+                            
+                              print("delta")
+                                 // var id = SensorFactory.shared().getSensorTemperatur
+                                  print("temperature  sensor found !!!!!!!!!!")
+                                  if(id is SensorTemperature)
+                                  {
+                                      //
+                                      if let tempfloat = id as? SensorTemperature {
+                                          print("My RHT found : " + String(tempfloat.getTemp()))
+                                      }
+                                  }
+                                                         
+                              }
                         }
+                        
                             
                         else if(sensorData![CBUUID(string: "2A6E")].debugDescription != nil ){
                         
@@ -252,3 +238,4 @@ class Scanner1: NSObject, CBPeripheralDelegate, CBCentralManagerDelegate {
 
   
   //  }
+

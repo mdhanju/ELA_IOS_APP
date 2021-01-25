@@ -36,7 +36,7 @@ public class ConvertionToolbox : NSObject {
      * \return String
      **/
 
-    static func ANG(str :String,index : Int)->String
+   public static func ANG(str :String,index : Int)->String
     {
         if( str == "")
         {
@@ -76,7 +76,7 @@ public class ConvertionToolbox : NSObject {
      **/
 
     
-    static func convertHexaToEtat(str : String)-> Bool
+    public static func convertHexaToEtat(str : String)-> Bool
     {
   
        if(str.suffix(1) == "0")
@@ -97,7 +97,7 @@ public class ConvertionToolbox : NSObject {
      **/
 
     
-    static func convertHexaToEtatInv(str : String)-> Bool
+   public static func convertHexaToEtatInv(str : String)-> Bool
     {
        if(str.suffix(1) == "1")
            {
@@ -116,7 +116,7 @@ public class ConvertionToolbox : NSObject {
      * \return Int
      **/
     
-    static func convertHexaToSumExpo(str : String)-> Int
+    public static func convertHexaToSumExpo(str : String)-> Int
     {
 
     if(str == "")
@@ -160,7 +160,7 @@ public class ConvertionToolbox : NSObject {
      * \return Int
      **/
     
-    static func ConvertHexaToDecimal(str :String) -> Int
+   public static func ConvertHexaToDecimal(str :String) -> Int
     {
         if(str == "")
         {
@@ -240,12 +240,16 @@ public class ConvertionToolbox : NSObject {
            }
           return Float(decimal) / 100.0
            
-      }
+      } …
     */
-   public  static func ConvertTemperature(str :String) -> Float
+ public  static func ConvertTemperature(str :String) -> Float
       {
 
-          
+     //   let test01 = hexaToBinary(str: "face")
+     //   let test02 = hexaToBinary(str: "0a82")
+     //   let test03 = hexaToBinary(str: "2123")
+     // let test04 = hexaToBinary(str: "0123")
+
           if(str == "")
           {
               return 0
@@ -264,11 +268,26 @@ public class ConvertionToolbox : NSObject {
           var decimal = Int(str, radix: 16)!
           
           // print("la valeur en decimal : " + String(decimal)) // 163
-       
+        if(str.prefix(1).lowercased() == "f"
+            || str.prefix(1).lowercased() == "e"
+            || str.prefix(1).lowercased() == "d"
+            || str.prefix(1).lowercased() == "c"
+            || str.prefix(1).lowercased() == "b"
+            || str.prefix(1).lowercased() == "a"
+            || str.prefix(1).lowercased() == "9"
+            || str.prefix(1).lowercased() == "8")
+        {
+            let random = Int((~UInt16(decimal) + 1)) * (-1)
+            return Float(random) / 100.0
+        }
+        else
+        {
+            return Float(Int32(decimal)) / 100.0
+        }
 
            
        // Hexadecimal to binary
-       
+       /*
           var binary = String(Int(str, radix: 16)!, radix: 2)
       // print("la valeur en binaire" + binary) // "1111101011001110"
        
@@ -278,8 +297,8 @@ public class ConvertionToolbox : NSObject {
            
        // check si le premier digit de la string est 1 ou un 0
          
-          str = String(binary.prefix(1))
-          if(str != "0")
+          let strCompare = String(binary.prefix(1))
+          if(strCompare != "0")
               {
         //   print("est un nombre negatif")
                //   decimal = decimal * -1
@@ -300,8 +319,9 @@ public class ConvertionToolbox : NSObject {
              //let a = UInt8(UInt8?(binary) &+ 1)
              
            }
-          return Float(decimal) / 100.0
-           
+
+          return Float(Int32(decimal)) / 100.0
+           */
 
     }
 
@@ -313,7 +333,7 @@ public class ConvertionToolbox : NSObject {
        * \return Int
        **/
       
-      static func ConvertMagnetique(str : String)-> Int
+     public static func ConvertMagnetique(str : String)-> Int
       {
 
       if(str == "")
@@ -325,7 +345,8 @@ public class ConvertionToolbox : NSObject {
     var MSB : String = String(str.suffix(2))
     var str : String =  MSB + LSB
           
-     str = String(Int(str, radix: 16)!, radix: 2)
+     //str = String(Int(str, radix: 16)!, radix: 2)
+        str = hexaToBinary(str: str)
 
       var ini : Int = 0
 
@@ -354,7 +375,7 @@ public class ConvertionToolbox : NSObject {
       }
     
     
-       static func ConvertHumidite(str :String) -> Int
+      public static func ConvertHumidite(str :String) -> Int
         {
             if(str == "")
             {
@@ -390,7 +411,7 @@ public class ConvertionToolbox : NSObject {
      * \return Int
      **/
     
-    static func hexaToBinary(str : String)->String
+   public static func hexaToBinary(str : String)->String
     {
         
 
@@ -402,8 +423,11 @@ public class ConvertionToolbox : NSObject {
          {
             return str
          }
-         let binary = String(Int(str, radix: 16)!, radix: 2)
-         return binary
+        
+       let string = "1" + str
+        
+         let binary = String(Int(string, radix: 16)!, radix: 2)
+        return String(binary.dropFirst())
     }
     
     
@@ -414,7 +438,7 @@ public class ConvertionToolbox : NSObject {
      * \return Bool
      **/
     
-    static func isHexa(str:String)-> Bool
+   public static func isHexa(str:String)-> Bool
     {
         do {
              var regex = try NSRegularExpression(pattern: "0[xX][0-9a-fA-F]+")
@@ -440,7 +464,7 @@ public class ConvertionToolbox : NSObject {
      * \return Bool
      **/
     
-    static func isBinary(str:String)-> Bool
+    public static func isBinary(str:String)-> Bool
     {
         do {
              var regex = try NSRegularExpression(pattern: "^[01]+$")
@@ -458,3 +482,4 @@ public class ConvertionToolbox : NSObject {
              }
     }
 }
+
