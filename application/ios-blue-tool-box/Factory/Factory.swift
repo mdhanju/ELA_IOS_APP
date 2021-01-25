@@ -81,6 +81,11 @@ class SensorTemperature: Sensor
     {
         return temperature
     }
+    
+    func getBatterie()->Int
+    {
+        return batterylevel
+    }
 
     func ExecuterCommmande()
     {

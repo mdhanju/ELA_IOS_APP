@@ -69,17 +69,17 @@ class Scanner1: NSObject, CBPeripheralDelegate, CBCentralManagerDelegate {
             
         
           
-         /*   if(peripheral.name?.description == "P MOV B004EB")
+            if(peripheral.name?.description == "FB_T_PUCK_11_80")
             {
                 print("lol")
-                print(sensorData![CBUUID(string: "2AA1")]!.debugDescription)
-                print(advertisementData[CBAdvertisementDataServiceDataKey])
+              var test = sensorData![CBUUID(string: "180F")]!.debugDescription
+              var test1 = advertisementData[CBAdvertisementDataServiceDataKey]
                 print("lol1")
                 var a : Int = 0;
              
      
             }
-          */
+          
             
          /*   if(sensorData![CBUUID(string: "2A6F")] != nil)
                                       {
@@ -100,12 +100,11 @@ class Scanner1: NSObject, CBPeripheralDelegate, CBCentralManagerDelegate {
                     identifier.append(peripheral.identifier.description)
  
         
-                        
+                     /*
                         if(sensorData![CBUUID(string: "2A3F")] != nil && sensorData![CBUUID(string: "2A06")] != nil && ConvertionToolbox.convertHexaToEtat(str: sensorData![CBUUID(string: "2A3F")]!.description) == false ){
                           
                             var id = SensorFactory.shared().getSensorMagnetic(sensorTypes: .SensorMagnetic, name: peripheral.name ?? "", RSSI: Int(RSSI), batterylevel: ConvertionToolbox.ConvertHexaToDecimal(str: sensorData![CBUUID(string: "2A58")].debugDescription), nbrObjet: ConvertionToolbox.convertHexaToSumExpo(str :ConvertionToolbox.hexaToBinary(str: "2A06")), etat: ConvertionToolbox.convertHexaToEtat(str: sensorData![CBUUID(string: "2A3F")]!.description))
                             
-                          // var id = SensorFactory.shared().getSensorMove(sensorTypes: .SensorMove, name: peripheral.name ?? "", RSSI: Int(RSSI), batterylevel: ConvertionToolbox.ConvertHexaToDecimal(str: sensorData![CBUUID(string: "2A58")].debugDescription), nbrPas: ConvertionToolbox.convertHexaToSumExpo(str :ConvertionToolbox.hexaToBinary(str: "2A06")), etat: ConvertionToolbox.convertHexaToEtat(str :ConvertionToolbox.hexaToBinary(str: "2A06")))
                             
                             
                             print("captuer magnétique")
@@ -126,7 +125,7 @@ class Scanner1: NSObject, CBPeripheralDelegate, CBCentralManagerDelegate {
                             
                                           }
                         
-                         else if(sensorData![CBUUID(string: "2A6E")] != nil && sensorData![CBUUID(string: "2A6F")] != nil){
+                         if(sensorData![CBUUID(string: "2A6E")] != nil && sensorData![CBUUID(string: "2A6F")] != nil){
                            
                             
                             
@@ -151,9 +150,82 @@ class Scanner1: NSObject, CBPeripheralDelegate, CBCentralManagerDelegate {
                                                          
                               }
                         }
-                        
                             
-                        else if(sensorData![CBUUID(string: "2A6E")].debugDescription != nil ){
+                            */
+                            
+                            
+                       
+                     
+                     
+                     
+                     
+                     
+                     if(sensorData![CBUUID(string: "2A6E")] != nil && sensorData![CBUUID(string: "2A6F")] != nil){
+                        
+                         
+                         
+                           var temp = sensorData![CBUUID(string: "2A6E")]?.debugDescription.dropFirst().dropLast()
+                           var hum = sensorData![CBUUID(string: "2A6F")]?.debugDescription.dropFirst().dropLast()
+                         var tempObjet = SensorTemperature(name: peripheral.name ?? "", RSSI: Int(RSSI), sensorTypes: .SensorTemperature, temperature: ConvertionToolbox.ConvertTemperature(str: String(temp!)))
+                         
+                           print("bravo")
+                           if(temp != nil)
+                           {
+                         
+                           print("delta")
+                              // var id = SensorFactory.shared().getSensorTemperatur
+                               print("temperature  sensor found !!!!!!!!!!")
+                               if(id is SensorTemperature)
+                               {
+                                   //
+                                   if let tempfloat = id as? SensorTemperature {
+                                       print("My RHT found : " + String(tempfloat.getTemp()))
+                                   }
+                               }
+                                                      
+                           }
+                     }/*
+                                                        
+                                                        /////////////////CAPTEUR DE TEMPERATURE AVEC BATTERIE//////////////////////////////////////
+                                                        
+                                                */
+                    //MARK:: temperareture avec batterie
+                
+                                                   if(sensorData![CBUUID(string: "2A6E")].debugDescription != nil  && sensorData![CBUUID(string: "180F")].debugDescription != nil  ){
+                                                   
+                                                      // print(key)
+                                                       var temp = sensorData![CBUUID(string: "2A6E")]?.debugDescription.dropFirst().dropLast()
+                                                       var batterie = sensorData![CBUUID(string: "180F")]?.debugDescription.dropFirst().dropLast()
+                                                       print("bravo")
+                                                       if(temp != nil && batterie != nil)
+                                                       {
+                                                     
+                                                       print("delta")
+                                                           var id = SensorFactory.shared().getSensorTemperature(sensorTypes: .SensorTemperature, name: peripheral.name ?? "", RSSI: Int(RSSI),batterylevel: ConvertionToolbox.ConvertAdvertisingValue(str: String(batterie!)),temperature: ConvertionToolbox.ConvertTemperature(str: String(temp!)))
+                                                           print("temperature  sensor found !!!!!!!!!!")
+                                                           if(id is SensorTemperature)
+                                                           {
+                                                               //
+                                                               if let tempfloat = id as? SensorTemperature {
+                                                                   print("My temperature found : " + String(tempfloat.getTemp()))
+                                                                   print("My battery found : " + String(tempfloat.getBatterie()))
+                                                               }
+                                                           }
+                                                                                  
+                                                       }
+                                                   }
+                            
+                            
+                            
+                            
+                        /*
+                             
+                             /////////////////CAPTEUR DE TEMPERATURE SANS BATTERIE//////////////////////////////////////
+                             
+                        */
+                    //MARK:: temperetaure sans batterie
+                            
+                       else if(sensorData![CBUUID(string: "2A6E")].debugDescription != nil ){
                         
                            // print(key)
                             var temp = sensorData![CBUUID(string: "2A6E")]?.debugDescription.dropFirst().dropLast()
@@ -174,18 +246,43 @@ class Scanner1: NSObject, CBPeripheralDelegate, CBCentralManagerDelegate {
                                                        
                             }
                         }
+                            //MARK:: rht humidite + temperature
+                                                    
+                    else if(sensorData![CBUUID(string: "2A6E")].debugDescription != nil && sensorData![CBUUID(string: "2A6F")].debugDescription != nil ){
+                    
+                       // print(key)
+                        var temp = sensorData![CBUUID(string: "2A6E")]?.debugDescription.dropFirst().dropLast()
+                        var hum = sensorData![CBUUID(string: "2A6F")]?.debugDescription.dropFirst().dropLast()
+                        if(temp != nil && hum != nil)
+                        {
+                            var id = SensorFactory.shared().getSensorTemperatureHumidity(sensorTypes: .SensorTemperatureHumidity, name: peripheral.name ?? "", RSSI: Int(RSSI), batterylevel: <#T##Int#>, humidity: <#T##Int#>, objectTemperature: <#T##SensorTemperature?#>)
+                            print("temperature  sensor found !!!!!!!!!!")
+                            if(id is SensorTemperature)
+                            {
+                                //
+                                if let tempfloat = id as? SensorTemperature {
+                                    print("My temperature found : " + String(tempfloat.getTemp()))
+                                }
+                            }
+                                                   
+                        }
+                    }
+                            
+                       
                        
                             
                             
-                        else    if(sensorData![CBUUID(string: "2A06")] != nil && ConvertionToolbox.convertHexaToEtatInv(str: sensorData![CBUUID(string: "2A3F")]!.description) == true ){
+                                                   else    if(sensorData![CBUUID(string: "2A06")].debugDescription != nil && ConvertionToolbox.convertHexaToEtatInv(str: sensorData![CBUUID(string: "2A3F")].debugDescription) == true ){
+                                                    
+                                        
                                  
                                     // print(key)
                                  
-                            var id = SensorFactory.shared().getSensorMove(sensorTypes: .SensorMove, name: peripheral.name ?? "", RSSI: Int(RSSI), batterylevel: ConvertionToolbox.ConvertHexaToDecimal(str: sensorData![CBUUID(string: "2A58")].debugDescription), nbrPas: ConvertionToolbox.convertHexaToSumExpo(str :ConvertionToolbox.hexaToBinary(str: "2A06")), etat: ConvertionToolbox.convertHexaToEtat(str :ConvertionToolbox.hexaToBinary(str: "2A06")))
+                          //  var id = SensorFactory.shared().getSensorMove(sensorTypes: .SensorMove, name: peripheral.name ?? "", RSSI: Int(RSSI), batterylevel: ConvertionToolbox.ConvertHexaToDecimal(str: sensorData![CBUUID(string: "2A58")].debugDescription), nbrPas: ConvertionToolbox.convertHexaToSumExpo(str :ConvertionToolbox.hexaToBinary(str: "2A06")), etat: ConvertionToolbox.convertHexaToEtat(str :ConvertionToolbox.hexaToBinary(str: "2A06")))
                             
                             
                             
-                               print("le move la valeur est : " + String(ConvertionToolbox.ConvertHexaToDecimal(str: sensorData![CBUUID(string: "2A58")].debugDescription)))
+                          //     print("le move la valeur est : " + String(ConvertionToolbox.ConvertHexaToDecimal(str: sensorData![CBUUID(string: "2A58")].debugDescription)))
                                          print("move  sensor found !!!!!!!!!!")
                                       
                             
