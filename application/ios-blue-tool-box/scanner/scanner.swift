@@ -158,32 +158,34 @@ class Scanner1: NSObject, CBPeripheralDelegate, CBCentralManagerDelegate {
                      
                      
                      
-                    if(sensorData![CBUUID(string: "2A3F")] != nil && sensorData![CBUUID(string: "2A06")] != nil && ConvertionToolbox.convertHexaToEtat(str: sensorData![CBUUID(string: "2A3F")].debugDescription) == false ){
+                    if(sensorData![CBUUID(string: "2AA1")] != nil  ){
                                         
                                            // print(key)
-                                            var mag = sensorData![CBUUID(string: "2A06")]?.debugDescription.dropFirst().dropLast()
-                                            var etat = sensorData![CBUUID(string: "2A3F")]?.debugDescription.dropFirst().dropLast()
+                                            var ang = sensorData![CBUUID(string: "2AA1")]?.debugDescription.dropFirst().dropLast()
+                                     //       var etat = sensorData![CBUUID(string: "2A3F")]?.debugDescription.dropFirst().dropLast()
                         
                                           
                                             
                                                                     
                                                                         
-                                            if(mag != nil && etat != nil)
+                                            if(ang != nil)
                                             {
                                               //  var magnétique = SensorMagnetic(name: peripheral.name ?? "", RSSI: Int(RSSI),sensorTypes: .sensorMagnetic, nbrObjet: , etat: )
                                              
                                               //  var id = SensorFactory.shared().getSensorTemperatureHumidity(sensorTypes: .SensorTemperatureHumidity, name: peripheral.name ?? "", RSSI: Int(RSSI), humidity: ConvertionToolbox.ConvertHumidite(str: String(hum!)), objectTemperature: temperature)
-                                                var id = SensorFactory.shared().getSensorMagnetic(sensorTypes: .SensorMagnetic, name: peripheral.name ?? "", RSSI: Int(RSSI), nbrObjet: ConvertionToolbox.ConvertAdvertisingValue(str: String(mag!)), etat: ConvertionToolbox.convertHexaToEtat(str: String(etat!)))
+                                              //  var id = SensorFactory.shared().getSensorMagnetic(sensorTypes: .SensorMagnetic, name: peripheral.name ?? "", RSSI: Int(RSSI), nbrObjet: ConvertionToolbox.ConvertAdvertisingValue(str: String(mag!)), etat: ConvertionToolbox.convertHexaToEtat(str: String(etat!)))
+                                                var id = SensorFactory.shared().getSensorAngle(sensorTypes: .SensorAngle, name: peripheral.name ?? "", RSSI: Int(RSSI),  x: ConvertionToolbox.ConvertAdvertisingValue(str: ConvertionToolbox.ANG(str: String(ang!), index: 0)), y: ConvertionToolbox.ConvertAdvertisingValue(str: ConvertionToolbox.ANG(str: String(ang!), index: 4)), z: ConvertionToolbox.ConvertAdvertisingValue(str: ConvertionToolbox.ANG(str: String(ang!), index: 9)))
                                             
                                                 
                                                 
                                                 print("magnetic found !!!!!!!!!!")
-                                                if(id is SensorMagnetic)
+                                                if(id is SensorAngle)
                                                 {
                                                     //
-                                                    if let magnetic = id as? SensorMagnetic {
-                                                        print("Magnetic nbr aimant : " + String(magnetic.getNbrObject()))
-                                                        print("Etat magnetic : " + String(magnetic.getEtat()))
+                                                    if let angle = id as? SensorAngle {
+                                                        print("Angle x : " + String(angle.x))
+                                                        print("Angle y: " + String(angle.y))
+                                                        print("Angle z: " + String(angle.z))
                                                     }
                                                 }
                                                                        
