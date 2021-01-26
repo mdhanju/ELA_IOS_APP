@@ -14,8 +14,8 @@
             filePath = "ios-blue-tool-box/Tools/ConvertionToolBox.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "514"
-            endingLineNumber = "514"
+            startingLineNumber = "374"
+            endingLineNumber = "374"
             landmarkName = "ConvertHumidite(str:)"
             landmarkType = "7">
          </BreakpointContent>
@@ -30,8 +30,8 @@
             filePath = "ios-blue-tool-box/Tools/ConvertionToolBox.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "188"
-            endingLineNumber = "188"
+            startingLineNumber = "177"
+            endingLineNumber = "177"
             landmarkName = "ConvertHexaToDecimal(str:)"
             landmarkType = "7">
          </BreakpointContent>
@@ -46,8 +46,8 @@
             filePath = "ios-blue-tool-box/Tools/ConvertionToolBox.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "535"
-            endingLineNumber = "535"
+            startingLineNumber = "395"
+            endingLineNumber = "395"
             landmarkName = "ConvertHumidite(str:)"
             landmarkType = "7">
          </BreakpointContent>

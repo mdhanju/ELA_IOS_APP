@@ -47,8 +47,8 @@ public class ConvertionToolbox : NSObject {
         var sumA : String = ""
         var sumB : String = ""
         var cpt : Int = 0
-        var a : Int = index
-        var b : Int = a + 2
+        let a : Int = index
+        let b : Int = a + 2
             
         for char in str
         {
@@ -166,25 +166,14 @@ public class ConvertionToolbox : NSObject {
         {
             return 0
         }
-             var LSB : String = String(str.prefix(2))
-             var MSB : String = String(str.suffix(2))
-             var str : String =  MSB + LSB
-          
-          //print("la valeur de la chaine : "+str)
-          // Hexadecimal to decimal
-          
-         /*   if(str == ">)Op")
-                {
-                    return 0
-                }
- */
-            if( str == "ilni")
-                {
-                  return 0
-                }
-            var decimal = Int(str, radix: 16)!
-             
-            //print("la valeur en decimal : " + String(decimal)) // 163
+        let LSB : String = String(str.prefix(2))
+        let MSB : String = String(str.suffix(2))
+        let str : String =  MSB + LSB
+        if( str == "ilni")
+            {
+                return 0
+            }
+        let decimal = Int(str, radix: 16)!
             return decimal
               
     }
@@ -197,51 +186,7 @@ public class ConvertionToolbox : NSObject {
      * \param [in] String : hexadecimal
      * \return Float
      **/
-    /*
-   static func ConvertTemperature(str :String) -> Float
-      {
-           
-       //split string on second letter
-      // var str = "abcdef"
-       
-       //delete 0x of hexadecimal
-       var hexa  = str.dropFirst().dropFirst()
-          
-          var LSB : String = String(hexa.prefix(2))
-          var MSB : String = String(hexa.suffix(2))
-          var str : String =  MSB + LSB
-       
-       print("la valeur de la chaine : "+str)
-       // Hexadecimal to decimal
-       
 
-          var decimal = Int(str, radix: 16)!
-          print(decimal)
-          // print("la valeur en decimal : " + String(decimal)) // 163
-       
-
-           
-       // Hexadecimal to binary
-       
-          let binary = String(Int(str, radix: 16)!, radix: 2)
-      // print("la valeur en binaire" + binary) // "1111101011001110"
-       
-
-           
-
-           
-       // check si le premier digit de la string est 1 ou un 0
-         
-          str = String(binary.prefix(1))
-          if(str != "0")
-              {
-        //   print("est un nombre negatif")
-                  decimal = decimal * -1
-           }
-          return Float(decimal) / 100.0
-           
-      } …
-    */
  public  static func ConvertTemperature(str :String) -> Float
       {
 
@@ -257,15 +202,15 @@ public class ConvertionToolbox : NSObject {
            
        //split string on second letter
       // var str = "abcdef"
-          var LSB : String = String(str.prefix(2))
-          var MSB : String = String(str.suffix(2))
-          var str : String =  MSB + LSB
+          let LSB : String = String(str.prefix(2))
+          let MSB : String = String(str.suffix(2))
+          let str : String =  MSB + LSB
        
      //  print("la valeur de la chaine : "+str)
        // Hexadecimal to decimal
        
 
-          var decimal = Int(str, radix: 16)!
+          let decimal = Int(str, radix: 16)!
           
           // print("la valeur en decimal : " + String(decimal)) // 163
         if(str.prefix(1).lowercased() == "f"
@@ -284,134 +229,49 @@ public class ConvertionToolbox : NSObject {
         {
             return Float(Int32(decimal)) / 100.0
         }
-
-        
-    
-           
-       // Hexadecimal to binary
-       /*
-          var binary = String(Int(str, radix: 16)!, radix: 2)
-      // print("la valeur en binaire" + binary) // "1111101011001110"
-       
-
-           
-
-           
-       // check si le premier digit de la string est 1 ou un 0
-         
-          let strCompare = String(binary.prefix(1))
-          if(strCompare != "0")
-              {
-        //   print("est un nombre negatif")
-               //   decimal = decimal * -1
-              
-             //  var test = UInt8(binary)! &+ 1
-            // print(test)
-      //       var ta =  Double(Int16(bitPattern: UInt16(str, radix: 16)!) &+ 1)
-               
-              // unsafeBitCast(UInt16(ta/2 + 1), Int16.self
-               let random = Int((~UInt16(decimal) + 1)) * (-1)
-               return Float(random) / 100.0
-                
-              // print(UInt8(UInt8(binary)! &+ 1))
-             //  var a = Int(binary)! &+ 1
-              // print(a)
-            // let a = str
-              // var b : Int = Int(str, radix: 16)!
-             //let a = UInt8(UInt8?(binary) &+ 1)
-             
-           }
-
-          return Float(Int32(decimal)) / 100.0
-           */
-
     }
     
     
     public  static func ConvertAngle(str :String) -> Int16
      {
-
-    //   let test01 = hexaToBinary(str: "face")
-    //   let test02 = hexaToBinary(str: "0a82")
-    //   let test03 = hexaToBinary(str: "2123")
-    // let test04 = hexaToBinary(str: "0123")
-
-         if(str == "")
-         {
-             return 0
-         }
+     if(str == "")
+        {
+            return 0
+        }
     
         var test : Int16 = 0
-      //split string on second letter
-     // var str = "abcdef"
-         var LSB : String = String(str.prefix(2))
-         var MSB : String = String(str.suffix(2))
-        
-   
-        
-         var LSB1 = Int16(LSB, radix: 16)!
-         var MSB1 = Int16(MSB, radix: 16)!
-       //  var LSB2  = Int16(LSB1)
-     //    var MSB2  = Int16(MSB1)
-        
-       
-     
-        
-     //    var str : String =  MSB + LSB
-//        if( LSB1! != nil && MSB1! != nil )
-  //      {
-         test = Int16( MSB1 + ( LSB1 << 8))
-    //    }
-      //  else
-       // {return 0}
-      
-    //  print("la valeur de la chaine : "+str)
-      // Hexadecimal to decimal
-      
-
-      return test
+        let LSB : String = String(str.prefix(2))
+        let MSB : String = String(str.suffix(2))
+        let LSB1 = Int16(LSB, radix: 16)!
+        let MSB1 = Int16(MSB, radix: 16)!
+        test = Int16( MSB1 + ( LSB1 << 8))
+            return test
     }
     
     
     
     public  static func ConvertAngle2(str :String) -> Float
      {
-
-    //   let test01 = hexaToBinary(str: "face")
-    //   let test02 = hexaToBinary(str: "0a82")
-    //   let test03 = hexaToBinary(str: "2123")
-    // let test04 = hexaToBinary(str: "0123")
-
          if(str == "")
          {
              return 0
          }
-          
-      //split string on second letter
-     // var str = "abcdef"
-         var LSB : String = String(str.prefix(2))
-         var MSB : String = String(str.suffix(2))
+         let LSB : String = String(str.prefix(2))
+         let MSB : String = String(str.suffix(2))
          var str : String =  MSB + LSB
-      
-    //  print("la valeur de la chaine : "+str)
-      // Hexadecimal to decimal
-      
+         let decimal = Int(str, radix: 16)!
+         if(str.prefix(1).lowercased() == "f")
+            {
 
-         var decimal = Int(str, radix: 16)!
-         
-         // print("la valeur en decimal : " + String(decimal)) // 163
-       if(str.prefix(1).lowercased() == "f")
-       {
-
-        str = String(str.dropFirst())
-           let random = Int((~UInt16(decimal) + 1)) * (-1)
-           return Float(random) / 100.0
-       }
-       else
-       {
-           return Float(Int32(decimal)) / 100.0
-       }
-    }
+                str = String(str.dropFirst())
+                let random = Int((~UInt16(decimal) + 1)) * (-1)
+                return Float(random) / 100.0
+            }
+         else
+            {
+                return Float(Int32(decimal)) / 100.0
+            }
+     }
 
       /**
        * \fn convertHexaToSumExpo
@@ -428,8 +288,8 @@ public class ConvertionToolbox : NSObject {
            return 0
           }
         
-    var LSB : String = String(str.prefix(2))
-    var MSB : String = String(str.suffix(2))
+    let LSB : String = String(str.prefix(2))
+    let MSB : String = String(str.suffix(2))
     var str : String =  MSB + LSB
           
      //str = String(Int(str, radix: 16)!, radix: 2)
