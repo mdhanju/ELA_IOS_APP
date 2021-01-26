@@ -75,11 +75,35 @@ class Scanner1: NSObject, CBPeripheralDelegate, CBCentralManagerDelegate {
                             print("New Device = " +  peripheral.identifier.description)
                             identifier.append(peripheral.identifier.description)
  
-                    
+ 
+                            
+                            
+                            
+                            //MARK:: move avec batterie
+                                
+                             if(sensorData![CBUUID(string: "180F")] != nil && sensorData![CBUUID(string: "2A3F")] != nil && sensorData![CBUUID(string: "2A06")] != nil && String(sensorData![CBUUID(string: "2A3F")]!.debugDescription.dropFirst().dropFirst().dropLast()) == "1")
+                                {
+                                    let move = sensorData![CBUUID(string: "2A06")]?.debugDescription.dropFirst().dropLast()
+                                    let etat = String(sensorData![CBUUID(string: "2A3F")]!.debugDescription.dropFirst().dropFirst().dropLast())
+                                    let battery = sensorData![CBUUID(string: "180F")]?.debugDescription.dropFirst().dropLast()
+                                    if(move != nil && etat != "" && battery != nil)
+                                        {
+                                            let id = SensorFactory.shared().getSensorMove(sensorTypes: .SensorMagnetic, name: peripheral.name ?? "", RSSI: Int(truncating: RSSI),batterylevel: ConvertionToolbox.ConvertAdvertisingValue(str: String(battery!)), nbrPas: ConvertionToolbox.ConvertAdvertisingValue(str: String(move!)), etat: ConvertionToolbox.convertHexaToEtatInv(str: etat))
+                                        print("MOVE found !!!!!!!!!!")
+                                        if(id is SensorMove)
+                                            {
+                                                if let mov = id as? SensorMove
+                                                    {
+                                                    print("nbr pas : " + String(mov.nbrPas))
+                                                         print("nbr pas : " + String(mov.batterylevel))
+                                                    }
+                                            }
+                                        }
+                                }
                     
                     //MARK:: move sans batterie
                                            
-                    if(sensorData![CBUUID(string: "2A3F")] != nil && sensorData![CBUUID(string: "2A06")] != nil && String(sensorData![CBUUID(string: "2A3F")]!.debugDescription.dropFirst().dropFirst().dropLast()) == "1")
+                    else if(sensorData![CBUUID(string: "2A3F")] != nil && sensorData![CBUUID(string: "2A06")] != nil && String(sensorData![CBUUID(string: "2A3F")]!.debugDescription.dropFirst().dropFirst().dropLast()) == "1")
                         {
                                                                
                                                                  
@@ -106,27 +130,7 @@ class Scanner1: NSObject, CBPeripheralDelegate, CBCentralManagerDelegate {
                             }
                         }
 
-                    //MARK:: move avec batterie
-                        
-                     if(sensorData![CBUUID(string: "180F")] != nil && sensorData![CBUUID(string: "2A3F")] != nil && sensorData![CBUUID(string: "2A06")] != nil && String(sensorData![CBUUID(string: "2A3F")]!.debugDescription.dropFirst().dropFirst().dropLast()) == "1")
-                        {
-                            let move = sensorData![CBUUID(string: "2A06")]?.debugDescription.dropFirst().dropLast()
-                            let etat = String(sensorData![CBUUID(string: "2A3F")]!.debugDescription.dropFirst().dropFirst().dropLast())
-                            let battery = sensorData![CBUUID(string: "180F")]?.debugDescription.dropFirst().dropLast()
-                            if(move != nil && etat != "" && battery != nil)
-                                {
-                                    let id = SensorFactory.shared().getSensorMove(sensorTypes: .SensorMagnetic, name: peripheral.name ?? "", RSSI: Int(truncating: RSSI),batterylevel: ConvertionToolbox.ConvertAdvertisingValue(str: String(battery!)), nbrPas: ConvertionToolbox.ConvertAdvertisingValue(str: String(move!)), etat: ConvertionToolbox.convertHexaToEtatInv(str: etat))
-                                print("MOVE found !!!!!!!!!!")
-                                if(id is SensorMove)
-                                    {
-                                        if let mov = id as? SensorMove
-                                            {
-                                            print("nbr pas : " + String(mov.nbrPas))
-                                                 print("nbr pas : " + String(mov.batterylevel))
-                                            }
-                                    }
-                                }
-                        }
+              
                     
                     
                     
@@ -135,7 +139,7 @@ class Scanner1: NSObject, CBPeripheralDelegate, CBCentralManagerDelegate {
                     
                      
                      
-                    if(sensorData![CBUUID(string: "2AA1")] != nil && sensorData![CBUUID(string: "180F")] != nil   )
+                    else if(sensorData![CBUUID(string: "2AA1")] != nil && sensorData![CBUUID(string: "180F")] != nil   )
                         {
                                         
                                         
@@ -165,7 +169,7 @@ class Scanner1: NSObject, CBPeripheralDelegate, CBCentralManagerDelegate {
                     
                     
                      //MARK::ANG sans batterie
-                     if(sensorData![CBUUID(string: "2AA1")] != nil  )
+                    else if(sensorData![CBUUID(string: "2AA1")] != nil  )
                         {
                             let ang = sensorData![CBUUID(string: "2AA1")]?.debugDescription.dropFirst().dropLast()
                             if(ang != nil)
@@ -191,7 +195,7 @@ class Scanner1: NSObject, CBPeripheralDelegate, CBCentralManagerDelegate {
                     
                     //MARK:: magnétique avec batterie
                     
-                    if(sensorData![CBUUID(string: "180F")] != nil && sensorData![CBUUID(string: "2A3F")] != nil && sensorData![CBUUID(string: "2A06")] != nil && String(sensorData![CBUUID(string: "2A3F")]!.debugDescription.dropFirst().dropFirst().dropLast()) == "0" )
+                   else if(sensorData![CBUUID(string: "180F")] != nil && sensorData![CBUUID(string: "2A3F")] != nil && sensorData![CBUUID(string: "2A06")] != nil && String(sensorData![CBUUID(string: "2A3F")]!.debugDescription.dropFirst().dropFirst().dropLast()) == "0" )
                         {
                             let mag = sensorData![CBUUID(string: "2A06")]?.debugDescription.dropFirst().dropLast()
                             let etat = String(sensorData![CBUUID(string: "2A3F")]!.debugDescription.dropFirst().dropFirst().dropLast())
@@ -214,7 +218,7 @@ class Scanner1: NSObject, CBPeripheralDelegate, CBCentralManagerDelegate {
                          }
 
                      //MARK::Magnétique sans batterie
-                     if(sensorData![CBUUID(string: "2A3F")] != nil && sensorData![CBUUID(string: "2A06")] != nil && String(sensorData![CBUUID(string: "2A3F")]!.debugDescription.dropFirst().dropFirst().dropLast()) == "0" )
+                    else if(sensorData![CBUUID(string: "2A3F")] != nil && sensorData![CBUUID(string: "2A06")] != nil && String(sensorData![CBUUID(string: "2A3F")]!.debugDescription.dropFirst().dropFirst().dropLast()) == "0" )
                         {
                             let mag = sensorData![CBUUID(string: "2A06")]?.debugDescription.dropFirst().dropLast()
                             let etat = String(sensorData![CBUUID(string: "2A3F")].debugDescription.dropFirst().dropLast())
@@ -236,7 +240,7 @@ class Scanner1: NSObject, CBPeripheralDelegate, CBCentralManagerDelegate {
   
                        //MARK:: temperature humidite avec batterie
 
-                    if(sensorData![CBUUID(string: "2A6E")].debugDescription != "" && sensorData![CBUUID(string: "2A6F")].debugDescription != "" && sensorData![CBUUID(string: "180F")].debugDescription != "" )
+                    else if(sensorData![CBUUID(string: "2A6E")] != nil && sensorData![CBUUID(string: "2A6F")] != nil && sensorData![CBUUID(string: "180F")] != nil )
                         {
                             let temp = sensorData![CBUUID(string: "2A6E")]?.debugDescription.dropFirst().dropLast()
                             let hum = sensorData![CBUUID(string: "2A6F")]?.debugDescription.dropFirst().dropLast()
@@ -263,7 +267,7 @@ class Scanner1: NSObject, CBPeripheralDelegate, CBCentralManagerDelegate {
                      
              
                     //MARK::temperatureHumidite sans batterie
-                   else if(sensorData![CBUUID(string: "2A6E")].debugDescription != "" && sensorData![CBUUID(string: "2A6F")].debugDescription != "" )
+                   else if(sensorData![CBUUID(string: "2A6E")] != nil && sensorData![CBUUID(string: "2A6F")] != nil )
                         {
                             let temp = sensorData![CBUUID(string: "2A6E")]?.debugDescription.dropFirst().dropLast()
                             let hum = sensorData![CBUUID(string: "2A6F")]?.debugDescription.dropFirst().dropLast()
@@ -285,7 +289,7 @@ class Scanner1: NSObject, CBPeripheralDelegate, CBCentralManagerDelegate {
                         }
            
                     //MARK:: temperareture avec batterie
-                 else if(sensorData![CBUUID(string: "2A6E")].debugDescription != ""  && sensorData![CBUUID(string: "180F")].debugDescription != ""  )
+                 else if(sensorData![CBUUID(string: "2A6E")] != nil  && sensorData![CBUUID(string: "180F")] != nil  )
                     {
                         let temp = sensorData![CBUUID(string: "2A6E")]?.debugDescription.dropFirst().dropLast()
                         let batterie = sensorData![CBUUID(string: "180F")]?.debugDescription.dropFirst().dropLast()
@@ -309,7 +313,7 @@ class Scanner1: NSObject, CBPeripheralDelegate, CBCentralManagerDelegate {
 
                     //MARK:: temperetaure sans batterie
                             
-                       else if(sensorData![CBUUID(string: "2A6E")].debugDescription != "" )
+                       else if(sensorData![CBUUID(string: "2A6E")] != nil )
                             {
                                 let temp = sensorData![CBUUID(string: "2A6E")]?.debugDescription.dropFirst().dropLast()
                             print("bravo")
