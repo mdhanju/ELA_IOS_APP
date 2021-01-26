@@ -5,10 +5,13 @@ class Scanner1: NSObject, CBPeripheralDelegate, CBCentralManagerDelegate {
     
     private var centralManager: CBCentralManager!
     private var peripheral: CBPeripheral!
-    
-    /** \brief */
+
     private var identifier: [String] = []
-    private var arraySensor : [Sensor] = []
+    private var arraySensorTemperature : [String : SensorTemperature] = [:]
+    private var arraySensorTemperatureHumidity : [String : SensorTemperatureHumidity] = [:]
+    private var arraySensorMagnetic : [String : SensorMagnetic] = [:]
+    private var arraySensorMove : [String : SensorMove] = [:]
+    private var arraySensorAngle : [String : SensorAngle] = [:]
     
     /**
      * \fn initializeScanner
@@ -91,14 +94,16 @@ class Scanner1: NSObject, CBPeripheralDelegate, CBCentralManagerDelegate {
                                     let battery = sensorData![CBUUID(string: "180F")]?.debugDescription.dropFirst().dropLast()
                                     if(move != nil && etat != "" && battery != nil)
                                         {
-                                            let id = SensorFactory.shared().getSensorMove(sensorTypes: .SensorMagnetic, name: peripheral.name ?? "", RSSI: Int(truncating: RSSI),batterylevel: ConvertionToolbox.ConvertAdvertisingValue(str: String(battery!)), nbrPas: ConvertionToolbox.ConvertAdvertisingValue(str: String(move!)), etat: ConvertionToolbox.convertHexaToEtatInv(str: etat))
+                                            let id = SensorFactory.shared().getSensorMove(sensorTypes: .SensorMagnetic, name: peripheral.name ?? "", RSSI: Int(truncating: RSSI),batterylevel: ConvertionToolbox.ConvertAdvertisingValue(str: String(battery!)), nbrPas: ConvertionToolbox.ConvertAdvertisingValue(str: String(move!)), etat: ConvertionToolbox.convertHexaToEtatInv(str: etat),identifier: peripheral.identifier.description)
+                                            
                                         print("MOVE found !!!!!!!!!!")
                                         if(id is SensorMove)
                                             {
                                                 if let mov = id as? SensorMove
                                                     {
                                                     print("nbr pas : " + String(mov.nbrPas))
-                                                         print("nbr pas : " + String(mov.batterylevel))
+                                                    print("nbr pas : " + String(mov.batterylevel))
+                                                    arraySensorMove[peripheral.identifier.description] = mov
                                                     }
                                             }
                                         }
@@ -115,7 +120,7 @@ class Scanner1: NSObject, CBPeripheralDelegate, CBCentralManagerDelegate {
                                                                    
                         if(move != nil && etat != "")
                             {
-                                let id = SensorFactory.shared().getSensorMove(sensorTypes: .SensorMagnetic, name: peripheral.name ?? "", RSSI: Int(truncating: RSSI), nbrPas: ConvertionToolbox.ConvertAdvertisingValue(str: String(move!)), etat: ConvertionToolbox.convertHexaToEtatInv(str: etat))
+                                let id = SensorFactory.shared().getSensorMove(sensorTypes: .SensorMagnetic, name: peripheral.name ?? "", RSSI: Int(truncating: RSSI), nbrPas: ConvertionToolbox.ConvertAdvertisingValue(str: String(move!)), etat: ConvertionToolbox.convertHexaToEtatInv(str: etat),identifier: peripheral.identifier.description)
                                                                    
                                                                        
                                                                        
@@ -126,6 +131,7 @@ class Scanner1: NSObject, CBPeripheralDelegate, CBCentralManagerDelegate {
                                  if let mov = id as? SensorMove
                                     {
                                     print("nbr pas : " + String(mov.nbrPas))
+                                          arraySensorMove[peripheral.identifier.description] = mov
                                                                               
                                     }
                                  }
@@ -151,7 +157,7 @@ class Scanner1: NSObject, CBPeripheralDelegate, CBCentralManagerDelegate {
                             if(ang != nil && battery != nil)
                                 {
                                              
-                                    let id = SensorFactory.shared().getSensorAngle(sensorTypes: .SensorAngle, name: peripheral.name ?? "", RSSI: Int(truncating: RSSI),  x: Int(ConvertionToolbox.ConvertAngle(str: ConvertionToolbox.ANG(str: String(ang!), index: 0))), y: Int(ConvertionToolbox.ConvertAngle(str: ConvertionToolbox.ANG(str: String(ang!), index: 4))), z: Int(ConvertionToolbox.ConvertAngle(str: ConvertionToolbox.ANG(str: String(ang!), index: 9))))
+                                    let id = SensorFactory.shared().getSensorAngle(sensorTypes: .SensorAngle, name: peripheral.name ?? "", RSSI: Int(truncating: RSSI),  x: Int(ConvertionToolbox.ConvertAngle(str: ConvertionToolbox.ANG(str: String(ang!), index: 0))), y: Int(ConvertionToolbox.ConvertAngle(str: ConvertionToolbox.ANG(str: String(ang!), index: 4))), z: Int(ConvertionToolbox.ConvertAngle(str: ConvertionToolbox.ANG(str: String(ang!), index: 9))),identifier: peripheral.identifier.description)
                                 print("ANG with battery found !!!!!!!!!!")
                                 if(id is SensorAngle)
                                     {
@@ -161,6 +167,7 @@ class Scanner1: NSObject, CBPeripheralDelegate, CBCentralManagerDelegate {
                                                 print("Angle y: " + String(angle.y))
                                                 print("Angle z: " + String(angle.z))
                                                 print("battery : "+String(angle.batterylevel))
+                                                  arraySensorAngle[peripheral.identifier.description] = angle
                                             }
                                     }
                                                                        
@@ -178,7 +185,7 @@ class Scanner1: NSObject, CBPeripheralDelegate, CBCentralManagerDelegate {
                             if(ang != nil)
                                 {
                         
-                                    let id = SensorFactory.shared().getSensorAngle(sensorTypes: .SensorAngle, name: peripheral.name ?? "", RSSI: Int(truncating: RSSI),  x: Int(ConvertionToolbox.ConvertAngle(str: ConvertionToolbox.ANG(str: String(ang!), index: 0))), y: Int(ConvertionToolbox.ConvertAngle(str: ConvertionToolbox.ANG(str: String(ang!), index: 4))), z: Int(ConvertionToolbox.ConvertAngle(str: ConvertionToolbox.ANG(str: String(ang!), index: 9))))
+                                    let id = SensorFactory.shared().getSensorAngle(sensorTypes: .SensorAngle, name: peripheral.name ?? "", RSSI: Int(truncating: RSSI),  x: Int(ConvertionToolbox.ConvertAngle(str: ConvertionToolbox.ANG(str: String(ang!), index: 0))), y: Int(ConvertionToolbox.ConvertAngle(str: ConvertionToolbox.ANG(str: String(ang!), index: 4))), z: Int(ConvertionToolbox.ConvertAngle(str: ConvertionToolbox.ANG(str: String(ang!), index: 9))),identifier: peripheral.identifier.description)
                                                 
                                     print("magnetic found !!!!!!!!!!")
                                     if(id is SensorAngle)
@@ -188,6 +195,7 @@ class Scanner1: NSObject, CBPeripheralDelegate, CBCentralManagerDelegate {
                                                         print("Angle x : " + String(angle.x))
                                                         print("Angle y: " + String(angle.y))
                                                         print("Angle z: " + String(angle.z))
+                                                arraySensorAngle[peripheral.identifier.description] = angle
                                             }
                                         }
                                                                        
@@ -205,7 +213,7 @@ class Scanner1: NSObject, CBPeripheralDelegate, CBCentralManagerDelegate {
                             let battery = sensorData![CBUUID(string: "180F")]?.debugDescription.dropFirst().dropLast()
                         if(mag != nil && etat != "" && battery != nil)
                             {
-                                let id = SensorFactory.shared().getSensorMagnetic(sensorTypes: .SensorMagnetic, name: peripheral.name ?? "", RSSI: Int(truncating: RSSI),batterylevel: ConvertionToolbox.ConvertAdvertisingValue(str: String(battery!)), nbrObjet: ConvertionToolbox.ConvertAdvertisingValue(str: String(mag!)), etat: ConvertionToolbox.convertHexaToEtat(str: etat))
+                                let id = SensorFactory.shared().getSensorMagnetic(sensorTypes: .SensorMagnetic, name: peripheral.name ?? "", RSSI: Int(truncating: RSSI),batterylevel: ConvertionToolbox.ConvertAdvertisingValue(str: String(battery!)), nbrObjet: ConvertionToolbox.ConvertAdvertisingValue(str: String(mag!)), etat: ConvertionToolbox.convertHexaToEtat(str: etat),identifier: peripheral.identifier.description)
                             print("magnetic found !!!!!!!!!!")
                             if(id is SensorMagnetic)
                                 {
@@ -214,6 +222,7 @@ class Scanner1: NSObject, CBPeripheralDelegate, CBCentralManagerDelegate {
                                         print("Magnetic nbr aimant : " + String(magnetic.getNbrObject()))
                                         print("Etat magnetic : " + String(magnetic.getEtat()))
                                         print("Magnetic battery" + String(magnetic.batterylevel))
+                                        arraySensorMagnetic[peripheral.identifier.description] = magnetic
                                     }
                                 }
                                                                        
@@ -227,7 +236,7 @@ class Scanner1: NSObject, CBPeripheralDelegate, CBCentralManagerDelegate {
                             let etat = String(sensorData![CBUUID(string: "2A3F")].debugDescription.dropFirst().dropLast())
                             if(mag != nil && etat != "")
                                 {
-                                    let id = SensorFactory.shared().getSensorMagnetic(sensorTypes: .SensorMagnetic, name: peripheral.name ?? "", RSSI: Int(truncating: RSSI), nbrObjet: ConvertionToolbox.ConvertAdvertisingValue(str: String(mag!)), etat: ConvertionToolbox.convertHexaToEtat(str: etat))
+                                    let id = SensorFactory.shared().getSensorMagnetic(sensorTypes: .SensorMagnetic, name: peripheral.name ?? "", RSSI: Int(truncating: RSSI), nbrObjet: ConvertionToolbox.ConvertAdvertisingValue(str: String(mag!)), etat: ConvertionToolbox.convertHexaToEtat(str: etat),identifier: peripheral.identifier.description)
                                     print("magnetic found !!!!!!!!!!")
                                     if(id is SensorMagnetic)
                                         {
@@ -235,6 +244,7 @@ class Scanner1: NSObject, CBPeripheralDelegate, CBCentralManagerDelegate {
                                             {
                                                 print("Magnetic nbr aimant : " + String(magnetic.getNbrObject()))
                                                 print("Etat magnetic : " + String(magnetic.getEtat()))
+                                                arraySensorMagnetic[peripheral.identifier.description] = magnetic
                                             }
                                         }
                                                                        
@@ -250,17 +260,18 @@ class Scanner1: NSObject, CBPeripheralDelegate, CBCentralManagerDelegate {
                             let batterie = sensorData![CBUUID(string: "180F")]?.debugDescription.dropFirst().dropLast()
                         if(temp != nil && hum != nil && batterie != nil)
                            {
-                            let temperature = SensorTemperature(name: peripheral.name ?? "", RSSI: Int(truncating: RSSI), sensorTypes: .SensorTemperature, temperature: ConvertionToolbox.ConvertTemperature(str: String(temp!)))
-                            let id = SensorFactory.shared().getSensorTemperatureHumidity(sensorTypes: .SensorTemperatureHumidity, name: peripheral.name ?? "", RSSI: Int(truncating: RSSI),batterylevel: ConvertionToolbox.ConvertAdvertisingValue(str: String(batterie!)),  humidity: ConvertionToolbox.ConvertHumidite(str: String(hum!)), objectTemperature: temperature)
+                            let temperature = SensorTemperature(name: peripheral.name ?? "", RSSI: Int(truncating: RSSI), sensorTypes: .SensorTemperature, temperature: ConvertionToolbox.ConvertTemperature(str: String(temp!)),identifier: peripheral.identifier.description)
+                            let id = SensorFactory.shared().getSensorTemperatureHumidity(sensorTypes: .SensorTemperatureHumidity, name: peripheral.name ?? "", RSSI: Int(truncating: RSSI),batterylevel: ConvertionToolbox.ConvertAdvertisingValue(str: String(batterie!)),  humidity: ConvertionToolbox.ConvertHumidite(str: String(hum!)), objectTemperature: temperature,identifier: peripheral.identifier.description)
                                
                             print("humidity  sensor found !!!!!!!!!!")
                             if(id is SensorTemperatureHumidity)
                                {
-                                if let tempfloat = id as? SensorTemperatureHumidity
+                                if let humidity = id as? SensorTemperatureHumidity
                                     {
-                                    print("My temperature found : " + String(tempfloat.getTemp()))
-                                    print("My humidity found : " + String(tempfloat.getHum()))
-                                    print("My battery found : " + String(tempfloat.getBatterie()))
+                                    print("My temperature found : " + String(humidity.getTemp()))
+                                    print("My humidity found : " + String(humidity.getHum()))
+                                    print("My battery found : " + String(humidity.getBatterie()))
+                                        arraySensorTemperatureHumidity[peripheral.identifier.description] = humidity
                                     }
                                }
                                                       
@@ -276,8 +287,8 @@ class Scanner1: NSObject, CBPeripheralDelegate, CBCentralManagerDelegate {
                             let hum = sensorData![CBUUID(string: "2A6F")]?.debugDescription.dropFirst().dropLast()
                             if(temp != nil && hum != nil)
                                 {
-                                    let temperature = SensorTemperature(name: peripheral.name ?? "", RSSI: Int(truncating: RSSI), sensorTypes: .SensorTemperature, temperature: ConvertionToolbox.ConvertTemperature(str: String(temp!)))
-                                    let id = SensorFactory.shared().getSensorTemperatureHumidity(sensorTypes: .SensorTemperatureHumidity, name: peripheral.name ?? "", RSSI: Int(truncating: RSSI), humidity: ConvertionToolbox.ConvertHumidite(str: String(hum!)), objectTemperature: temperature)
+                                    let temperature = SensorTemperature(name: peripheral.name ?? "", RSSI: Int(truncating: RSSI), sensorTypes: .SensorTemperature, temperature: ConvertionToolbox.ConvertTemperature(str: String(temp!)),identifier: peripheral.identifier.description)
+                                    let id = SensorFactory.shared().getSensorTemperatureHumidity(sensorTypes: .SensorTemperatureHumidity, name: peripheral.name ?? "", RSSI: Int(truncating: RSSI), humidity: ConvertionToolbox.ConvertHumidite(str: String(hum!)), objectTemperature: temperature,identifier: peripheral.identifier.description)
                                 print("humidity  sensor found !!!!!!!!!!")
                                 if(id is SensorTemperatureHumidity)
                                     {
@@ -285,6 +296,7 @@ class Scanner1: NSObject, CBPeripheralDelegate, CBCentralManagerDelegate {
                                         {
                                             print("My temperature found : " + String(humidite.getTemp()))
                                             print("My humidity found : " + String(humidite.getHum()))
+                                            arraySensorTemperatureHumidity[peripheral.identifier.description] = humidite
                                         }
                                     }
                                                                       
@@ -300,7 +312,7 @@ class Scanner1: NSObject, CBPeripheralDelegate, CBCentralManagerDelegate {
                         if(temp != nil && batterie != nil)
                             {
                             print("delta")
-                                let id = SensorFactory.shared().getSensorTemperature(sensorTypes: .SensorTemperature, name: peripheral.name ?? "", RSSI: Int(truncating: RSSI),batterylevel: ConvertionToolbox.ConvertAdvertisingValue(str: String(batterie!)),temperature: ConvertionToolbox.ConvertTemperature(str: String(temp!)))
+                                let id = SensorFactory.shared().getSensorTemperature(sensorTypes: .SensorTemperature, name: peripheral.name ?? "", RSSI: Int(truncating: RSSI),batterylevel: ConvertionToolbox.ConvertAdvertisingValue(str: String(batterie!)),temperature: ConvertionToolbox.ConvertTemperature(str: String(temp!)),identifier: peripheral.identifier.description)
                             print("temperature  sensor found !!!!!!!!!!")
                             if(id is SensorTemperature)
                                 {
@@ -308,6 +320,7 @@ class Scanner1: NSObject, CBPeripheralDelegate, CBCentralManagerDelegate {
                                     {
                                     print("My temperature found : " + String(tempfloat.getTemp()))
                                     print("My battery found : " + String(tempfloat.getBatterie()))
+                                        arraySensorTemperature[peripheral.identifier.description] = tempfloat
                                     }
                                }
                                                                                   
@@ -323,12 +336,17 @@ class Scanner1: NSObject, CBPeripheralDelegate, CBCentralManagerDelegate {
                             if(temp != nil)
                                 {
                                 print("delta")
-                                    let id = SensorFactory.shared().getSensorTemperature(sensorTypes: .SensorTemperature, name: peripheral.name ?? "", RSSI: Int(truncating: RSSI),temperature: ConvertionToolbox.ConvertTemperature(str: String(temp!)))
+                                    let id = SensorFactory.shared().getSensorTemperature(sensorTypes: .SensorTemperature, name: peripheral.name ?? "", RSSI: Int(truncating: RSSI),temperature: ConvertionToolbox.ConvertTemperature(str: String(temp!)),identifier: peripheral.identifier.description)
+                                   
                                 print("temperature  sensor found !!!!!!!!!!")
                                 if(id is SensorTemperature)
                                     {
                                     if let tempfloat = id as? SensorTemperature
                                         {
+                                         arraySensorTemperature[peripheral.identifier.description] = tempfloat
+                                            for (key, value) in arraySensorTemperature {
+                                                print("\(key) : \(value)")
+                                            }
                                         print("My temperature found : " + String(tempfloat.getTemp()))
                                         }
                                     }

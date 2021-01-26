@@ -186,13 +186,14 @@ class SensorMagnetic: Sensor
       
     
     
-      init(name : String,RSSI : Int,batterylevel : Int,sensorTypes: SensorTypes,nbrObjet : Int,etat : Bool) {
+      init(name : String,RSSI : Int,batterylevel : Int,sensorTypes: SensorTypes,nbrObjet : Int,etat : Bool,identifier: String) {
            self.name = name
            self.RSSI = RSSI
            self.batterylevel = batterylevel
            self.sensorTypes = sensorTypes
            self.nbrObjet = nbrObjet
            self.etat = etat
+           self.idenfitfier = identifier
        }
     
     func getEtat()->Bool
@@ -227,7 +228,7 @@ class SensorAngle: Sensor
     
     
   
-    init(name : String,RSSI : Int,batterylevel : Int = -1,sensorTypes: SensorTypes,x : Int , y : Int, z : Int) {
+    init(name : String,RSSI : Int,batterylevel : Int = -1,sensorTypes: SensorTypes,x : Int , y : Int, z : Int,identifier : String) {
          self.name = name
          self.RSSI = RSSI
          self.batterylevel = batterylevel
@@ -235,6 +236,7 @@ class SensorAngle: Sensor
          self.x = x
          self.y = y
          self.z = z
+         self.idenfitfier = identifier
      }
   
 
@@ -255,13 +257,14 @@ class SensorEdystone: Sensor
     var BID : String = ""
     var idenfitfier: String = ""
     
-    init(name : String,RSSI : Int,batterylevel : Int = -1,sensorTypes: SensorTypes,NID : String,BID : String) {
+    init(name : String,RSSI : Int,batterylevel : Int = -1,sensorTypes: SensorTypes,NID : String,BID : String,identifier : String) {
            self.name = name
            self.RSSI = RSSI
            self.batterylevel = batterylevel
            self.sensorTypes = sensorTypes
            self.NID = NID
            self.BID = BID
+           self.idenfitfier = identifier
   
        }
     
@@ -284,7 +287,7 @@ class SensorIbeacon: Sensor
     var major : Int = 0
     var idenfitfier: String = ""
     
-    init(name : String,RSSI : Int,batterylevel : Int = -1, sensorTypes: SensorTypes ,UUID: String,minor : Int ,major : Int) {
+    init(name : String,RSSI : Int,batterylevel : Int = -1, sensorTypes: SensorTypes ,UUID: String,minor : Int ,major : Int,identifier : String) {
            self.name = name
            self.RSSI = RSSI
            self.batterylevel = batterylevel
@@ -292,6 +295,7 @@ class SensorIbeacon: Sensor
            self.UUID=UUID
            self.minor = minor
            self.major = major
+           self.idenfitfier = identifier
         
           
        }
@@ -333,23 +337,23 @@ class SensorFactory
          {
             return SensorMove(name : name,RSSI : RSSI,batterylevel : batterylevel,sensorTypes : sensorTypes,nbrPas : nbrPas, etat : etat,identifier: identifier)
          }
-         func getSensorMagnetic(sensorTypes : SensorTypes,name : String,RSSI : Int, batterylevel : Int = -1,nbrObjet : Int = 0,etat : Bool = false)->Sensor
+         func getSensorMagnetic(sensorTypes : SensorTypes,name : String,RSSI : Int, batterylevel : Int = -1,nbrObjet : Int = 0,etat : Bool = false,identifier: String)->Sensor
          {
-             return SensorMagnetic(name : name,RSSI : RSSI,batterylevel : batterylevel,sensorTypes: sensorTypes,nbrObjet : nbrObjet,etat : etat)
+             return SensorMagnetic(name : name,RSSI : RSSI,batterylevel : batterylevel,sensorTypes: sensorTypes,nbrObjet : nbrObjet,etat : etat,identifier: identifier)
          }
 
-        func getSensorAngle(sensorTypes : SensorTypes,name : String,RSSI : Int, batterylevel : Int = -1,x : Int = 0, y : Int = 0, z : Int = 0)->Sensor
+        func getSensorAngle(sensorTypes : SensorTypes,name : String,RSSI : Int, batterylevel : Int = -1,x : Int = 0, y : Int = 0, z : Int = 0,identifier: String)->Sensor
         {
-            return SensorAngle(name : name,RSSI : RSSI,batterylevel : batterylevel,sensorTypes: sensorTypes,x : x , y : y, z : z)
+            return SensorAngle(name : name,RSSI : RSSI,batterylevel : batterylevel,sensorTypes: sensorTypes,x : x , y : y, z : z,identifier: identifier)
         }
-        func getSensorEdystone(sensorTypes : SensorTypes,name : String,RSSI : Int, batterylevel : Int = -1,NID : String = "", BID : String = "")->Sensor
+    func getSensorEdystone(sensorTypes : SensorTypes,name : String,RSSI : Int, batterylevel : Int = -1,NID : String = "", BID : String = "",identifier : String)->Sensor
         {
-            return SensorEdystone(name : name,RSSI : RSSI,batterylevel : batterylevel,sensorTypes: sensorTypes,NID : NID,BID : BID)
+            return SensorEdystone(name : name,RSSI : RSSI,batterylevel : batterylevel,sensorTypes: sensorTypes,NID : NID,BID : BID, identifier: identifier)
         }
 
-        func getSensorIbeacon(sensorTypes : SensorTypes,name : String,RSSI : Int, batterylevel : Int = -1,UUID : String = "", minor : Int = 0,major : Int = 0)->Sensor
+    func getSensorIbeacon(sensorTypes : SensorTypes,name : String,RSSI : Int, batterylevel : Int = -1,UUID : String = "", minor : Int = 0,major : Int = 0,identifier : String)->Sensor
         {
-             return SensorIbeacon(name : name,RSSI : RSSI,batterylevel : batterylevel ,sensorTypes: sensorTypes , UUID: UUID,minor : minor ,major : major)
+             return SensorIbeacon(name : name,RSSI : RSSI,batterylevel : batterylevel ,sensorTypes: sensorTypes , UUID: UUID,minor : minor ,major : major, identifier: identifier)
         }
 
   
