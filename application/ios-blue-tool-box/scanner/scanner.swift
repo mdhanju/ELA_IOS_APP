@@ -83,12 +83,12 @@ class Scanner1: NSObject, CBPeripheralDelegate, CBCentralManagerDelegate {
                         {
                                                                
                                                                  
-                        var move = sensorData![CBUUID(string: "2A06")]?.debugDescription.dropFirst().dropLast()
-                        var etat = String(sensorData![CBUUID(string: "2A3F")]!.debugDescription.dropFirst().dropFirst().dropLast())
+                        let move = sensorData![CBUUID(string: "2A06")]?.debugDescription.dropFirst().dropLast()
+                        let etat = String(sensorData![CBUUID(string: "2A3F")]!.debugDescription.dropFirst().dropFirst().dropLast())
                                                                    
-                        if(move != nil && etat != nil)
+                        if(move != nil && etat != "")
                             {
-                            var id = SensorFactory.shared().getSensorMove(sensorTypes: .SensorMagnetic, name: peripheral.name ?? "", RSSI: Int(RSSI), nbrPas: ConvertionToolbox.ConvertAdvertisingValue(str: String(move!)), etat: ConvertionToolbox.convertHexaToEtatInv(str: etat))
+                                let id = SensorFactory.shared().getSensorMove(sensorTypes: .SensorMagnetic, name: peripheral.name ?? "", RSSI: Int(truncating: RSSI), nbrPas: ConvertionToolbox.ConvertAdvertisingValue(str: String(move!)), etat: ConvertionToolbox.convertHexaToEtatInv(str: etat))
                                                                    
                                                                        
                                                                        
@@ -110,12 +110,12 @@ class Scanner1: NSObject, CBPeripheralDelegate, CBCentralManagerDelegate {
                         
                      if(sensorData![CBUUID(string: "180F")] != nil && sensorData![CBUUID(string: "2A3F")] != nil && sensorData![CBUUID(string: "2A06")] != nil && String(sensorData![CBUUID(string: "2A3F")]!.debugDescription.dropFirst().dropFirst().dropLast()) == "1")
                         {
-                            var move = sensorData![CBUUID(string: "2A06")]?.debugDescription.dropFirst().dropLast()
-                            var etat = String(sensorData![CBUUID(string: "2A3F")]!.debugDescription.dropFirst().dropFirst().dropLast())
-                            var battery = sensorData![CBUUID(string: "180F")]?.debugDescription.dropFirst().dropLast()
-                            if(move != nil && etat != nil && battery != nil)
+                            let move = sensorData![CBUUID(string: "2A06")]?.debugDescription.dropFirst().dropLast()
+                            let etat = String(sensorData![CBUUID(string: "2A3F")]!.debugDescription.dropFirst().dropFirst().dropLast())
+                            let battery = sensorData![CBUUID(string: "180F")]?.debugDescription.dropFirst().dropLast()
+                            if(move != nil && etat != "" && battery != nil)
                                 {
-                                var id = SensorFactory.shared().getSensorMove(sensorTypes: .SensorMagnetic, name: peripheral.name ?? "", RSSI: Int(RSSI),batterylevel: ConvertionToolbox.ConvertAdvertisingValue(str: String(battery!)), nbrPas: ConvertionToolbox.ConvertAdvertisingValue(str: String(move!)), etat: ConvertionToolbox.convertHexaToEtatInv(str: etat))
+                                    let id = SensorFactory.shared().getSensorMove(sensorTypes: .SensorMagnetic, name: peripheral.name ?? "", RSSI: Int(truncating: RSSI),batterylevel: ConvertionToolbox.ConvertAdvertisingValue(str: String(battery!)), nbrPas: ConvertionToolbox.ConvertAdvertisingValue(str: String(move!)), etat: ConvertionToolbox.convertHexaToEtatInv(str: etat))
                                 print("MOVE found !!!!!!!!!!")
                                 if(id is SensorMove)
                                     {
