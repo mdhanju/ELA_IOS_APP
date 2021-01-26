@@ -354,6 +354,13 @@ public class ConvertionToolbox : NSObject {
 
       }
     
+    /**
+     * \fnConvertHumidite
+     * \brief calculate humidity
+     * \param [in] String : hexadecimal
+     * \return Int
+     **/
+    
     
       public static func ConvertHumidite(str :String) -> Int
         {
@@ -377,7 +384,7 @@ public class ConvertionToolbox : NSObject {
      * \fn hexaToBinary
      * \brief convert hexa to binary
      * \param [in] String : hexadecimal
-     * \return Int
+     * \return String
      **/
     
    public static func hexaToBinary(str : String)->String

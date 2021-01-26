@@ -269,8 +269,8 @@ class Scanner1: NSObject, CBPeripheralDelegate, CBCentralManagerDelegate {
                             let hum = sensorData![CBUUID(string: "2A6F")]?.debugDescription.dropFirst().dropLast()
                             if(temp != nil && hum != nil)
                                 {
-                                    var temperature = SensorTemperature(name: peripheral.name ?? "", RSSI: Int(truncating: RSSI), sensorTypes: .SensorTemperature, temperature: ConvertionToolbox.ConvertTemperature(str: String(temp!)))
-                                    var id = SensorFactory.shared().getSensorTemperatureHumidity(sensorTypes: .SensorTemperatureHumidity, name: peripheral.name ?? "", RSSI: Int(truncating: RSSI), humidity: ConvertionToolbox.ConvertHumidite(str: String(hum!)), objectTemperature: temperature)
+                                    let temperature = SensorTemperature(name: peripheral.name ?? "", RSSI: Int(truncating: RSSI), sensorTypes: .SensorTemperature, temperature: ConvertionToolbox.ConvertTemperature(str: String(temp!)))
+                                    let id = SensorFactory.shared().getSensorTemperatureHumidity(sensorTypes: .SensorTemperatureHumidity, name: peripheral.name ?? "", RSSI: Int(truncating: RSSI), humidity: ConvertionToolbox.ConvertHumidite(str: String(hum!)), objectTemperature: temperature)
                                 print("humidity  sensor found !!!!!!!!!!")
                                 if(id is SensorTemperatureHumidity)
                                     {
