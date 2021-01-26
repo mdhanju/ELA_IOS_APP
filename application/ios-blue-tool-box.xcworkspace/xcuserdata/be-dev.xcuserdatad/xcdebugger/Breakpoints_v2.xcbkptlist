@@ -30,8 +30,8 @@
             filePath = "ios-blue-tool-box/scanner/scanner.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "363"
-            endingLineNumber = "363"
+            startingLineNumber = "498"
+            endingLineNumber = "498"
             landmarkName = "centralManager(_:didDiscover:advertisementData:rssi:)"
             landmarkType = "7">
          </BreakpointContent>
@@ -46,8 +46,8 @@
             filePath = "ios-blue-tool-box/Tools/ConvertionToolBox.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "426"
-            endingLineNumber = "426"
+            startingLineNumber = "514"
+            endingLineNumber = "514"
             landmarkName = "ConvertHumidite(str:)"
             landmarkType = "7">
          </BreakpointContent>
@@ -72,14 +72,14 @@
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
             uuid = "02EBAE9F-029A-4BA2-9EC2-2E26C0A32C97"
-            shouldBeEnabled = "Yes"
+            shouldBeEnabled = "No"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "ios-blue-tool-box/Tools/ConvertionToolBox.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "447"
-            endingLineNumber = "447"
+            startingLineNumber = "535"
+            endingLineNumber = "535"
             landmarkName = "ConvertHumidite(str:)"
             landmarkType = "7">
          </BreakpointContent>
@@ -87,15 +87,15 @@
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
-            uuid = "1D62E946-6337-4350-8825-47D1C40BA052"
+            uuid = "70CF1663-65A4-43EA-935F-4D1B78049A72"
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "ios-blue-tool-box/scanner/scanner.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "177"
-            endingLineNumber = "177"
+            startingLineNumber = "212"
+            endingLineNumber = "212"
             landmarkName = "centralManager(_:didDiscover:advertisementData:rssi:)"
             landmarkType = "7">
          </BreakpointContent>

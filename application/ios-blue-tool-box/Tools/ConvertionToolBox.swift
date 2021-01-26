@@ -285,6 +285,8 @@ public class ConvertionToolbox : NSObject {
             return Float(Int32(decimal)) / 100.0
         }
 
+        
+    
            
        // Hexadecimal to binary
        /*
@@ -323,6 +325,92 @@ public class ConvertionToolbox : NSObject {
           return Float(Int32(decimal)) / 100.0
            */
 
+    }
+    
+    
+    public  static func ConvertAngle(str :String) -> Int16
+     {
+
+    //   let test01 = hexaToBinary(str: "face")
+    //   let test02 = hexaToBinary(str: "0a82")
+    //   let test03 = hexaToBinary(str: "2123")
+    // let test04 = hexaToBinary(str: "0123")
+
+         if(str == "")
+         {
+             return 0
+         }
+    
+        var test : Int16 = 0
+      //split string on second letter
+     // var str = "abcdef"
+         var LSB : String = String(str.prefix(2))
+         var MSB : String = String(str.suffix(2))
+        
+   
+        
+         var LSB1 = Int16(LSB, radix: 16)!
+         var MSB1 = Int16(MSB, radix: 16)!
+       //  var LSB2  = Int16(LSB1)
+     //    var MSB2  = Int16(MSB1)
+        
+       
+     
+        
+     //    var str : String =  MSB + LSB
+//        if( LSB1! != nil && MSB1! != nil )
+  //      {
+         test = Int16( MSB1 + ( LSB1 << 8))
+    //    }
+      //  else
+       // {return 0}
+      
+    //  print("la valeur de la chaine : "+str)
+      // Hexadecimal to decimal
+      
+
+      return test
+    }
+    
+    
+    
+    public  static func ConvertAngle2(str :String) -> Float
+     {
+
+    //   let test01 = hexaToBinary(str: "face")
+    //   let test02 = hexaToBinary(str: "0a82")
+    //   let test03 = hexaToBinary(str: "2123")
+    // let test04 = hexaToBinary(str: "0123")
+
+         if(str == "")
+         {
+             return 0
+         }
+          
+      //split string on second letter
+     // var str = "abcdef"
+         var LSB : String = String(str.prefix(2))
+         var MSB : String = String(str.suffix(2))
+         var str : String =  MSB + LSB
+      
+    //  print("la valeur de la chaine : "+str)
+      // Hexadecimal to decimal
+      
+
+         var decimal = Int(str, radix: 16)!
+         
+         // print("la valeur en decimal : " + String(decimal)) // 163
+       if(str.prefix(1).lowercased() == "f")
+       {
+
+        str = String(str.dropFirst())
+           let random = Int((~UInt16(decimal) + 1)) * (-1)
+           return Float(random) / 100.0
+       }
+       else
+       {
+           return Float(Int32(decimal)) / 100.0
+       }
     }
 
       /**
