@@ -13,6 +13,7 @@ protocol Sensor
     var RSSI : Int { get set }
     var batterylevel: Int { get set }
     var sensorTypes : SensorTypes { get set }
+    var idenfitfier : String { get set }
     
     func ExecuterCommmande()
   
@@ -43,13 +44,15 @@ class SensorID: Sensor
     var RSSI: Int = 0
     var batterylevel: Int = 0
     var sensorTypes: SensorTypes
+    var idenfitfier: String = ""
  
     
-    init(name : String,RSSI : Int,batterylevel : Int = -1,sensorTypes: SensorTypes) {
+    init(name : String,RSSI : Int,batterylevel : Int = -1,sensorTypes: SensorTypes,identifier : String) {
            self.name = name
            self.RSSI = RSSI
            self.batterylevel = batterylevel
            self.sensorTypes = sensorTypes
+           self.idenfitfier = identifier
    
        }
     
@@ -68,6 +71,7 @@ class SensorTemperature: Sensor
     var batterylevel: Int = 0
     var sensorTypes: SensorTypes
     var temperature : Float
+    var idenfitfier: String = ""
     
     init(name : String,RSSI : Int,batterylevel : Int = -1,sensorTypes: SensorTypes,temperature : Float) {
            self.name = name
@@ -102,6 +106,7 @@ class SensorTemperatureHumidity: Sensor
     var sensorTypes: SensorTypes
     var temperature: Float = 0
     var humidity: Int = 0
+    var idenfitfier: String = ""
    
     
     init(name : String,RSSI : Int,batterylevel : Int = -1,sensorTypes: SensorTypes,temperature : SensorTemperature,humidity : Int) {
@@ -144,6 +149,7 @@ class SensorMove: Sensor
   var sensorTypes: SensorTypes
   var nbrPas: Int = 0
   var etat : Bool
+  var idenfitfier: String = ""
     
   
   
@@ -173,6 +179,7 @@ class SensorMagnetic: Sensor
  var sensorTypes: SensorTypes
  var nbrObjet: Int = 0
  var etat : Bool
+ var idenfitfier: String = ""
       
     
     
@@ -213,6 +220,7 @@ class SensorAngle: Sensor
   var x: Int = 0
   var y: Int = 0
   var z: Int = 0
+  var idenfitfier: String = ""
     
     
   
@@ -242,6 +250,7 @@ class SensorEdystone: Sensor
     var sensorTypes: SensorTypes
     var NID : String = ""
     var BID : String = ""
+    var idenfitfier: String = ""
     
     init(name : String,RSSI : Int,batterylevel : Int = -1,sensorTypes: SensorTypes,NID : String,BID : String) {
            self.name = name
@@ -270,6 +279,7 @@ class SensorIbeacon: Sensor
     var UUID: String = ""
     var minor: Int = 0
     var major : Int = 0
+    var idenfitfier: String = ""
     
     init(name : String,RSSI : Int,batterylevel : Int = -1, sensorTypes: SensorTypes ,UUID: String,minor : Int ,major : Int) {
            self.name = name
@@ -302,9 +312,9 @@ class SensorFactory
        return sharedSensorFactory
    }
 
-        func getSensorID(sensorTypes : SensorTypes,name : String,RSSI : Int, batterylevel : Int = -1)->Sensor
+    func getSensorID(sensorTypes : SensorTypes,name : String,RSSI : Int, batterylevel : Int = -1, identifier : String)->Sensor
         {
-            return SensorID(name : name,RSSI : RSSI,batterylevel : batterylevel,sensorTypes : sensorTypes)
+            return SensorID(name : name,RSSI : RSSI,batterylevel : batterylevel,sensorTypes : sensorTypes, identifier: identifier)
         }
 
         func getSensorTemperature(sensorTypes : SensorTypes,name : String,RSSI : Int, batterylevel : Int = -1,
@@ -344,4 +354,4 @@ class SensorFactory
 }
 
 // run
-let id = SensorFactory.shared().getSensorID(sensorTypes: .SensorTemperature,name : "tes", RSSI : 2)
+let id = SensorFactory.shared().getSensorID(sensorTypes: .SensorTemperature,name : "tes", RSSI : 2,identifier: "ddddd")

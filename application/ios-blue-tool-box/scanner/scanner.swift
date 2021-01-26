@@ -44,6 +44,8 @@ class Scanner1: NSObject, CBPeripheralDelegate, CBCentralManagerDelegate {
         {
      
         print(peripheral.name)
+        print(peripheral.identifier.description)
+        
 
         if(advertisementData[CBAdvertisementDataServiceDataKey] != nil)
             {
@@ -67,6 +69,7 @@ class Scanner1: NSObject, CBPeripheralDelegate, CBCentralManagerDelegate {
                 if(identifier.count <= 0)
                     {
                         identifier.append(peripheral.identifier.description)
+                       
                 
                     }
                 else{
@@ -332,6 +335,9 @@ class Scanner1: NSObject, CBPeripheralDelegate, CBCentralManagerDelegate {
                                                        
                                 }
                             }
+                                
+                                
+                        
                           
                         else
                        {
