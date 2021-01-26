@@ -73,12 +73,13 @@ class SensorTemperature: Sensor
     var temperature : Float
     var idenfitfier: String = ""
     
-    init(name : String,RSSI : Int,batterylevel : Int = -1,sensorTypes: SensorTypes,temperature : Float) {
+    init(name : String,RSSI : Int,batterylevel : Int = -1,sensorTypes: SensorTypes,temperature : Float,identifier : String) {
            self.name = name
            self.RSSI = RSSI
            self.batterylevel = batterylevel
            self.sensorTypes = sensorTypes
            self.temperature = temperature
+           self.idenfitfier = identifier
        }
   
     func getTemp()->Float
@@ -109,13 +110,14 @@ class SensorTemperatureHumidity: Sensor
     var idenfitfier: String = ""
    
     
-    init(name : String,RSSI : Int,batterylevel : Int = -1,sensorTypes: SensorTypes,temperature : SensorTemperature,humidity : Int) {
+    init(name : String,RSSI : Int,batterylevel : Int = -1,sensorTypes: SensorTypes,temperature : SensorTemperature,humidity : Int,identifier : String) {
            self.name = name
            self.RSSI = RSSI
            self.batterylevel = batterylevel
            self.sensorTypes = sensorTypes
         self.temperature = temperature.getTemp()
         self.humidity = humidity
+        self.idenfitfier = identifier
           
        }
     
@@ -153,13 +155,14 @@ class SensorMove: Sensor
     
   
   
-    init(name : String,RSSI : Int,batterylevel : Int = -1,sensorTypes: SensorTypes,nbrPas : Int,etat : Bool) {
+    init(name : String,RSSI : Int,batterylevel : Int = -1,sensorTypes: SensorTypes,nbrPas : Int,etat : Bool,identifier : String) {
          self.name = name
          self.RSSI = RSSI
          self.batterylevel = batterylevel
          self.sensorTypes = sensorTypes
          self.nbrPas = nbrPas
          self.etat = etat
+        self.idenfitfier = identifier
      }
     
 
@@ -318,17 +321,17 @@ class SensorFactory
         }
 
         func getSensorTemperature(sensorTypes : SensorTypes,name : String,RSSI : Int, batterylevel : Int = -1,
-            temperature : Float = -1)->Sensor
+            temperature : Float = -1,identifier: String)->Sensor
             {
-             return SensorTemperature(name : name,RSSI : RSSI,batterylevel : batterylevel,sensorTypes : sensorTypes,temperature : temperature)
+             return SensorTemperature(name : name,RSSI : RSSI,batterylevel : batterylevel,sensorTypes : sensorTypes,temperature : temperature,identifier: identifier)
             }
-        func getSensorTemperatureHumidity(sensorTypes : SensorTypes,name : String,RSSI : Int, batterylevel : Int = -1,humidity :Int = -1,objectTemperature : SensorTemperature? = nil)->Sensor
+        func getSensorTemperatureHumidity(sensorTypes : SensorTypes,name : String,RSSI : Int, batterylevel : Int = -1,humidity :Int = -1,objectTemperature : SensorTemperature? = nil,identifier: String)->Sensor
          {
-            return SensorTemperatureHumidity(name : name,RSSI : RSSI,batterylevel : batterylevel,sensorTypes : sensorTypes,temperature : objectTemperature! ,humidity : humidity)
+            return SensorTemperatureHumidity(name : name,RSSI : RSSI,batterylevel : batterylevel,sensorTypes : sensorTypes,temperature : objectTemperature! ,humidity : humidity,identifier: identifier)
          }
-        func getSensorMove(sensorTypes : SensorTypes,name : String,RSSI : Int, batterylevel : Int = -1,nbrPas : Int = 0,etat : Bool = false)->Sensor
+        func getSensorMove(sensorTypes : SensorTypes,name : String,RSSI : Int, batterylevel : Int = -1,nbrPas : Int = 0,etat : Bool = false,identifier: String)->Sensor
          {
-            return SensorMove(name : name,RSSI : RSSI,batterylevel : batterylevel,sensorTypes : sensorTypes,nbrPas : nbrPas, etat : etat)
+            return SensorMove(name : name,RSSI : RSSI,batterylevel : batterylevel,sensorTypes : sensorTypes,nbrPas : nbrPas, etat : etat,identifier: identifier)
          }
          func getSensorMagnetic(sensorTypes : SensorTypes,name : String,RSSI : Int, batterylevel : Int = -1,nbrObjet : Int = 0,etat : Bool = false)->Sensor
          {
