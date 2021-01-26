@@ -52,7 +52,7 @@ class Scanner1: NSObject, CBPeripheralDelegate, CBCentralManagerDelegate {
 
         if(advertisementData[CBAdvertisementDataServiceDataKey] != nil)
             {
-                let sensorData = advertisementData[CBAdvertisementDataServiceDataKey] as? Dictionary<CBUUID,NSData>
+        let sensorData = advertisementData[CBAdvertisementDataServiceDataKey] as? Dictionary<CBUUID,NSData>
                 print(sensorData)
                 print(advertisementData[CBAdvertisementDataServiceDataKey])
             
@@ -371,6 +371,7 @@ class Scanner1: NSObject, CBPeripheralDelegate, CBCentralManagerDelegate {
                         else
                         {
                             print("déja trouvé")
+                           // arraySensorMagnetic.updateValue(SensorMagnetic, forKey: peripheral.identifier.description)
                         }
 
                     }
