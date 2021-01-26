@@ -17,44 +17,39 @@ class Scanner1: NSObject, CBPeripheralDelegate, CBCentralManagerDelegate {
      * \return None
      **/
     func initializeScanner()
-    {
+        {
         centralManager = CBCentralManager(delegate: self, queue: nil)
-    }
+        }
     
     // If we're powered on, start scanning
     func centralManagerDidUpdateState(_ central: CBCentralManager)
-    {
+        {
         print("Central state update")
         if central.state != .poweredOn
-        {
-            print("Central is not powered on")
-        }
+            {
+                print("Central is not powered on")
+            }
         else
-        {
+            {
             print("Central scanning for", ParticlePeripheral.uartRx);
             centralManager.scanForPeripherals(withServices: nil, options: nil)
+            }
         }
-    }
     
     
 
     
     // Handles the result of the scan
     func centralManager (_ central: CBCentralManager, didDiscover peripheral: CBPeripheral, advertisementData: [String : Any], rssi RSSI: NSNumber)
-    {
+        {
      
         print(peripheral.name)
 
         if(advertisementData[CBAdvertisementDataServiceDataKey] != nil)
-        {
-     
-         let sensorData = advertisementData[CBAdvertisementDataServiceDataKey] as? Dictionary<CBUUID,NSData>
-      
-           print(sensorData)
-            print(advertisementData[CBAdvertisementDataServiceDataKey])
-         //   var cpt : Int = 0
-            
-            
+            {
+                let sensorData = advertisementData[CBAdvertisementDataServiceDataKey] as? Dictionary<CBUUID,NSData>
+                print(sensorData)
+                print(advertisementData[CBAdvertisementDataServiceDataKey])
             
          /*   if(sensorData![CBUUID(string: "2A3F")] != nil && sensorData![CBUUID(string: "2A06")] != nil && ConvertionToolbox.convertHexaToEtat(str: sensorData![CBUUID(string: "2A3F")]!.description) == true ){
                 
@@ -69,91 +64,69 @@ class Scanner1: NSObject, CBPeripheralDelegate, CBCentralManagerDelegate {
             
         
             
-            if(identifier.count <= 0) {
-              identifier.append(peripheral.identifier.description)
+                if(identifier.count <= 0)
+                    {
+                        identifier.append(peripheral.identifier.description)
                 
-            }
-            else{
-                if(!identifier.contains(peripheral.identifier.description))
-                {
-                    print("New Device = " +  peripheral.identifier.description)
-                    identifier.append(peripheral.identifier.description)
+                    }
+                else{
+                    if(!identifier.contains(peripheral.identifier.description))
+                        {
+                            print("New Device = " +  peripheral.identifier.description)
+                            identifier.append(peripheral.identifier.description)
  
                     
                     
                     //MARK:: move sans batterie
                                            
-                                           if(sensorData![CBUUID(string: "2A3F")] != nil && sensorData![CBUUID(string: "2A06")] != nil && String(sensorData![CBUUID(string: "2A3F")]!.debugDescription.dropFirst().dropFirst().dropLast()) == "1"){
+                    if(sensorData![CBUUID(string: "2A3F")] != nil && sensorData![CBUUID(string: "2A06")] != nil && String(sensorData![CBUUID(string: "2A3F")]!.debugDescription.dropFirst().dropFirst().dropLast()) == "1")
+                        {
                                                                
-                                                                  // print(key)
-                                                                   var mag = sensorData![CBUUID(string: "2A06")]?.debugDescription.dropFirst().dropLast()
-                                            var etat = String(sensorData![CBUUID(string: "2A3F")]!.debugDescription.dropFirst().dropFirst().dropLast())
-                                                                   
-                                               
                                                                  
+                        var move = sensorData![CBUUID(string: "2A06")]?.debugDescription.dropFirst().dropLast()
+                        var etat = String(sensorData![CBUUID(string: "2A3F")]!.debugDescription.dropFirst().dropFirst().dropLast())
                                                                    
-                                                                                           
-                                                                                               
-                                                                   if(mag != nil && etat != nil)
-                                                                   {
-                                                                       
-                                                                       
-                                                                 
-                                                                       var id = SensorFactory.shared().getSensorMove(sensorTypes: .SensorMagnetic, name: peripheral.name ?? "", RSSI: Int(RSSI), nbrPas: ConvertionToolbox.ConvertAdvertisingValue(str: String(mag!)), etat: ConvertionToolbox.convertHexaToEtatInv(str: etat))
+                        if(move != nil && etat != nil)
+                            {
+                            var id = SensorFactory.shared().getSensorMove(sensorTypes: .SensorMagnetic, name: peripheral.name ?? "", RSSI: Int(RSSI), nbrPas: ConvertionToolbox.ConvertAdvertisingValue(str: String(move!)), etat: ConvertionToolbox.convertHexaToEtatInv(str: etat))
                                                                    
                                                                        
                                                                        
-                                                                       print("magnetic found !!!!!!!!!!")
-                                                                       if(id is SensorMove)
-                                                                       {
-                                                                           //
-                                                                           if let magnetic = id as? SensorMove {
-                                                                               print("nbr pas : " + String(magnetic.nbrPas))
-                                                                          
-                                                                           }
-                                                                       }
+                            print("move found with battery !!!!!!!!!!")
+                            if(id is SensorMove)
+                                {
+                                                                           
+                                 if let mov = id as? SensorMove
+                                    {
+                                    print("nbr pas : " + String(mov.nbrPas))
+                                                                              
+                                    }
+                                 }
                                                                                               
-                                                                   }
-                                                               }
-                                       
-                    
-                    
-                    
-                    
+                            }
+                        }
+
                     //MARK:: move avec batterie
                         
-                        if(sensorData![CBUUID(string: "180F")] != nil && sensorData![CBUUID(string: "2A3F")] != nil && sensorData![CBUUID(string: "2A06")] != nil && String(sensorData![CBUUID(string: "2A3F")]!.debugDescription.dropFirst().dropFirst().dropLast()) == "1"){
-                                            
-                                               // print(key)
-                                                var mag = sensorData![CBUUID(string: "2A06")]?.debugDescription.dropFirst().dropLast()
+                     if(sensorData![CBUUID(string: "180F")] != nil && sensorData![CBUUID(string: "2A3F")] != nil && sensorData![CBUUID(string: "2A06")] != nil && String(sensorData![CBUUID(string: "2A3F")]!.debugDescription.dropFirst().dropFirst().dropLast()) == "1")
+                        {
+                            var move = sensorData![CBUUID(string: "2A06")]?.debugDescription.dropFirst().dropLast()
                             var etat = String(sensorData![CBUUID(string: "2A3F")]!.debugDescription.dropFirst().dropFirst().dropLast())
-                                                var battery = sensorData![CBUUID(string: "180F")]?.debugDescription.dropFirst().dropLast()
-                            
-                                              
-                                                
-                                                                        
-                                                                            
-                                                if(mag != nil && etat != nil && battery != nil)
-                                                {
-                                                    
-                                                    
-                                   
-                                                    var id = SensorFactory.shared().getSensorMove(sensorTypes: .SensorMagnetic, name: peripheral.name ?? "", RSSI: Int(RSSI),batterylevel: ConvertionToolbox.ConvertAdvertisingValue(str: String(battery!)), nbrPas: ConvertionToolbox.ConvertAdvertisingValue(str: String(mag!)), etat: ConvertionToolbox.convertHexaToEtatInv(str: etat))
-                                                
-                                                    
-                                                    
-                                                    print("magnetic found !!!!!!!!!!")
-                                                    if(id is SensorMove)
-                                                    {
-                                                        //
-                                                        if let magnetic = id as? SensorMove {
-                                                            print("nbr pas : " + String(magnetic.nbrPas))
-                                                       
-                                                        }
-                                                    }
-                                                                           
-                                                }
+                            var battery = sensorData![CBUUID(string: "180F")]?.debugDescription.dropFirst().dropLast()
+                            if(move != nil && etat != nil && battery != nil)
+                                {
+                                var id = SensorFactory.shared().getSensorMove(sensorTypes: .SensorMagnetic, name: peripheral.name ?? "", RSSI: Int(RSSI),batterylevel: ConvertionToolbox.ConvertAdvertisingValue(str: String(battery!)), nbrPas: ConvertionToolbox.ConvertAdvertisingValue(str: String(move!)), etat: ConvertionToolbox.convertHexaToEtatInv(str: etat))
+                                print("MOVE found !!!!!!!!!!")
+                                if(id is SensorMove)
+                                    {
+                                        if let mov = id as? SensorMove
+                                            {
+                                            print("nbr pas : " + String(mov.nbrPas))
+                                                 print("nbr pas : " + String(mov.batterylevel))
                                             }
+                                    }
+                                }
+                        }
                     
                     
                     
