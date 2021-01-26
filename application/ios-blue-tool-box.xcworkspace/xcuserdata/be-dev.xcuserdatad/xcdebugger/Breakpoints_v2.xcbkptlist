@@ -7,22 +7,6 @@
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
-            uuid = "AF2C2BFA-81B1-4E72-9B83-DA9E735383F4"
-            shouldBeEnabled = "No"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "ios-blue-tool-box/Tools/ConvertionToolBox.swift"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "374"
-            endingLineNumber = "374"
-            landmarkName = "ConvertHumidite(str:)"
-            landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
             uuid = "60159889-ECC6-427B-BEB5-04BF1DF42F06"
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
@@ -33,22 +17,6 @@
             startingLineNumber = "177"
             endingLineNumber = "177"
             landmarkName = "ConvertHexaToDecimal(str:)"
-            landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            uuid = "02EBAE9F-029A-4BA2-9EC2-2E26C0A32C97"
-            shouldBeEnabled = "No"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "ios-blue-tool-box/Tools/ConvertionToolBox.swift"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "395"
-            endingLineNumber = "395"
-            landmarkName = "ConvertHumidite(str:)"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>

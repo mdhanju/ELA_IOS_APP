@@ -190,29 +190,19 @@ public class ConvertionToolbox : NSObject {
  public  static func ConvertTemperature(str :String) -> Float
       {
 
-     //   let test01 = hexaToBinary(str: "face")
-     //   let test02 = hexaToBinary(str: "0a82")
-     //   let test03 = hexaToBinary(str: "2123")
-     // let test04 = hexaToBinary(str: "0123")
-
           if(str == "")
           {
               return 0
           }
            
-       //split string on second letter
-      // var str = "abcdef"
           let LSB : String = String(str.prefix(2))
           let MSB : String = String(str.suffix(2))
           let str : String =  MSB + LSB
        
-     //  print("la valeur de la chaine : "+str)
-       // Hexadecimal to decimal
        
 
           let decimal = Int(str, radix: 16)!
-          
-          // print("la valeur en decimal : " + String(decimal)) // 163
+
         if(str.prefix(1).lowercased() == "f"
             || str.prefix(1).lowercased() == "e"
             || str.prefix(1).lowercased() == "d"
@@ -288,20 +278,18 @@ public class ConvertionToolbox : NSObject {
            return 0
           }
         
-    let LSB : String = String(str.prefix(2))
-    let MSB : String = String(str.suffix(2))
-    var str : String =  MSB + LSB
-          
-     //str = String(Int(str, radix: 16)!, radix: 2)
+     let LSB : String = String(str.prefix(2))
+     let MSB : String = String(str.suffix(2))
+     var str : String =  MSB + LSB
         str = hexaToBinary(str: str)
 
-      var ini : Int = 0
+     var ini : Int = 0
 
-      var sum : Int = 0
-      var cpt : Int = 0
+     var sum : Int = 0
+     var cpt : Int = 0
 
-      for char in str.reversed()
-      {
+     for char in str.reversed()
+        {
         if( char == "1")
             {
              sum = sum + cpt
@@ -335,11 +323,9 @@ public class ConvertionToolbox : NSObject {
            return 0
           }
         
-    var LSB : String = String(str.prefix(2))
-    var MSB : String = String(str.suffix(2))
+    let LSB : String = String(str.prefix(2))
+    let MSB : String = String(str.suffix(2))
     var str : String =  MSB + LSB
-          
-     //str = String(Int(str, radix: 16)!, radix: 2)
         str = hexaToBinary(str: str)
 
       var ini : Int = 0
@@ -376,22 +362,11 @@ public class ConvertionToolbox : NSObject {
                 return 0
             }
               
-              
-              //print("la valeur de la chaine : "+str)
-              // Hexadecimal to decimal
-              
-             /*   if(str == ">)Op")
-                    {
-                        return 0
-                    }
-     */
-                if( str == "ilni")
-                    {
-                      return 0
-                    }
-                var decimal = Int(str, radix: 16)!
-                 
-                //print("la valeur en decimal : " + String(decimal)) // 163
+            if( str == "ilni")
+                {
+                    return 0
+                }
+            let decimal = Int(str, radix: 16)!
                 return decimal
                   
         }
@@ -408,17 +383,12 @@ public class ConvertionToolbox : NSObject {
    public static func hexaToBinary(str : String)->String
     {
         
-
-        
-       
-       // var hexa  = str.dropFirst().dropFirst()
-        
         if( str == "")
          {
             return str
          }
         
-       let string = "1" + str
+         let string = "1" + str
         
          let binary = String(Int(string, radix: 16)!, radix: 2)
         return String(binary.dropFirst())
@@ -435,10 +405,9 @@ public class ConvertionToolbox : NSObject {
    public static func isHexa(str:String)-> Bool
     {
         do {
-             var regex = try NSRegularExpression(pattern: "0[xX][0-9a-fA-F]+")
+             let regex = try NSRegularExpression(pattern: "0[xX][0-9a-fA-F]+")
               if(!regex.matches(str))
               {
-                 var str1 = ""
                  return false
              }
             else {
@@ -461,10 +430,9 @@ public class ConvertionToolbox : NSObject {
     public static func isBinary(str:String)-> Bool
     {
         do {
-             var regex = try NSRegularExpression(pattern: "^[01]+$")
+             let regex = try NSRegularExpression(pattern: "^[01]+$")
               if(!regex.matches(str))
               {
-                 var str1 = ""
                  return false
              }
             else {
