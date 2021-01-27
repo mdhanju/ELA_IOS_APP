@@ -7,11 +7,11 @@ class Scanner1: NSObject, CBPeripheralDelegate, CBCentralManagerDelegate {
     private var peripheral: CBPeripheral!
 
     private var identifier: [String] = []
-    private var arraySensorTemperature : [String : SensorTemperature] = [:]
-    private var arraySensorTemperatureHumidity : [String : SensorTemperatureHumidity] = [:]
-    private var arraySensorMagnetic : [String : SensorMagnetic] = [:]
-    private var arraySensorMove : [String : SensorMove] = [:]
-    private var arraySensorAngle : [String : SensorAngle] = [:]
+    private var dictionnarySensor : [String : Sensor] = [:]
+   // private var arraySensorTemperatureHumidity : [String : SensorTemperatureHumidity] = [:]
+   // private var arraySensorMagnetic : [String : SensorMagnetic] = [:]
+   // private var arraySensorMove : [String : SensorMove] = [:]
+   // private var arraySensorAngle : [String : SensorAngle] = [:]
     
     /**
      * \fn initializeScanner
@@ -81,9 +81,16 @@ class Scanner1: NSObject, CBPeripheralDelegate, CBCentralManagerDelegate {
                             print("New Device = " +  peripheral.identifier.description)
                             identifier.append(peripheral.identifier.description)
  
- 
+                            let id = SensorFactory.shared().get(sensorData: sensorData, tagname: peripheral.name?.description ?? "", tagRSSI: RSSI, tagidentifier: peripheral.identifier.description)
                             
+                            if( id != nil)
+                            {
+                            dictionnarySensor = SensorFactory.shared().addDtictionnary(tagidentifier: peripheral.identifier.description, sensor: id!, dict: dictionnarySensor)
+                            SensorFactory.shared().getDataSensor(id: id!)
+                            }
+                         SensorFactory.shared().printDtictionnary(dict: dictionnarySensor)
                             
+                       /* debut commentaire
                             
                             //MARK:: move avec batterie
                                 
@@ -351,7 +358,7 @@ class Scanner1: NSObject, CBPeripheralDelegate, CBCentralManagerDelegate {
                                         }
                                     }
                                                        
-                                }
+                                }*/
                             }
                                 
                                 
@@ -361,22 +368,24 @@ class Scanner1: NSObject, CBPeripheralDelegate, CBCentralManagerDelegate {
                        {
                        
                             print("Sensor uknow")
+                        
                         }
                     }
                    
                 }
                     
                     
-            }
+            
                         else
                         {
                             print("déja trouvé")
+                           dictionnarySensor = SensorFactory.shared().updateDtictionnary(tagidentifier: peripheral.identifier.description, sensor: id, dict: dictionnarySensor)
                            // arraySensorMagnetic.updateValue(SensorMagnetic, forKey: peripheral.identifier.description)
                         }
 
                     }
                     
-                    
-                }
+}
+                
 
  

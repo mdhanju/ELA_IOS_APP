@@ -22,11 +22,11 @@ class Sensor
     
     /* \brief constructor **/
     init(name : String,RSSI : Int,batterylevel : Int = -1,sensorTypes: SensorTypes,identifier : String) {
-           self.name = name
-           self.RSSI = RSSI
-           self.batterylevel = batterylevel
-           self.sensorTypes = sensorTypes
-           self.idenfitfier = identifier
+        self.name = name
+        self.RSSI = RSSI
+        self.batterylevel = batterylevel
+        self.sensorTypes = sensorTypes
+        self.idenfitfier = identifier
     }
     
     /* \brief function execute command **/
@@ -48,9 +48,9 @@ enum SensorTypes
 }
 
 /**
-* \class SensorID
-* \brief declaration of the identification sensor
-*/
+ * \class SensorID
+ * \brief declaration of the identification sensor
+ */
 class SensorID: Sensor
 {
     override func ExecuterCommmande()
@@ -60,9 +60,9 @@ class SensorID: Sensor
 }
 
 /**
-* \class SensorTemperature
-* \brief declaration of the temperature sensor
-*/
+ * \class SensorTemperature
+ * \brief declaration of the temperature sensor
+ */
 class SensorTemperature: Sensor
 {
     var temperature : Float = 0.0
@@ -227,158 +227,13 @@ class SensorFactory
         return sharedSensorFactory
     }
     
-    /**
-     * \fn get
-     * \brief getter on the object type according to the sensorData as input
-     * \param [in] sensorData : dictionnary of data containning bluetooth short UUID and data to decode
-     * \return Sensor object typed
-     */
-    func get(sensorData : Dictionary<CBUUID,NSData>?, tagname : String, tagRSSI : NSNumber, tagidentifier : String) -> Sensor?
-    {
-        var id : Sensor? = nil
-        
-        //MARK:: move avec batterie
-        if( sensorData![CBUUID(string: "2A3F")] != nil
-            && sensorData![CBUUID(string: "2A06")] != nil)
-        {
-            let counter = sensorData![CBUUID(string: "2A06")]?.debugDescription.dropFirst().dropLast()
-            let etat = String(sensorData![CBUUID(string: "2A3F")]!.debugDescription.dropFirst().dropFirst().dropLast())
-            var battery : String? = nil
-            //
-            if(sensorData![CBUUID(string: "180F")] != nil)
-            {
-                battery = sensorData![CBUUID(string: "180F")]?.debugDescription.dropFirst().dropLast().description
-            
-            //
-            if(String(sensorData![CBUUID(string: "2A3F")]!.debugDescription.dropFirst().dropFirst().dropLast()) == "1")
-            {
-                id = SensorFactory.shared().getSensorMove(sensorTypes: .SensorMagnetic, name: tagname , RSSI: Int(truncating: tagRSSI),batterylevel: ConvertionToolbox.ConvertAdvertisingValue(str: String(battery!)), nbrPas: ConvertionToolbox.ConvertAdvertisingValue(str: String(counter!)), etat: ConvertionToolbox.convertHexaToEtatInv(str: etat),identifier: tagidentifier)
-            }
-            else if (String(sensorData![CBUUID(string: "2A3F")]!.debugDescription.dropFirst().dropFirst().dropLast()) == "0")
-            {
-                id = SensorFactory.shared().getSensorMagnetic(sensorTypes: .SensorMagnetic, name: tagname , RSSI: Int(truncating: tagRSSI), batterylevel: ConvertionToolbox.ConvertAdvertisingValue(str: String(battery!)), nbrObjet: ConvertionToolbox.ConvertAdvertisingValue(str: String(counter!)), etat: ConvertionToolbox.convertHexaToEtatInv(str: etat), identifier: tagidentifier)
-                
-            }
-            }
-            else {
-                if(String(sensorData![CBUUID(string: "2A3F")]!.debugDescription.dropFirst().dropFirst().dropLast()) == "1")
-                {
-                    id = SensorFactory.shared().getSensorMove(sensorTypes: .SensorMagnetic, name: tagname , RSSI: Int(truncating: tagRSSI), nbrPas: ConvertionToolbox.ConvertAdvertisingValue(str: String(counter!)), etat: ConvertionToolbox.convertHexaToEtatInv(str: etat),identifier: tagidentifier)
-                }
-                else if (String(sensorData![CBUUID(string: "2A3F")]!.debugDescription.dropFirst().dropFirst().dropLast()) == "0")
-                {
-                    id = SensorFactory.shared().getSensorMagnetic(sensorTypes: .SensorMagnetic, name: tagname , RSSI: Int(truncating: tagRSSI),nbrObjet: ConvertionToolbox.ConvertAdvertisingValue(str: String(counter!)), etat: ConvertionToolbox.convertHexaToEtatInv(str: etat), identifier: tagidentifier)
-                    
-                }
-                
-                
-            }
-  
-            }
-            else if(sensorData![CBUUID(string: "2AA1")] != nil)
-            {
-                let ang = sensorData![CBUUID(string: "2AA1")]?.debugDescription.dropFirst().dropLast()
-                
-                if(sensorData![CBUUID(string: "180F")] != nil)
-                {
-                    let battery = sensorData![CBUUID(string: "180F")]?.debugDescription.dropFirst().dropLast()
-                    let id = SensorFactory.shared().getSensorAngle(sensorTypes: .SensorAngle, name: tagname, RSSI: Int(truncating: tagRSSI),batterylevel: ConvertionToolbox.ConvertAdvertisingValue(str: String(battery!)),  x: Int(ConvertionToolbox.ConvertAngle(str: ConvertionToolbox.ANG(str: String(ang!), index: 0))), y: Int(ConvertionToolbox.ConvertAngle(str: ConvertionToolbox.ANG(str: String(ang!), index: 4))), z: Int(ConvertionToolbox.ConvertAngle(str: ConvertionToolbox.ANG(str: String(ang!), index: 9))),identifier: tagidentifier)
-                  
-                }
-                else
-                {
-                      let id = SensorFactory.shared().getSensorAngle(sensorTypes: .SensorAngle, name: tagname ?? "", RSSI: Int(truncating: tagRSSI),  x: Int(ConvertionToolbox.ConvertAngle(str: ConvertionToolbox.ANG(str: String(ang!), index: 0))), y: Int(ConvertionToolbox.ConvertAngle(str: ConvertionToolbox.ANG(str: String(ang!), index: 4))), z: Int(ConvertionToolbox.ConvertAngle(str: ConvertionToolbox.ANG(str: String(ang!), index: 9))),identifier: tagidentifier)
-                    
-                }
-            }
-           else if(sensorData![CBUUID(string: "2A6E")] != nil && sensorData![CBUUID(string: "2A6F")] != nil)
-            {
-                    let temp = sensorData![CBUUID(string: "2A6E")]?.debugDescription.dropFirst().dropLast()
-                    let hum = sensorData![CBUUID(string: "2A6F")]?.debugDescription.dropFirst().dropLast()
-                    let temperature = SensorTemperature(name: tagname, RSSI: Int(truncating: tagRSSI), sensorTypes: .SensorTemperature, temperature: ConvertionToolbox.ConvertTemperature(str: String(temp!)),identifier: tagidentifier)
-                    if(sensorData![CBUUID(string: "180F")] != nil)
-                    {
-                        let battery = sensorData![CBUUID(string: "180F")]?.debugDescription.dropFirst().dropLast()
-                        let id = SensorFactory.shared().getSensorTemperatureHumidity(sensorTypes: .SensorTemperatureHumidity, name: tagname, RSSI: Int(truncating: tagRSSI),batterylevel: ConvertionToolbox.ConvertAdvertisingValue(str: String(battery!)),  humidity: ConvertionToolbox.ConvertHumidite(str: String(hum!)), objectTemperature: temperature,identifier: tagidentifier)
-                    }
-                    else
-                    {
-                        let id = SensorFactory.shared().getSensorTemperatureHumidity(sensorTypes: .SensorTemperatureHumidity, name: tagname, RSSI: Int(truncating: tagRSSI), humidity: ConvertionToolbox.ConvertHumidite(str: String(hum!)), objectTemperature: temperature,identifier: tagidentifier)
-                    }
-                
-            }
-        else if(sensorData![CBUUID(string: "2A6E")] != nil)
-        {
-            let temp = sensorData![CBUUID(string: "2A6E")]?.debugDescription.dropFirst().dropLast()
-            if(sensorData![CBUUID(string: "180F")] != nil)
-            {
-                let battery = sensorData![CBUUID(string: "180F")]?.debugDescription.dropFirst().dropLast()
-                let id = SensorFactory.shared().getSensorTemperature(sensorTypes: .SensorTemperature, name: tagname, RSSI: Int(truncating: tagRSSI),batterylevel: ConvertionToolbox.ConvertAdvertisingValue(str: String(battery!)),temperature: ConvertionToolbox.ConvertTemperature(str: String(temp!)),identifier: tagidentifier)
-            }
-            else
-            {
-             let id = SensorFactory.shared().getSensorTemperature(sensorTypes: .SensorTemperature, name: tagname, RSSI: Int(truncating: tagRSSI),temperature: ConvertionToolbox.ConvertTemperature(str: String(temp!)),identifier: tagidentifier)
-            }
-        }
-       /*
-        if(sensorData![CBUUID(string: "180F")] != nil && sensorData![CBUUID(string: "2A3F")] != nil && sensorData![CBUUID(string: "2A06")] != nil && String(sensorData![CBUUID(string: "2A3F")]!.debugDescription.dropFirst().dropFirst().dropLast()) == "1")
-        {
-            let move = sensorData![CBUUID(string: "2A06")]?.debugDescription.dropFirst().dropLast()
-            let etat = String(sensorData![CBUUID(string: "2A3F")]!.debugDescription.dropFirst().dropFirst().dropLast())
-            let battery = sensorData![CBUUID(string: "180F")]?.debugDescription.dropFirst().dropLast()
-            if(move != nil && etat != "" && battery != nil)
-            {
-                let id = SensorFactory.shared().getSensorMove(sensorTypes: .SensorMagnetic, name: peripheral.name ?? "", RSSI: Int(truncating: RSSI),batterylevel: ConvertionToolbox.ConvertAdvertisingValue(str: String(battery!)), nbrPas: ConvertionToolbox.ConvertAdvertisingValue(str: String(move!)), etat: ConvertionToolbox.convertHexaToEtatInv(str: etat),identifier: peripheral.identifier.description)
-                
-                print("MOVE found !!!!!!!!!!")
-                if(id is SensorMove)
-                {
-                    if let mov = id as? SensorMove
-                    {
-                        print("nbr pas : " + String(mov.nbrPas))
-                        print("nbr pas : " + String(mov.batterylevel))
-                        arraySensorMove[peripheral.identifier.description] = mov
-                    }
-                }
-            }
-        }
-        //MARK:: move sans batterie
-        else if(sensorData![CBUUID(string: "2A3F")] != nil && sensorData![CBUUID(string: "2A06")] != nil && String(sensorData![CBUUID(string: "2A3F")]!.debugDescription.dropFirst().dropFirst().dropLast()) == "1")
-        {
-            
-            
-            let move = sensorData![CBUUID(string: "2A06")]?.debugDescription.dropFirst().dropLast()
-            let etat = String(sensorData![CBUUID(string: "2A3F")]!.debugDescription.dropFirst().dropFirst().dropLast())
-            
-            if(move != nil && etat != "")
-            {
-                let id = SensorFactory.shared().getSensorMove(sensorTypes: .SensorMagnetic, name: peripheral.name ?? "", RSSI: Int(truncating: RSSI), nbrPas: ConvertionToolbox.ConvertAdvertisingValue(str: String(move!)), etat: ConvertionToolbox.convertHexaToEtatInv(str: etat),identifier: peripheral.identifier.description)
-                
-                
-                
-                print("move found with battery !!!!!!!!!!")
-                if(id is SensorMove)
-                {
-                    
-                    if let mov = id as? SensorMove
-                    {
-                        print("nbr pas : " + String(mov.nbrPas))
-                        arraySensorMove[peripheral.identifier.description] = mov
-                        
-                    }
-                }
-                
-            }
-        }
-        */
-        return id
-    }
-
+    
+    
     func getSensorID(sensorTypes : SensorTypes,name : String,RSSI : Int, batterylevel : Int = -1, identifier : String)->Sensor
     {
         return SensorID(name : name,RSSI : RSSI,batterylevel : batterylevel,sensorTypes : sensorTypes, identifier: identifier)
     }
-
+    
     func getSensorTemperature(sensorTypes : SensorTypes,name : String,RSSI : Int, batterylevel : Int = -1,
                               temperature : Float = -1,identifier: String)->Sensor
     {
@@ -396,7 +251,7 @@ class SensorFactory
     {
         return SensorMagnetic(name : name,RSSI : RSSI,batterylevel : batterylevel,sensorTypes: sensorTypes,nbrObjet : nbrObjet,etat : etat,identifier: identifier)
     }
-
+    
     func getSensorAngle(sensorTypes : SensorTypes,name : String,RSSI : Int, batterylevel : Int = -1,x : Int = 0, y : Int = 0, z : Int = 0,identifier: String)->Sensor
     {
         return SensorAngle(name : name,RSSI : RSSI,batterylevel : batterylevel,sensorTypes: sensorTypes,x : x , y : y, z : z,identifier: identifier)
@@ -405,12 +260,275 @@ class SensorFactory
     {
         return SensorEdystone(name : name,RSSI : RSSI,batterylevel : batterylevel,sensorTypes: sensorTypes,NID : NID,BID : BID, identifier: identifier)
     }
-
+    
     func getSensorIbeacon(sensorTypes : SensorTypes,name : String,RSSI : Int, batterylevel : Int = -1,UUID : String = "", minor : Int = 0,major : Int = 0,identifier : String)->Sensor
     {
         return SensorIbeacon(name : name,RSSI : RSSI,batterylevel : batterylevel ,sensorTypes: sensorTypes , UUID: UUID,minor : minor ,major : major, identifier: identifier)
     }
+
+     /**
+      * \fn printDictionnary
+      * \brief print dictionnary of sensor
+      * \param [in] dictionnarySensor: dictionnary of sensor
+      * \return Dtictionnaire
+      */
+     
+     func printDtictionnary( dict : Dictionary<String,Sensor>)
+       {
+          for (key) in dict {
+             print("la valeur du dico " + " \(key)")
+          }
+       }
+    
+    
+    
+    
+    
+    /**
+     * \fn updateDictionnary
+     * \brief add Sensor to dictionnary
+     * \param [in] identifier: similar to mac adress Sensor: capteur de temperature dictionnarySensor: dictionnary of sensor
+     * \return Dtictionnaire
+     */
+    
+    func updateDtictionnary(tagidentifier : String,sensor : Sensor, dict : Dictionary<String,Sensor>) -> Dictionary<String,Sensor>
+      {
+        var dictSensor = dict
+        
+   
+        dictSensor.updateValue(sensor, forKey: tagidentifier)
+        
+       return dictSensor
+      }
+    /**
+     * \fn addDictionnary
+     * \brief add Sensor to dictionnary
+     * \param [in] identifier: similar to mac adress Sensor: capteur de temperature dictionnarySensor: dictionnary of sensor
+     * \return Dtictionnaire
+     */
+    
+    func addDtictionnary(tagidentifier : String,sensor : Sensor, dict : Dictionary<String,Sensor>) -> Dictionary<String,Sensor>
+      {
+        var dictSensor = dict
+        
+        if(sensor is SensorMove)
+        {
+            if let mov = sensor as? SensorMove
+                {
+        dictSensor[tagidentifier] = mov
+                }
+        }
+        
+        
+        else if(sensor is SensorAngle)
+        {
+            if let angle = sensor as? SensorAngle
+                {
+                  dictSensor[tagidentifier] = angle
+                 
+                }
+        }
+        
+        else if(sensor is SensorTemperature)
+             {
+             if let tempfloat = sensor as? SensorTemperature
+                 {
+                dictSensor[tagidentifier] = tempfloat
+          
+                 }
+            }
+        
+        
+         else if(sensor is SensorTemperatureHumidity)
+              {
+               if let humidity = sensor as? SensorTemperatureHumidity
+                   {
+                   dictSensor[tagidentifier] = humidity
+                    
+                   }
+              }
+         
+         
+         
+        else if(sensor is SensorMagnetic)
+             {
+             if let magnetic = sensor as? SensorMagnetic
+                 {
+                     dictSensor[tagidentifier] = magnetic
+                   
+                 }
+             }
+        
+        
+        
+        return dict
+      }
+
+    
+    
+    
+    /**
+     * \fn getDataSensor
+     * \brief get data of sensor
+     * \param [in] identifier: similar to mac adress Sensor: capteur de temperature dictionnarySensor: dictionnary of sensor
+     * \return void
+     */
+    
+    func getDataSensor(id: Sensor)
+    {
+      if(id is SensorMove)
+      {
+          if let mov = id as? SensorMove
+              {
+              print("nbr pas : " + String(mov.nbrPas))
+              print("nbr pas : " + String(mov.batterylevel))
+              }
+      }
+        
+        if(id is SensorAngle)
+        {
+            if let angle = id as? SensorAngle
+                {
+                    print("Angle x : " + String(angle.x))
+                    print("Angle y: " + String(angle.y))
+                    print("Angle z: " + String(angle.z))
+                    print("battery : "+String(angle.batterylevel))
+                 
+                }
+        }
+        
+       else if(id is SensorTemperature)
+            {
+            if let tempfloat = id as? SensorTemperature
+                {
+                print("My temperature found : " + String(tempfloat.getTemp()))
+                print("My battery found : " + String(tempfloat.getBatterie()))
+         
+                }
+           }
+        
+        
+        
+        
+        else if(id is SensorTemperatureHumidity)
+             {
+              if let humidity = id as? SensorTemperatureHumidity
+                  {
+                  print("My temperature found : " + String(humidity.getTemp()))
+                  print("My humidity found : " + String(humidity.getHum()))
+                  print("My battery found : " + String(humidity.getBatterie()))
+                   
+                  }
+             }
+        
+        
+        
+       else if(id is SensorMagnetic)
+            {
+            if let magnetic = id as? SensorMagnetic
+                {
+                    print("Magnetic nbr aimant : " + String(magnetic.getNbrObject()))
+                    print("Etat magnetic : " + String(magnetic.getEtat()))
+                    print("Magnetic battery" + String(magnetic.batterylevel))
+                  
+                }
+            }
+        
+        
+  
+        
+  
+        
+
+    }
+    
+    
+     
+    
+    
+    
+    /**
+     * \fn get
+     * \brief getter on the object type according to the sensorData as input
+     * \param [in] sensorData : dictionnary of data containning bluetooth short UUID and data to decode
+     * \return Sensor object typed
+     */
+    func get(sensorData : Dictionary<CBUUID,NSData>?, tagname : String, tagRSSI : NSNumber, tagidentifier : String) -> Sensor?
+    {
+        var id : Sensor? = nil
+        
+        //MARK:: move avec batterie
+        if( sensorData![CBUUID(string: "2A3F")] != nil
+            && sensorData![CBUUID(string: "2A06")] != nil)
+        {
+            let counter = sensorData![CBUUID(string: "2A06")]?.debugDescription.dropFirst().dropLast()
+            let etat = String(sensorData![CBUUID(string: "2A3F")]!.debugDescription.dropFirst().dropFirst().dropLast())
+            var battery : Int = -1
+            //
+            if(sensorData![CBUUID(string: "180F")] != nil)
+            {
+                let tempStrBattery : String? = sensorData![CBUUID(string: "180F")]?.debugDescription.dropFirst().dropLast().description
+                battery = ConvertionToolbox.ConvertAdvertisingValue(str: String(tempStrBattery!))
+            }
+            //
+            // update data
+            if(String(sensorData![CBUUID(string: "2A3F")]!.debugDescription.dropFirst().dropFirst().dropLast()) == "1")
+            {
+                id = SensorFactory.shared().getSensorMove(sensorTypes: .SensorMove, name: tagname , RSSI: Int(truncating: tagRSSI),batterylevel: battery, nbrPas: ConvertionToolbox.ConvertAdvertisingValue(str: String(counter!)), etat: ConvertionToolbox.convertHexaToEtatInv(str: etat),identifier: tagidentifier)
+            }
+            else if (String(sensorData![CBUUID(string: "2A3F")]!.debugDescription.dropFirst().dropFirst().dropLast()) == "0")
+            {
+                id = SensorFactory.shared().getSensorMagnetic(sensorTypes: .SensorMagnetic, name: tagname , RSSI: Int(truncating: tagRSSI), batterylevel: battery, nbrObjet: ConvertionToolbox.ConvertAdvertisingValue(str: String(counter!)), etat: ConvertionToolbox.convertHexaToEtatInv(str: etat), identifier: tagidentifier)
+            }
+        }
+        else if(sensorData![CBUUID(string: "2AA1")] != nil)
+        {
+            let ang = sensorData![CBUUID(string: "2AA1")]?.debugDescription.dropFirst().dropLast()
+            var battery : Int = -1
+            if(sensorData![CBUUID(string: "180F")] != nil)
+            {
+                let angleStrBattery = sensorData![CBUUID(string: "180F")]?.debugDescription.dropFirst().dropLast().description
+                 battery = ConvertionToolbox.ConvertAdvertisingValue(str: String(angleStrBattery!))
+            }
+             id = SensorFactory.shared().getSensorAngle(sensorTypes: .SensorAngle, name: tagname, RSSI: Int(truncating: tagRSSI),batterylevel: battery,  x: Int(ConvertionToolbox.ConvertAngle(str: ConvertionToolbox.ANG(str: String(ang!), index: 0))), y: Int(ConvertionToolbox.ConvertAngle(str: ConvertionToolbox.ANG(str: String(ang!), index: 4))), z: Int(ConvertionToolbox.ConvertAngle(str: ConvertionToolbox.ANG(str: String(ang!), index: 9))),identifier: tagidentifier)
+                
+            }
+          
+        
+        else if(sensorData![CBUUID(string: "2A6E")] != nil && sensorData![CBUUID(string: "2A6F")] != nil)
+        {
+            let temp = sensorData![CBUUID(string: "2A6E")]?.debugDescription.dropFirst().dropLast()
+            let hum = sensorData![CBUUID(string: "2A6F")]?.debugDescription.dropFirst().dropLast()
+            let temperature = SensorTemperature(name: tagname, RSSI: Int(truncating: tagRSSI), sensorTypes: .SensorTemperature, temperature: ConvertionToolbox.ConvertTemperature(str: String(temp!)),identifier: tagidentifier)
+            var battery : Int = -1
+            if(sensorData![CBUUID(string: "180F")] != nil)
+            {
+                let RHTstrBattery = sensorData![CBUUID(string: "180F")]?.debugDescription.dropFirst().dropLast().description
+                battery = ConvertionToolbox.ConvertAdvertisingValue(str: String(RHTstrBattery!))
+            }
+                 id = SensorFactory.shared().getSensorTemperatureHumidity(sensorTypes: .SensorTemperatureHumidity, name: tagname, RSSI: Int(truncating: tagRSSI),batterylevel: battery,  humidity: ConvertionToolbox.ConvertHumidite(str: String(hum!)), objectTemperature: temperature,identifier: tagidentifier)
+            
+            
+            
+        }
+        else if(sensorData![CBUUID(string: "2A6E")] != nil)
+        {
+     let temp = sensorData![CBUUID(string: "2A6E")]?.debugDescription.dropFirst().dropLast()
+    
+      var battery : Int = -1
+            if(sensorData![CBUUID(string: "180F")] != nil)
+            {
+                let temperatureStrBattery =  sensorData![CBUUID(string: "180F")]?.debugDescription.dropFirst().dropLast().description
+                battery = ConvertionToolbox.ConvertAdvertisingValue(str: String(temperatureStrBattery!))
+            }
+                 id = SensorFactory.shared().getSensorTemperature(sensorTypes: .SensorTemperature, name: tagname, RSSI: Int(truncating: tagRSSI),batterylevel: battery,temperature: ConvertionToolbox.ConvertTemperature(str: String(temp!)),identifier: tagidentifier)
+            }
+        
+        return id
+    }
 }
+
+
 
 // run
 let id = SensorFactory.shared().getSensorID(sensorTypes: .SensorTemperature,name : "tes", RSSI : 2,identifier: "ddddd")
