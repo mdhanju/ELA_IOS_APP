@@ -248,7 +248,7 @@ class SensorFactory
             if(sensorData![CBUUID(string: "180F")] != nil)
             {
                 battery = sensorData![CBUUID(string: "180F")]?.debugDescription.dropFirst().dropLast().description
-            }
+            
             //
             if(String(sensorData![CBUUID(string: "2A3F")]!.debugDescription.dropFirst().dropFirst().dropLast()) == "1")
             {
@@ -257,6 +257,20 @@ class SensorFactory
             else if (String(sensorData![CBUUID(string: "2A3F")]!.debugDescription.dropFirst().dropFirst().dropLast()) == "0")
             {
                 id = SensorFactory.shared().getSensorMagnetic(sensorTypes: .SensorMagnetic, name: tagname , RSSI: Int(truncating: tagRSSI), batterylevel: ConvertionToolbox.ConvertAdvertisingValue(str: String(battery!)), nbrObjet: ConvertionToolbox.ConvertAdvertisingValue(str: String(counter!)), etat: ConvertionToolbox.convertHexaToEtatInv(str: etat), identifier: tagidentifier)
+                
+            }
+            }
+            else {
+                if(String(sensorData![CBUUID(string: "2A3F")]!.debugDescription.dropFirst().dropFirst().dropLast()) == "1")
+                {
+                    id = SensorFactory.shared().getSensorMove(sensorTypes: .SensorMagnetic, name: tagname , RSSI: Int(truncating: tagRSSI), nbrPas: ConvertionToolbox.ConvertAdvertisingValue(str: String(counter!)), etat: ConvertionToolbox.convertHexaToEtatInv(str: etat),identifier: tagidentifier)
+                }
+                else if (String(sensorData![CBUUID(string: "2A3F")]!.debugDescription.dropFirst().dropFirst().dropLast()) == "0")
+                {
+                    id = SensorFactory.shared().getSensorMagnetic(sensorTypes: .SensorMagnetic, name: tagname , RSSI: Int(truncating: tagRSSI),nbrObjet: ConvertionToolbox.ConvertAdvertisingValue(str: String(counter!)), etat: ConvertionToolbox.convertHexaToEtatInv(str: etat), identifier: tagidentifier)
+                    
+                }
+                
                 
             }
   
@@ -268,7 +282,7 @@ class SensorFactory
                 if(sensorData![CBUUID(string: "180F")] != nil)
                 {
                     let battery = sensorData![CBUUID(string: "180F")]?.debugDescription.dropFirst().dropLast()
-                    let id = SensorFactory.shared().getSensorAngle(sensorTypes: .SensorAngle, name: tagname, RSSI: Int(truncating: tagRSSI),  x: Int(ConvertionToolbox.ConvertAngle(str: ConvertionToolbox.ANG(str: String(ang!), index: 0))), y: Int(ConvertionToolbox.ConvertAngle(str: ConvertionToolbox.ANG(str: String(ang!), index: 4))), z: Int(ConvertionToolbox.ConvertAngle(str: ConvertionToolbox.ANG(str: String(ang!), index: 9))),identifier: tagidentifier)
+                    let id = SensorFactory.shared().getSensorAngle(sensorTypes: .SensorAngle, name: tagname, RSSI: Int(truncating: tagRSSI),batterylevel: ConvertionToolbox.ConvertAdvertisingValue(str: String(battery!)),  x: Int(ConvertionToolbox.ConvertAngle(str: ConvertionToolbox.ANG(str: String(ang!), index: 0))), y: Int(ConvertionToolbox.ConvertAngle(str: ConvertionToolbox.ANG(str: String(ang!), index: 4))), z: Int(ConvertionToolbox.ConvertAngle(str: ConvertionToolbox.ANG(str: String(ang!), index: 9))),identifier: tagidentifier)
                   
                 }
                 else
