@@ -7,10 +7,16 @@
 //
 import UIKit
 import CoreBluetooth
-
+import SwiftUI
 class BlueMAGViewController: UIViewController {
-        
+    
+
+    
+       
     private var scanner: Scanner1!
+    
+
+           
     
     override func viewDidLoad()
     {
@@ -19,6 +25,29 @@ class BlueMAGViewController: UIViewController {
         // Do any additional setup after loading the view.
         scanner = Scanner1()
         scanner.initializeScanner()
+      
+       /*let dic =  SensorFactory.shared().returnDtictionnary()
+        for key in dic
+        {
+            print("www"+String(key.self.value.RSSI))
+        }
+        */
+        
+        view.backgroundColor = .darkGray
+        view.
+        
+            
+            
+           
+       
+     
+        
     }
-  
+    
+    
+    
+      
+    
 }
+  
+

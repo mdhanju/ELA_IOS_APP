@@ -184,7 +184,7 @@ class ViewController:UIViewController,MenuControllerDelegate
                         blueRHTController.view.isHidden = true
                         blueMOVController.view.isHidden = true
                         blueMAGController.view.isHidden = true
-                        blueANGController.view.isHidden = false
+                        blueANGController.view.isHidden = true
                         debugController.view.isHidden = false
         }
     
