@@ -16,7 +16,20 @@ class BlueMAGViewController: UIViewController {
     private var scanner: Scanner1!
     
 
-           
+    private let progressView: UIProgressView =
+    {
+        let progressView = UIProgressView(progressViewStyle: .bar)
+        progressView.trackTintColor = .gray
+        progressView.progressTintColor = .systemBlue
+        return progressView
+    }()
+    
+    
+    struct ContentView: View {
+        var body: some View {
+            Text("Hello World")
+        }
+    }
     
     override func viewDidLoad()
     {
@@ -34,9 +47,11 @@ class BlueMAGViewController: UIViewController {
         */
         
         view.backgroundColor = .darkGray
-        view.
         
-            
+        
+            view.addSubview(progressView)
+                progressView.frame = CGRect(x: 10, y: 100, width: view.frame.width-20, height: 20)
+                progressView.setProgress(0.5, animated: true)
             
            
        
