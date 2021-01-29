@@ -11,15 +11,18 @@ import SwiftUI
 
 class BlueMAGViewController: UIViewController,UITableViewDataSource{
     
+    
+    var isStartButton : Bool = true
+    
     struct DisplayObject {
         var name: String
         var RSSI: Int
     }
     
-    var display = [ DisplayObject(name: "P_MOV_007", RSSI: 100),DisplayObject(name: "P_MOV_008", RSSI: 101)]
-    
-let display1 = [ DisplayObject(name: "P_MOV_007", RSSI: 100),DisplayObject(name: "P_MOV_008", RSSI: 101)]
-   
+   // var display = [ DisplayObject(name: "P_MOV_007", RSSI: 100),DisplayObject(name: "P_MOV_008", RSSI: 101)]
+   // let display1 = [ DisplayObject(name: "P_MOV_007", RSSI: 100),DisplayObject(name: "P_MOV_008", RSSI: 101)]
+    var display: [ DisplayObject] = []
+    let display1 : [ DisplayObject] = []
    // var display = [getSensorMagnetic(handle)]
    // let display1 = [getSensorMagnetic]
     
@@ -119,8 +122,22 @@ let display1 = [ DisplayObject(name: "P_MOV_007", RSSI: 100),DisplayObject(name:
     }
     
     @objc func buttonTapped(sender : UIButton) {
+        
+        if (isStartButton == true)
+        {
+            
+            
+           
+            
+            //ta//bleview.topAnchor.constraint(equalTo: view.topAnchor, constant: 120.0).isActive = true
+            //tableview.rightAnchor.constraint(equalTo: view.rightAnchor, constant: -32.0).isActive = true
+            //  tableview.bottomAnchor.constraint(equalTo: view.bottomAnchor, constant: -32.0).isActive = true
+            
+          
+            
+            
         scanner.initializeScanner()
-        scanner.evNewInfoAvailable.addHandler { a, b in print("Le nom \(a), et l'identifier \(b)") }
+     //   scanner.evNewInfoAvailable.addHandler { a, b in print("Le nom \(a), et l'identifier \(b)") }
     //    scanner.dictionnarySensor.addHandler { a in print("le nom du sensor  \(a)") }
         /*scanner.dictionnarySensor.addHandler { _ in  for (key) in a {
                    print("la valeur du dico " + " \(key)")
@@ -128,12 +145,13 @@ let display1 = [ DisplayObject(name: "P_MOV_007", RSSI: 100),DisplayObject(name:
         }
  */
         scanner.dictionnarySensor.addHandler(handler : handleNewObjectAvailable)
-      
-        
         print("El toro de Mardid")
+        
         self.showToast(message: "Le scan a démarré", font: .systemFont(ofSize: 12.0))
-        display = display1
+       // display = display1
         tableview.reloadData()
+         isStartButton = false
+        }
     }
     
     @objc func buttonTappedStop(sender : UIButton) {
@@ -145,6 +163,7 @@ let display1 = [ DisplayObject(name: "P_MOV_007", RSSI: 100),DisplayObject(name:
         
         display.removeAll()
         tableview.reloadData()
+        isStartButton = true
     }
     
     override func  viewDidLayoutSubviews() {
@@ -167,7 +186,8 @@ let display1 = [ DisplayObject(name: "P_MOV_007", RSSI: 100),DisplayObject(name:
                       print("cléeees Magnetic nbr aimant : " + String(magnetic.getNbrObject()))
                       print("Etat magnetic : " + String(magnetic.getEtat()))
                       print("Magnetic battery" + String(magnetic.batterylevel))
-                      
+                      //
+                    getSensorMagnetic(data: data)
                   }
               }
           
@@ -177,31 +197,28 @@ let display1 = [ DisplayObject(name: "P_MOV_007", RSSI: 100),DisplayObject(name:
     
     }
     
-      func getSensorMagnetic(data: ([String : Sensor])) -> DisplayObject {
-         
-      /*     for key in data {
-               print("Hello je suis ta clé \(key)")
-           }
-    */
-        var a : DisplayObject = DisplayObject(name: "null", RSSI: 0)
-           for (key,value) in data
-           {
-               if(value is SensorMagnetic)
-                 {
-                  if let magnetic = value as? SensorMagnetic
-                                   {
-                                    a = DisplayObject(name: magnetic.name, RSSI: magnetic.RSSI)
-                          
-                                    
-                                   }
-                 }
-             
-           }
-     return a
+    func getSensorMagnetic(data: ([String : Sensor])) -> DisplayObject {
         
-    
-       
-       }
+        /*     for key in data {
+         print("Hello je suis ta clé \(key)")
+         }
+         */
+        var a : DisplayObject = DisplayObject(name: "null", RSSI: 0)
+        for (key,value) in data
+        {
+            if(value is SensorMagnetic)
+            {
+                if let magnetic = value as? SensorMagnetic
+                {
+                    a = DisplayObject(name: magnetic.name, RSSI: magnetic.RSSI)
+                    display.append(a)
+                    tableview.reloadData()
+                }
+            }
+            
+        }
+        return a
+    }
 }
 
 
