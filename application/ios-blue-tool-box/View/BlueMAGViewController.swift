@@ -12,19 +12,26 @@ import SwiftUI
 class BlueMAGViewController: UIViewController,UITableViewDataSource{
     
     
+    private let refreshControl = UIRefreshControl()
+    
     var isStartButton : Bool = true
+    var dictionnaryDoublon : [String: Sensor] = [:]
     
     struct DisplayObject {
         var name: String
         var RSSI: Int
+        var identifier : String
     }
     
    // var display = [ DisplayObject(name: "P_MOV_007", RSSI: 100),DisplayObject(name: "P_MOV_008", RSSI: 101)]
    // let display1 = [ DisplayObject(name: "P_MOV_007", RSSI: 100),DisplayObject(name: "P_MOV_008", RSSI: 101)]
     var display: [ DisplayObject] = []
-    let display1 : [ DisplayObject] = []
+    //let display1 : [ DisplayObject] = []
    // var display = [getSensorMagnetic(handle)]
    // let display1 = [getSensorMagnetic]
+    
+    
+    
     
     func showToast(message: String, font: UIFont) {
         let toastLabel = UILabel()
@@ -83,9 +90,9 @@ class BlueMAGViewController: UIViewController,UITableViewDataSource{
         super.viewDidLoad()
         // centralManager = CBCentralManager(delegate: self, queue: nil)
         // Do any additional setup after loading the view.
-        scanner = Scanner1()
-
-       
+      
+  scanner = Scanner1()
+        scanner.initializeScanner()
         
         /*  tableview.layoutMargins = UIEdgeInsets(top: self.view.layoutMargins.top,
          left: 64,
@@ -98,6 +105,10 @@ class BlueMAGViewController: UIViewController,UITableViewDataSource{
         //  tableview.topAnchor.constraint(equalTo: view.topAnchor, constant: 120.0).isActive = true
         tableview.dataSource = self
         
+      //  tableview.dataSource = BlueMAGViewController(cell ")
+            //WeatherDataSource(cellIdentifier: "WeatherCell", weatherViewModels: self.weatherListViewModel)
+
+        
         //ta//bleview.topAnchor.constraint(equalTo: view.topAnchor, constant: 120.0).isActive = true
         //tableview.rightAnchor.constraint(equalTo: view.rightAnchor, constant: -32.0).isActive = true
         //  tableview.bottomAnchor.constraint(equalTo: view.bottomAnchor, constant: -32.0).isActive = true
@@ -105,6 +116,8 @@ class BlueMAGViewController: UIViewController,UITableViewDataSource{
         view.addSubview(tableview)
         
         
+        
+          tableview.reloadData()
         
         let button = UIButton(frame: CGRect(x: 100, y: 50, width: 60, height: 60))
         //  button.setTitle("pencil", for: .normal)
@@ -127,16 +140,17 @@ class BlueMAGViewController: UIViewController,UITableViewDataSource{
         {
             
             
-           
+           scanner = Scanner1()
+                 scanner.initializeScanner()
             
             //ta//bleview.topAnchor.constraint(equalTo: view.topAnchor, constant: 120.0).isActive = true
             //tableview.rightAnchor.constraint(equalTo: view.rightAnchor, constant: -32.0).isActive = true
             //  tableview.bottomAnchor.constraint(equalTo: view.bottomAnchor, constant: -32.0).isActive = true
             
           
+             // scanner = Scanner1()
             
-            
-        scanner.initializeScanner()
+       
      //   scanner.evNewInfoAvailable.addHandler { a, b in print("Le nom \(a), et l'identifier \(b)") }
     //    scanner.dictionnarySensor.addHandler { a in print("le nom du sensor  \(a)") }
         /*scanner.dictionnarySensor.addHandler { _ in  for (key) in a {
@@ -149,7 +163,7 @@ class BlueMAGViewController: UIViewController,UITableViewDataSource{
         
         self.showToast(message: "Le scan a démarré", font: .systemFont(ofSize: 12.0))
        // display = display1
-        tableview.reloadData()
+       
          isStartButton = false
         }
     }
@@ -177,21 +191,10 @@ class BlueMAGViewController: UIViewController,UITableViewDataSource{
             print("Hello je suis ta clé \(key)")
         }
  */
-        for (key,value) in data
-        {
-            if(value is SensorMagnetic)
-              {
-                  if let magnetic = value as? SensorMagnetic
-                  {
-                      print("cléeees Magnetic nbr aimant : " + String(magnetic.getNbrObject()))
-                      print("Etat magnetic : " + String(magnetic.getEtat()))
-                      print("Magnetic battery" + String(magnetic.batterylevel))
                       //
                     getSensorMagnetic(data: data)
-                  }
-              }
+         
           
-        }
         
   
     
@@ -203,20 +206,69 @@ class BlueMAGViewController: UIViewController,UITableViewDataSource{
          print("Hello je suis ta clé \(key)")
          }
          */
-        var a : DisplayObject = DisplayObject(name: "null", RSSI: 0)
+        
+        var trouve = true
+     //  tableview.refreshControl?.beginRefreshing()
+        
+        var a : DisplayObject = DisplayObject(name: "null", RSSI: 0, identifier: "")
         for (key,value) in data
         {
             if(value is SensorMagnetic)
             {
                 if let magnetic = value as? SensorMagnetic
                 {
-                    a = DisplayObject(name: magnetic.name, RSSI: magnetic.RSSI)
+                    //
+                    for var cle in display
+                    {
+                        print("indetifier cle" + cle.identifier + "identifier data " + key + cle.name)
+                        if(key == cle.identifier)
+                        {
+                            cle.RSSI = value.RSSI
+                            
+                            print("cle RSSSSSi" + String(cle.RSSI))
+                          
+                            print("updated !!!!!!!!!!!!!")
+                            trouve  = false
+                        }
+                 
+                    }
+                 
+                    self.tableview.reloadData()
+             //       tableview.refreshControl?.endRefreshing()
+      
+                    
+                    /*
+                    
+                    if(dictionnaryDoublon[key] != nil)
+                    {
+                        print("impossible")
+                        for var cle in display
+                        {
+                            print("indetifier cle" + cle.identifier + "identifier data " + key)
+                            if(key == cle.identifier)
+                            {
+                                
+                                cle.RSSI = value.RSSI
+                            }
+                        }
+                    }
+                    
+                    dictionnaryDoublon[key] = value
+ */
+                    
+                    //
+                    if(trouve == true)
+                    {
+                    a = DisplayObject(name: magnetic.name, RSSI: magnetic.RSSI, identifier:  magnetic.idenfitfier)
                     display.append(a)
-                    tableview.reloadData()
+                 
+                    }
+                    
                 }
             }
             
         }
+          
         return a
     }
 }

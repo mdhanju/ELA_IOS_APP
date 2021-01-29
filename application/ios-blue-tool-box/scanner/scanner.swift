@@ -81,8 +81,8 @@ class Scanner1: NSObject, CBPeripheralDelegate, CBCentralManagerDelegate {
     func centralManager (_ central: CBCentralManager, didDiscover peripheral: CBPeripheral, advertisementData: [String : Any], rssi RSSI: NSNumber)
     {
         
-    //    print(peripheral.name)
-    //    print(peripheral.identifier.description)
+        print(peripheral.name)
+        print(peripheral.identifier.description)
         if(peripheral.name != nil)
         {
             let data = (peripheral.name!, peripheral.identifier.description)
@@ -108,8 +108,8 @@ class Scanner1: NSObject, CBPeripheralDelegate, CBCentralManagerDelegate {
                 identifier.append(peripheral.identifier.description)
             }
             else{
-                if(!identifier.contains(peripheral.identifier.description))
-                {
+            //    if(!identifier.contains(peripheral.identifier.description))
+            //    {
                     print("New Device = " +  peripheral.identifier.description)
                     identifier.append(peripheral.identifier.description)
                     
@@ -118,24 +118,26 @@ class Scanner1: NSObject, CBPeripheralDelegate, CBCentralManagerDelegate {
                     if( id != nil)
                     {
                         dictionnarySensor.raise(data : [peripheral.identifier.description:id!])
-                        SensorFactory.shared().addDtictionnary(tagidentifier: peripheral.identifier.description, sensor: id!)
+                   //     SensorFactory.shared().addDtictionnary(tagidentifier: peripheral.identifier.description, sensor: id!)
                         SensorFactory.shared().getDataSensor(id: id!)
                     }
-                    SensorFactory.shared().printDtictionnary()
+                    //SensorFactory.shared().printDtictionnary()
                 }
-                else
-                {
-                    print("Sensor uknow")
-                }
-            }
         }
-        else
-        {
-            print("déja trouvé")
-            SensorFactory.shared().updateDtictionnary(tagidentifier: peripheral.identifier.description, sensor: id)
+              // else
+            //{
+              //      print("Sensor uknow")
+            //   }
+          //  }
+        //}
+   //     else
+     //   {
+       //     print("déja trouvé")
+         //   SensorFactory.shared().updateDtictionnary(tagidentifier: peripheral.identifier.description, sensor: id)
+            
             // arraySensorMagnetic.updateValue(SensorMagnetic, forKey: peripheral.identifier.description)
-        }
-        
+        //}
+    
     }
     
 }
