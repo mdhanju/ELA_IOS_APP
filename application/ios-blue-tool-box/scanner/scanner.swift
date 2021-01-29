@@ -2,7 +2,7 @@ import UIKit
 import CoreBluetooth
 
 
-
+/*
 class Event<T> {
 
     typealias EventHandler = (T) -> ()
@@ -19,32 +19,21 @@ class Event<T> {
     }
   }
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
+ */
 
 class Scanner1: NSObject, CBPeripheralDelegate, CBCentralManagerDelegate {
-    
-    
- 
-    
-    
-    
     
     private var centralManager: CBCentralManager!
     private var peripheral: CBPeripheral!
     
     private var identifier: [String] = []
+    
+    public var evNewInfoAvailable: Event<(String, String)>
+    
+    override init() {
+        evNewInfoAvailable = Event<(String, String)>()
+        //evNewInfoAvailable.addHandler { a, b in print("Le nom \(a), et l'identifier \(b)") }
+    }
     
     /**
      * \fn initializeScanner
@@ -55,6 +44,18 @@ class Scanner1: NSObject, CBPeripheralDelegate, CBCentralManagerDelegate {
     func initializeScanner()
     {
         centralManager = CBCentralManager(delegate: self, queue: nil)
+        
+    }
+    
+    /**
+     * \fn initializeScanner
+     * \brief function to initialize a new scanner and associate to a central manager object
+     * \param [in] self : current isntance ..
+     * \return None
+     **/
+    func stopScanner()
+    {
+        centralManager.stopScan()
     }
     
     // If we're powered on, start scanning
@@ -72,25 +73,19 @@ class Scanner1: NSObject, CBPeripheralDelegate, CBCentralManagerDelegate {
         }
     }
     
-    
-    
-    
     // Handles the result of the scan
     func centralManager (_ central: CBCentralManager, didDiscover peripheral: CBPeripheral, advertisementData: [String : Any], rssi RSSI: NSNumber)
     {
         
-        print(peripheral.name)
-        print(peripheral.identifier.description)
+    //    print(peripheral.name)
+    //    print(peripheral.identifier.description)
+        if(peripheral.name != nil)
+        {
+            let data = (peripheral.name!, peripheral.identifier.description)
+            evNewInfoAvailable.raise(data : data)
+        }
         
-    let event = Event<(String, String)>()
-    event.addHandler { a, b in print("Hello \(a), \(b)") }
-    let data = ("Colin", "Eberhardt")
-        event.raise(data : data)
-        
-        
-    
-        
-        
+        //
         if(advertisementData[CBAdvertisementDataServiceDataKey] != nil)
         {
             let sensorData = advertisementData[CBAdvertisementDataServiceDataKey] as? Dictionary<CBUUID,NSData>

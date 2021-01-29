@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		16715DF525C40142007F0AC2 /* Event.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16715DF425C40142007F0AC2 /* Event.swift */; };
 		16920C8725B1B271008ABBF1 /* BlueIDViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16920C8625B1B271008ABBF1 /* BlueIDViewController.swift */; };
 		16920C9825B1CD2E008ABBF1 /* Factory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16920C9725B1CD2E008ABBF1 /* Factory.swift */; };
 		16920C9B25B1FE3C008ABBF1 /* scanner.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16920C9A25B1FE3C008ABBF1 /* scanner.swift */; };
@@ -43,6 +44,7 @@
 
 /* Begin PBXFileReference section */
 		13A51FB9F8FB3D662E7D70E2 /* Pods_ios_blue_tool_boxTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_ios_blue_tool_boxTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		16715DF425C40142007F0AC2 /* Event.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Event.swift; sourceTree = "<group>"; };
 		16920C8625B1B271008ABBF1 /* BlueIDViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BlueIDViewController.swift; sourceTree = "<group>"; };
 		16920C9725B1CD2E008ABBF1 /* Factory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Factory.swift; sourceTree = "<group>"; };
 		16920C9A25B1FE3C008ABBF1 /* scanner.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = scanner.swift; sourceTree = "<group>"; };
@@ -116,6 +118,7 @@
 			children = (
 				16CB846225AC6EF80067E1A0 /* ViewController.swift */,
 				16DFFB5F25B0322700CCB063 /* SideMenu.swift */,
+				16715DF425C40142007F0AC2 /* Event.swift */,
 			);
 			path = controller;
 			sourceTree = "<group>";
@@ -417,6 +420,7 @@
 				16DFFB7E25B04E4800CCB063 /* ELAViewController.swift in Sources */,
 				16DFFB6025B0322700CCB063 /* SideMenu.swift in Sources */,
 				16920C9825B1CD2E008ABBF1 /* Factory.swift in Sources */,
+				16715DF525C40142007F0AC2 /* Event.swift in Sources */,
 				16920C9B25B1FE3C008ABBF1 /* scanner.swift in Sources */,
 				16920C8725B1B271008ABBF1 /* BlueIDViewController.swift in Sources */,
 				16DFFB8025B04E6300CCB063 /* BlueTViewController.swift in Sources */,
