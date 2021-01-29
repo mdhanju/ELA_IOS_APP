@@ -29,9 +29,13 @@ class Scanner1: NSObject, CBPeripheralDelegate, CBCentralManagerDelegate {
     private var identifier: [String] = []
     
     public var evNewInfoAvailable: Event<(String, String)>
+    public var dictionnarySensor : Event<([String : Sensor])>
     
     override init() {
         evNewInfoAvailable = Event<(String, String)>()
+        dictionnarySensor = Event<([String : Sensor])>()
+        
+        
         //evNewInfoAvailable.addHandler { a, b in print("Le nom \(a), et l'identifier \(b)") }
     }
     
@@ -113,6 +117,7 @@ class Scanner1: NSObject, CBPeripheralDelegate, CBCentralManagerDelegate {
                     
                     if( id != nil)
                     {
+                        dictionnarySensor.raise(data : [peripheral.identifier.description:id!])
                         SensorFactory.shared().addDtictionnary(tagidentifier: peripheral.identifier.description, sensor: id!)
                         SensorFactory.shared().getDataSensor(id: id!)
                     }
