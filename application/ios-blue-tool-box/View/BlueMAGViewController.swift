@@ -126,7 +126,7 @@ class BlueMAGViewController: UIViewController,UITableViewDataSource{
     
     @objc func buttonTappedStop(sender : UIButton) {
         
-        
+        scanner.stopScanner()
         print("El toro de Mardid")
         self.showToast(message: "Le scan est terminé", font: .systemFont(ofSize: 12.0))
         
