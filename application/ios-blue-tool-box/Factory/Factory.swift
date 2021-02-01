@@ -14,7 +14,8 @@ import CoreBluetooth
  */
 class Sensor
 {
-    var name : String = ""
+    
+    var name : String = "" 
     var RSSI : Int = 0
     var batterylevel: Int = 0
     var sensorTypes : SensorTypes = SensorTypes.SensorID

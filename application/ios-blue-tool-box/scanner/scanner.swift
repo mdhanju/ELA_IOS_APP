@@ -118,6 +118,7 @@ class Scanner1: NSObject, CBPeripheralDelegate, CBCentralManagerDelegate {
                     if( id != nil)
                     {
                         dictionnarySensor.raise(data : [peripheral.identifier.description:id!])
+                        
                    //     SensorFactory.shared().addDtictionnary(tagidentifier: peripheral.identifier.description, sensor: id!)
                    //     SensorFactory.shared().getDataSensor(id: id!)
                     }

@@ -3,32 +3,7 @@ import CoreBluetooth
 import SwiftUI
 
 
-class BlueTViewController: Capteur {
-    
-
-    //private var capteur: Capteur!
-    private var sensorTemp : SensorTypes = SensorTypes.SensorTemperature
-
-    
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        view.backgroundColor = .brown
-        //super?.viewDidLoad()
-        super.initializeInfoSensor()
-    }
-    
-}
-
-
-
-/*
-
-import UIKit
-import CoreBluetooth
-import SwiftUI
-
-
-class BlueTViewController:  UIViewController, UITableViewDataSource{
+class Capteur:  UIViewController, UITableViewDataSource{
     
     private var scanner: Scanner1!
     var display: [ DisplayObject] = []
@@ -159,9 +134,12 @@ class BlueTViewController:  UIViewController, UITableViewDataSource{
         tableview.frame = view.bounds
     }
     
-    func infoSensor()
+    func initializeInfoSensor()
     {
-        let vartype = SensorTypes.SensorTemperature
+      //  let vartype = SensorTypes.SensorTemperature
+//        handleNewObjectAvailable(
+          scanner.dictionnarySensor.addHandler(handler : handleNewObjectAvailable)
+        
     }
     
     func handleNewObjectAvailable(data: ([String : Sensor])) {
@@ -208,9 +186,3 @@ class BlueTViewController:  UIViewController, UITableViewDataSource{
     }
 }
 
-
-
-
-
-
-*/
