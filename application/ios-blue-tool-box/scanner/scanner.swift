@@ -81,8 +81,8 @@ class Scanner1: NSObject, CBPeripheralDelegate, CBCentralManagerDelegate {
     func centralManager (_ central: CBCentralManager, didDiscover peripheral: CBPeripheral, advertisementData: [String : Any], rssi RSSI: NSNumber)
     {
         
-        print(peripheral.name)
-        print(peripheral.identifier.description)
+       // print(peripheral.name)
+       // print(peripheral.identifier.description)
         if(peripheral.name != nil)
         {
             let data = (peripheral.name!, peripheral.identifier.description)
@@ -93,8 +93,8 @@ class Scanner1: NSObject, CBPeripheralDelegate, CBCentralManagerDelegate {
         if(advertisementData[CBAdvertisementDataServiceDataKey] != nil)
         {
             let sensorData = advertisementData[CBAdvertisementDataServiceDataKey] as? Dictionary<CBUUID,NSData>
-            print(sensorData)
-            print(advertisementData[CBAdvertisementDataServiceDataKey])
+         //   print(sensorData)
+         //   print(advertisementData[CBAdvertisementDataServiceDataKey])
             
             /*   if(sensorData![CBUUID(string: "2A3F")] != nil && sensorData![CBUUID(string: "2A06")] != nil && ConvertionToolbox.convertHexaToEtat(str: sensorData![CBUUID(string: "2A3F")]!.description) == true ){
              
@@ -110,7 +110,7 @@ class Scanner1: NSObject, CBPeripheralDelegate, CBCentralManagerDelegate {
             else{
             //    if(!identifier.contains(peripheral.identifier.description))
             //    {
-                    print("New Device = " +  peripheral.identifier.description)
+                   // print("New Device = " +  peripheral.identifier.description)
                     identifier.append(peripheral.identifier.description)
                     
                     let id = SensorFactory.shared().get(sensorData: sensorData, tagname: peripheral.name?.description ?? "", tagRSSI: RSSI, tagidentifier: peripheral.identifier.description)
@@ -119,7 +119,7 @@ class Scanner1: NSObject, CBPeripheralDelegate, CBCentralManagerDelegate {
                     {
                         dictionnarySensor.raise(data : [peripheral.identifier.description:id!])
                    //     SensorFactory.shared().addDtictionnary(tagidentifier: peripheral.identifier.description, sensor: id!)
-                        SensorFactory.shared().getDataSensor(id: id!)
+                   //     SensorFactory.shared().getDataSensor(id: id!)
                     }
                     //SensorFactory.shared().printDtictionnary()
                 }
