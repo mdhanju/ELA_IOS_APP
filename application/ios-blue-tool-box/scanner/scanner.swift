@@ -31,12 +31,19 @@ class Scanner1: NSObject, CBPeripheralDelegate, CBCentralManagerDelegate {
     public var evNewInfoAvailable: Event<(String, String)>
     public var dictionnarySensor : Event<([String : Sensor])>
     
+    private var sensorTypeFiler : SensorTypes? = nil
+    
     override init() {
         evNewInfoAvailable = Event<(String, String)>()
         dictionnarySensor = Event<([String : Sensor])>()
         
         
         //evNewInfoAvailable.addHandler { a, b in print("Le nom \(a), et l'identifier \(b)") }
+    }
+    
+    public func defineFilterType(sensor : SensorTypes)
+    {
+        self.sensorTypeFiler = sensor
     }
     
     /**
@@ -114,10 +121,31 @@ class Scanner1: NSObject, CBPeripheralDelegate, CBCentralManagerDelegate {
                     identifier.append(peripheral.identifier.description)
                     
                     let id = SensorFactory.shared().get(sensorData: sensorData, tagname: peripheral.name?.description ?? "", tagRSSI: RSSI, tagidentifier: peripheral.identifier.description)
+               
+              
                     
                     if( id != nil)
                     {
-                        dictionnarySensor.raise(data : [peripheral.identifier.description:id!])
+                       // defineFilterType(sensor: id!.sensorTypes)
+                        //dictionnarySensor.raise(data : [peripheral.identifier.description:id!])
+                        //
+                        var a = sensorTypeFiler
+                        
+                    
+                        
+                        
+                        if(nil == self.sensorTypeFiler)
+                        {
+                            dictionnarySensor.raise(data : [peripheral.identifier.description:id!])
+                        }
+                        else
+                        {
+                         
+                            if(self.sensorTypeFiler == id?.sensorTypes)
+                            {
+                                dictionnarySensor.raise(data : [peripheral.identifier.description:id!])
+                            }
+                    }
                         
                    //     SensorFactory.shared().addDtictionnary(tagidentifier: peripheral.identifier.description, sensor: id!)
                    //     SensorFactory.shared().getDataSensor(id: id!)

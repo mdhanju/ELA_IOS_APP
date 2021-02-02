@@ -38,8 +38,9 @@ class Sensor
 
 enum SensorTypes
 {
-    case SensorIbeacon
+   
     case SensorEdystone
+    case SensorIbeacon
     case SensorID
     case SensorTemperature
     case SensorTemperatureHumidity

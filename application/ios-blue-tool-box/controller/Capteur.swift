@@ -8,6 +8,8 @@ class Capteur:  UIViewController, UITableViewDataSource{
     private var scanner: Scanner1!
     var display: [ DisplayObject] = []
     var isStartButton : Bool = true
+   var sensorT : SensorTypes? = nil
+    
     
    
     
@@ -60,11 +62,28 @@ class Capteur:  UIViewController, UITableViewDataSource{
         return display.count
     }
     
+    
+    
+        
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
         let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath)
+        
+        
         let objectDiplay = display[indexPath.row]
-        cell.textLabel?.text = objectDiplay.name + String(objectDiplay.RSSI)
+        cell.textLabel?.text = objectDiplay.name
+       
+ // cell.textLabel?.text = String(objectDiplay.RSSI)
+        cell.textLabel?.textAlignment = .left
+
+    //    let _:UITableViewCell = UITableViewCell(style: UITableViewCell.CellStyle.default, reuseIdentifier: "ChatCell")
+        
+        cell.textLabel?.text = objectDiplay.name
+    //   cell.detailTextLabel?.text = "lll"
+       let label = UILabel.init(frame: CGRect(x:0,y:0,width:100,height:20))
+       label.text = String(objectDiplay.RSSI)
+       cell.accessoryView = label
+       
         return cell
     }
     
@@ -83,7 +102,7 @@ class Capteur:  UIViewController, UITableViewDataSource{
         scanner = Scanner1()
         scanner.initializeScanner()
         tableview.contentInset = UIEdgeInsets(top: 60,left: 0,bottom: 0,right: 0)
-        tableview.backgroundColor = .green
+      //  tableview.backgroundColor = .green
         tableview.dataSource = self
         view.addSubview(tableview)
         
@@ -108,6 +127,7 @@ class Capteur:  UIViewController, UITableViewDataSource{
             scanner = Scanner1()
             scanner.initializeScanner()
             
+            scanner.defineFilterType(sensor: sensorT!)
             scanner.dictionnarySensor.addHandler(handler : handleNewObjectAvailable)
             print("El toro de Mardid")
             
@@ -134,53 +154,49 @@ class Capteur:  UIViewController, UITableViewDataSource{
         tableview.frame = view.bounds
     }
     
-    func initializeInfoSensor()
+    func initializeInfoSensor(sensor : SensorTypes)
     {
       //  let vartype = SensorTypes.SensorTemperature
 //        handleNewObjectAvailable(
-          scanner.dictionnarySensor.addHandler(handler : handleNewObjectAvailable)
+        sensorT = sensor
         
+      //  scanner.defineFilterType(sensor: sensor)
+      //  scanner.dictionnarySensor.addHandler(handler : handleNewObjectAvailable)
+        
+
     }
     
     func handleNewObjectAvailable(data: ([String : Sensor])) {
         
-        getSensorTemperature(data: data)
+        updateSensorUI(data: data)
+        
         
     }
     
-    func getSensorTemperature(data: ([String : Sensor])) -> DisplayObject {
+    func updateSensorUI(data: ([String : Sensor])) -> DisplayObject {
     
         var trouve = true
         var newobject : DisplayObject = DisplayObject(name: "null", RSSI: 0, identifier: "", displaytext: "")
         
        // let vartype = SensorTypes.SensorTemperature
-    
-        
         for (key,value) in data
         {
-       //     if(value.sensorTypes == vartype)
-            if(value is SensorTemperature)
+         //   if(value is SensorTemperature)
+            for var cle in display
             {
-             
-                if let magnetic = value as? SensorTemperature // SensorTemperature
+                if(key == cle.identifier)
                 {
-                    for var cle in display
-                    {
-                        if(key == cle.identifier)
-                        {
-                            cle.RSSI = value.RSSI
-                            cle = DisplayObject(name : cle.name, RSSI : cle.RSSI, identifier:  cle.identifier, displaytext: cle.name + " " + String(cle.RSSI))
-                            trouve  = false
-                        }
-                    }
-                    if(trouve == true)
-                    {
-                        newobject = DisplayObject(name: magnetic.name, RSSI: magnetic.RSSI, identifier:  magnetic.idenfitfier, displaytext: "")
-                        display.append(newobject)
-                    }
-                    self.tableview.reloadData()
+                    cle.RSSI = value.RSSI
+                    cle = DisplayObject(name : cle.name, RSSI : cle.RSSI, identifier:  cle.identifier, displaytext: cle.name + " " + String(cle.RSSI))
+                    trouve  = false
                 }
             }
+            if(trouve == true)
+            {
+                newobject = DisplayObject(name: value.name, RSSI: value.RSSI, identifier:  value.idenfitfier, displaytext: "")
+                display.append(newobject)
+            }
+            self.tableview.reloadData()
         }
         return newobject
     }
