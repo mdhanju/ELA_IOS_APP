@@ -9,18 +9,19 @@ import UIKit
 import CoreBluetooth
 import SwiftUI
 
-class BlueMAGViewController: UIViewController{
+class BlueMAGViewController: Capteur {
     
+        //private var capteur: Capteur!
+        private var sensorMagnetic : SensorTypes = SensorTypes.SensorMagnetic
 
-    //private var capteur: Capteur!
-    private var sensorTemp : SensorTypes = SensorTypes.SensorTemperature
-
-    
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        view.backgroundColor = .cyan
-        //super?.viewDidLoad()
-      //  super.initializeInfoSensor(sensor : sensorTemp)
+        
+        override func viewDidLoad() {
+            super.viewDidLoad()
+            view.backgroundColor = .cyan
+            //super?.viewDidLoad()
+            super.initializeInfoSensor(sensor : sensorMagnetic)
+        }
+        
     }
     
-}
+

@@ -8,14 +8,20 @@
 
 import UIKit
 
-class BlueANGViewController: UIViewController {
+class BlueANGViewController: Capteur {
 
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        view.backgroundColor = .darkGray
-        // Do any additional setup after loading the view.
+        //private var capteur: Capteur!
+        private var sensorANG : SensorTypes = SensorTypes.SensorAngle
+
+        
+        override func viewDidLoad() {
+            super.viewDidLoad()
+            view.backgroundColor = .cyan
+            //super?.viewDidLoad()
+            super.initializeInfoSensor(sensor : sensorANG)
+        }
+        
     }
-    
 
     /*
     // MARK: - Navigation
@@ -27,4 +33,4 @@ class BlueANGViewController: UIViewController {
     }
     */
 
-}
+

@@ -11,6 +11,9 @@ class Capteur:  UIViewController, UITableViewDataSource{
    var sensorT : SensorTypes? = nil
     
     
+    
+    
+   
    
     
     class DisplayObject {
@@ -62,6 +65,7 @@ class Capteur:  UIViewController, UITableViewDataSource{
         return display.count
     }
     
+
     
     
         
@@ -86,11 +90,20 @@ class Capteur:  UIViewController, UITableViewDataSource{
        
         return cell
     }
+   
+    
     
     private let tableview : UITableView =
     {
         let tableview = UITableView()
         tableview.register(UITableViewCell.self, forCellReuseIdentifier: "cell")
+        
+        tableview.estimatedRowHeight = 0
+        tableview.estimatedSectionHeaderHeight = 0
+        tableview.estimatedSectionFooterHeight = 0
+        tableview.rowHeight = 70
+        tableview.frame.size.height = tableview.contentSize.height
+     
         return tableview
         
     }()
@@ -104,9 +117,28 @@ class Capteur:  UIViewController, UITableViewDataSource{
         tableview.contentInset = UIEdgeInsets(top: 60,left: 0,bottom: 0,right: 0)
       //  tableview.backgroundColor = .green
         tableview.dataSource = self
+        
+        
+        
+       //https://stackoverflow.com/questions/33292427/how-to-make-the-scroll-of-a-tableview-inside-scrollview-behave-naturally
+        
+        //https://www.youtube.com/watch?v=INkeINPZddo
+       // view.addSubview(imageView0)
         view.addSubview(tableview)
         
+        
+   
+        let imageView0 = UIView()
+    //    imageView0.text = "Blue Tool Box"
+     //   imageView0.textColor = UIColor.red
+     //   imageView0.font = UIFont.systemFont(ofSize: 25.0)
+    //    imageView0.font = UIFont.boldSystemFont(ofSize: 25)
+            imageView0.frame = CGRect(x: 0, y: 50, width: 400, height: 80)
+        imageView0.backgroundColor = .white
+          self.view.addSubview(imageView0)
+      
 
+  
         
         let button = UIButton(frame: CGRect(x: 100, y: 50, width: 60, height: 60))
         button.setImage(UIImage(systemName: "play"), for: .normal)
