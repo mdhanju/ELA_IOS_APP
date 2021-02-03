@@ -567,7 +567,15 @@ class SensorFactory
      */
     func get(sensorData : Dictionary<CBUUID,NSData>?, tagname : String, tagRSSI : NSNumber, tagidentifier : String) -> Sensor?
     {
+        
+        
+        
+        
         var id : Sensor? = nil
+        
+        
+        
+        
         
         //MARK:: move avec batterie
         if( sensorData![CBUUID(string: "2A3F")] != nil

@@ -123,8 +123,8 @@ class Capteur:  UIViewController, UITableViewDataSource{
            //   imageView0.textColor = UIColor.red
            //   imageView0.font = UIFont.systemFont(ofSize: 25.0)
           //    imageView0.font = UIFont.boldSystemFont(ofSize: 25)
-                  imageView01.frame = CGRect(x: 0, y: 50, width: 400, height: 500)
-              imageView01.backgroundColor = .yellow
+                  imageView01.frame = CGRect(x: 10 * UIScreen.main.bounds.width/100, y: 50, width: 80 * UIScreen.main.bounds.width/100, height: 80 * UIScreen.main.bounds.height/100)
+              imageView01.backgroundColor = .green
                 self.view.addSubview(imageView01)
         
         scanner = Scanner1()
@@ -160,23 +160,45 @@ class Capteur:  UIViewController, UITableViewDataSource{
      //   imageView0.textColor = UIColor.red
      //   imageView0.font = UIFont.systemFont(ofSize: 25.0)
     //    imageView0.font = UIFont.boldSystemFont(ofSize: 25)
-            imageView0.frame = CGRect(x: 0, y: 50, width: 400, height: 80)
-        imageView0.backgroundColor = .yellow
+            imageView0.frame = CGRect(x: 0 * UIScreen.main.bounds.height/100, y: 6 * UIScreen.main.bounds.width/100, width: 100 * UIScreen.main.bounds.width/100, height:  15 * UIScreen.main.bounds.height/100)
+        imageView0.backgroundColor = .green
           self.view.addSubview(imageView0)
       
 
   
+       /*  let img = "start"
+          let image1 = UIImage(named: img)
+          let imageView1 = UIImageView(image: image1!)
+          imageView1.frame = CGRect(x: 50, y: 70, width: 45, height: 45)
+          imageView1.addTarget(self, action: #selector(self.buttonTapped), for: .touchUpInside)
+        self.view.addSubview(imageView1)
+        */
         
-        let button = UIButton(frame: CGRect(x: 100, y: 50, width: 60, height: 60))
-        button.setImage(UIImage(systemName: "play"), for: .normal)
+        let button = UIButton(frame: CGRect(x: 32 * UIScreen.main.bounds.width/100, y:  10 * UIScreen.main.bounds.height/100, width: 40, height: 40))
+        button.setImage(UIImage(named: "start"), for: .normal)
         button.addTarget(self, action: #selector(self.buttonTapped), for: .touchUpInside)
+        
         view.addSubview(button)
         
-        let buttonStop =  UIButton(frame: CGRect(x: 180, y: 50, width: 60, height: 60))
+        let button1 = UITextView(frame: CGRect(x: 33 * UIScreen.main.bounds.width/100, y: 15 * UIScreen.main.bounds.height/100, width: 40, height: 40))
+    
+        button1.text = "start"
+        button1.backgroundColor = .none
+            button1.isUserInteractionEnabled = false
+        view.addSubview(button1)
         
-        buttonStop.setImage(UIImage(systemName: "stop"), for: .normal)
+        let buttonStop =  UIButton(frame: CGRect(x: 55 * UIScreen.main.bounds.width/100, y: 10 * UIScreen.main.bounds.height/100, width: 40, height: 40))
+        
+        buttonStop.setImage(UIImage(named: "stop"), for: .normal)
         buttonStop.addTarget(self, action: #selector(self.buttonTappedStop), for: .touchUpInside)
         view.addSubview(buttonStop)
+        
+           let button2 = UITextView(frame: CGRect( x: 55 * UIScreen.main.bounds.width/100, y: 15 * UIScreen.main.bounds.height/100, width: 40, height: 40))
+        
+            button2.text = "stop"
+        button2.isUserInteractionEnabled = false
+            button2.backgroundColor = .none
+            view.addSubview(button2)
  
     }
     

@@ -73,14 +73,17 @@ class ELAViewController: UIViewController {
 */
     override func viewDidLoad() {
         super.viewDidLoad()
-
         
-                           self.view.backgroundColor = UIColor(patternImage: UIImage(named: "back_main")!.scalePreservingAspectRatio(targetSize: CGSize(width: 700, height: 700)))
+      
+                           
+        
+        self.view.backgroundColor = UIColor(patternImage: UIImage(named: "back_main")!.scalePreservingAspectRatio(targetSize: CGSize(width: 700, height: 700)))
         
         let imageView0 = UITextView()
              imageView0.text = "Blue Tool Box"
              imageView0.textColor = UIColor.red
              imageView0.font = UIFont.systemFont(ofSize: 25.0)
+         imageView0.isUserInteractionEnabled = false
              imageView0.font = UIFont.boldSystemFont(ofSize: 25)
                  imageView0.frame = CGRect(x: 80, y: 300, width: 350, height: 100)
              imageView0.backgroundColor = .none
@@ -106,6 +109,7 @@ class ELAViewController: UIViewController {
                  let imageView1 = UIImageView(image: image1!)
                  imageView1.frame = CGRect(x: 50, y: 450, width: 45, height: 45)
                self.view.addSubview(imageView1)
+        
                
                //Imageview on Top of View
                self.view.bringSubviewToFront(imageView1)

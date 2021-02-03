@@ -12,7 +12,7 @@ class BlueTViewController: Capteur {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        view.backgroundColor = .cyan
+        view.backgroundColor = .black
         //super?.viewDidLoad()
   
         super.initializeInfoSensor(sensor : sensorTemp)
