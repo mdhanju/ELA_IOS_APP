@@ -77,7 +77,7 @@
                                                     <outlet property="delegate" destination="f8d-cG-c8h" id="Wv2-k5-DGM"/>
                                                 </connections>
                                             </tableView>
-                                            <view contentMode="scaleToFill" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="zcR-qa-E5u">
+                                            <view contentMode="scaleToFill" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="zcR-qa-E5u" customClass="Captuer">
                                                 <rect key="frame" x="1" y="70" width="410" height="141"/>
                                                 <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                                             </view>

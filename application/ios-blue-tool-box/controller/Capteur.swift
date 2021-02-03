@@ -98,11 +98,15 @@ class Capteur:  UIViewController, UITableViewDataSource{
         let tableview = UITableView()
         tableview.register(UITableViewCell.self, forCellReuseIdentifier: "cell")
         
-        tableview.estimatedRowHeight = 0
+       tableview.estimatedRowHeight = 0
         tableview.estimatedSectionHeaderHeight = 0
         tableview.estimatedSectionFooterHeight = 0
         tableview.rowHeight = 70
         tableview.frame.size.height = tableview.contentSize.height
+        tableview.allowsMultipleSelection = false
+        tableview.allowsMultipleSelectionDuringEditing = false
+        tableview.allowsSelectionDuringEditing = false
+ 
      
         return tableview
         
@@ -111,6 +115,17 @@ class Capteur:  UIViewController, UITableViewDataSource{
     override func viewDidLoad()
     {
         super.viewDidLoad()
+        
+        
+        
+        let imageView01 = UIScrollView()
+          //    imageView0.text = "Blue Tool Box"
+           //   imageView0.textColor = UIColor.red
+           //   imageView0.font = UIFont.systemFont(ofSize: 25.0)
+          //    imageView0.font = UIFont.boldSystemFont(ofSize: 25)
+                  imageView01.frame = CGRect(x: 0, y: 50, width: 400, height: 500)
+              imageView01.backgroundColor = .yellow
+                self.view.addSubview(imageView01)
         
         scanner = Scanner1()
         scanner.initializeScanner()
@@ -124,17 +139,29 @@ class Capteur:  UIViewController, UITableViewDataSource{
         
         //https://www.youtube.com/watch?v=INkeINPZddo
        // view.addSubview(imageView0)
-        view.addSubview(tableview)
         
         
-   
+
+        
+        
+        
+        
+        
+        imageView01.addSubview(tableview)
+        
+        
+
+      
+        
+        
+        
         let imageView0 = UIView()
     //    imageView0.text = "Blue Tool Box"
      //   imageView0.textColor = UIColor.red
      //   imageView0.font = UIFont.systemFont(ofSize: 25.0)
     //    imageView0.font = UIFont.boldSystemFont(ofSize: 25)
             imageView0.frame = CGRect(x: 0, y: 50, width: 400, height: 80)
-        imageView0.backgroundColor = .white
+        imageView0.backgroundColor = .yellow
           self.view.addSubview(imageView0)
       
 
@@ -150,6 +177,7 @@ class Capteur:  UIViewController, UITableViewDataSource{
         buttonStop.setImage(UIImage(systemName: "stop"), for: .normal)
         buttonStop.addTarget(self, action: #selector(self.buttonTappedStop), for: .touchUpInside)
         view.addSubview(buttonStop)
+ 
     }
     
     @objc func buttonTapped(sender : UIButton) {
@@ -192,8 +220,8 @@ class Capteur:  UIViewController, UITableViewDataSource{
 //        handleNewObjectAvailable(
         sensorT = sensor
         
-      //  scanner.defineFilterType(sensor: sensor)
-      //  scanner.dictionnarySensor.addHandler(handler : handleNewObjectAvailable)
+    scanner.defineFilterType(sensor: sensor)
+    scanner.dictionnarySensor.addHandler(handler : handleNewObjectAvailable)
         
 
     }
