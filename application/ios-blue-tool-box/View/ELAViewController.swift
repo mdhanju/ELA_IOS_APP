@@ -77,7 +77,7 @@ class ELAViewController: UIViewController {
       
                            
         
-        self.view.backgroundColor = UIColor(patternImage: UIImage(named: "back_main")!.scalePreservingAspectRatio(targetSize: CGSize(width: 700, height: 700)))
+        self.view.backgroundColor = UIColor(patternImage: UIImage(named: "back_main")!.scalePreservingAspectRatio(targetSize: CGSize(width: UIScreen.main.bounds.height, height:100 * UIScreen.main.bounds.height/100)))
         
         let imageView0 = UITextView()
              imageView0.text = "Blue Tool Box"

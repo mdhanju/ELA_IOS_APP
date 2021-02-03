@@ -123,13 +123,13 @@ class Capteur:  UIViewController, UITableViewDataSource{
            //   imageView0.textColor = UIColor.red
            //   imageView0.font = UIFont.systemFont(ofSize: 25.0)
           //    imageView0.font = UIFont.boldSystemFont(ofSize: 25)
-                  imageView01.frame = CGRect(x: 10 * UIScreen.main.bounds.width/100, y: 50, width: 80 * UIScreen.main.bounds.width/100, height: 80 * UIScreen.main.bounds.height/100)
+                  imageView01.frame = CGRect(x: 10 * UIScreen.main.bounds.width/100, y: 15 * UIScreen.main.bounds.width/100, width: 80 * UIScreen.main.bounds.width/100, height: 100 * UIScreen.main.bounds.height/100)
               imageView01.backgroundColor = .green
                 self.view.addSubview(imageView01)
         
         scanner = Scanner1()
         scanner.initializeScanner()
-        tableview.contentInset = UIEdgeInsets(top: 60,left: 0,bottom: 0,right: 0)
+        tableview.contentInset = UIEdgeInsets(top: 80,left: 0,bottom: 0,right: 0)
       //  tableview.backgroundColor = .green
         tableview.dataSource = self
         
@@ -147,7 +147,7 @@ class Capteur:  UIViewController, UITableViewDataSource{
         
         
         
-        imageView01.addSubview(tableview)
+        view.addSubview(tableview)
         
         
 
@@ -155,14 +155,14 @@ class Capteur:  UIViewController, UITableViewDataSource{
         
         
         
-        let imageView0 = UIView()
+        let scrollView = UIView()
     //    imageView0.text = "Blue Tool Box"
      //   imageView0.textColor = UIColor.red
      //   imageView0.font = UIFont.systemFont(ofSize: 25.0)
     //    imageView0.font = UIFont.boldSystemFont(ofSize: 25)
-            imageView0.frame = CGRect(x: 0 * UIScreen.main.bounds.height/100, y: 6 * UIScreen.main.bounds.width/100, width: 100 * UIScreen.main.bounds.width/100, height:  15 * UIScreen.main.bounds.height/100)
-        imageView0.backgroundColor = .green
-          self.view.addSubview(imageView0)
+           scrollView.frame = CGRect(x: 0 * UIScreen.main.bounds.height/100, y: 6 * UIScreen.main.bounds.width/100, width: 100 * UIScreen.main.bounds.width/100, height:  17 * UIScreen.main.bounds.height/100)
+        scrollView.backgroundColor = .systemBlue
+          self.view.addSubview(scrollView)
       
 
   
@@ -174,26 +174,26 @@ class Capteur:  UIViewController, UITableViewDataSource{
         self.view.addSubview(imageView1)
         */
         
-        let button = UIButton(frame: CGRect(x: 32 * UIScreen.main.bounds.width/100, y:  10 * UIScreen.main.bounds.height/100, width: 40, height: 40))
+        let button = UIButton(frame: CGRect(x: 32 * UIScreen.main.bounds.width/100, y:  12 * UIScreen.main.bounds.height/100, width: 40, height: 40))
         button.setImage(UIImage(named: "start"), for: .normal)
         button.addTarget(self, action: #selector(self.buttonTapped), for: .touchUpInside)
         
         view.addSubview(button)
         
-        let button1 = UITextView(frame: CGRect(x: 33 * UIScreen.main.bounds.width/100, y: 15 * UIScreen.main.bounds.height/100, width: 40, height: 40))
+        let button1 = UITextView(frame: CGRect(x: 33 * UIScreen.main.bounds.width/100, y: 17 * UIScreen.main.bounds.height/100, width: 40, height: 40))
     
         button1.text = "start"
         button1.backgroundColor = .none
             button1.isUserInteractionEnabled = false
         view.addSubview(button1)
         
-        let buttonStop =  UIButton(frame: CGRect(x: 55 * UIScreen.main.bounds.width/100, y: 10 * UIScreen.main.bounds.height/100, width: 40, height: 40))
+        let buttonStop =  UIButton(frame: CGRect(x: 55 * UIScreen.main.bounds.width/100, y: 12 * UIScreen.main.bounds.height/100, width: 40, height: 40))
         
         buttonStop.setImage(UIImage(named: "stop"), for: .normal)
         buttonStop.addTarget(self, action: #selector(self.buttonTappedStop), for: .touchUpInside)
         view.addSubview(buttonStop)
         
-           let button2 = UITextView(frame: CGRect( x: 55 * UIScreen.main.bounds.width/100, y: 15 * UIScreen.main.bounds.height/100, width: 40, height: 40))
+           let button2 = UITextView(frame: CGRect( x: 55 * UIScreen.main.bounds.width/100, y: 17 * UIScreen.main.bounds.height/100, width: 40, height: 40))
         
             button2.text = "stop"
         button2.isUserInteractionEnabled = false
