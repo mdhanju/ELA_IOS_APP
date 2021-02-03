@@ -135,7 +135,7 @@ class Scanner1: NSObject, CBPeripheralDelegate, CBCentralManagerDelegate {
                        // defineFilterType(sensor: id!.sensorTypes)
                         //dictionnarySensor.raise(data : [peripheral.identifier.description:id!])
                         //
-                        var a = sensorTypeFiler
+                        
                         
                     
                         

@@ -118,14 +118,14 @@ class Capteur:  UIViewController, UITableViewDataSource{
         
         
         
-        let imageView01 = UIScrollView()
+        let uiScrollView = UIScrollView()
           //    imageView0.text = "Blue Tool Box"
            //   imageView0.textColor = UIColor.red
            //   imageView0.font = UIFont.systemFont(ofSize: 25.0)
           //    imageView0.font = UIFont.boldSystemFont(ofSize: 25)
-                  imageView01.frame = CGRect(x: 10 * UIScreen.main.bounds.width/100, y: 15 * UIScreen.main.bounds.width/100, width: 80 * UIScreen.main.bounds.width/100, height: 100 * UIScreen.main.bounds.height/100)
-              imageView01.backgroundColor = .green
-                self.view.addSubview(imageView01)
+                  uiScrollView.frame = CGRect(x: 10 * UIScreen.main.bounds.width/100, y: 15 * UIScreen.main.bounds.width/100, width: 80 * UIScreen.main.bounds.width/100, height: 100 * UIScreen.main.bounds.height/100)
+              uiScrollView.backgroundColor = .green
+                self.view.addSubview(uiScrollView)
         
         scanner = Scanner1()
         scanner.initializeScanner()
@@ -155,14 +155,14 @@ class Capteur:  UIViewController, UITableViewDataSource{
         
         
         
-        let scrollView = UIView()
+        let uiView = UIView()
     //    imageView0.text = "Blue Tool Box"
      //   imageView0.textColor = UIColor.red
      //   imageView0.font = UIFont.systemFont(ofSize: 25.0)
     //    imageView0.font = UIFont.boldSystemFont(ofSize: 25)
-           scrollView.frame = CGRect(x: 0 * UIScreen.main.bounds.height/100, y: 6 * UIScreen.main.bounds.width/100, width: 100 * UIScreen.main.bounds.width/100, height:  17 * UIScreen.main.bounds.height/100)
-        scrollView.backgroundColor = .systemBlue
-          self.view.addSubview(scrollView)
+           uiView.frame = CGRect(x: 0 * UIScreen.main.bounds.height/100, y: 6 * UIScreen.main.bounds.width/100, width: 100 * UIScreen.main.bounds.width/100, height:  17 * UIScreen.main.bounds.height/100)
+        uiView.backgroundColor = .systemBlue
+          self.view.addSubview(uiView)
       
 
   
@@ -180,12 +180,12 @@ class Capteur:  UIViewController, UITableViewDataSource{
         
         view.addSubview(button)
         
-        let button1 = UITextView(frame: CGRect(x: 33 * UIScreen.main.bounds.width/100, y: 17 * UIScreen.main.bounds.height/100, width: 40, height: 40))
+        let labelStart = UITextView(frame: CGRect(x: 33 * UIScreen.main.bounds.width/100, y: 17 * UIScreen.main.bounds.height/100, width: 40, height: 40))
     
-        button1.text = "start"
-        button1.backgroundColor = .none
-            button1.isUserInteractionEnabled = false
-        view.addSubview(button1)
+        labelStart.text = "start"
+        labelStart.backgroundColor = .none
+            labelStart.isUserInteractionEnabled = false
+        view.addSubview(labelStart)
         
         let buttonStop =  UIButton(frame: CGRect(x: 55 * UIScreen.main.bounds.width/100, y: 12 * UIScreen.main.bounds.height/100, width: 40, height: 40))
         
@@ -193,12 +193,12 @@ class Capteur:  UIViewController, UITableViewDataSource{
         buttonStop.addTarget(self, action: #selector(self.buttonTappedStop), for: .touchUpInside)
         view.addSubview(buttonStop)
         
-           let button2 = UITextView(frame: CGRect( x: 55 * UIScreen.main.bounds.width/100, y: 17 * UIScreen.main.bounds.height/100, width: 40, height: 40))
+           let labelStop = UITextView(frame: CGRect( x: 55 * UIScreen.main.bounds.width/100, y: 17 * UIScreen.main.bounds.height/100, width: 40, height: 40))
         
-            button2.text = "stop"
-        button2.isUserInteractionEnabled = false
-            button2.backgroundColor = .none
-            view.addSubview(button2)
+            labelStop.text = "stop"
+       labelStop.isUserInteractionEnabled = false
+            labelStop.backgroundColor = .none
+            view.addSubview(labelStop)
  
     }
     
@@ -242,8 +242,8 @@ class Capteur:  UIViewController, UITableViewDataSource{
 //        handleNewObjectAvailable(
         sensorT = sensor
         
-    scanner.defineFilterType(sensor: sensor)
-    scanner.dictionnarySensor.addHandler(handler : handleNewObjectAvailable)
+  //  scanner.defineFilterType(sensor: sensor)
+  //  scanner.dictionnarySensor.addHandler(handler : handleNewObjectAvailable)
         
 
     }
