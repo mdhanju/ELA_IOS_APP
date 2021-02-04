@@ -10,7 +10,9 @@ class Capteur:  UIViewController, UITableViewDataSource{
     var isStartButton : Bool = true
    var sensorT : SensorTypes? = nil
     
-    
+    var buttonStart : UIButton? = nil
+    var buttonStop : UIButton? = nil
+    var isStopButton = false
     
     
    
@@ -161,7 +163,7 @@ class Capteur:  UIViewController, UITableViewDataSource{
      //   imageView0.font = UIFont.systemFont(ofSize: 25.0)
     //    imageView0.font = UIFont.boldSystemFont(ofSize: 25)
            uiView.frame = CGRect(x: 0 * UIScreen.main.bounds.height/100, y: 6 * UIScreen.main.bounds.width/100, width: 100 * UIScreen.main.bounds.width/100, height:  17 * UIScreen.main.bounds.height/100)
-        uiView.backgroundColor = .systemBlue
+        uiView.backgroundColor = .none
           self.view.addSubview(uiView)
       
 
@@ -174,11 +176,11 @@ class Capteur:  UIViewController, UITableViewDataSource{
         self.view.addSubview(imageView1)
         */
         
-        let button = UIButton(frame: CGRect(x: 32 * UIScreen.main.bounds.width/100, y:  12 * UIScreen.main.bounds.height/100, width: 40, height: 40))
-        button.setImage(UIImage(named: "start"), for: .normal)
-        button.addTarget(self, action: #selector(self.buttonTapped), for: .touchUpInside)
+        buttonStart = UIButton(frame: CGRect(x: 32 * UIScreen.main.bounds.width/100, y:  12 * UIScreen.main.bounds.height/100, width: 40, height: 40))
+        buttonStart!.setImage(UIImage(named: "start"), for: .normal)
+        buttonStart!.addTarget(self, action: #selector(self.buttonTapped), for: .touchUpInside)
         
-        view.addSubview(button)
+        view.addSubview(buttonStart!)
         
         let labelStart = UITextView(frame: CGRect(x: 33 * UIScreen.main.bounds.width/100, y: 17 * UIScreen.main.bounds.height/100, width: 40, height: 40))
     
@@ -187,11 +189,11 @@ class Capteur:  UIViewController, UITableViewDataSource{
             labelStart.isUserInteractionEnabled = false
         view.addSubview(labelStart)
         
-        let buttonStop =  UIButton(frame: CGRect(x: 55 * UIScreen.main.bounds.width/100, y: 12 * UIScreen.main.bounds.height/100, width: 40, height: 40))
+         buttonStop =  UIButton(frame: CGRect(x: 55 * UIScreen.main.bounds.width/100, y: 12 * UIScreen.main.bounds.height/100, width: 40, height: 40))
         
-        buttonStop.setImage(UIImage(named: "stop"), for: .normal)
-        buttonStop.addTarget(self, action: #selector(self.buttonTappedStop), for: .touchUpInside)
-        view.addSubview(buttonStop)
+        buttonStop!.setImage(UIImage(named: "stop"), for: .normal)
+        buttonStop!.addTarget(self, action: #selector(self.buttonTappedStop), for: .touchUpInside)
+        view.addSubview(buttonStop!)
         
            let labelStop = UITextView(frame: CGRect( x: 55 * UIScreen.main.bounds.width/100, y: 17 * UIScreen.main.bounds.height/100, width: 40, height: 40))
         
@@ -204,8 +206,16 @@ class Capteur:  UIViewController, UITableViewDataSource{
     
     @objc func buttonTapped(sender : UIButton) {
         
+        
+       /* if( isStopButton == false)
+        {
+             buttonStop!.setImage(UIImage(named: "stop_s"), for: .normal)
+        }
+ */
+     
         if (isStartButton == true)
         {
+             buttonStart!.setImage(UIImage(named: "start_s"), for: .normal)
             scanner = Scanner1()
             scanner.initializeScanner()
             
@@ -216,10 +226,21 @@ class Capteur:  UIViewController, UITableViewDataSource{
             self.showToast(message: "Le scan a démarré", font: .systemFont(ofSize: 12.0))
             
             isStartButton = false
+            isStopButton = false
+            buttonStop!.setImage(UIImage(named: "stop"), for: .normal)
         }
+        
     }
     
     @objc func buttonTappedStop(sender : UIButton) {
+         isStopButton = true
+        if( isStopButton == true)
+                       {
+                            buttonStop!.setImage(UIImage(named: "stop_s"), for: .normal)
+                       }
+     
+        buttonStart!.setImage(UIImage(named: "start"), for: .normal)
+     //   buttonStop!.setImage(UIImage(named: "stop_s"), for: .normal)
         
         scanner.stopScanner()
         
@@ -229,6 +250,7 @@ class Capteur:  UIViewController, UITableViewDataSource{
         self.display.removeAll()
         tableview.reloadData()
         isStartButton = true
+    
     }
     
     override func  viewDidLayoutSubviews() {
