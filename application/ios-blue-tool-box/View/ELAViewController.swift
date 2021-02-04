@@ -70,7 +70,25 @@ class ELAViewController: UIViewController {
                
            }
        }
-*/
+    */
+    private let menuItems: [SideMenuItem] = []
+    
+      public var delegate: MenuControllerDelegate?
+    @objc func imageTap() {
+       
+                // present modally
+        //self.present(BlueIDViewController, animated: true)
+                // or push to the navigation stack
+            self.navigationController?.pushViewController(BlueIDViewController(), animated: true)
+       // let selectedItem = menuItems[1]
+        //delegate?.didSelectMenuItem(named: selectedItem)
+      //  self.navigationController?.popToViewController(BlueIDViewController(), animated: true)
+        //self.navigationItem.
+       // self.navigationController?.
+            
+            }
+     
+
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -87,6 +105,7 @@ class ELAViewController: UIViewController {
              imageView0.font = UIFont.boldSystemFont(ofSize: 25)
                  imageView0.frame = CGRect(x: 80, y: 300, width: 350, height: 100)
              imageView0.backgroundColor = .none
+    
                self.view.addSubview(imageView0)
              
                //Imageview on Top of View
@@ -104,15 +123,30 @@ class ELAViewController: UIViewController {
              self.view.bringSubviewToFront(imageView)
                
                
+        
+          func imageTap() {
+                    // present modally
+                    self.present(BlueIDViewController(), animated: true)
+                    // or push to the navigation stack
+                //    self.navigationController?.pushViewController(BlueIDViewController, animated: true)
+                
+                }
+        
+        
+        
                  let imageName1 = "blue"
                  let image1 = UIImage(named: imageName1)
                  let imageView1 = UIImageView(image: image1!)
                  imageView1.frame = CGRect(x: 50, y: 450, width: 45, height: 45)
+        imageView1.isUserInteractionEnabled = true
+        let imageTapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(ELAViewController.imageTap))
+       imageView1.addGestureRecognizer(imageTapGestureRecognizer)
                self.view.addSubview(imageView1)
         
                
                //Imageview on Top of View
                self.view.bringSubviewToFront(imageView1)
+  
                
                
                
