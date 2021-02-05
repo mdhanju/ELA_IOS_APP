@@ -76,10 +76,24 @@ class ELAViewController: UIViewController, UINavigationControllerDelegate {
    // private let menuItems: [SideMenuItem] = [BlueIDViewController]
     private var sideMenu: SideMenuNavigationController?
       public var delegate: MenuControllerDelegate?
-    
+  //  let functions = ViewController()
   
  
-  /*  @objc func imageTap() {
+   @objc func imageTap() {
+  /*
+     let blueIDController = BlueIDViewController()
+    addChild(blueIDController)
+    view.addSubview(blueIDController.view)
+           blueIDController.view.frame = view.bounds
+    blueIDController.didMove(toParent: BlueIDViewController())
+    sideMenu?.dismiss(animated: true, completion: nil)
+      blueIDController.view.isHidden = false
+    
+    ELAViewController().view.isHidden = true
+    */
+   
+ //   sideMenu?.pushViewController(BlueIDViewController(), animated: true)
+    
   /*      if(sideMenu != nil)
         {
         present(sideMenu!,animated: true)
@@ -88,8 +102,8 @@ class ELAViewController: UIViewController, UINavigationControllerDelegate {
  */
      //
         
-
-      self.navigationController?.pushViewController(BlueIDViewController(), animated: true)
+   
+    //self.navigationController?.pushViewController(BlueIDViewController(), animated: true)
       //  self.navigationController?.pushViewController(
      //   self.navigationController?.hidesBarsOnTap = true
   //      self.navigationController?.
@@ -110,8 +124,8 @@ class ELAViewController: UIViewController, UINavigationControllerDelegate {
      //   self.navigationController?.navigationBar.
        // MenuCodidSelectMenuItem(named: SideMenuItem.blueID)
        // MenuControllerDelegate?.
-          
-    //    delegate?.didSelectMenuItem(named: SideMenuItem.blueID)
+       
+   //     delegate?.didSelectMenuItem(named: SideMenuItem.blueID)
        // self.delegate?.didSelectMenuItem(named: SideMenuItem.blueID)
           //  addChild(BlueIDViewController())
        // self.navigationController?.popToViewController(BlueIDViewController(), animated: true)
@@ -151,7 +165,7 @@ class ELAViewController: UIViewController, UINavigationControllerDelegate {
             }
     
     
-    */
+    
     
     
      
@@ -165,6 +179,7 @@ class ELAViewController: UIViewController, UINavigationControllerDelegate {
                            
         
         self.view.backgroundColor = UIColor(patternImage: UIImage(named: "back_main")!.scalePreservingAspectRatio(targetSize: CGSize(width: UIScreen.main.bounds.height, height:100 * UIScreen.main.bounds.height/100)))
+ 
         
         let imageView0 = UITextView()
              imageView0.text = "Blue Tool Box"
@@ -209,7 +224,7 @@ class ELAViewController: UIViewController, UINavigationControllerDelegate {
                  imageView1.frame = CGRect(x: 50, y: 450, width: 45, height: 45)
         imageView1.isUserInteractionEnabled = true
       //  let imageTapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(ELAViewController.imageTap))
-           let imageTapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(ViewController.imageTap))
+        let imageTapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(ELAViewController.imageTap))
        imageView1.addGestureRecognizer(imageTapGestureRecognizer)
                self.view.addSubview(imageView1)
         

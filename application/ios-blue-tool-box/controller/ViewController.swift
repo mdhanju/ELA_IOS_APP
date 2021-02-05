@@ -107,11 +107,19 @@ class ViewController:UIViewController,MenuControllerDelegate
     }
     
    // @objc func
-    
+  /*
     @objc func imageTap()
     {
-         present(sideMenu!,animated: true)
-    }
+               ELAController.view.isHidden = true
+        blueIDController.view.isHidden = false
+ 
+               // present(sideMenu!,animated: true)
+           //self.navigationController?.pushViewController(BlueIDViewController(), animated: true)
+        //SideMenuNavigationController.pushViewController(SideMenuItem.blueID)
+      //  sideMenu?.pushViewController(BlueIDViewController(), animated: true)
+       // didSelectMenuItem(named: SideMenuItem.blueID)
+    }*/
+ 
     
     @IBAction func Menu(_ sender: Any) {
         present(sideMenu!,animated: true)
