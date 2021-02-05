@@ -16,7 +16,7 @@ protocol MenuControllerDelegate
 
 enum SideMenuItem: String,CaseIterable
         {
-            case ELA = "ELA Innovation"
+            case ELA = "Home"
             case blueID = "Blue ID"
             case blueT = "Blue T"
             case blueRHT = "blue RHT"
@@ -69,7 +69,7 @@ extension UIImage {
       public var delegate: MenuControllerDelegate?
 
       private let menuItems: [SideMenuItem]
-      /*private let color = UIColor(red: 33/255.0,
+    /*  private let color = UIColor(red: 33/255.0,
                                   green: 33/255.0,
                                   blue: 33/255.0,
                                   alpha: 1)

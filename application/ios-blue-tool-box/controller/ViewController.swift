@@ -11,7 +11,7 @@ import UIKit
 class ViewController:UIViewController,MenuControllerDelegate
 {
     
-
+    
     
     private var sideMenu: SideMenuNavigationController?
     
@@ -26,19 +26,19 @@ class ViewController:UIViewController,MenuControllerDelegate
     
     
     
-
+    
     
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
-
         
         
         
         
-     
-
+        
+        
+        
         
         
         let menu = MenuController(with: SideMenuItem.allCases)
@@ -52,7 +52,7 @@ class ViewController:UIViewController,MenuControllerDelegate
         addChildControllers()
     }
     
-    private func addChildControllers() {
+    public func addChildControllers() {
         addChild(ELAController)
         addChild(blueIDController)
         addChild(blueTController)
@@ -61,9 +61,9 @@ class ViewController:UIViewController,MenuControllerDelegate
         addChild(blueMAGController)
         addChild(blueANGController)
         addChild(debugController)
-    
-       
-       
+        
+        
+        
         view.addSubview(ELAController.view)
         view.addSubview(blueIDController.view)
         view.addSubview(blueTController.view)
@@ -92,7 +92,7 @@ class ViewController:UIViewController,MenuControllerDelegate
         blueMAGController.didMove(toParent: self)
         blueANGController.didMove(toParent: self)
         debugController.didMove(toParent: self)
-       
+        
         blueIDController.view.isHidden = true
         blueTController.view.isHidden = true
         blueRHTController.view.isHidden = true
@@ -105,8 +105,13 @@ class ViewController:UIViewController,MenuControllerDelegate
         
         
     }
- 
-  
+    
+   // @objc func
+    
+    @objc func imageTap()
+    {
+         present(sideMenu!,animated: true)
+    }
     
     @IBAction func Menu(_ sender: Any) {
         present(sideMenu!,animated: true)
@@ -118,137 +123,137 @@ class ViewController:UIViewController,MenuControllerDelegate
         
         
         switch named
-         {
+        {
         case.ELA:
-                        blueIDController.view.isHidden = true
-                        blueTController.view.isHidden = true
-                        blueRHTController.view.isHidden = true
-                        blueMOVController.view.isHidden = true
-                        blueMAGController.view.isHidden = true
-                        blueANGController.view.isHidden = true
-                        debugController.view.isHidden = true
-        
-        
-        case.blueID:
-                      blueIDController.view.isHidden = false
-                      blueTController.view.isHidden = true
-                      blueRHTController.view.isHidden = true
-                      blueMOVController.view.isHidden = true
-                      blueMAGController.view.isHidden = true
-                      blueANGController.view.isHidden = true
-                      debugController.view.isHidden = true
-        case.blueT:
-                     blueIDController.view.isHidden = true
-                                 blueTController.view.isHidden = false
-                                 blueRHTController.view.isHidden = true
-                                 blueMOVController.view.isHidden = true
-                                 blueMAGController.view.isHidden = true
-                                 blueANGController.view.isHidden = true
-                                 debugController.view.isHidden = true
+            blueIDController.view.isHidden = true
+            blueTController.view.isHidden = true
+            blueRHTController.view.isHidden = true
+            blueMOVController.view.isHidden = true
+            blueMAGController.view.isHidden = true
+            blueANGController.view.isHidden = true
+            debugController.view.isHidden = true
             
-      
+            
+        case.blueID:
+            blueIDController.view.isHidden = false
+            blueTController.view.isHidden = true
+            blueRHTController.view.isHidden = true
+            blueMOVController.view.isHidden = true
+            blueMAGController.view.isHidden = true
+            blueANGController.view.isHidden = true
+            debugController.view.isHidden = true
+        case.blueT:
+            blueIDController.view.isHidden = true
+            blueTController.view.isHidden = false
+            blueRHTController.view.isHidden = true
+            blueMOVController.view.isHidden = true
+            blueMAGController.view.isHidden = true
+            blueANGController.view.isHidden = true
+            debugController.view.isHidden = true
+            
+            
         case .blueRHT:
-     blueIDController.view.isHidden = true
-                 blueTController.view.isHidden = true
-                 blueRHTController.view.isHidden = false
-                 blueMOVController.view.isHidden = true
-                 blueMAGController.view.isHidden = true
-                 blueANGController.view.isHidden = true
-                 debugController.view.isHidden = true
+            blueIDController.view.isHidden = true
+            blueTController.view.isHidden = true
+            blueRHTController.view.isHidden = false
+            blueMOVController.view.isHidden = true
+            blueMAGController.view.isHidden = true
+            blueANGController.view.isHidden = true
+            debugController.view.isHidden = true
         case .blueMOV:
-   blueIDController.view.isHidden = true
-               blueTController.view.isHidden = true
-               blueRHTController.view.isHidden = true
-               blueMOVController.view.isHidden = false
-               blueMAGController.view.isHidden = true
-               blueANGController.view.isHidden = true
-               debugController.view.isHidden = true
+            blueIDController.view.isHidden = true
+            blueTController.view.isHidden = true
+            blueRHTController.view.isHidden = true
+            blueMOVController.view.isHidden = false
+            blueMAGController.view.isHidden = true
+            blueANGController.view.isHidden = true
+            debugController.view.isHidden = true
         case .blueMAG:
-  blueIDController.view.isHidden = true
-              blueTController.view.isHidden = true
-              blueRHTController.view.isHidden = true
-              blueMOVController.view.isHidden = true
-              blueMAGController.view.isHidden = false
-              blueANGController.view.isHidden = true
-              debugController.view.isHidden = true
+            blueIDController.view.isHidden = true
+            blueTController.view.isHidden = true
+            blueRHTController.view.isHidden = true
+            blueMOVController.view.isHidden = true
+            blueMAGController.view.isHidden = false
+            blueANGController.view.isHidden = true
+            debugController.view.isHidden = true
         case .blueANG:
-           blueIDController.view.isHidden = true
-                       blueTController.view.isHidden = true
-                       blueRHTController.view.isHidden = true
-                       blueMOVController.view.isHidden = true
-                       blueMAGController.view.isHidden = true
-                       blueANGController.view.isHidden = false
-                       debugController.view.isHidden = true
+            blueIDController.view.isHidden = true
+            blueTController.view.isHidden = true
+            blueRHTController.view.isHidden = true
+            blueMOVController.view.isHidden = true
+            blueMAGController.view.isHidden = true
+            blueANGController.view.isHidden = false
+            debugController.view.isHidden = true
         case .debug:
-                        blueTController.view.isHidden = true
-                        blueRHTController.view.isHidden = true
-                        blueMOVController.view.isHidden = true
-                        blueMAGController.view.isHidden = true
-                        blueANGController.view.isHidden = true
-                        debugController.view.isHidden = false
+            blueTController.view.isHidden = true
+            blueRHTController.view.isHidden = true
+            blueMOVController.view.isHidden = true
+            blueMAGController.view.isHidden = true
+            blueANGController.view.isHidden = true
+            debugController.view.isHidden = false
         }
-    
-      
         
         
         
         
         
-    
+        
+        
+        
         
         
         
         
         /*
-            self?.title = named.rawValue
-            
-            
-            switch named
-            {
-            case.home:
-                self?.settingsController.view.isHidden = true
-                self?.infoController.view.isHidden = true
-            case.info:
-                self?.settingsController.view.isHidden = true
-                self?.infoController.view.isHidden = false
-            case.settings:
-                self?.settingsController.view.isHidden = true
-                self?.infoController.view.isHidden = false
-            }
-         */
-            
-    /*        if named == "Home"
-            {
-                self?.settingsController.view.isHidden = true
-                 self?.infoController.view.isHidden = true
-            }
-            
-            else if named == "Info"
-            {
-        self?.settingsController.view.isHidden = true
+         self?.title = named.rawValue
+         
+         
+         switch named
+         {
+         case.home:
+         self?.settingsController.view.isHidden = true
+         self?.infoController.view.isHidden = true
+         case.info:
+         self?.settingsController.view.isHidden = true
          self?.infoController.view.isHidden = false
-            }
-            else if named == "Settings"
-            {
-             self?.settingsController.view.isHidden = true
-              self?.infoController.view.isHidden = false
-            }
-            
-      */
-            
-            
+         case.settings:
+         self?.settingsController.view.isHidden = true
+         self?.infoController.view.isHidden = false
+         }
+         */
+        
+        /*        if named == "Home"
+         {
+         self?.settingsController.view.isHidden = true
+         self?.infoController.view.isHidden = true
+         }
+         
+         else if named == "Info"
+         {
+         self?.settingsController.view.isHidden = true
+         self?.infoController.view.isHidden = false
+         }
+         else if named == "Settings"
+         {
+         self?.settingsController.view.isHidden = true
+         self?.infoController.view.isHidden = false
+         }
+         
+         */
+        
+        
         
     }
     
 }
 
 
-    
-    
-   
-    
-    
-    
-    
+
+
+
+
+
+
+
 
 

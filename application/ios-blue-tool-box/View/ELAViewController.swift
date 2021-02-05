@@ -5,10 +5,12 @@
 //  Created by ELA Innovation on 14/01/2021.
 //  Copyright © 2021 ELA Innovation. All rights reserved.
 //
-
+import SideMenu
 import UIKit
 
-class ELAViewController: UIViewController {
+
+
+class ELAViewController: UIViewController, UINavigationControllerDelegate {
     
     
     /*
@@ -71,26 +73,93 @@ class ELAViewController: UIViewController {
            }
        }
     */
-    private let menuItems: [SideMenuItem] = []
-    
+   // private let menuItems: [SideMenuItem] = [BlueIDViewController]
+    private var sideMenu: SideMenuNavigationController?
       public var delegate: MenuControllerDelegate?
-    @objc func imageTap() {
+    
+  
+ 
+  /*  @objc func imageTap() {
+  /*      if(sideMenu != nil)
+        {
+        present(sideMenu!,animated: true)
+             delegate?.didSelectMenuItem(named: SideMenuItem.blueID)
+        }
+ */
+     //
+        
+
+      self.navigationController?.pushViewController(BlueIDViewController(), animated: true)
+      //  self.navigationController?.pushViewController(
+     //   self.navigationController?.hidesBarsOnTap = true
+  //      self.navigationController?.
+        
+        
+         //   let menu = MenuController(with: [SideMenuItem.blueID])
+        //  sideMenu = SideMenuNavigationController(rootViewController: BlueIDViewController())
+        
+         // sideMenu?.leftSide = true;
+          
+         // SideMenuManager.default.leftMenuNavigationController = sideMenu
+          //SideMenuManager.default.addPanGestureToPresent(toView: view)
+        
+        
+        
+     
+     //   self.navigationController?.isNavigationBarHidden = true
+     //   self.navigationController?.navigationBar.
+       // MenuCodidSelectMenuItem(named: SideMenuItem.blueID)
+       // MenuControllerDelegate?.
+          
+    //    delegate?.didSelectMenuItem(named: SideMenuItem.blueID)
+       // self.delegate?.didSelectMenuItem(named: SideMenuItem.blueID)
+          //  addChild(BlueIDViewController())
+       // self.navigationController?.popToViewController(BlueIDViewController(), animated: true)
+        //let menu = SideMenuNavigationController(rootViewController: BlueIDViewController())
+        
+
+      //  SideMenuManager.default.addPanGestureToPresent(toView: view)
+ //var menu: SideMenuNavigationController?
+        
+      /*  let menu = SideMenuNavigationController(rootViewController: MenuController(with: SideMenuItem.allCases))
+        let menu1 = SideMenuNavigationController(rootViewController: BlueIDViewController())
+     
+        
+         dismiss(animated: true, completion: nil)
+         menu.delegate = self
+         sideMenu?.leftSide = true;
+           
+           SideMenuManager.default.leftMenuNavigationController = sideMenu
+           SideMenuManager.default.addPanGestureToPresent(toView: view)
+        */
+   
+        
+        
        
-                // present modally
-        //self.present(BlueIDViewController, animated: true)
-                // or push to the navigation stack
-            self.navigationController?.pushViewController(BlueIDViewController(), animated: true)
-       // let selectedItem = menuItems[1]
-        //delegate?.didSelectMenuItem(named: selectedItem)
-      //  self.navigationController?.popToViewController(BlueIDViewController(), animated: true)
-        //self.navigationItem.
-       // self.navigationController?.
+     //   ViewController.didSelectMenuItem(named: SideMenuItem.blueID)
+     //   SideMenuManager.default.leftMenuNavigationController = menu
+     //       SideMenuManager.default.addPanGestureToPresent(toView: view)
             
+       // ViewController?.addChildControllers()
+    //   present(menu1, animated: true, completion: nil)
+   //    present(menu, animated: true, completion: nil)
+        
+        
+    // self.navigationController?.pushViewController(menu!, animated: true)
+            // https://www.youtube.com/watch?v=gw3vWyNTkSg
+        //https://www.youtube.com/watch?v=UVIQ7fkw_N8
             }
+    
+    
+    */
+    
+    
      
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+ 
         
       
                            
@@ -124,14 +193,14 @@ class ELAViewController: UIViewController {
                
                
         
-          func imageTap() {
+        /* func imageTap() {
                     // present modally
                     self.present(BlueIDViewController(), animated: true)
                     // or push to the navigation stack
                 //    self.navigationController?.pushViewController(BlueIDViewController, animated: true)
                 
                 }
-        
+        */
         
         
                  let imageName1 = "blue"
@@ -139,7 +208,8 @@ class ELAViewController: UIViewController {
                  let imageView1 = UIImageView(image: image1!)
                  imageView1.frame = CGRect(x: 50, y: 450, width: 45, height: 45)
         imageView1.isUserInteractionEnabled = true
-        let imageTapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(ELAViewController.imageTap))
+      //  let imageTapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(ELAViewController.imageTap))
+           let imageTapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(ViewController.imageTap))
        imageView1.addGestureRecognizer(imageTapGestureRecognizer)
                self.view.addSubview(imageView1)
         
@@ -197,7 +267,19 @@ class ELAViewController: UIViewController {
                self.view.bringSubviewToFront(imageView6)
         
         
+      
         
+        
+        let imageView02 = UITextView()
+                 imageView02.text = "A propos"
+                 imageView02.textColor = UIColor.white
+                 imageView02.font = UIFont.systemFont(ofSize: 3.0)
+             imageView02.isUserInteractionEnabled = false
+                 imageView02.font = UIFont.boldSystemFont(ofSize: 15)
+                     imageView02.frame = CGRect(x: 135, y: 600, width: 300, height: 45)
+                 imageView02.backgroundColor = .none
+        
+                   self.view.addSubview(imageView02)
         
         // Do any additional setup after loading the view.
     }

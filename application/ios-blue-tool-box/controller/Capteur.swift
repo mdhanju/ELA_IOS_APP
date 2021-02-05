@@ -163,7 +163,7 @@ class Capteur:  UIViewController, UITableViewDataSource{
      //   imageView0.font = UIFont.systemFont(ofSize: 25.0)
     //    imageView0.font = UIFont.boldSystemFont(ofSize: 25)
            uiView.frame = CGRect(x: 0 * UIScreen.main.bounds.height/100, y: 6 * UIScreen.main.bounds.width/100, width: 100 * UIScreen.main.bounds.width/100, height:  17 * UIScreen.main.bounds.height/100)
-        uiView.backgroundColor = .none
+        uiView.backgroundColor = .white
           self.view.addSubview(uiView)
       
 
