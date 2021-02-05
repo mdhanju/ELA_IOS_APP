@@ -104,7 +104,8 @@ class ELAViewController: UIViewController, UINavigationControllerDelegate {
         
    
     self.navigationController?.pushViewController(BlueIDViewController(), animated: true)
-   
+    view.layoutIfNeeded()
+  //  present(sideMenu!,animated: true)
   
       //  self.navigationController?.pushViewController(
      //   self.navigationController?.hidesBarsOnTap = true

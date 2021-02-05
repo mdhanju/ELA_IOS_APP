@@ -124,8 +124,11 @@ extension UIImage {
       override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
           tableView.deselectRow(at: indexPath, animated: true)
           // Relay to delegate about menu item selection
+        
           let selectedItem = menuItems[indexPath.row]
           delegate?.didSelectMenuItem(named: selectedItem)
       }
+    
+    
 
   }
