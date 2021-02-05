@@ -23,6 +23,11 @@
                                 <action selector="Menu:" destination="BYZ-38-t0r" id="6k7-5U-uLm"/>
                             </connections>
                         </barButtonItem>
+                        <barButtonItem key="rightBarButtonItem" title="Item" id="SlF-tH-Dso">
+                            <connections>
+                                <action selector="Menu1:" destination="BYZ-38-t0r" id="xbY-Dr-r3p"/>
+                            </connections>
+                        </barButtonItem>
                     </navigationItem>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
@@ -46,28 +51,6 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="3Nf-hl-84W" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="-625" y="117"/>
-        </scene>
-        <!--Home-->
-        <scene sceneID="MYa-S7-2hd">
-            <objects>
-                <viewController id="N13-Pa-OY3" customClass="ViewController" customModule="ios_blue_tool_box" customModuleProvider="target" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" id="RiS-MO-4Fr">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" systemColor="systemYellowColor" red="1" green="0.80000000000000004" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                        <viewLayoutGuide key="safeArea" id="9PT-Gd-yhq"/>
-                    </view>
-                    <navigationItem key="navigationItem" title="Home" id="TUI-Sy-p7C">
-                        <barButtonItem key="leftBarButtonItem" image="line.horizontal.3" catalog="system" id="sYt-jn-CFT">
-                            <connections>
-                                <action selector="Menu:" destination="N13-Pa-OY3" id="DAL-rm-AqC"/>
-                            </connections>
-                        </barButtonItem>
-                    </navigationItem>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="oU0-Lu-06u" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="356.52173913043481" y="116.51785714285714"/>
         </scene>
     </scenes>
     <color key="tintColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>

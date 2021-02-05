@@ -92,7 +92,7 @@ class ELAViewController: UIViewController, UINavigationControllerDelegate {
     ELAViewController().view.isHidden = true
     */
    
- //   sideMenu?.pushViewController(BlueIDViewController(), animated: true)
+  //  sideMenu?.pushViewController(BlueIDViewController(), animated: true)
     
   /*      if(sideMenu != nil)
         {
@@ -103,7 +103,9 @@ class ELAViewController: UIViewController, UINavigationControllerDelegate {
      //
         
    
-    //self.navigationController?.pushViewController(BlueIDViewController(), animated: true)
+    self.navigationController?.pushViewController(BlueIDViewController(), animated: true)
+   
+  
       //  self.navigationController?.pushViewController(
      //   self.navigationController?.hidesBarsOnTap = true
   //      self.navigationController?.

@@ -121,9 +121,13 @@ class ViewController:UIViewController,MenuControllerDelegate
     }*/
  
     
+ 
+    
     @IBAction func Menu(_ sender: Any) {
         present(sideMenu!,animated: true)
     }
+  
+
     func didSelectMenuItem(named: SideMenuItem) {
         sideMenu?.dismiss(animated: true, completion: nil)
         
