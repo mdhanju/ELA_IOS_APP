@@ -23,11 +23,6 @@
                                 <action selector="Menu:" destination="BYZ-38-t0r" id="6k7-5U-uLm"/>
                             </connections>
                         </barButtonItem>
-                        <barButtonItem key="rightBarButtonItem" title="Item" id="SlF-tH-Dso">
-                            <connections>
-                                <action selector="Menu1:" destination="BYZ-38-t0r" id="xbY-Dr-r3p"/>
-                            </connections>
-                        </barButtonItem>
                     </navigationItem>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>

@@ -3,7 +3,7 @@ import CoreBluetooth
 import SwiftUI
 
 
-class Capteur:  UIViewController, UITableViewDataSource{
+class Capteur:  UIViewController, UITableViewDataSource, UITableViewDelegate{
     
     private var scanner: Scanner1!
     var display: [ DisplayObject] = []
@@ -14,7 +14,7 @@ class Capteur:  UIViewController, UITableViewDataSource{
     var buttonStop : UIButton? = nil
     var isStopButton = false
     
-    
+    private let data = [["canard","mouton","renard"],["canard","mouton","renard"]]
    
    
     
@@ -93,6 +93,14 @@ class Capteur:  UIViewController, UITableViewDataSource{
         return cell
     }
    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+    
+       //  self.navigationController?.pushViewController(AproposViewController(), animated: true)
+       tableView.deselectRow(at: indexPath, animated: true)
+  //      present(AproposViewController(), animated: true)
+        let string1 = display[indexPath.row].name
+             self.navigationController?.pushViewController(targetTempViewController(selectedItem: string1), animated: true)
+    }
     
     
     private let tableview : UITableView =
@@ -107,7 +115,7 @@ class Capteur:  UIViewController, UITableViewDataSource{
         tableview.frame.size.height = tableview.contentSize.height
         tableview.allowsMultipleSelection = false
         tableview.allowsMultipleSelectionDuringEditing = false
-        tableview.allowsSelectionDuringEditing = false
+    tableview.allowsSelectionDuringEditing = false
  
      
         return tableview
@@ -118,6 +126,8 @@ class Capteur:  UIViewController, UITableViewDataSource{
     {
         super.viewDidLoad()
         
+        tableview.delegate = self
+        tableview.dataSource = self
         
         
         let uiScrollView = UIScrollView()
