@@ -298,8 +298,8 @@
             filePath = "ios-blue-tool-box/controller/Capteur.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "277"
-            endingLineNumber = "277"
+            startingLineNumber = "301"
+            endingLineNumber = "301"
             landmarkName = "initializeInfoSensor(sensor:)"
             landmarkType = "7">
          </BreakpointContent>
@@ -330,8 +330,8 @@
             filePath = "ios-blue-tool-box/controller/Capteur.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "296"
-            endingLineNumber = "296"
+            startingLineNumber = "322"
+            endingLineNumber = "322"
             landmarkName = "updateSensorUI(data:)"
             landmarkType = "7">
          </BreakpointContent>
@@ -346,8 +346,8 @@
             filePath = "ios-blue-tool-box/controller/Capteur.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "310"
-            endingLineNumber = "310"
+            startingLineNumber = "347"
+            endingLineNumber = "347"
             landmarkName = "updateSensorUI(data:)"
             landmarkType = "7">
          </BreakpointContent>
@@ -378,8 +378,8 @@
             filePath = "ios-blue-tool-box/controller/Capteur.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "278"
-            endingLineNumber = "278"
+            startingLineNumber = "302"
+            endingLineNumber = "302"
             landmarkName = "initializeInfoSensor(sensor:)"
             landmarkType = "7">
          </BreakpointContent>
@@ -474,8 +474,8 @@
             filePath = "ios-blue-tool-box/View/targetTempViewController.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "30"
-            endingLineNumber = "30"
+            startingLineNumber = "43"
+            endingLineNumber = "43"
             landmarkName = "viewDidLoad()"
             landmarkType = "7">
          </BreakpointContent>
@@ -483,15 +483,15 @@
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
-            uuid = "4D9BDC42-0E3B-475A-85C2-A1013684BA08"
+            uuid = "D4C1C396-D0E4-486E-9061-DC52A497E3D5"
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "ios-blue-tool-box/View/targetTempViewController.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "31"
-            endingLineNumber = "31"
+            startingLineNumber = "45"
+            endingLineNumber = "45"
             landmarkName = "viewDidLoad()"
             landmarkType = "7">
          </BreakpointContent>

@@ -649,6 +649,3 @@ class SensorFactory
 }
 
 
-
-// run
-let id = SensorFactory.shared().getSensorID(sensorTypes: .SensorTemperature,name : "tes", RSSI : 2,identifier: "ddddd")

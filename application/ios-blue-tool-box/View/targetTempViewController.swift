@@ -10,11 +10,24 @@ import UIKit
 
 class targetTempViewController: UIViewController {
 
+    
 
-    private let selectedItem : String
+    private let nameSensor : String
+    private let RSSI : Int
+    private let identifier : String
+    private let battery : Int
+    private let typedata : SensorTypes
+    private let array : [Capteur.Cap]
+    
 //    private let relatedItem : [String]
-    init(selectedItem : String) {
-        self.selectedItem = selectedItem
+    init(nameSensor : String,RSSI: Int, identifier : String, battery : Int, typedata : SensorTypes,array: [Capteur.Cap]) {
+        self.nameSensor = nameSensor
+        self.RSSI = RSSI
+        self.identifier = identifier
+        self.battery = battery
+        self.typedata = typedata
+        self.array = array
+        
      
         super.init(nibName : nil , bundle : nil)
     }
@@ -27,8 +40,8 @@ class targetTempViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        print(selectedItem)
-
+        print(nameSensor, RSSI ,identifier, battery,typedata, array)
+     
         // Do any additional setup after loading the view.
     }
     
