@@ -124,8 +124,14 @@ class Capteur:  UIViewController, UITableViewDataSource, UITableViewDelegate{
         let typedata = display[indexPath.row].typedata
         let arr : [Cap] = display[indexPath.row].array
         
+        
+        // si c'est un capteur de temperature
+        if(typedata == SensorTypes.SensorTemperature)
+                   {
+        
         self.navigationController?.pushViewController(targetTempViewController(nameSensor: string1 ,RSSI: RSSI, identifier : identifier, battery : battery, typedata : typedata,array : arr,displayObject : display), animated: true)
          self.navigationController?.navigationBar.tintColor = .black
+        }
         //
     }
     

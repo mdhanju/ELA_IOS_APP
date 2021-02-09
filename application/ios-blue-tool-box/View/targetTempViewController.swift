@@ -59,13 +59,25 @@ class targetTempViewController: UIViewController,ChartViewDelegate {
         self.view.bringSubviewToFront(UInameSensor)
         
         
+        let UIconnecter = UITextView()
+        UIconnecter.text = "Connecter/ Deconnecter"
+        UIconnecter.textColor = UIColor.black
+        UIconnecter.font = UIFont.systemFont(ofSize: 25.0)
+        UIconnecter.isUserInteractionEnabled = false
+        UIconnecter.font = UIFont.boldSystemFont(ofSize: 15)
+        UIconnecter.frame = CGRect(x: 80, y: 100, width: 350, height: 100)
+        UIconnecter.backgroundColor = .none
+        self.view.addSubview(UIconnecter)
+        self.view.bringSubviewToFront(UIconnecter)
+        
+        
         let UIbatterie = UITextView()
-        UIbatterie.text = "La batterie est de : " + String(battery) + " mA"
+        UIbatterie.text = "La batterie est de : " + String(battery) + " mV"
         UIbatterie.textColor = UIColor.black
         UIbatterie.font = UIFont.systemFont(ofSize: 25.0)
         UIbatterie.isUserInteractionEnabled = false
-        UIbatterie.font = UIFont.boldSystemFont(ofSize: 25)
-        UIbatterie.frame = CGRect(x: 80, y: 500, width: 350, height: 100)
+        UIbatterie.font = UIFont.boldSystemFont(ofSize: 15)
+        UIbatterie.frame = CGRect(x: 170, y: 560, width: 350, height: 100)
         UIbatterie.backgroundColor = .none
         self.view.addSubview(UIbatterie)
         self.view.bringSubviewToFront(UIbatterie)
@@ -77,6 +89,17 @@ class targetTempViewController: UIViewController,ChartViewDelegate {
         let imageViewTemp = UIImageView(image: UIimageTemp!)
         imageViewTemp.frame = CGRect(x: 20, y: 70, width: 45, height: 45)
         self.view.addSubview(imageViewTemp)
+        
+        
+        let imageConnect = "connection"
+           let UIconnect = UIImage(named: imageConnect)
+           let imageVIewConnect = UIImageView(image: UIconnect!)
+           imageVIewConnect.frame = CGRect(x: 270, y: 100, width: 45, height: 45)
+        imageVIewConnect.isUserInteractionEnabled = true
+        let imageTapGestureRecognizerConnect = UITapGestureRecognizer(target: self, action: #selector(ELAViewController.imageTapTemp))
+        imageViewTemp.addGestureRecognizer(imageTapGestureRecognizerConnect)
+
+           self.view.addSubview(imageVIewConnect)
         
         
         
