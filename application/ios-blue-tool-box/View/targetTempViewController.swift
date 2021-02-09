@@ -44,24 +44,38 @@ class targetTempViewController: UIViewController,ChartViewDelegate {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        view.backgroundColor = .cyan
+        view.backgroundColor = .white
         
         
-        let imageView0 = UITextView()
-        imageView0.text = nameSensor
-        imageView0.textColor = UIColor.red
-        imageView0.font = UIFont.systemFont(ofSize: 25.0)
-        imageView0.isUserInteractionEnabled = false
-        imageView0.font = UIFont.boldSystemFont(ofSize: 25)
-        imageView0.frame = CGRect(x: 80, y: 300, width: 350, height: 100)
-        imageView0.backgroundColor = .none
-        self.view.addSubview(imageView0)
-        self.view.bringSubviewToFront(imageView0)
+        let UInameSensor = UITextView()
+        UInameSensor.text = nameSensor
+        UInameSensor.textColor = UIColor.black
+        UInameSensor.font = UIFont.systemFont(ofSize: 25.0)
+        UInameSensor.isUserInteractionEnabled = false
+        UInameSensor.font = UIFont.boldSystemFont(ofSize: 25)
+        UInameSensor.frame = CGRect(x: 80, y: 50, width: 350, height: 100)
+        UInameSensor.backgroundColor = .none
+        self.view.addSubview(UInameSensor)
+        self.view.bringSubviewToFront(UInameSensor)
+        
+        
+        let UIbatterie = UITextView()
+        UIbatterie.text = "La batterie est de : " + String(battery) + " mA"
+        UIbatterie.textColor = UIColor.black
+        UIbatterie.font = UIFont.systemFont(ofSize: 25.0)
+        UIbatterie.isUserInteractionEnabled = false
+        UIbatterie.font = UIFont.boldSystemFont(ofSize: 25)
+        UIbatterie.frame = CGRect(x: 80, y: 500, width: 350, height: 100)
+        UIbatterie.backgroundColor = .none
+        self.view.addSubview(UIbatterie)
+        self.view.bringSubviewToFront(UIbatterie)
+        
+        
         
         let imageTemp = "temp"
         let UIimageTemp = UIImage(named: imageTemp)
         let imageViewTemp = UIImageView(image: UIimageTemp!)
-        imageViewTemp.frame = CGRect(x: 150, y: 450, width: 45, height: 45)
+        imageViewTemp.frame = CGRect(x: 20, y: 70, width: 45, height: 45)
         self.view.addSubview(imageViewTemp)
         
         
@@ -82,7 +96,7 @@ class targetTempViewController: UIViewController,ChartViewDelegate {
     
         var entries = [ChartDataEntry]()
         for cle in displayObject {
-            if( cle.name == nameSensor)
+            if( cle.identifier == identifier)
                 
             {
                 if let temp : [Capteur.Temp] = cle.array as? [Capteur.Temp]

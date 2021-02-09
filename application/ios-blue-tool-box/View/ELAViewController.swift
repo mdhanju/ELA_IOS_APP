@@ -67,6 +67,7 @@ class ELAViewController: UIViewController, UINavigationControllerDelegate {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+         self.navigationController?.navigationBar.tintColor = .black
         self.view.backgroundColor = UIColor(patternImage: UIImage(named: "back_main")!.scalePreservingAspectRatio(targetSize: CGSize(width: UIScreen.main.bounds.height, height:100 * UIScreen.main.bounds.height/100)))
         
         

@@ -125,6 +125,7 @@ class Capteur:  UIViewController, UITableViewDataSource, UITableViewDelegate{
         let arr : [Cap] = display[indexPath.row].array
         
         self.navigationController?.pushViewController(targetTempViewController(nameSensor: string1 ,RSSI: RSSI, identifier : identifier, battery : battery, typedata : typedata,array : arr,displayObject : display), animated: true)
+         self.navigationController?.navigationBar.tintColor = .black
         //
     }
     
