@@ -50,6 +50,15 @@ class Capteur:  UIViewController, UITableViewDataSource, UITableViewDelegate{
             self.typedata = typedata
             self.array = array
         }
+        
+        public func addData(data : Cap)
+        {
+            self.array.append(data)
+            if(self.array.count > 20)
+            {
+                self.array.remove(at: 0)
+            }
+        }
     }
     
     
@@ -122,7 +131,8 @@ class Capteur:  UIViewController, UITableViewDataSource, UITableViewDelegate{
         let battery = display[indexPath.row].battery
         let typedata = display[indexPath.row].typedata
         let arr : [Cap] = display[indexPath.row].array
-        self.navigationController?.pushViewController(targetTempViewController(nameSensor: string1 ,RSSI: RSSI, identifier : identifier, battery : battery, typedata : typedata,array : arr), animated: true)
+        
+        self.navigationController?.pushViewController(targetTempViewController(nameSensor: string1 ,RSSI: RSSI, identifier : identifier, battery : battery, typedata : typedata,array : arr,displayObject : display), animated: true)
         //
     }
     
@@ -335,6 +345,10 @@ class Capteur:  UIViewController, UITableViewDataSource, UITableViewDelegate{
                                    {
                                     let objectTemp = Temp(temp: temp.temperature)
                                     newobject = DisplayObject(name : cle.name, RSSI : cle.RSSI, identifier:  cle.identifier, battery: cle.battery, typedata : cle.typedata,array: [objectTemp] )
+                                  //  display.addData(data: objectTemp)
+                                    cle.addData(data: objectTemp)
+                                    
+                                   
                         }
                     }
                     
@@ -354,9 +368,11 @@ class Capteur:  UIViewController, UITableViewDataSource, UITableViewDelegate{
                                         newobject = DisplayObject(name: value.name, RSSI: value.RSSI, identifier: value.idenfitfier, battery: value.batterylevel, typedata : value.sensorTypes,array: [arr] )
                                     }
                 }
+                display.append(newobject)
+               var c = display
                 
             }
-                display.append(newobject)
+                
             
                 
                 
@@ -365,44 +381,5 @@ class Capteur:  UIViewController, UITableViewDataSource, UITableViewDelegate{
         }
         return newobject
     }
-    
-    
-    /* func updateSensorTypeUI(data: ([String : Sensor])) -> DisplayObject {
-         
-
-         var newobject : DisplayObject = DisplayObject(name: "null", RSSI: 0, identifier: "", displaytext: "")
-        
-         for (key,value) in data
-               {
-            
-                    if(value is SensorTemperature)
-                        {
-                                if let temperature = value as? SensorTemperature
-                                      {
-                                          print("My temperature found : " + String(temperature.getTemp()))
-                                
-                                      }
-                        }
-                
-                
-                
-                
-                                if(value is SensorTemperatureHumidity)
-                                    {
-                                            if let temperatureHumidity = value as? SensorTemperatureHumidity
-                                                  {
-                                                      print("My temperature found : " + String(temperatureHumidity.getTemp()))
-                                                      print("My humidity found : " + String(temperatureHumidity.getHum()))
-                                            
-                                                  }
-                                    }
-                
-                
-                
-        
-               }
-         return newobject
-     }
- */
 }
 
