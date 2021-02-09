@@ -2,25 +2,6 @@ import UIKit
 import CoreBluetooth
 
 
-/*
-class Event<T> {
-
-    typealias EventHandler = (T) -> ()
-
-  private var eventHandlers = [EventHandler]()
-
-  func addHandler(handler: @escaping(EventHandler)) {
-    eventHandlers.append(handler)
-  }
-
-  func raise(data: T) {
-    for handler in eventHandlers {
-      handler(data)
-    }
-  }
-}
- */
-
 class Scanner1: NSObject, CBPeripheralDelegate, CBCentralManagerDelegate {
     
     private var centralManager: CBCentralManager!
@@ -36,9 +17,7 @@ class Scanner1: NSObject, CBPeripheralDelegate, CBCentralManagerDelegate {
     override init() {
         evNewInfoAvailable = Event<(String, String)>()
         dictionnarySensor = Event<([String : Sensor])>()
-        
-        
-        //evNewInfoAvailable.addHandler { a, b in print("Le nom \(a), et l'identifier \(b)") }
+
     }
     
     public func defineFilterType(sensor : SensorTypes)
@@ -106,24 +85,13 @@ class Scanner1: NSObject, CBPeripheralDelegate, CBCentralManagerDelegate {
         if(advertisementData[CBAdvertisementDataServiceDataKey] != nil)
         {
             let sensorData = advertisementData[CBAdvertisementDataServiceDataKey] as? Dictionary<CBUUID,NSData>
-         //   print(sensorData)
-         //   print(advertisementData[CBAdvertisementDataServiceDataKey])
-            
-            /*   if(sensorData![CBUUID(string: "2A3F")] != nil && sensorData![CBUUID(string: "2A06")] != nil && ConvertionToolbox.convertHexaToEtat(str: sensorData![CBUUID(string: "2A3F")]!.description) == true ){
-             
-             print(advertisementData[CBAdvertisementDataServiceDataKey])
-             print(advertisementData.debugDescription)
-             print(peripheral.debugDescription)
-             }
-             */
+
             if(identifier.count <= 0)
             {
                 identifier.append(peripheral.identifier.description)
             }
             else{
-            //    if(!identifier.contains(peripheral.identifier.description))
-            //    {
-                   // print("New Device = " +  peripheral.identifier.description)
+      
                     identifier.append(peripheral.identifier.description)
                     
                     let id = SensorFactory.shared().get(sensorData: sensorData, tagname: peripheral.name?.description ?? "", tagRSSI: RSSI, tagidentifier: peripheral.identifier.description)
@@ -132,13 +100,7 @@ class Scanner1: NSObject, CBPeripheralDelegate, CBCentralManagerDelegate {
                     
                     if( id != nil)
                     {
-                       // defineFilterType(sensor: id!.sensorTypes)
-                        //dictionnarySensor.raise(data : [peripheral.identifier.description:id!])
-                        //
-                        
-                        
-                    
-                        
+
                         
                         if(nil == self.sensorTypeFiler)
                         {
@@ -152,26 +114,12 @@ class Scanner1: NSObject, CBPeripheralDelegate, CBCentralManagerDelegate {
                                 dictionnarySensor.raise(data : [peripheral.identifier.description:id!])
                             }
                     }
-                        
-                   //     SensorFactory.shared().addDtictionnary(tagidentifier: peripheral.identifier.description, sensor: id!)
-                   //     SensorFactory.shared().getDataSensor(id: id!)
+      
                     }
-                    //SensorFactory.shared().printDtictionnary()
+
                 }
         }
-              // else
-            //{
-              //      print("Sensor uknow")
-            //   }
-          //  }
-        //}
-   //     else
-     //   {
-       //     print("déja trouvé")
-         //   SensorFactory.shared().updateDtictionnary(tagidentifier: peripheral.identifier.description, sensor: id)
-            
-            // arraySensorMagnetic.updateValue(SensorMagnetic, forKey: peripheral.identifier.description)
-        //}
+
     
     }
     

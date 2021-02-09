@@ -14,21 +14,21 @@ class Capteur:  UIViewController, UITableViewDataSource, UITableViewDelegate{
     var buttonStop : UIButton? = nil
     var isStopButton = false
     
-   public class Cap
+    public class Cap
     {
         
     }
     
-   public class Temp : Cap
+    public class Temp : Cap
     {
         public var temp : Float
         init(temp : Float) {
             self.temp = temp
         }
-    func getTemp()->Float
-    {
-        return temp
-    }
+        func getTemp()->Float
+        {
+            return temp
+        }
     }
     
     
@@ -105,14 +105,8 @@ class Capteur:  UIViewController, UITableViewDataSource, UITableViewDelegate{
         
         let objectDiplay = display[indexPath.row]
         cell.textLabel?.text = objectDiplay.name
-        
-        // cell.textLabel?.text = String(objectDiplay.RSSI)
         cell.textLabel?.textAlignment = .left
-        
-        //    let _:UITableViewCell = UITableViewCell(style: UITableViewCell.CellStyle.default, reuseIdentifier: "ChatCell")
-        
         cell.textLabel?.text = objectDiplay.name
-        //   cell.detailTextLabel?.text = "lll"
         let label = UILabel.init(frame: CGRect(x:0,y:0,width:100,height:20))
         label.text = String(objectDiplay.RSSI)
         cell.accessoryView = label
@@ -122,9 +116,7 @@ class Capteur:  UIViewController, UITableViewDataSource, UITableViewDelegate{
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         
-        //  self.navigationController?.pushViewController(AproposViewController(), animated: true)
         tableView.deselectRow(at: indexPath, animated: true)
-        //      present(AproposViewController(), animated: true)
         let string1 = display[indexPath.row].name
         let RSSI = display[indexPath.row].RSSI
         let identifier = display[indexPath.row].identifier
@@ -165,10 +157,6 @@ class Capteur:  UIViewController, UITableViewDataSource, UITableViewDelegate{
         
         
         let uiScrollView = UIScrollView()
-        //    imageView0.text = "Blue Tool Box"
-        //   imageView0.textColor = UIColor.red
-        //   imageView0.font = UIFont.systemFont(ofSize: 25.0)
-        //    imageView0.font = UIFont.boldSystemFont(ofSize: 25)
         uiScrollView.frame = CGRect(x: 10 * UIScreen.main.bounds.width/100, y: 15 * UIScreen.main.bounds.width/100, width: 80 * UIScreen.main.bounds.width/100, height: 100 * UIScreen.main.bounds.height/100)
         uiScrollView.backgroundColor = .green
         self.view.addSubview(uiScrollView)
@@ -178,47 +166,12 @@ class Capteur:  UIViewController, UITableViewDataSource, UITableViewDelegate{
         tableview.contentInset = UIEdgeInsets(top: 80,left: 0,bottom: 0,right: 0)
         //  tableview.backgroundColor = .green
         tableview.dataSource = self
-        
-        
-        
-        //https://stackoverflow.com/questions/33292427/how-to-make-the-scroll-of-a-tableview-inside-scrollview-behave-naturally
-        
-        //https://www.youtube.com/watch?v=INkeINPZddo
-        // view.addSubview(imageView0)
-        
-        
-        
-        
-        
-        
-        
-        
         view.addSubview(tableview)
         
-        
-        
-        
-        
-        
-        
         let uiView = UIView()
-        //    imageView0.text = "Blue Tool Box"
-        //   imageView0.textColor = UIColor.red
-        //   imageView0.font = UIFont.systemFont(ofSize: 25.0)
-        //    imageView0.font = UIFont.boldSystemFont(ofSize: 25)
         uiView.frame = CGRect(x: 0 * UIScreen.main.bounds.height/100, y: 6 * UIScreen.main.bounds.width/100, width: 100 * UIScreen.main.bounds.width/100, height:  17 * UIScreen.main.bounds.height/100)
         uiView.backgroundColor = .white
         self.view.addSubview(uiView)
-        
-        
-        
-        /*  let img = "start"
-         let image1 = UIImage(named: img)
-         let imageView1 = UIImageView(image: image1!)
-         imageView1.frame = CGRect(x: 50, y: 70, width: 45, height: 45)
-         imageView1.addTarget(self, action: #selector(self.buttonTapped), for: .touchUpInside)
-         self.view.addSubview(imageView1)
-         */
         
         buttonStart = UIButton(frame: CGRect(x: 32 * UIScreen.main.bounds.width/100, y:  12 * UIScreen.main.bounds.height/100, width: 40, height: 40))
         buttonStart!.setImage(UIImage(named: "start"), for: .normal)
@@ -249,14 +202,6 @@ class Capteur:  UIViewController, UITableViewDataSource, UITableViewDelegate{
     }
     
     @objc func buttonTapped(sender : UIButton) {
-        
-        
-        /* if( isStopButton == false)
-         {
-         buttonStop!.setImage(UIImage(named: "stop_s"), for: .normal)
-         }
-         */
-        
         if (isStartButton == true)
         {
             buttonStart!.setImage(UIImage(named: "start_s"), for: .normal)
@@ -284,8 +229,6 @@ class Capteur:  UIViewController, UITableViewDataSource, UITableViewDelegate{
         }
         
         buttonStart!.setImage(UIImage(named: "start"), for: .normal)
-        //   buttonStop!.setImage(UIImage(named: "stop_s"), for: .normal)
-        
         scanner.stopScanner()
         
         print("El toro de Mardid")
@@ -304,35 +247,23 @@ class Capteur:  UIViewController, UITableViewDataSource, UITableViewDelegate{
     
     func initializeInfoSensor(sensor : SensorTypes)
     {
-        //  let vartype = SensorTypes.SensorTemperature
-        //        handleNewObjectAvailable(
         sensorT = sensor
-        
-        //  scanner.defineFilterType(sensor: sensor)
-        //  scanner.dictionnarySensor.addHandler(handler : handleNewObjectAvailable)
-        
-        
     }
     
     func handleNewObjectAvailable(data: ([String : Sensor])) {
-        
         updateSensorUI(data: data)
-        
-        
     }
     
     func updateSensorUI(data: ([String : Sensor])) -> DisplayObject {
         
         var trouve = true
         let objectTemp1 = Temp(temp: 0)
-
+        
         var newobject : DisplayObject = DisplayObject(name: "null", RSSI: 0, identifier: "",battery : 0, typedata : SensorTypes.SensorID, array: [objectTemp1])
         
-        // let vartype = SensorTypes.SensorTemperature
         for (key,value) in data
         {
-            //   if(value is SensorTemperature)
-            for var cle in display
+            for cle in display
             {
                 if(key == cle.identifier)
                 {
@@ -342,18 +273,14 @@ class Capteur:  UIViewController, UITableViewDataSource, UITableViewDelegate{
                     if(value is SensorTemperature)
                     {
                         if let temp = value as? SensorTemperature
-                                   {
-                                    let objectTemp = Temp(temp: temp.temperature)
-                                    newobject = DisplayObject(name : cle.name, RSSI : cle.RSSI, identifier:  cle.identifier, battery: cle.battery, typedata : cle.typedata,array: [objectTemp] )
-                                  //  display.addData(data: objectTemp)
-                                    cle.addData(data: objectTemp)
-                                    
-                                   
+                        {
+                            let objectTemp = Temp(temp: temp.temperature)
+                          //  newobject = DisplayObject(name : cle.name, RSSI : cle.RSSI, identifier:  cle.identifier, battery: cle.battery, typedata : cle.typedata,array: [objectTemp] )
+                            //  display.addData(data: objectTemp)
+                            cle.addData(data: objectTemp)
                         }
                     }
-                    
-                    
-                    trouve  = false
+           trouve  = false
                 }
             }
             if(trouve == true)
@@ -361,22 +288,22 @@ class Capteur:  UIViewController, UITableViewDataSource, UITableViewDelegate{
                 newobject = DisplayObject(name: value.name, RSSI: value.RSSI, identifier: value.idenfitfier, battery: value.batterylevel, typedata : value.sensorTypes,array: [objectTemp1])
                 
                 if(value is SensorTemperature)
-                                   {
-                                     if let temp = value as? SensorTemperature
-                                     {
-                                        let arr = Temp(temp: temp.temperature)
-                                        newobject = DisplayObject(name: value.name, RSSI: value.RSSI, identifier: value.idenfitfier, battery: value.batterylevel, typedata : value.sensorTypes,array: [arr] )
-                                    }
+                {
+                    if let temp = value as? SensorTemperature
+                    {
+                        let objectTemp = Temp(temp: temp.temperature)
+                        newobject = DisplayObject(name: value.name, RSSI: value.RSSI, identifier: value.idenfitfier, battery: value.batterylevel, typedata : value.sensorTypes,array: [objectTemp] )
+                    }
                 }
                 display.append(newobject)
-               var c = display
+                
                 
             }
-                
             
-                
-                
-        
+            
+            
+            
+            
             self.tableview.reloadData()
         }
         return newobject

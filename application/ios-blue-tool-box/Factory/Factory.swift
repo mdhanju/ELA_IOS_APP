@@ -38,7 +38,7 @@ class Sensor
 
 enum SensorTypes
 {
-   
+    
     case SensorEdystone
     case SensorIbeacon
     case SensorID
@@ -283,20 +283,6 @@ class SensorFactory
         return dictionnarySensor
     }
     
-    /*   /**
-     * \fn printDictionnary
-     * \brief print dictionnary of sensor
-     * \param [in] dictionnarySensor: dictionnary of sensor
-     * \return Dtictionnaire
-     */
-     
-     func printDtictionnary( dict : Dictionary<String,Sensor>)
-     {
-     for (key) in dict {
-     print("la valeur du dico " + " \(key)")
-     }
-     }
-     */
     
     /**
      * \fn printDictionnary
@@ -314,25 +300,7 @@ class SensorFactory
     
     
     
-    /*
-     /**
-     * \fn updateDictionnary
-     * \brief add Sensor to dictionnary
-     * \param [in] identifier: similar to mac adress Sensor: capteur de temperature dictionnarySensor: dictionnary of sensor
-     * \return Dtictionnaire
-     */
-     
-     func updateDtictionnary(tagidentifier : String,sensor : Sensor, dict : Dictionary<String,Sensor>) -> Dictionary<String,Sensor>
-     {
-     var dictSensor = dict
-     
-     
-     dictSensor.updateValue(sensor, forKey: tagidentifier)
-     
-     return dictSensor
-     }
-     
-     */
+    
     
     /**
      * \fn updateDictionnary
@@ -351,72 +319,7 @@ class SensorFactory
         
     }
     
-    /*
-     
-     /**
-     * \fn addDictionnary
-     * \brief add Sensor to dictionnary
-     * \param [in] identifier: similar to mac adress Sensor: capteur de temperature dictionnarySensor: dictionnary of sensor
-     * \return Dtictionnaire
-     */
-     
-     func addDtictionnary(tagidentifier : String,sensor : Sensor, dict : Dictionary<String,Sensor>) -> Dictionary<String,Sensor>
-     {
-     var dictSensor = dict
-     
-     if(sensor is SensorMove)
-     {
-     if let mov = sensor as? SensorMove
-     {
-     dictSensor[tagidentifier] = mov
-     }
-     }
-     
-     
-     else if(sensor is SensorAngle)
-     {
-     if let angle = sensor as? SensorAngle
-     {
-     dictSensor[tagidentifier] = angle
-     
-     }
-     }
-     
-     else if(sensor is SensorTemperature)
-     {
-     if let tempfloat = sensor as? SensorTemperature
-     {
-     dictSensor[tagidentifier] = tempfloat
-     
-     }
-     }
-     
-     
-     else if(sensor is SensorTemperatureHumidity)
-     {
-     if let humidity = sensor as? SensorTemperatureHumidity
-     {
-     dictSensor[tagidentifier] = humidity
-     
-     }
-     }
-     
-     
-     
-     else if(sensor is SensorMagnetic)
-     {
-     if let magnetic = sensor as? SensorMagnetic
-     {
-     dictSensor[tagidentifier] = magnetic
-     
-     }
-     }
-     
-     
-     
-     return dict
-     }
-     */
+    
     
     /**
      * \fn addDictionnary

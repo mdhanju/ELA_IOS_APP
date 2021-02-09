@@ -33,14 +33,6 @@ class ViewController:UIViewController,MenuControllerDelegate
         super.viewDidLoad()
         
         
-        
-        
-        
-        
-        
-        
-        
-        
         let menu = MenuController(with: SideMenuItem.allCases)
         sideMenu = SideMenuNavigationController(rootViewController: menu)
         menu.delegate = self
@@ -106,28 +98,11 @@ class ViewController:UIViewController,MenuControllerDelegate
         
     }
     
-   // @objc func
-  /*
-    @objc func imageTap()
-    {
-               ELAController.view.isHidden = true
-        blueIDController.view.isHidden = false
- 
-               // present(sideMenu!,animated: true)
-           //self.navigationController?.pushViewController(BlueIDViewController(), animated: true)
-        //SideMenuNavigationController.pushViewController(SideMenuItem.blueID)
-      //  sideMenu?.pushViewController(BlueIDViewController(), animated: true)
-       // didSelectMenuItem(named: SideMenuItem.blueID)
-    }*/
- 
-    
- 
-    
     @IBAction func Menu(_ sender: Any) {
         present(sideMenu!,animated: true)
     }
-  
-
+    
+    
     func didSelectMenuItem(named: SideMenuItem) {
         sideMenu?.dismiss(animated: true, completion: nil)
         
@@ -204,56 +179,6 @@ class ViewController:UIViewController,MenuControllerDelegate
             blueANGController.view.isHidden = true
             debugController.view.isHidden = false
         }
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        /*
-         self?.title = named.rawValue
-         
-         
-         switch named
-         {
-         case.home:
-         self?.settingsController.view.isHidden = true
-         self?.infoController.view.isHidden = true
-         case.info:
-         self?.settingsController.view.isHidden = true
-         self?.infoController.view.isHidden = false
-         case.settings:
-         self?.settingsController.view.isHidden = true
-         self?.infoController.view.isHidden = false
-         }
-         */
-        
-        /*        if named == "Home"
-         {
-         self?.settingsController.view.isHidden = true
-         self?.infoController.view.isHidden = true
-         }
-         
-         else if named == "Info"
-         {
-         self?.settingsController.view.isHidden = true
-         self?.infoController.view.isHidden = false
-         }
-         else if named == "Settings"
-         {
-         self?.settingsController.view.isHidden = true
-         self?.infoController.view.isHidden = false
-         }
-         
-         */
-        
-        
         
     }
     

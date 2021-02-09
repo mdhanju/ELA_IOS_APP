@@ -9,11 +9,11 @@
 import UIKit
 import Charts
 class targetTempViewController: UIViewController,ChartViewDelegate {
-
-    private var arrayGlobal : [Capteur.Cap]? = nil
     
-     var lineChart = LineChartView()
-
+  
+    
+    var lineChart = LineChartView()
+    
     private let nameSensor : String
     private let RSSI : Int
     private let identifier : String
@@ -22,7 +22,7 @@ class targetTempViewController: UIViewController,ChartViewDelegate {
     private let array : [Capteur.Cap]
     private let displayObject : [Capteur.DisplayObject]
     
-//    private let relatedItem : [String]
+    //    private let relatedItem : [String]
     init(nameSensor : String,RSSI: Int, identifier : String, battery : Int, typedata : SensorTypes,array: [Capteur.Cap],displayObject : [Capteur.DisplayObject]) {
         self.nameSensor = nameSensor
         self.RSSI = RSSI
@@ -32,7 +32,7 @@ class targetTempViewController: UIViewController,ChartViewDelegate {
         self.array = array
         self.displayObject = displayObject
         
-     
+        
         super.init(nibName : nil , bundle : nil)
     }
     
@@ -48,80 +48,62 @@ class targetTempViewController: UIViewController,ChartViewDelegate {
         
         
         let imageView0 = UITextView()
-             imageView0.text = nameSensor
-             imageView0.textColor = UIColor.red
-             imageView0.font = UIFont.systemFont(ofSize: 25.0)
-             imageView0.isUserInteractionEnabled = false
-             imageView0.font = UIFont.boldSystemFont(ofSize: 25)
-             imageView0.frame = CGRect(x: 80, y: 300, width: 350, height: 100)
-             imageView0.backgroundColor = .none
-             self.view.addSubview(imageView0)
-             self.view.bringSubviewToFront(imageView0)
+        imageView0.text = nameSensor
+        imageView0.textColor = UIColor.red
+        imageView0.font = UIFont.systemFont(ofSize: 25.0)
+        imageView0.isUserInteractionEnabled = false
+        imageView0.font = UIFont.boldSystemFont(ofSize: 25)
+        imageView0.frame = CGRect(x: 80, y: 300, width: 350, height: 100)
+        imageView0.backgroundColor = .none
+        self.view.addSubview(imageView0)
+        self.view.bringSubviewToFront(imageView0)
         
-  let imageTemp = "temp"
-   let UIimageTemp = UIImage(named: imageTemp)
-   let imageViewTemp = UIImageView(image: UIimageTemp!)
-   imageViewTemp.frame = CGRect(x: 150, y: 450, width: 45, height: 45)
-   self.view.addSubview(imageViewTemp)
-             
+        let imageTemp = "temp"
+        let UIimageTemp = UIImage(named: imageTemp)
+        let imageViewTemp = UIImageView(image: UIimageTemp!)
+        imageViewTemp.frame = CGRect(x: 150, y: 450, width: 45, height: 45)
+        self.view.addSubview(imageViewTemp)
+        
         
         
         lineChart.delegate = self
-        arrayGlobal?.append(contentsOf: array)
-        var b = arrayGlobal
-        print(nameSensor, RSSI ,identifier, battery,typedata, array)
 
-        if let temp : [Capteur.Temp] = array as? [Capteur.Temp]
-            {
-               // print(temp[0].getTemp())
-                for cle in temp
-                {
-                    print(cle.getTemp())
-                }
-              
-        }
         
- 
-        // Do any additional setup after loading the view.
+
     }
     
     override func viewDidLayoutSubviews() {
         super.viewDidLayoutSubviews()
         
         
-          lineChart.frame = CGRect(x: 0, y: 0,
-                                     width: self.view.frame.size.width, height:self.view.frame.size.width)
-          lineChart.center = view.center
-          view.addSubview(lineChart)
-          
-          var entries = [ChartDataEntry]()
-       //   if let temp : [Capteur.Temp] = array as? [Capteur.Temp]
+        lineChart.frame = CGRect(x: 0, y: 0,width: self.view.frame.size.width, height:self.view.frame.size.width)
+        lineChart.center = view.center
+        view.addSubview(lineChart)
+    
+        var entries = [ChartDataEntry]()
         for cle in displayObject {
             if( cle.name == nameSensor)
-        
-                   {
-                       if let temp : [Capteur.Temp] = cle.array as? [Capteur.Temp]
-                       {
+                
+            {
+                if let temp : [Capteur.Temp] = cle.array as? [Capteur.Temp]
+                {
                     for x in 0..<cle.array.count
                     {
-                        var countArrray = array.count
-          
-         
-            entries.append(ChartDataEntry(x: Double(x),y: Double(temp[x].temp)))
+                        entries.append(ChartDataEntry(x: Double(x),y: Double(temp[x].temp)))
                     }
-                        
-                    }
-          }
+                    
+                }
+            }
         }
-          let set = LineChartDataSet(entries:entries)
-          set.colors = ChartColorTemplates.material()
-          
-          let data = LineChartData(dataSet: set)
-          
-          lineChart.data = data
+        let set = LineChartDataSet(entries:entries)
+        set.colors = ChartColorTemplates.material()
+        
+        let data = LineChartData(dataSet: set)
+        
+        lineChart.data = data
         
     }
     
- }
+}
 
 

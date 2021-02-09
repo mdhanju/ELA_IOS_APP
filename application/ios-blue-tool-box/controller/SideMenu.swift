@@ -61,7 +61,6 @@ extension UIImage {
     
     
     let devCousesImages = [ UIImage(named: "logo")?.scalePreservingAspectRatio(targetSize: CGSize(width: 45, height: 45)),
-    //resizeImage(image: UIImage(named: "logo")!,targetSize:  CGSize(width: 60, height: 60)),
     UIImage(named: "blue")?.scalePreservingAspectRatio(targetSize: CGSize(width: 45, height: 45)),UIImage(named: "temp")?.scalePreservingAspectRatio(targetSize: CGSize(width: 45, height: 45)),UIImage(named: "humidite_blue"),UIImage(named: "mouvement_blue")?.scalePreservingAspectRatio(targetSize: CGSize(width: 45, height: 45)),UIImage(named: "porte_blue")?.scalePreservingAspectRatio(targetSize: CGSize(width: 45, height: 45)),UIImage(named: "angle")?.scalePreservingAspectRatio(targetSize: CGSize(width: 45, height: 45)),UIImage(named: "parameter")?.scalePreservingAspectRatio(targetSize: CGSize(width: 45, height: 45))]
     
     
@@ -89,8 +88,6 @@ extension UIImage {
 
       override func viewDidLoad() {
           super.viewDidLoad()
-         // tableView.backgroundColor = color
-         // view.backgroundColor = color
       }
 
       // Table
@@ -102,9 +99,7 @@ extension UIImage {
       override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
           let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath)
         cell.textLabel?.text = menuItems[indexPath.row].rawValue
-          cell.textLabel?.textColor = .white
-         // cell.backgroundColor = color
-         // cell.contentView.backgroundColor = color
+        cell.textLabel?.textColor = .white
         cell.textLabel?.textColor = .black;
         switch indexPath.row {
               case 0:
