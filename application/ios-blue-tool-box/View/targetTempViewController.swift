@@ -45,6 +45,27 @@ class targetTempViewController: UIViewController,ChartViewDelegate {
     override func viewDidLoad() {
         super.viewDidLoad()
         view.backgroundColor = .cyan
+        
+        
+        let imageView0 = UITextView()
+             imageView0.text = nameSensor
+             imageView0.textColor = UIColor.red
+             imageView0.font = UIFont.systemFont(ofSize: 25.0)
+             imageView0.isUserInteractionEnabled = false
+             imageView0.font = UIFont.boldSystemFont(ofSize: 25)
+             imageView0.frame = CGRect(x: 80, y: 300, width: 350, height: 100)
+             imageView0.backgroundColor = .none
+             self.view.addSubview(imageView0)
+             self.view.bringSubviewToFront(imageView0)
+        
+  let imageTemp = "temp"
+   let UIimageTemp = UIImage(named: imageTemp)
+   let imageViewTemp = UIImageView(image: UIimageTemp!)
+   imageViewTemp.frame = CGRect(x: 150, y: 450, width: 45, height: 45)
+   self.view.addSubview(imageViewTemp)
+             
+        
+        
         lineChart.delegate = self
         arrayGlobal?.append(contentsOf: array)
         var b = arrayGlobal
