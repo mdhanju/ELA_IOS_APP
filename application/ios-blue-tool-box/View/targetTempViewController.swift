@@ -66,21 +66,14 @@ class targetTempViewController: UIViewController,ChartViewDelegate {
         self.view.addSubview(UInameSensor)
         self.view.bringSubviewToFront(UInameSensor)
         
-        
-        let UIconnecter = UITextView()
-        UIconnecter.text = "Parameter :"
-        UIconnecter.textColor = UIColor.black
-        UIconnecter.font = UIFont.systemFont(ofSize: 25.0)
-        UIconnecter.isUserInteractionEnabled = false
-        UIconnecter.font = UIFont.boldSystemFont(ofSize: 15)
-        UIconnecter.frame = CGRect(x: 80, y: 100, width: 350, height: 100)
-        UIconnecter.backgroundColor = .none
-        self.view.addSubview(UIconnecter)
-        self.view.bringSubviewToFront(UIconnecter)
-        
+  
+       // if(battery != -1)
+        //{
         
         let UIbatterie = UITextView()
+      
         UIbatterie.text = "La batterie est de : " + String(battery) + " mV"
+        
         UIbatterie.textColor = UIColor.black
         UIbatterie.font = UIFont.systemFont(ofSize: 25.0)
         UIbatterie.isUserInteractionEnabled = false
@@ -92,6 +85,7 @@ class targetTempViewController: UIViewController,ChartViewDelegate {
         
         
         
+        
         let imageTemp = "temp"
         let UIimageTemp = UIImage(named: imageTemp)
         let imageViewTemp = UIImageView(image: UIimageTemp!)
@@ -99,17 +93,27 @@ class targetTempViewController: UIViewController,ChartViewDelegate {
         self.view.addSubview(imageViewTemp)
         
         
-        let imageConnect = "parameter"
+      /*  let imageConnect = "connection"
            let UIconnect = UIImage(named: imageConnect)
            let imageVIewConnect = UIImageView(image: UIconnect!)
-           imageVIewConnect.frame = CGRect(x: 270, y: 100, width: 45, height: 45)
+           imageVIewConnect.frame = CGRect(x: 310, y: 70, width: 45, height: 45)
         imageVIewConnect.isUserInteractionEnabled = true
         let imageTapGestureRecognizerConnect = UITapGestureRecognizer(target: self, action: #selector(imageTapTemp))
         imageVIewConnect.addGestureRecognizer(imageTapGestureRecognizerConnect)
 
            self.view.addSubview(imageVIewConnect)
-        
-        
+        */
+        let imageArray = "sklia"
+                     let UIarray = UIImage(named: imageArray)
+                   
+        var items = [UIBarButtonItem]()
+    items.append(UIBarButtonItem(image: UIarray, landscapeImagePhone: .none, style: .done, target: self, action: #selector(imageTapTemp)))
+        items.append(UIBarButtonItem(title: "Connexion", style: .plain, target: self,action: .none))
+    //     items.append(UIBarButtonItem(image: UIconnect, landscapeImagePhone: .none, style: .done, target: self, action: #selector(imageTapTemp)))
+    
+      self.navigationItem.setRightBarButtonItems(items, animated: true)
+    //    navigationItem.rightBarButtonItem = UIBarButtonItem(title: c, style: .plain, target: self,action: .none)
+       // navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .fixedSpace, target: self, action: .none)
         
         lineChart.delegate = self
 

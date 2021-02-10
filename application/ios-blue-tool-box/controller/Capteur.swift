@@ -106,11 +106,16 @@ class Capteur:  UIViewController, UITableViewDataSource, UITableViewDelegate{
         let objectDiplay = display[indexPath.row]
         cell.textLabel?.text = objectDiplay.name
         cell.textLabel?.textAlignment = .left
-        cell.textLabel?.text = objectDiplay.name
-        let label = UILabel.init(frame: CGRect(x:0,y:0,width:100,height:20))
-        label.text = String(objectDiplay.RSSI)
-        cell.accessoryView = label
+ //       cell.textLabel?.text = objectDiplay.name
         
+        let label = UIView.init(frame: CGRect(x:0,y:0,width:100,height:20))
+        let label1 = UILabel.init(frame: CGRect(x:0,y:0,width:100,height:20))
+         label1.text = String(objectDiplay.RSSI ) + " (dBm)"
+        
+    
+      cell.accessoryView = label1
+        
+      //  cell.accessoryType =  .disclosureIndicator
         return cell
     }
     

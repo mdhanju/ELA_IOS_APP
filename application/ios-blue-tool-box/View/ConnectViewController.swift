@@ -10,6 +10,8 @@ import UIKit
 
 class ConnectViewController: UIViewController {
     
+     var UIBuzzOn = UIImage(named: "buzz_on")
+    
        private let nameSensor : String
        private let RSSI : Int
        private let identifier : String
@@ -38,6 +40,9 @@ class ConnectViewController: UIViewController {
     
     
 
+    
+    
+
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -58,7 +63,7 @@ class ConnectViewController: UIViewController {
               
               
               let UIconnecter = UITextView()
-              UIconnecter.text = "Connecter/ Deconnecter"
+              UIconnecter.text = "Connect / Disconnect"
               UIconnecter.textColor = UIColor.black
               UIconnecter.font = UIFont.systemFont(ofSize: 25.0)
               UIconnecter.isUserInteractionEnabled = false
@@ -131,10 +136,11 @@ class ConnectViewController: UIViewController {
             self.view.bringSubviewToFront(UIbuzzOn)
         
         
-        let imageBuzzOn = "buzz_on"
-        let UIBuzzOn = UIImage(named: imageBuzzOn)
+      
+       
         let imageViewBuzzOn = UIImageView(image: UIBuzzOn!)
         imageViewBuzzOn.frame = CGRect(x: 300, y: 400, width: 45, height: 45)
+       // imageViewBuzzOn!.addTarget(self, action: #selector(self.buttonTappedStop), for: .imageTapBuzzerOn)
         self.view.addSubview(imageViewBuzzOn)
         
             let UIbuzzOff = UITextView()
@@ -165,7 +171,7 @@ class ConnectViewController: UIViewController {
             self.view.addSubview(UIbattery)
             self.view.bringSubviewToFront(UIbattery)
  
-        let imageBattery = "btn_batt_pressed"
+        let imageBattery = "batt_ask"
         let UIBattery = UIImage(named: imageBattery)
         let imageViewBattery = UIImageView(image: UIBattery!)
         imageViewBattery.frame = CGRect(x: 300, y: 550, width: 45, height: 45)
@@ -180,6 +186,8 @@ class ConnectViewController: UIViewController {
 
                   self.view.addSubview(imageVIewConnect)
         
+   
+        
         
          let imageTemp = "temp"
          let UIimageTemp = UIImage(named: imageTemp)
@@ -187,7 +195,10 @@ class ConnectViewController: UIViewController {
          imageViewTemp.frame = CGRect(x: 20, y: 70, width: 45, height: 45)
          self.view.addSubview(imageViewTemp)
     }
-    
+    @objc func imageTapBuzzerOn() {
+        
+   //UIBuzzOn!.setImage(UIImage(named: "btn_buzz_on_pressed"), for: .normal)
+    }
 
     /*
     // MARK: - Navigation
