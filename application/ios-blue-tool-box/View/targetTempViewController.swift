@@ -36,6 +36,14 @@ class targetTempViewController: UIViewController,ChartViewDelegate {
         super.init(nibName : nil , bundle : nil)
     }
     
+    
+    @objc func imageTapTemp() {
+        self.navigationController?.pushViewController(ConnectViewController(nameSensor: nameSensor, RSSI: RSSI, identifier: identifier, battery: battery, typedata: typedata, array: array, displayObject: displayObject), animated: true)
+        view.layoutIfNeeded()
+    }
+
+    
+    
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
@@ -60,7 +68,7 @@ class targetTempViewController: UIViewController,ChartViewDelegate {
         
         
         let UIconnecter = UITextView()
-        UIconnecter.text = "Connecter/ Deconnecter"
+        UIconnecter.text = "Parameter :"
         UIconnecter.textColor = UIColor.black
         UIconnecter.font = UIFont.systemFont(ofSize: 25.0)
         UIconnecter.isUserInteractionEnabled = false
@@ -91,13 +99,13 @@ class targetTempViewController: UIViewController,ChartViewDelegate {
         self.view.addSubview(imageViewTemp)
         
         
-        let imageConnect = "connection"
+        let imageConnect = "parameter"
            let UIconnect = UIImage(named: imageConnect)
            let imageVIewConnect = UIImageView(image: UIconnect!)
            imageVIewConnect.frame = CGRect(x: 270, y: 100, width: 45, height: 45)
         imageVIewConnect.isUserInteractionEnabled = true
-        let imageTapGestureRecognizerConnect = UITapGestureRecognizer(target: self, action: #selector(ELAViewController.imageTapTemp))
-        imageViewTemp.addGestureRecognizer(imageTapGestureRecognizerConnect)
+        let imageTapGestureRecognizerConnect = UITapGestureRecognizer(target: self, action: #selector(imageTapTemp))
+        imageVIewConnect.addGestureRecognizer(imageTapGestureRecognizerConnect)
 
            self.view.addSubview(imageVIewConnect)
         
