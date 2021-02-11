@@ -8,9 +8,37 @@
 
 import UIKit
 import Charts
+
+
+extension UIButton {
+    func blink() {
+        self.alpha = 0.0;
+        UIView.animate(withDuration: 0.6, //Time duration you want,
+            delay: 0.0,
+            options: [.curveEaseInOut, .autoreverse, .repeat],
+            animations: { [weak self] in self?.alpha = 1.0 },
+            completion: { [weak self] _ in self?.alpha = 0.0 })
+    }
+    
+    func stopBlink() {
+        self.layer.removeAllAnimations()
+        self.alpha = 1.0;
+        self.isHidden = false
+        // [self.layer removeAllAnimations];
+    }
+}
+
+extension UIView {
+    func blink(duration: TimeInterval = 0.5, delay: TimeInterval = 0.0, alpha: CGFloat = 0.0) {
+        UIView.animate(withDuration: duration, delay: delay, options: [.curveEaseInOut, .repeat, .autoreverse], animations: {
+            self.alpha = alpha
+        })
+    }
+}
+
 class targetTempViewController: UIViewController,ChartViewDelegate {
     
-  
+ var UIimagelowBattery = UIImage()
     
     var lineChart = LineChartView()
     
@@ -42,7 +70,7 @@ class targetTempViewController: UIViewController,ChartViewDelegate {
         view.layoutIfNeeded()
     }
 
-    
+   
     
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
@@ -67,14 +95,15 @@ class targetTempViewController: UIViewController,ChartViewDelegate {
         self.view.bringSubviewToFront(UInameSensor)
         
   
-       // if(battery != -1)
-        //{
+        if(battery != -1)
+        {
         
         let UIbatterie = UITextView()
       
-        UIbatterie.text = "La batterie est de : " + String(battery) + " mV"
+     //  UIbatterie.text = "La batterie est de : " + String(battery) + " mV"
+            UIbatterie.text = "Low battery"
         
-        UIbatterie.textColor = UIColor.black
+        UIbatterie.textColor = UIColor.red
         UIbatterie.font = UIFont.systemFont(ofSize: 25.0)
         UIbatterie.isUserInteractionEnabled = false
         UIbatterie.font = UIFont.boldSystemFont(ofSize: 15)
@@ -82,8 +111,20 @@ class targetTempViewController: UIViewController,ChartViewDelegate {
         UIbatterie.backgroundColor = .none
         self.view.addSubview(UIbatterie)
         self.view.bringSubviewToFront(UIbatterie)
+            
+            
+        let imagelowBattery = "lowBattery"
+            let UIimagelowBattery = UIImage(named: imagelowBattery)
+  
+            
+            let btn = UIButton()
+            btn.frame = CGRect(x: 120, y: 560, width: 45, height: 45)
+            btn.blink()
+            btn.setImage(UIimagelowBattery, for: .normal)
+                     self.view.addSubview(btn)
         
-        
+        //   Timer.scheduledTimer(timeInterval: 0.1, target: self, selector: #selector(self.alarmAlertActivate), userInfo: nil, repeats: true)
+        }
         
         
         let imageTemp = "temp"
@@ -152,6 +193,7 @@ class targetTempViewController: UIViewController,ChartViewDelegate {
         lineChart.data = data
         
     }
+
     
 }
 

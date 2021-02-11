@@ -493,6 +493,11 @@ class SensorFactory
                 let tempStrBattery : String? = sensorData![CBUUID(string: "180F")]?.debugDescription.dropFirst().dropLast().description
                 battery = ConvertionToolbox.ConvertAdvertisingValue(str: String(tempStrBattery!))
             }
+            if(sensorData![CBUUID(string: "2A19")] != nil)
+            {
+                let tempStrBattery : String? = sensorData![CBUUID(string: "2A19")]?.debugDescription.dropFirst().dropLast().description
+                battery = ConvertionToolbox.ConvertAdvertisingValue(str: String(tempStrBattery!))
+            }
             //
             // update data
             if(String(sensorData![CBUUID(string: "2A3F")]!.debugDescription.dropFirst().dropFirst().dropLast()) == "1")
@@ -513,6 +518,12 @@ class SensorFactory
                 let angleStrBattery = sensorData![CBUUID(string: "180F")]?.debugDescription.dropFirst().dropLast().description
                 battery = ConvertionToolbox.ConvertAdvertisingValue(str: String(angleStrBattery!))
             }
+            
+            if(sensorData![CBUUID(string: "2A19")] != nil)
+            {
+                let angleStrBattery = sensorData![CBUUID(string: "2A19")]?.debugDescription.dropFirst().dropLast().description
+                battery = ConvertionToolbox.ConvertAdvertisingValue(str: String(angleStrBattery!))
+            }
             id = SensorFactory.shared().getSensorAngle(sensorTypes: .SensorAngle, name: tagname, RSSI: Int(truncating: tagRSSI),batterylevel: battery,  x: Int(ConvertionToolbox.ConvertAngle(str: ConvertionToolbox.ANG(str: String(ang!), index: 0))), y: Int(ConvertionToolbox.ConvertAngle(str: ConvertionToolbox.ANG(str: String(ang!), index: 4))), z: Int(ConvertionToolbox.ConvertAngle(str: ConvertionToolbox.ANG(str: String(ang!), index: 9))),identifier: tagidentifier)
             
         }
@@ -529,6 +540,12 @@ class SensorFactory
                 let RHTstrBattery = sensorData![CBUUID(string: "180F")]?.debugDescription.dropFirst().dropLast().description
                 battery = ConvertionToolbox.ConvertAdvertisingValue(str: String(RHTstrBattery!))
             }
+            
+            if(sensorData![CBUUID(string: "2A19")] != nil)
+            {
+                let RHTstrBattery = sensorData![CBUUID(string: "2A19")]?.debugDescription.dropFirst().dropLast().description
+                battery = ConvertionToolbox.ConvertAdvertisingValue(str: String(RHTstrBattery!))
+            }
             id = SensorFactory.shared().getSensorTemperatureHumidity(sensorTypes: .SensorTemperatureHumidity, name: tagname, RSSI: Int(truncating: tagRSSI),batterylevel: battery,  humidity: ConvertionToolbox.ConvertHumidite(str: String(hum!)), objectTemperature: temperature,identifier: tagidentifier)
             
             
@@ -542,6 +559,11 @@ class SensorFactory
             if(sensorData![CBUUID(string: "180F")] != nil)
             {
                 let temperatureStrBattery =  sensorData![CBUUID(string: "180F")]?.debugDescription.dropFirst().dropLast().description
+                battery = ConvertionToolbox.ConvertAdvertisingValue(str: String(temperatureStrBattery!))
+            }
+            if(sensorData![CBUUID(string: "2A19")] != nil)
+            {
+                let temperatureStrBattery =  sensorData![CBUUID(string: "2A19")]?.debugDescription.dropFirst().dropLast().description
                 battery = ConvertionToolbox.ConvertAdvertisingValue(str: String(temperatureStrBattery!))
             }
             id = SensorFactory.shared().getSensorTemperature(sensorTypes: .SensorTemperature, name: tagname, RSSI: Int(truncating: tagRSSI),batterylevel: battery,temperature: ConvertionToolbox.ConvertTemperature(str: String(temp!)),identifier: tagidentifier)

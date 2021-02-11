@@ -64,7 +64,7 @@ class targetMoveViewController: UIViewController,ChartViewDelegate {
           progressRing.innerRingColor = UIColor.orange
       //  progressRing.valueFormatter = "pas" as! UICircularRingValueFormatter
    
-        progressRing.valueFormatter = UICircularProgressRingFormatter(valueIndicator: "", rightToLeft: true, showFloatingPoint: false, decimalPlaces: 0)
+        progressRing.valueFormatter = UICircularProgressRingFormatter(valueIndicator: " pas", rightToLeft: true, showFloatingPoint: false, decimalPlaces: 0)
           self.view.backgroundColor = UIColor.green
         
           self.view.addSubview(progressRing)
