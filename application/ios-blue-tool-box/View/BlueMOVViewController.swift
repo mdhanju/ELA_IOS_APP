@@ -11,14 +11,14 @@ import UIKit
 class BlueMOVViewController: Capteur {
 
     //private var capteur: Capteur!
-    private var sensorTempHum : SensorTypes = SensorTypes.SensorTemperatureHumidity
+    private var sensorMove : SensorTypes = SensorTypes.SensorMove
 
     
     override func viewDidLoad() {
         super.viewDidLoad()
         view.backgroundColor = .cyan
         //super?.viewDidLoad()
-        super.initializeInfoSensor(sensor : sensorTempHum)
+        super.initializeInfoSensor(sensor : sensorMove)
     }
     
 }

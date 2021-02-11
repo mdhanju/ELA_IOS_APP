@@ -11,6 +11,8 @@
 		160BD57025D13C2300F5ED01 /* AproposViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 160BD56F25D13C2300F5ED01 /* AproposViewController.swift */; };
 		160BD57225D1516A00F5ED01 /* targetTempViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 160BD57125D1516A00F5ED01 /* targetTempViewController.swift */; };
 		160BD57625D3DCBF00F5ED01 /* ConnectViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 160BD57525D3DCBF00F5ED01 /* ConnectViewController.swift */; };
+		160BD57A25D5235D00F5ED01 /* targetTempHumViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 160BD57925D5235D00F5ED01 /* targetTempHumViewController.swift */; };
+		160BD57C25D5472600F5ED01 /* targetMoveViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 160BD57B25D5472600F5ED01 /* targetMoveViewController.swift */; };
 		16715DF525C40142007F0AC2 /* Event.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16715DF425C40142007F0AC2 /* Event.swift */; };
 		16920C8725B1B271008ABBF1 /* BlueIDViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16920C8625B1B271008ABBF1 /* BlueIDViewController.swift */; };
 		16920C9825B1CD2E008ABBF1 /* Factory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16920C9725B1CD2E008ABBF1 /* Factory.swift */; };
@@ -53,6 +55,8 @@
 		160BD56F25D13C2300F5ED01 /* AproposViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AproposViewController.swift; sourceTree = "<group>"; };
 		160BD57125D1516A00F5ED01 /* targetTempViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = targetTempViewController.swift; sourceTree = "<group>"; };
 		160BD57525D3DCBF00F5ED01 /* ConnectViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConnectViewController.swift; sourceTree = "<group>"; };
+		160BD57925D5235D00F5ED01 /* targetTempHumViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = targetTempHumViewController.swift; sourceTree = "<group>"; };
+		160BD57B25D5472600F5ED01 /* targetMoveViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = targetMoveViewController.swift; sourceTree = "<group>"; };
 		16715DF425C40142007F0AC2 /* Event.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Event.swift; sourceTree = "<group>"; };
 		16920C8625B1B271008ABBF1 /* BlueIDViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BlueIDViewController.swift; sourceTree = "<group>"; };
 		16920C9725B1CD2E008ABBF1 /* Factory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Factory.swift; sourceTree = "<group>"; };
@@ -108,6 +112,24 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		160BD57725D521F700F5ED01 /* Target_list */ = {
+			isa = PBXGroup;
+			children = (
+				160BD57125D1516A00F5ED01 /* targetTempViewController.swift */,
+				160BD57925D5235D00F5ED01 /* targetTempHumViewController.swift */,
+				160BD57B25D5472600F5ED01 /* targetMoveViewController.swift */,
+			);
+			path = Target_list;
+			sourceTree = "<group>";
+		};
+		160BD57825D5225C00F5ED01 /* connexion */ = {
+			isa = PBXGroup;
+			children = (
+				160BD57525D3DCBF00F5ED01 /* ConnectViewController.swift */,
+			);
+			path = connexion;
+			sourceTree = "<group>";
+		};
 		16920C8825B1B2DC008ABBF1 /* View */ = {
 			isa = PBXGroup;
 			children = (
@@ -120,8 +142,6 @@
 				16DFFB7D25B04E4800CCB063 /* ELAViewController.swift */,
 				16920C8625B1B271008ABBF1 /* BlueIDViewController.swift */,
 				160BD56F25D13C2300F5ED01 /* AproposViewController.swift */,
-				160BD57125D1516A00F5ED01 /* targetTempViewController.swift */,
-				160BD57525D3DCBF00F5ED01 /* ConnectViewController.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -200,6 +220,8 @@
 				16CB846025AC6EF80067E1A0 /* SceneDelegate.swift */,
 				16920C9925B1FE15008ABBF1 /* scanner */,
 				16920C9025B1CBE1008ABBF1 /* Factory */,
+				160BD57825D5225C00F5ED01 /* connexion */,
+				160BD57725D521F700F5ED01 /* Target_list */,
 				16920C8825B1B2DC008ABBF1 /* View */,
 				16920C8925B1B321008ABBF1 /* controller */,
 				16CB846725AC6EF90067E1A0 /* Assets.xcassets */,
@@ -441,6 +463,8 @@
 				16920C9B25B1FE3C008ABBF1 /* scanner.swift in Sources */,
 				16920C8725B1B271008ABBF1 /* BlueIDViewController.swift in Sources */,
 				16DFFB8025B04E6300CCB063 /* BlueTViewController.swift in Sources */,
+				160BD57C25D5472600F5ED01 /* targetMoveViewController.swift in Sources */,
+				160BD57A25D5235D00F5ED01 /* targetTempHumViewController.swift in Sources */,
 				16DFFB8A25B04EB700CCB063 /* DebugViewController.swift in Sources */,
 				160BD57625D3DCBF00F5ED01 /* ConnectViewController.swift in Sources */,
 				16DFFB8425B04E8600CCB063 /* BlueMOVViewController.swift in Sources */,

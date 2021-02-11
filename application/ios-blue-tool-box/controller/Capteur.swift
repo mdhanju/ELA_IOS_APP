@@ -19,6 +19,38 @@ class Capteur:  UIViewController, UITableViewDataSource, UITableViewDelegate{
         
     }
     
+    public class Move : Cap
+    {
+       var nbrPas: Int = 0
+       var etat : Bool = false
+        
+      init(nbrPas : Int, etat : Bool) {
+        self.nbrPas = nbrPas
+        self.etat = etat
+        }
+    }
+    
+    
+    public class TempHum : Cap
+    {
+        public var temp : Float
+        public var hum : Int
+        init(temp : Float,hum : Int) {
+            self.hum = hum
+            self.temp = temp
+        }
+        func getTemp()->Float
+        {
+            return temp
+        }
+        
+        func getHum()->Int
+        {
+            return hum
+        }
+        
+    }
+    
     public class Temp : Cap
     {
         public var temp : Float
@@ -137,6 +169,22 @@ class Capteur:  UIViewController, UITableViewDataSource, UITableViewDelegate{
         self.navigationController?.pushViewController(targetTempViewController(nameSensor: string1 ,RSSI: RSSI, identifier : identifier, battery : battery, typedata : typedata,array : arr,displayObject : display), animated: true)
          self.navigationController?.navigationBar.tintColor = .black
         }
+        
+        
+        if(typedata == SensorTypes.SensorTemperatureHumidity)
+                   {
+        
+        self.navigationController?.pushViewController(targetTempHumViewController(nameSensor: string1 ,RSSI: RSSI, identifier : identifier, battery : battery, typedata : typedata,array : arr,displayObject : display), animated: true)
+         self.navigationController?.navigationBar.tintColor = .black
+        }
+        
+        
+        if(typedata == SensorTypes.SensorMove)
+                    {
+         
+         self.navigationController?.pushViewController(targetMoveViewController(nameSensor: string1 ,RSSI: RSSI, identifier : identifier, battery : battery, typedata : typedata,array : arr,displayObject : display), animated: true)
+          self.navigationController?.navigationBar.tintColor = .black
+         }
         //
     }
     
@@ -270,6 +318,7 @@ class Capteur:  UIViewController, UITableViewDataSource, UITableViewDelegate{
         
         var trouve = true
         let objectTemp1 = Temp(temp: 0)
+      //  let objectHum = TempHum(temp: 0, hum: 0)
         
         var newobject : DisplayObject = DisplayObject(name: "null", RSSI: 0, identifier: "",battery : 0, typedata : SensorTypes.SensorID, array: [objectTemp1])
         
@@ -292,21 +341,77 @@ class Capteur:  UIViewController, UITableViewDataSource, UITableViewDelegate{
                             cle.addData(data: objectTemp)
                         }
                     }
+                    
+                  
+                    
+                    if(value is SensorTemperatureHumidity)
+                    {
+                        if let hum = value as? SensorTemperatureHumidity
+                        {
+                            let objectTempHum = TempHum(temp: hum.getTemp(), hum: hum.getHum())
+                          //  newobject = DisplayObject(name : cle.name, RSSI : cle.RSSI, identifier:  cle.identifier, battery: cle.battery, typedata : cle.typedata,array: [objectTemp] )
+                            //  display.addData(data: objectTemp)
+                            cle.addData(data: objectTempHum)
+                        }
+                    }
+                    
+                    if(value is SensorMove)
+                    {
+                        if let move = value as? SensorMove
+                        {
+                            let objectMove =
+                                Move(nbrPas: move.nbrPas, etat: move.etat)
+                          //  newobject = DisplayObject(name : cle.name, RSSI : cle.RSSI, identifier:  cle.identifier, battery: cle.battery, typedata : cle.typedata,array: [objectTemp] )
+                            //  display.addData(data: objectTemp)
+                            cle.addData(data: objectMove)
+                        }
+                    }
+                    
+                    
            trouve  = false
                 }
             }
             if(trouve == true)
             {
-                newobject = DisplayObject(name: value.name, RSSI: value.RSSI, identifier: value.idenfitfier, battery: value.batterylevel, typedata : value.sensorTypes,array: [objectTemp1])
+            
                 
                 if(value is SensorTemperature)
                 {
+                     // newobject = DisplayObject(name: value.name, RSSI: value.RSSI, identifier: value.idenfitfier, battery: value.batterylevel, typedata : value.sensorTypes,array: [objectTemp1])
+                    
                     if let temp = value as? SensorTemperature
                     {
                         let objectTemp = Temp(temp: temp.temperature)
                         newobject = DisplayObject(name: value.name, RSSI: value.RSSI, identifier: value.idenfitfier, battery: value.batterylevel, typedata : value.sensorTypes,array: [objectTemp] )
                     }
                 }
+                
+                if(value is SensorTemperatureHumidity)
+                {
+                       // newobject = DisplayObject(name: value.name, RSSI: value.RSSI, identifier: value.idenfitfier, battery: value.batterylevel, typedata : value.sensorTypes,array: [objectTemp1])
+                    
+                    if let tempHum = value as? SensorTemperatureHumidity
+                    {
+                        let objectTempHum = TempHum(temp: tempHum.getTemp(), hum: tempHum.getHum())
+                        newobject = DisplayObject(name: value.name, RSSI: value.RSSI, identifier: value.idenfitfier, battery: value.batterylevel, typedata : value.sensorTypes,array: [objectTempHum] )
+                    }
+                }
+                
+                
+                if(value is SensorMove)
+                {
+                       // newobject = DisplayObject(name: value.name, RSSI: value.RSSI, identifier: value.idenfitfier, battery: value.batterylevel, typedata : value.sensorTypes,array: [objectTemp1])
+                    
+                    if let move = value as? SensorMove
+                    {
+                          let objectMove =
+                                                     Move(nbrPas: move.nbrPas, etat: move.etat)
+                        newobject = DisplayObject(name: value.name, RSSI: value.RSSI, identifier: value.idenfitfier, battery: value.batterylevel, typedata : value.sensorTypes,array: [objectMove] )
+                    }
+                }
+                
+                
+                
                 display.append(newobject)
                 
                 
