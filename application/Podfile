@@ -6,6 +6,7 @@ target 'ios-blue-tool-box' do
   use_frameworks!
   pod 'SideMenu', '~> 6.0'
   pod 'Charts'
+  pod 'UICircularProgressRing'
 
   # Pods for ios-blue-tool-box
 
@@ -14,6 +15,7 @@ target 'ios-blue-tool-box' do
     # Pods for testing
     pod 'SideMenu', '~> 6.0'
     pod 'Charts'
+    pod 'UICircularProgressRing'
   end
 
 end

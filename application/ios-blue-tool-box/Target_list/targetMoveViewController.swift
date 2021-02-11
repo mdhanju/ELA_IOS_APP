@@ -8,6 +8,7 @@
 
 import UIKit
 import Charts
+import UICircularProgressRing
 class targetMoveViewController: UIViewController,ChartViewDelegate {
 
 
@@ -46,7 +47,28 @@ class targetMoveViewController: UIViewController,ChartViewDelegate {
          fatalError("init(coder:) has not been implemented")
      }
     
+
       override func viewDidLoad() {
         super.viewDidLoad()
            view.backgroundColor = .white
+        
+        
+
+          // Do any additional setup after loading the view.
+          //progressRing = UICircularProgressRing()
+           let progressRing = UICircularProgressRing(frame:  CGRect(x: 200, y: 200, width: 100, height: 100))
+          // Change any of the properties you'd like
+          progressRing.minValue = 1
+          progressRing.maxValue = 50
+          progressRing.value = 3
+          progressRing.innerRingColor = UIColor.orange
+      //  progressRing.valueFormatter = "pas" as! UICircularRingValueFormatter
+   
+        progressRing.valueFormatter = UICircularProgressRingFormatter(valueIndicator: "", rightToLeft: true, showFloatingPoint: false, decimalPlaces: 0)
+          self.view.backgroundColor = UIColor.green
+        
+          self.view.addSubview(progressRing)
+}
+ 
+    
 }
