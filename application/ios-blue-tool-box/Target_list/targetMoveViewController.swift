@@ -12,15 +12,17 @@ import Charts
 import UICircularProgressRing
 class targetMoveViewController: UIViewController,ChartViewDelegate {
 
-   // public var dictionnarySensor : Event<([String : Sensor])>
+     private var capteur: Capteur!
      
      private let nameSensor : String
      private let RSSI : Int
      private let identifier : String
      private let battery : Int
      private let typedata : SensorTypes
-     private let array : [Capteur.Cap]
-     private let displayObject : [Capteur.DisplayObject]
+    private let array : [Capteur.Cap]
+   // private var displayObject : [Capteur.DisplayObject]
+     private var displayObject : [Capteur.DisplayObject]
+    
      
      //    private let relatedItem : [String]
      init(nameSensor : String,RSSI: Int, identifier : String, battery : Int, typedata : SensorTypes,array: [Capteur.Cap],displayObject : [Capteur.DisplayObject]) {
@@ -49,9 +51,31 @@ class targetMoveViewController: UIViewController,ChartViewDelegate {
      }
     
 
+    
+    func handleNewObjectAvailable(data: ([Capteur.DisplayObject])) {
+        updateSensorUI(data: data)
+    }
+    
+    
+    func updateSensorUI(data: ([Capteur.DisplayObject]))
+    {
+       displayObject = data
+        print("allo")
+    }
+    
       override func viewDidLoad() {
         super.viewDidLoad()
            view.backgroundColor = .white
+        
+        
+        
+          capteur = Capteur()
+        if( capteur.dictionnarySensorSacond != nil)
+        {
+        capteur.dictionnarySensorSacond!.addHandler(handler : handleNewObjectAvailable)
+        }
+        
+        
         // 2^15
         let imageTemp = "temp"
              let UIimageTemp = UIImage(named: imageTemp)

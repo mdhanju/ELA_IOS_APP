@@ -5,6 +5,10 @@ import SwiftUI
 
 class Capteur:  UIViewController, UITableViewDataSource, UITableViewDelegate{
     
+    
+    
+    
+    
     private var scanner: Scanner1!
     var display: [ DisplayObject] = []
     var isStartButton : Bool = true
@@ -13,6 +17,11 @@ class Capteur:  UIViewController, UITableViewDataSource, UITableViewDelegate{
     var buttonStart : UIButton? = nil
     var buttonStop : UIButton? = nil
     var isStopButton = false
+    
+      public var dictionnarySensorSacond : Event<([DisplayObject])>? = nil
+    
+    
+    
     
     public class Cap
     {
@@ -314,6 +323,8 @@ class Capteur:  UIViewController, UITableViewDataSource, UITableViewDelegate{
         updateSensorUI(data: data)
     }
     
+
+    
     func updateSensorUI(data: ([String : Sensor])) -> DisplayObject {
         
         var trouve = true
@@ -366,7 +377,11 @@ class Capteur:  UIViewController, UITableViewDataSource, UITableViewDelegate{
                             cle.addData(data: objectMove)
                         }
                     }
-                    
+                    // probleme ici
+                    if( dictionnarySensorSacond != nil)
+                    {
+                      dictionnarySensorSacond!.raise(data : display)
+                    }
                     
            trouve  = false
                 }
