@@ -128,7 +128,7 @@ class SensorMove: Sensor
     var nbrPas: Int = 0
     var etat : Bool = false
     
-    init(name : String,RSSI : Int,batterylevel : Int = -1,sensorTypes: SensorTypes,nbrPas : Int,etat : Bool,identifier : String) {
+    init(name : String,RSSI : Int,batterylevel : Int = -1,sensorTypes: SensorTypes,nbrPas : Int,etat : Bool = true,identifier : String) {
         super.init(name:name, RSSI:RSSI, batterylevel:batterylevel, sensorTypes:sensorTypes, identifier: identifier)
         self.nbrPas = nbrPas
         self.etat = etat
@@ -502,11 +502,11 @@ class SensorFactory
             // update data
             if(String(sensorData![CBUUID(string: "2A3F")]!.debugDescription.dropFirst().dropFirst().dropLast()) == "1")
             {
-                id = SensorFactory.shared().getSensorMove(sensorTypes: .SensorMove, name: tagname , RSSI: Int(truncating: tagRSSI),batterylevel: battery, nbrPas: ConvertionToolbox.ConvertAdvertisingValue(str: String(counter!)), etat: ConvertionToolbox.convertHexaToEtatInv(str: etat),identifier: tagidentifier)
+                id = SensorFactory.shared().getSensorMove(sensorTypes: .SensorMove, name: tagname , RSSI: Int(truncating: tagRSSI),batterylevel: battery, nbrPas: ConvertionToolbox.ConvertAdvertisingValue(str: String(counter!)), etat: ConvertionToolbox.convertHexaToEtatInv(str: String(counter!)),identifier: tagidentifier)
             }
             else if (String(sensorData![CBUUID(string: "2A3F")]!.debugDescription.dropFirst().dropFirst().dropLast()) == "0")
             {
-                id = SensorFactory.shared().getSensorMagnetic(sensorTypes: .SensorMagnetic, name: tagname , RSSI: Int(truncating: tagRSSI), batterylevel: battery, nbrObjet: ConvertionToolbox.ConvertAdvertisingValue(str: String(counter!)), etat: ConvertionToolbox.convertHexaToEtatInv(str: etat), identifier: tagidentifier)
+                id = SensorFactory.shared().getSensorMagnetic(sensorTypes: .SensorMagnetic, name: tagname , RSSI: Int(truncating: tagRSSI), batterylevel: battery, nbrObjet: ConvertionToolbox.ConvertAdvertisingValue(str: String(counter!)), etat: ConvertionToolbox.convertHexaToEtatInv(str: String(counter!)), identifier: tagidentifier)
             }
         }
         else if(sensorData![CBUUID(string: "2AA1")] != nil)

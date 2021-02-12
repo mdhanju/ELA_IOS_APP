@@ -11,7 +11,7 @@ import Charts
 import UICircularProgressRing
 class targetMoveViewController: UIViewController,ChartViewDelegate {
 
-
+  //  public var dictionnarySensor : Event<([String : Sensor])>
      
      private let nameSensor : String
      private let RSSI : Int
@@ -64,10 +64,22 @@ class targetMoveViewController: UIViewController,ChartViewDelegate {
                   UInameSensor.font = UIFont.systemFont(ofSize: 25.0)
                   UInameSensor.isUserInteractionEnabled = false
                   UInameSensor.font = UIFont.boldSystemFont(ofSize: 25)
-                  UInameSensor.frame = CGRect(x: 80, y: 50, width: 350, height: 100)
+                  UInameSensor.frame = CGRect(x: 80, y: 70, width: 350, height: 100)
                   UInameSensor.backgroundColor = .none
                   self.view.addSubview(UInameSensor)
                   self.view.bringSubviewToFront(UInameSensor)
+        
+        
+        let UInameEtat = UITextView()
+                     UInameEtat.text = "Etat : En déplacement"
+                     UInameEtat.textColor = UIColor.black
+                     UInameEtat.font = UIFont.systemFont(ofSize: 15)
+                     UInameEtat.isUserInteractionEnabled = false
+                     UInameEtat.font = UIFont.boldSystemFont(ofSize: 15)
+                     UInameEtat.frame = CGRect(x: 80, y: 130, width: 350, height: 100)
+                     UInameEtat.backgroundColor = .none
+                     self.view.addSubview(UInameEtat)
+                     self.view.bringSubviewToFront(UInameEtat)
         
            if(battery != -1)
               {
@@ -96,11 +108,58 @@ class targetMoveViewController: UIViewController,ChartViewDelegate {
                   btn.blink()
                   btn.setImage(UIimagelowBattery, for: .normal)
                            self.view.addSubview(btn)
-              
+                
+                
+                
+
               //   Timer.scheduledTimer(timeInterval: 0.1, target: self, selector: #selector(self.alarmAlertActivate), userInfo: nil, repeats: true)
               }
         
+        for cle in displayObject {
+                 if( cle.identifier == identifier)
+                     
+                 {
+                    if let Move : [Capteur.Move] = cle.array as? [Capteur.Move]
+                     {
+                 
+                        
+                        print(Move[array.count-1].etat == false)
+                        if(Move[array.count-1].etat == true)
+                        {
+                            let imagePerson = "PersonRunning"
+                                            let UIimagelowPerson = UIImage(named: imagePerson)
+                                  
+                                            
+                                            let btnPerson = UIButton()
+                                            btnPerson.frame = CGRect(x: 250, y: 130 ,width: 45, height: 45)
+                                            btnPerson.blink()
+                                            btnPerson.setImage(UIimagelowPerson, for: .normal)
+                                                     self.view.addSubview(btnPerson)
+                        }
+                        else {
+                            
+                            
+                            let imagePersonStatic = "Person"
+                                           let UIimagelowPersonStatic = UIImage(named: imagePersonStatic)
+                                 
+                                           
+                                           let btnPersonStatic = UIButton()
+                                           btnPersonStatic.frame = CGRect(x: 300, y: 130 ,width: 45, height: 45)
+                                        
+                                           btnPersonStatic.setImage(UIimagelowPersonStatic, for: .normal)
+                                                    self.view.addSubview(btnPersonStatic)
+                            
+                        
+                    }
+                    
+                }
+            }
+        }
+        
+            
+        
 
+        
           // Do any additional setup after loading the view.
           //progressRing = UICircularProgressRing()
            let progressRing = UICircularProgressRing(frame:  CGRect(x: 150, y: 200, width: 100, height: 100))
@@ -114,6 +173,7 @@ class targetMoveViewController: UIViewController,ChartViewDelegate {
                      if let temp : [Capteur.Move] = cle.array as? [Capteur.Move]
                      {
                         for x in 0..<cle.array.count
+                            
                                            {
                                             progressRing.value = CGFloat(temp[x].nbrPas)
                         }
@@ -124,7 +184,7 @@ class targetMoveViewController: UIViewController,ChartViewDelegate {
       //  progressRing.valueFormatter = "pas" as! UICircularRingValueFormatter
    
         progressRing.valueFormatter = UICircularProgressRingFormatter(valueIndicator: " pas", rightToLeft: false, showFloatingPoint: false, decimalPlaces: 0)
-          self.view.backgroundColor = UIColor.green
+          //self.view.backgroundColor = UIColor.green
         
           self.view.addSubview(progressRing)
 }

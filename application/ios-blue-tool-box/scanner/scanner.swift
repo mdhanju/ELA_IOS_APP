@@ -67,7 +67,7 @@ class Scanner1: NSObject, CBPeripheralDelegate, CBCentralManagerDelegate {
     func centralManager (_ central: CBCentralManager, didDiscover peripheral: CBPeripheral, advertisementData: [String : Any], rssi RSSI: NSNumber)
     {
         
-        if(peripheral.name == "P MAG C003F6")
+        if(peripheral.name == "P MOV B004EB")
              {
                 print("trouvé")
                 

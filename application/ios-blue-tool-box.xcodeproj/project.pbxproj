@@ -20,6 +20,7 @@
 		169B5E3C25B9C7C400627A55 /* ParticlePeripheral.swift in Sources */ = {isa = PBXBuildFile; fileRef = 169B5E3B25B9C7C400627A55 /* ParticlePeripheral.swift */; };
 		169B5E5125BAC6E800627A55 /* ios_blue_tool_boxTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 169B5E4625B9D33700627A55 /* ios_blue_tool_boxTests.swift */; };
 		169B5E5625BACD6F00627A55 /* ConvertionToolBox.swift in Sources */ = {isa = PBXBuildFile; fileRef = 169B5E5525BACD6F00627A55 /* ConvertionToolBox.swift */; };
+		16ACF8AB25D692B8008E296A /* targetMagViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16ACF8AA25D692B8008E296A /* targetMagViewController.swift */; };
 		16CB845F25AC6EF80067E1A0 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16CB845E25AC6EF80067E1A0 /* AppDelegate.swift */; };
 		16CB846125AC6EF80067E1A0 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16CB846025AC6EF80067E1A0 /* SceneDelegate.swift */; };
 		16CB846325AC6EF80067E1A0 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16CB846225AC6EF80067E1A0 /* ViewController.swift */; };
@@ -66,6 +67,7 @@
 		169B5E4625B9D33700627A55 /* ios_blue_tool_boxTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ios_blue_tool_boxTests.swift; sourceTree = "<group>"; };
 		169B5E4825B9D33700627A55 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		169B5E5525BACD6F00627A55 /* ConvertionToolBox.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConvertionToolBox.swift; sourceTree = "<group>"; };
+		16ACF8AA25D692B8008E296A /* targetMagViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = targetMagViewController.swift; sourceTree = "<group>"; };
 		16CB845B25AC6EF70067E1A0 /* ios-blue-tool-box.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "ios-blue-tool-box.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		16CB845E25AC6EF80067E1A0 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		16CB846025AC6EF80067E1A0 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -118,6 +120,7 @@
 				160BD57125D1516A00F5ED01 /* targetTempViewController.swift */,
 				160BD57925D5235D00F5ED01 /* targetTempHumViewController.swift */,
 				160BD57B25D5472600F5ED01 /* targetMoveViewController.swift */,
+				16ACF8AA25D692B8008E296A /* targetMagViewController.swift */,
 			);
 			path = Target_list;
 			sourceTree = "<group>";
@@ -452,6 +455,7 @@
 				169B5E5625BACD6F00627A55 /* ConvertionToolBox.swift in Sources */,
 				16CB846325AC6EF80067E1A0 /* ViewController.swift in Sources */,
 				169B5E3C25B9C7C400627A55 /* ParticlePeripheral.swift in Sources */,
+				16ACF8AB25D692B8008E296A /* targetMagViewController.swift in Sources */,
 				16CB845F25AC6EF80067E1A0 /* AppDelegate.swift in Sources */,
 				16CB846125AC6EF80067E1A0 /* SceneDelegate.swift in Sources */,
 				160BD57225D1516A00F5ED01 /* targetTempViewController.swift in Sources */,

@@ -99,7 +99,7 @@ public class ConvertionToolbox : NSObject {
     
    public static func convertHexaToEtatInv(str : String)-> Bool
     {
-       if(str.suffix(1) == "1")
+      /* if(str.suffix(1) == "1")
            {
             return true
            }
@@ -107,8 +107,32 @@ public class ConvertionToolbox : NSObject {
            {
             return false
            }
+ */
+        let LSB : String = String(str.prefix(2))
+              let MSB : String = String(str.suffix(2))
+              var str : String =  MSB + LSB
+        
+ /*  if(str.suffix(1).lowercased() == "f"
+          || str.suffix(1).lowercased() == "e"
+          || str.suffix(1).lowercased() == "d"
+          || str.prefix(1).lowercased() == "c"
+          || str.suffix(1).lowercased() == "b"
+          || str.suffix(1).lowercased() == "a"
+          || str.suffix(1).lowercased() == "9"
+          || str.suffix(1).lowercased() == "8"
+          || str.suffix(1).lowercased() == "1")
+      {
+        return true
+        }
+        return false
+    }*/
+         str = hexaToBinary(str: str)
+        if(str.suffix(1) == "1")
+        {
+            return true
+        }
+        else { return false}
     }
-    
     /**
      * \fn convertHexaToSumExpo
      * \brief sum of pow of 2 for the string
