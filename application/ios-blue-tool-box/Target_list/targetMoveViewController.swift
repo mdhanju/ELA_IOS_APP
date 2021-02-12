@@ -1,3 +1,4 @@
+//observable pattern swift
 //
 //  targetMoveViewController.swift
 //  ios-blue-tool-box
@@ -11,7 +12,7 @@ import Charts
 import UICircularProgressRing
 class targetMoveViewController: UIViewController,ChartViewDelegate {
 
-  //  public var dictionnarySensor : Event<([String : Sensor])>
+   // public var dictionnarySensor : Event<([String : Sensor])>
      
      private let nameSensor : String
      private let RSSI : Int
