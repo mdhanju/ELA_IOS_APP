@@ -38,9 +38,22 @@ extension UIView {
 
 class targetTempViewController: UIViewController,ChartViewDelegate {
     
+    
+      let data1 = LineChartData()
+ var entries = [ChartDataEntry]()
+      var entries1 = [ChartDataEntry]()
+ 
+ var lineChart = LineChartView()
+ 
+ 
+ // Compteur graphe entries
+ var compteur = 0
+ // Compteur graphe umdite
+ var compHum = 0
+    
  var UIimagelowBattery = UIImage()
     
-    var lineChart = LineChartView()
+   
     
     private let nameSensor : String
     private let RSSI : Int
@@ -49,6 +62,11 @@ class targetTempViewController: UIViewController,ChartViewDelegate {
     private let typedata : SensorTypes
     private let array : [Capteur.Cap]
     private let displayObject : [Capteur.DisplayObject]
+    
+    
+    private var scanner: Scanner1!
+    
+    var sensorT : SensorTypes? = nil
     
     //    private let relatedItem : [String]
     init(nameSensor : String,RSSI: Int, identifier : String, battery : Int, typedata : SensorTypes,array: [Capteur.Cap],displayObject : [Capteur.DisplayObject]) {
@@ -76,11 +94,101 @@ class targetTempViewController: UIViewController,ChartViewDelegate {
         fatalError("init(coder:) has not been implemented")
     }
     
+    func handleNewObjectAvailable(data: ([String : Sensor])) {
+          print("test 1940")
+          updateSensorUI(data: data)
+      }
+      
+      func updateSensorUI(data: ([String : Sensor])) -> Capteur.DisplayObject {
+          
+          var trouve = true
+          let objectTemp1 = Capteur.Temp(temp: 0)
+        //  let objectHum = TempHum(temp: 0, hum: 0)
+          
+          var newobject : Capteur.DisplayObject = Capteur.DisplayObject(name: "null", RSSI: 0, identifier: "",battery : 0, typedata : SensorTypes.SensorID, array: [objectTemp1])
+          
+          for (key,value) in data
+          {
+           
+                  if(key == identifier)
+                  {
+                      
+                      
+                      
+                      
+                      
+                      if(value is SensorTemperature)
+                      {
+                          if let tempHum = value as? SensorTemperature
+                          {
+                              let objectTemp =
+                                 Capteur.Temp(temp: tempHum.temperature)
+                            entries.append(ChartDataEntry(x: Double(compteur),y: Double(tempHum.temperature)))
+                             
+                             compteur = compteur + 1
+                             compHum = compHum + 1
+                             let line2 = LineChartDataSet(entries: entries, label: .none)
+                            
+                           
     
+                   line2.setColor(.red)
+                   line2.setCircleColor(.red)
+                           
+                       
+                           
+                                data1.addDataSet(line2)
+                       
+                          
+                             
+                             
+                               lineChart.data = data1
+                             
+                             
+                             
+                             
+                             
+                             // newobject = DisplayObject(name : cle.name, RSSI : cle.RSSI, identifier:  cle.identifier, battery: cle.battery, typedata : cle.typedata,array: [objectTemp] )
+                              //  display.addData(data: objectTemp)
+                             
+                         
+                          }
+                  
+                      }
+                      
+                   
+                      
+             trouve  = false
+                      
+                        //  displayObject.append(newobject)
+                  }
+              
+
+                  
+              
+                  
+                  
+              
+              
+              
+              
+              
+              
+              
+          }
+          return newobject
+      }
+     
     
     override func viewDidLoad() {
         super.viewDidLoad()
         view.backgroundColor = .white
+        
+        
+        scanner = Scanner1()
+        scanner.initializeScanner()
+        
+        //   scanner.defineFilterType(sensor: sensorT!)
+        scanner.dictionnarySensor.addHandler(handler : handleNewObjectAvailable)
         
         
         let UInameSensor = UITextView()
@@ -180,13 +288,14 @@ class targetTempViewController: UIViewController,ChartViewDelegate {
                     for x in 0..<cle.array.count
                     {
                         entries.append(ChartDataEntry(x: Double(x),y: Double(temp[x].temp)))
+                         compteur = compteur + 1
                     }
                     
                 }
             }
         }
-        let set = LineChartDataSet(entries:entries)
-        set.colors = ChartColorTemplates.material()
+         let set = LineChartDataSet(entries: entries, label: "temperature")
+      //  set.colors = ChartColorTemplates.material()
         
         let data = LineChartData(dataSet: set)
         
