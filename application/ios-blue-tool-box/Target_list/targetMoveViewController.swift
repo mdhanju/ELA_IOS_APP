@@ -23,6 +23,10 @@ class targetMoveViewController: UIViewController,ChartViewDelegate {
    // private var displayObject : [Capteur.DisplayObject]
      private var displayObject : [Capteur.DisplayObject]
     
+    private var scanner: Scanner1!
+
+      var sensorT : SensorTypes? = nil
+    
      
      //    private let relatedItem : [String]
      init(nameSensor : String,RSSI: Int, identifier : String, battery : Int, typedata : SensorTypes,array: [Capteur.Cap],displayObject : [Capteur.DisplayObject]) {
@@ -52,14 +56,15 @@ class targetMoveViewController: UIViewController,ChartViewDelegate {
     
 
     
-    func handleNewObjectAvailable(data: ([Capteur.DisplayObject])) {
+    func handleNewObjectAvailable(data: ([String : Sensor])) {
         updateSensorUI(data: data)
+        print("test1830")
     }
     
     
-    func updateSensorUI(data: ([Capteur.DisplayObject]))
+    func updateSensorUI(data: ([String : Sensor]))
     {
-       displayObject = data
+     //  displayObject = data
         print("allo")
     }
     
@@ -69,11 +74,14 @@ class targetMoveViewController: UIViewController,ChartViewDelegate {
         
         
         
-          capteur = Capteur()
-        if( capteur.dictionnarySensorSacond != nil)
-        {
-        capteur.dictionnarySensorSacond!.addHandler(handler : handleNewObjectAvailable)
-        }
+     //     capteur = Capteur()
+      
+       //     capteur.dictionnarySensorSacond.addHandler(handler : handleNewObjectAvailable)
+      //  scanner = Scanner1()
+            //      scanner.initializeScanner()
+                  
+//                  scanner.defineFilterType(sensor: sensorT!)
+  //                scanner.dictionnarySensor.addHandler(handler : handleNewObjectAvailable)
         
         
         // 2^15

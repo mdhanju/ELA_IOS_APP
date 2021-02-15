@@ -21,6 +21,7 @@
 		169B5E5125BAC6E800627A55 /* ios_blue_tool_boxTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 169B5E4625B9D33700627A55 /* ios_blue_tool_boxTests.swift */; };
 		169B5E5625BACD6F00627A55 /* ConvertionToolBox.swift in Sources */ = {isa = PBXBuildFile; fileRef = 169B5E5525BACD6F00627A55 /* ConvertionToolBox.swift */; };
 		16ACF8AB25D692B8008E296A /* targetMagViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16ACF8AA25D692B8008E296A /* targetMagViewController.swift */; };
+		16ACF8AD25DA8705008E296A /* targetAngleViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16ACF8AC25DA8705008E296A /* targetAngleViewController.swift */; };
 		16CB845F25AC6EF80067E1A0 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16CB845E25AC6EF80067E1A0 /* AppDelegate.swift */; };
 		16CB846125AC6EF80067E1A0 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16CB846025AC6EF80067E1A0 /* SceneDelegate.swift */; };
 		16CB846325AC6EF80067E1A0 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16CB846225AC6EF80067E1A0 /* ViewController.swift */; };
@@ -68,6 +69,7 @@
 		169B5E4825B9D33700627A55 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		169B5E5525BACD6F00627A55 /* ConvertionToolBox.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConvertionToolBox.swift; sourceTree = "<group>"; };
 		16ACF8AA25D692B8008E296A /* targetMagViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = targetMagViewController.swift; sourceTree = "<group>"; };
+		16ACF8AC25DA8705008E296A /* targetAngleViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = targetAngleViewController.swift; sourceTree = "<group>"; };
 		16CB845B25AC6EF70067E1A0 /* ios-blue-tool-box.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "ios-blue-tool-box.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		16CB845E25AC6EF80067E1A0 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		16CB846025AC6EF80067E1A0 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -121,6 +123,7 @@
 				160BD57925D5235D00F5ED01 /* targetTempHumViewController.swift */,
 				160BD57B25D5472600F5ED01 /* targetMoveViewController.swift */,
 				16ACF8AA25D692B8008E296A /* targetMagViewController.swift */,
+				16ACF8AC25DA8705008E296A /* targetAngleViewController.swift */,
 			);
 			path = Target_list;
 			sourceTree = "<group>";
@@ -475,6 +478,7 @@
 				16E3AB5225C98C37001426DD /* chart.swift in Sources */,
 				16DFFB8625B04E9500CCB063 /* BlueMAGViewController.swift in Sources */,
 				160BD57025D13C2300F5ED01 /* AproposViewController.swift in Sources */,
+				16ACF8AD25DA8705008E296A /* targetAngleViewController.swift in Sources */,
 				16DFFB8825B04EA800CCB063 /* BlueANGViewController.swift in Sources */,
 				16DFFB8225B04E7300CCB063 /* BlueRHTViewController.swift in Sources */,
 			);

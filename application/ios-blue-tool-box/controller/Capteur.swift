@@ -5,10 +5,6 @@ import SwiftUI
 
 class Capteur:  UIViewController, UITableViewDataSource, UITableViewDelegate{
     
-    
-    
-    
-    
     private var scanner: Scanner1!
     var display: [ DisplayObject] = []
     var isStartButton : Bool = true
@@ -18,7 +14,7 @@ class Capteur:  UIViewController, UITableViewDataSource, UITableViewDelegate{
     var buttonStop : UIButton? = nil
     var isStopButton = false
     
-      public var dictionnarySensorSacond : Event<([DisplayObject])>? = nil
+      public var dictionnarySensorSacond : Event<([String : Sensor])>? = nil
     
     
     
@@ -36,6 +32,31 @@ class Capteur:  UIViewController, UITableViewDataSource, UITableViewDelegate{
       init(nbrPas : Int, etat : Bool) {
         self.nbrPas = nbrPas
         self.etat = etat
+        }
+    }
+    
+    
+    public class Mag : Cap
+    {
+       var nbrMagnet: Int = 0
+       var etat : Bool = false
+        
+      init(nbrMagnet : Int, etat : Bool) {
+        self.nbrMagnet = nbrMagnet
+        self.etat = etat
+        }
+    }
+    
+    public class Angle : Cap
+    {
+        var x : Int = 0
+        var y : Int = 0
+        var z : Int = 0
+        
+        init(x: Int,y:Int, z:Int) {
+            self.x = x
+            self.y = y
+            self.z = z
         }
     }
     
@@ -194,10 +215,26 @@ class Capteur:  UIViewController, UITableViewDataSource, UITableViewDelegate{
          self.navigationController?.pushViewController(targetMoveViewController(nameSensor: string1 ,RSSI: RSSI, identifier : identifier, battery : battery, typedata : typedata,array : arr,displayObject : display), animated: true)
           self.navigationController?.navigationBar.tintColor = .black
          }
+        
+        
+        if(typedata == SensorTypes.SensorMagnetic)
+                     {
+          
+          self.navigationController?.pushViewController(targetMagViewController(nameSensor: string1 ,RSSI: RSSI, identifier : identifier, battery : battery, typedata : typedata,array : arr,displayObject : display), animated: true)
+           self.navigationController?.navigationBar.tintColor = .black
+          }
+        
+       if(typedata == SensorTypes.SensorAngle)
+                     {
+          
+          self.navigationController?.pushViewController(targetAngleViewController(nameSensor: string1 ,RSSI: RSSI, identifier : identifier, battery : battery, typedata : typedata,array : arr,displayObject : display), animated: true)
+           self.navigationController?.navigationBar.tintColor = .black
+          }
         //
+ 
     }
     
-    
+
     private let tableview : UITableView =
     {
         let tableview = UITableView()
@@ -323,8 +360,6 @@ class Capteur:  UIViewController, UITableViewDataSource, UITableViewDelegate{
         updateSensorUI(data: data)
     }
     
-
-    
     func updateSensorUI(data: ([String : Sensor])) -> DisplayObject {
         
         var trouve = true
@@ -377,11 +412,33 @@ class Capteur:  UIViewController, UITableViewDataSource, UITableViewDelegate{
                             cle.addData(data: objectMove)
                         }
                     }
-                    // probleme ici
-                    if( dictionnarySensorSacond != nil)
+                    
+                    if(value is SensorMagnetic)
                     {
-                      dictionnarySensorSacond!.raise(data : display)
+                        if let mag = value as? SensorMagnetic
+                        {
+                            let objectMove =
+                                Mag(nbrMagnet: mag.nbrObjet, etat: mag.etat)
+                          //  newobject = DisplayObject(name : cle.name, RSSI : cle.RSSI, identifier:  cle.identifier, battery: cle.battery, typedata : cle.typedata,array: [objectTemp] )
+                            //  display.addData(data: objectTemp)
+                            cle.addData(data: objectMove)
+                        }
                     }
+                    
+                    if(value is SensorAngle)
+                    {
+                        if let angle = value as? SensorAngle
+                        {
+                            let objectMove =
+                                Angle(x: angle.x, y: angle.y, z: angle.z)
+                          //  newobject = DisplayObject(name : cle.name, RSSI : cle.RSSI, identifier:  cle.identifier, battery: cle.battery, typedata : cle.typedata,array: [objectTemp] )
+                            //  display.addData(data: objectTemp)
+                            cle.addData(data: objectMove)
+                        }
+                    }
+                    
+              
+                    
                     
            trouve  = false
                 }
@@ -421,6 +478,32 @@ class Capteur:  UIViewController, UITableViewDataSource, UITableViewDelegate{
                     {
                           let objectMove =
                                                      Move(nbrPas: move.nbrPas, etat: move.etat)
+                        newobject = DisplayObject(name: value.name, RSSI: value.RSSI, identifier: value.idenfitfier, battery: value.batterylevel, typedata : value.sensorTypes,array: [objectMove] )
+                    }
+                }
+                
+                
+                if(value is SensorMagnetic)
+                {
+                       // newobject = DisplayObject(name: value.name, RSSI: value.RSSI, identifier: value.idenfitfier, battery: value.batterylevel, typedata : value.sensorTypes,array: [objectTemp1])
+                    
+                    if let mag = value as? SensorMagnetic
+                    {
+                          let objectMove =
+                            Mag(nbrMagnet: mag.nbrObjet, etat: mag.etat)
+                        newobject = DisplayObject(name: value.name, RSSI: value.RSSI, identifier: value.idenfitfier, battery: value.batterylevel, typedata : value.sensorTypes,array: [objectMove] )
+                    }
+                }
+                
+                
+                if(value is SensorAngle)
+                {
+                       // newobject = DisplayObject(name: value.name, RSSI: value.RSSI, identifier: value.idenfitfier, battery: value.batterylevel, typedata : value.sensorTypes,array: [objectTemp1])
+                    
+                    if let angle = value as? SensorAngle
+                    {
+                          let objectMove =
+                            Angle(x: angle.x, y: angle.y, z: angle.z)
                         newobject = DisplayObject(name: value.name, RSSI: value.RSSI, identifier: value.idenfitfier, battery: value.batterylevel, typedata : value.sensorTypes,array: [objectMove] )
                     }
                 }
