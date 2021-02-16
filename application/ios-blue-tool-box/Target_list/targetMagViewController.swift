@@ -87,8 +87,6 @@ class targetMagViewController: UIViewController {
                     {
                         let objectMove =
                             Capteur.Move(nbrPas: move.nbrObjet, etat: move.etat)
-                        //  newobject = DisplayObject(name : cle.name, RSSI : cle.RSSI, identifier:  cle.identifier, battery: cle.battery, typedata : cle.typedata,array: [objectTemp] )
-                        //  display.addData(data: objectTemp)
                         
                         progressRing.value = CGFloat(move.nbrObjet)
                         print("progress ring" + String(move.nbrObjet) + "son nom " + move.name )
@@ -136,8 +134,6 @@ class targetMagViewController: UIViewController {
         
         scanner = Scanner1()
         scanner.initializeScanner()
-        
-        //   scanner.defineFilterType(sensor: sensorT!)
         scanner.dictionnarySensor.addHandler(handler : handleNewObjectAvailable)
         
         
@@ -174,8 +170,6 @@ class targetMagViewController: UIViewController {
         {
             
             let UIbatterie = UITextView()
-            
-            //  UIbatterie.text = "La batterie est de : " + String(battery) + " mV"
             UIbatterie.text = "Low battery"
             
             UIbatterie.textColor = UIColor.red
@@ -198,10 +192,6 @@ class targetMagViewController: UIViewController {
             btn.setImage(UIimagelowBattery, for: .normal)
             self.view.addSubview(btn)
             
-            
-            
-            
-            //   Timer.scheduledTimer(timeInterval: 0.1, target: self, selector: #selector(self.alarmAlertActivate), userInfo: nil, repeats: true)
         }
         
         for cle in displayObject {
@@ -240,15 +230,7 @@ class targetMagViewController: UIViewController {
                 }
             }
         }
-        
-        
-        
-        
-        
-        // Do any additional setup after loading the view.
-        //progressRing = UICircularProgressRing()
-    
-        // Change any of the properties you'd like
+
         progressRing.minValue = 1
         progressRing.maxValue = 32000
         for cle in displayObject {
@@ -266,10 +248,8 @@ class targetMagViewController: UIViewController {
             }
         }
         progressRing.innerRingColor = UIColor.orange
-        //  progressRing.valueFormatter = "pas" as! UICircularRingValueFormatter
         
         progressRing.valueFormatter = UICircularProgressRingFormatter(valueIndicator: " aimant", rightToLeft: false, showFloatingPoint: false, decimalPlaces: 0)
-        //self.view.backgroundColor = UIColor.green
         
         self.view.addSubview(progressRing)
     }
@@ -279,18 +259,5 @@ class targetMagViewController: UIViewController {
 
 
 
-// Do any additional setup after loading the view.
-
-
-
-/*
- // MARK: - Navigation
- 
- // In a storyboard-based application, you will often want to do a little preparation before navigation
- override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
- // Get the new view controller using segue.destination.
- // Pass the selected object to the new view controller.
- }
- */
 
 

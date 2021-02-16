@@ -1,12 +1,3 @@
-//observable pattern swift
-//
-//  targetMoveViewController.swift
-//  ios-blue-tool-box
-//
-//  Created by ELA Innovation on 11/02/2021.
-//  Copyright © 2021 ELA Innovation. All rights reserved.
-//
-
 import UIKit
 import Charts
 import UICircularProgressRing
@@ -159,11 +150,6 @@ class targetMoveViewController: UIViewController,ChartViewDelegate {
             btn.blink()
             btn.setImage(UIimagelowBattery, for: .normal)
             self.view.addSubview(btn)
-            
-            
-            
-            
-            //   Timer.scheduledTimer(timeInterval: 0.1, target: self, selector: #selector(self.alarmAlertActivate), userInfo: nil, repeats: true)
         }
         
         for cle in displayObject {

@@ -1,11 +1,3 @@
-//
-//  targetTempHumViewController.swift
-//  ios-blue-tool-box
-//
-//  Created by ELA Innovation on 11/02/2021.
-//  Copyright © 2021 ELA Innovation. All rights reserved.
-
-
 import UIKit
 import Charts
 class targetTempHumViewController: UIViewController,ChartViewDelegate {
@@ -34,7 +26,6 @@ class targetTempHumViewController: UIViewController,ChartViewDelegate {
     
     var sensorT : SensorTypes? = nil
     
-    //    private let relatedItem : [String]
     init(nameSensor : String,RSSI: Int, identifier : String, battery : Int, typedata : SensorTypes,array: [Capteur.Cap],displayObject : [Capteur.DisplayObject]) {
         self.nameSensor = nameSensor
         self.RSSI = RSSI
@@ -70,7 +61,6 @@ class targetTempHumViewController: UIViewController,ChartViewDelegate {
         
         var trouve = true
         let objectTemp1 = Capteur.Temp(temp: 0)
-        //  let objectHum = TempHum(temp: 0, hum: 0)
         
         var newobject : Capteur.DisplayObject = Capteur.DisplayObject(name: "null", RSSI: 0, identifier: "",battery : 0, typedata : SensorTypes.SensorID, array: [objectTemp1])
         
