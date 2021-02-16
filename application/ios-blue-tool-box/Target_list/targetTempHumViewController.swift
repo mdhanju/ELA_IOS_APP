@@ -102,22 +102,9 @@ class targetTempHumViewController: UIViewController,ChartViewDelegate {
                         line1.setCircleColor(.purple)
                         line2.setColor(.red)
                         line2.setCircleColor(.red)
-                        
-                        
-                        
                         data1.addDataSet(line2)
-                        
                         data1.addDataSet(line1)
-                        
-                        
                         lineChart.data = data1
-                        
-                        
-                        
-                        
-                        
-                        // newobject = DisplayObject(name : cle.name, RSSI : cle.RSSI, identifier:  cle.identifier, battery: cle.battery, typedata : cle.typedata,array: [objectTemp] )
-                        //  display.addData(data: objectTemp)
                         
                         
                     }
@@ -127,42 +114,18 @@ class targetTempHumViewController: UIViewController,ChartViewDelegate {
                 
                 
                 trouve  = false
-                
-                //  displayObject.append(newobject)
             }
-            
-            
-            
-            
-            
-            
-            
-            
-            
-            
-            
-            
-            
         }
         return newobject
     }
     
     
     override func viewDidLoad() {
-        
-        
-        
-        
-        
+
         super.viewDidLoad()
         view.backgroundColor = .white
-        
-        print(nameSensor)
-        
         scanner = Scanner1()
         scanner.initializeScanner()
-        
-        //   scanner.defineFilterType(sensor: sensorT!)
         scanner.dictionnarySensor.addHandler(handler : handleNewObjectAvailable)
         
         
@@ -176,17 +139,11 @@ class targetTempHumViewController: UIViewController,ChartViewDelegate {
         UInameSensor.backgroundColor = .none
         self.view.addSubview(UInameSensor)
         self.view.bringSubviewToFront(UInameSensor)
-        
-        
-        // if(battery != -1)
-        //{
-        
+
         if(battery != -1)
         {
             
             let UIbatterie = UITextView()
-            
-            //  UIbatterie.text = "La batterie est de : " + String(battery) + " mV"
             UIbatterie.text = "Low battery"
             
             UIbatterie.textColor = UIColor.red
@@ -208,8 +165,6 @@ class targetTempHumViewController: UIViewController,ChartViewDelegate {
             btn.blink()
             btn.setImage(UIimagelowBattery, for: .normal)
             self.view.addSubview(btn)
-            
-            //   Timer.scheduledTimer(timeInterval: 0.1, target: self, selector: #selector(self.alarmAlertActivate), userInfo: nil, repeats: true)
         }
         
         
@@ -222,28 +177,14 @@ class targetTempHumViewController: UIViewController,ChartViewDelegate {
         self.view.addSubview(imageViewTemp)
         
         
-        /*  let imageConnect = "connection"
-         let UIconnect = UIImage(named: imageConnect)
-         let imageVIewConnect = UIImageView(image: UIconnect!)
-         imageVIewConnect.frame = CGRect(x: 310, y: 70, width: 45, height: 45)
-         imageVIewConnect.isUserInteractionEnabled = true
-         let imageTapGestureRecognizerConnect = UITapGestureRecognizer(target: self, action: #selector(imageTapTemp))
-         imageVIewConnect.addGestureRecognizer(imageTapGestureRecognizerConnect)
-         
-         self.view.addSubview(imageVIewConnect)
-         */
         let imageArray = "sklia"
         let UIarray = UIImage(named: imageArray)
         
         var items = [UIBarButtonItem]()
         items.append(UIBarButtonItem(image: UIarray, landscapeImagePhone: .none, style: .done, target: self, action: #selector(imageTapTemp)))
         items.append(UIBarButtonItem(title: "Connexion", style: .plain, target: self,action: .none))
-        //     items.append(UIBarButtonItem(image: UIconnect, landscapeImagePhone: .none, style: .done, target: self, action: #selector(imageTapTemp)))
         
         self.navigationItem.setRightBarButtonItems(items, animated: true)
-        //    navigationItem.rightBarButtonItem = UIBarButtonItem(title: c, style: .plain, target: self,action: .none)
-        // navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .fixedSpace, target: self, action: .none)
-        
         lineChart.delegate = self
         
         
@@ -293,13 +234,6 @@ class targetTempHumViewController: UIViewController,ChartViewDelegate {
         line2.setCircleColor(.red)
         data1.addDataSet(line1)
         data1.addDataSet(line2)
-        
-        
-        //let set = LineChartDataSet(
-        //    set.colors = ChartColorTemplates.material()
-        
-        
-        
         lineChart.data = data1
         
     }

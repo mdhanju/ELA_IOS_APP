@@ -19,6 +19,10 @@ class targetMagViewController: UIViewController {
     let UIimagelowPerson = UIImage(named: "PersonRunning")
     let UIimagelowPersonStatic = UIImage(named: "Person")
     
+    
+    
+    
+    
     let progressRing = UICircularProgressRing(frame:  CGRect(x: 150, y: 200, width: 100, height: 100))
 
 
@@ -206,16 +210,14 @@ class targetMagViewController: UIViewController {
             {
                 if let Move : [Capteur.Mag] = cle.array as? [Capteur.Mag]
                 {
-                    
-                    
+                    progressRing.value = CGFloat(Move[array.count-1].nbrMagnet)
                     print(Move[array.count-1].etat == false)
                     if(Move[array.count-1].etat == true)
                     {
-                        let imagePerson = "PersonRunning"
-                        let UIimagelowPerson = UIImage(named: imagePerson)
+       
                         
                         
-                        let btnPerson = UIButton()
+                    
                         btnPerson.frame = CGRect(x: 250, y: 130 ,width: 45, height: 45)
                         btnPerson.blink()
                         btnPerson.setImage(UIimagelowPerson, for: .normal)
@@ -223,16 +225,14 @@ class targetMagViewController: UIViewController {
                     }
                     else {
                         
-                        
-                        let imagePersonStatic = "Person"
-                        let UIimagelowPersonStatic = UIImage(named: imagePersonStatic)
+
                         
                         
-                        let btnPersonStatic = UIButton()
-                        btnPersonStatic.frame = CGRect(x: 300, y: 130 ,width: 45, height: 45)
+                    
+                        btnPerson.frame = CGRect(x: 300, y: 130 ,width: 45, height: 45)
                         
-                        btnPersonStatic.setImage(UIimagelowPersonStatic, for: .normal)
-                        self.view.addSubview(btnPersonStatic)
+                        btnPerson.setImage(UIimagelowPersonStatic, for: .normal)
+                        self.view.addSubview(btnPerson)
                         
                         
                     }
@@ -247,7 +247,7 @@ class targetMagViewController: UIViewController {
         
         // Do any additional setup after loading the view.
         //progressRing = UICircularProgressRing()
-        let progressRing = UICircularProgressRing(frame:  CGRect(x: 150, y: 200, width: 100, height: 100))
+    
         // Change any of the properties you'd like
         progressRing.minValue = 1
         progressRing.maxValue = 32000

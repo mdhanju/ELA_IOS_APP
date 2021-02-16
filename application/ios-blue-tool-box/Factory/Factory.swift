@@ -1,10 +1,3 @@
-//
-//  Factory.swift
-//  burger
-//
-//  Created by ELA Innovation on 15/01/2021.
-//  Copyright © 2021 ELA Innovation. All rights reserved.
-//
 import Foundation
 import CoreBluetooth
 
@@ -485,7 +478,7 @@ class SensorFactory
             && sensorData![CBUUID(string: "2A06")] != nil)
         {
             let counter = sensorData![CBUUID(string: "2A06")]?.debugDescription.dropFirst().dropLast()
-            let etat = String(sensorData![CBUUID(string: "2A3F")]!.debugDescription.dropFirst().dropFirst().dropLast())
+           
             var battery : Int = -1
             //
             if(sensorData![CBUUID(string: "180F")] != nil)
@@ -498,8 +491,7 @@ class SensorFactory
                 let tempStrBattery : String? = sensorData![CBUUID(string: "2A19")]?.debugDescription.dropFirst().dropLast().description
                 battery = ConvertionToolbox.ConvertAdvertisingValue(str: String(tempStrBattery!))
             }
-            //
-            // update data
+           
             if(String(sensorData![CBUUID(string: "2A3F")]!.debugDescription.dropFirst().dropFirst().dropLast()) == "1")
             {
                 id = SensorFactory.shared().getSensorMove(sensorTypes: .SensorMove, name: tagname , RSSI: Int(truncating: tagRSSI),batterylevel: battery, nbrPas: ConvertionToolbox.ConvertAdvertisingValue(str: String(counter!)), etat: ConvertionToolbox.convertHexaToEtatInv(str: String(counter!)),identifier: tagidentifier)

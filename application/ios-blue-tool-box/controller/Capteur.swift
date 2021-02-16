@@ -9,16 +9,12 @@ class Capteur:  UIViewController, UITableViewDataSource, UITableViewDelegate{
     var display: [ DisplayObject] = []
     var isStartButton : Bool = true
     var sensorT : SensorTypes? = nil
-    
     var buttonStart : UIButton? = nil
     var buttonStop : UIButton? = nil
     var isStopButton = false
     
-      public var dictionnarySensorSacond : Event<([String : Sensor])>? = nil
-    
-    
-    
-    
+    public var dictionnarySensorSacond : Event<([String : Sensor])>? = nil
+
     public class Cap
     {
         

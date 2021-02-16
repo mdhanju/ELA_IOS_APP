@@ -7,19 +7,25 @@ class Scanner1: NSObject, CBPeripheralDelegate, CBCentralManagerDelegate {
     private var centralManager: CBCentralManager!
     private var peripheral: CBPeripheral!
     
+    // MARK: Identifier unique similar as mac adress
     private var identifier: [String] = []
     
-    public var evNewInfoAvailable: Event<(String, String)>
+    // MARK: Dictionnary who stock sensor
     public var dictionnarySensor : Event<([String : Sensor])>
     
+    // MARK:
     private var sensorTypeFiler : SensorTypes? = nil
     
-    override init() {
-        evNewInfoAvailable = Event<(String, String)>()
+    override init()
+    {
         dictionnarySensor = Event<([String : Sensor])>()
-
     }
-    
+    /**
+     * \fn defineFilterType
+     * \brief function to initialize a new scanner sensor when function initialize is call
+     * \param [sensorTypes] : sensor
+     * \return None
+     **/
     public func defineFilterType(sensor : SensorTypes)
     {
         self.sensorTypeFiler = sensor
@@ -63,64 +69,51 @@ class Scanner1: NSObject, CBPeripheralDelegate, CBCentralManagerDelegate {
         }
     }
     
-    // Handles the result of the scan
+    /**
+     * \fn initializeScanner
+     * \brief handle the result of the scan : filter type of sensor and we add dictionnary to the array
+     
+     **/
     func centralManager (_ central: CBCentralManager, didDiscover peripheral: CBPeripheral, advertisementData: [String : Any], rssi RSSI: NSNumber)
     {
-        
-        if(peripheral.name == "P MOV B004EB")
-             {
-                print("trouvé")
-                
-            }
-        
-       // print(peripheral.name)
-       // print(peripheral.identifier.description)
-        if(peripheral.name != nil)
-        {
-            let data = (peripheral.name!, peripheral.identifier.description)
-            evNewInfoAvailable.raise(data : data)
-        }
-        
-        //
         if(advertisementData[CBAdvertisementDataServiceDataKey] != nil)
         {
             let sensorData = advertisementData[CBAdvertisementDataServiceDataKey] as? Dictionary<CBUUID,NSData>
-
+            
             if(identifier.count <= 0)
             {
                 identifier.append(peripheral.identifier.description)
             }
             else{
-      
-                    identifier.append(peripheral.identifier.description)
+                
+                identifier.append(peripheral.identifier.description)
+                
+                let id = SensorFactory.shared().get(sensorData: sensorData, tagname: peripheral.name?.description ?? "", tagRSSI: RSSI, tagidentifier: peripheral.identifier.description)
+                
+                if( id != nil)
+                {
                     
-                    let id = SensorFactory.shared().get(sensorData: sensorData, tagname: peripheral.name?.description ?? "", tagRSSI: RSSI, tagidentifier: peripheral.identifier.description)
-               
-              
                     
-                    if( id != nil)
+                   if(nil == self.sensorTypeFiler)
                     {
-
+                        dictionnarySensor.raise(data : [peripheral.identifier.description:id!])
+                    }
+                    else
+                    {
+ 
                         
-                        if(nil == self.sensorTypeFiler)
+                        if(self.sensorTypeFiler == id?.sensorTypes)
                         {
                             dictionnarySensor.raise(data : [peripheral.identifier.description:id!])
                         }
-                        else
-                        {
-                         
-                            if(self.sensorTypeFiler == id?.sensorTypes)
-                            {
-                                dictionnarySensor.raise(data : [peripheral.identifier.description:id!])
-                            }
-                    }
-      
-                    }
-
+                   }
+                     
                 }
+                
+            }
         }
-
-    
+        
+        
     }
     
 }

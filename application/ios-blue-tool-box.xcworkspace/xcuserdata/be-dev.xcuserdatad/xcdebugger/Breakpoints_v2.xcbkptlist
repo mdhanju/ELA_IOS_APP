@@ -8,7 +8,7 @@
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
             uuid = "60159889-ECC6-427B-BEB5-04BF1DF42F06"
-            shouldBeEnabled = "Yes"
+            shouldBeEnabled = "No"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "ios-blue-tool-box/Tools/ConvertionToolBox.swift"
@@ -30,8 +30,8 @@
             filePath = "ios-blue-tool-box/Factory/Factory.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "417"
-            endingLineNumber = "417"
+            startingLineNumber = "410"
+            endingLineNumber = "410"
             landmarkName = "getDataSensor(id:)"
             landmarkType = "7">
          </BreakpointContent>
@@ -46,8 +46,8 @@
             filePath = "ios-blue-tool-box/Factory/Factory.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "554"
-            endingLineNumber = "554"
+            startingLineNumber = "546"
+            endingLineNumber = "546"
             landmarkName = "get(sensorData:tagname:tagRSSI:tagidentifier:)"
             landmarkType = "7">
          </BreakpointContent>
@@ -62,8 +62,8 @@
             filePath = "ios-blue-tool-box/Factory/Factory.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "572"
-            endingLineNumber = "572"
+            startingLineNumber = "564"
+            endingLineNumber = "564"
             landmarkName = "get(sensorData:tagname:tagRSSI:tagidentifier:)"
             landmarkType = "7">
          </BreakpointContent>
@@ -78,8 +78,8 @@
             filePath = "ios-blue-tool-box/Factory/Factory.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "569"
-            endingLineNumber = "569"
+            startingLineNumber = "561"
+            endingLineNumber = "561"
             landmarkName = "get(sensorData:tagname:tagRSSI:tagidentifier:)"
             landmarkType = "7">
          </BreakpointContent>
@@ -94,8 +94,8 @@
             filePath = "ios-blue-tool-box/Factory/Factory.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "532"
-            endingLineNumber = "532"
+            startingLineNumber = "524"
+            endingLineNumber = "524"
             landmarkName = "get(sensorData:tagname:tagRSSI:tagidentifier:)"
             landmarkType = "7">
          </BreakpointContent>
@@ -110,8 +110,8 @@
             filePath = "ios-blue-tool-box/Factory/Factory.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "512"
-            endingLineNumber = "512"
+            startingLineNumber = "504"
+            endingLineNumber = "504"
             landmarkName = "get(sensorData:tagname:tagRSSI:tagidentifier:)"
             landmarkType = "7">
          </BreakpointContent>
@@ -126,8 +126,8 @@
             filePath = "ios-blue-tool-box/scanner/scanner.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "105"
-            endingLineNumber = "105"
+            startingLineNumber = "97"
+            endingLineNumber = "97"
             landmarkName = "centralManager(_:didDiscover:advertisementData:rssi:)"
             landmarkType = "7">
          </BreakpointContent>
@@ -142,10 +142,10 @@
             filePath = "ios-blue-tool-box/scanner/scanner.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "112"
-            endingLineNumber = "112"
-            landmarkName = "centralManager(_:didDiscover:advertisementData:rssi:)"
-            landmarkType = "7">
+            startingLineNumber = "105"
+            endingLineNumber = "105"
+            landmarkName = "unknown"
+            landmarkType = "0">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -164,7 +164,7 @@
             landmarkType = "3">
             <Locations>
                <Location
-                  uuid = "45102D75-E3EB-4CDD-A309-2BF985E6A24E - f57a9063111120f1"
+                  uuid = "45102D75-E3EB-4CDD-A309-2BF985E6A24E - e92028ff96580c2b"
                   shouldBeEnabled = "Yes"
                   ignoreCount = "0"
                   continueAfterRunningActions = "No"
@@ -179,7 +179,7 @@
                   offsetFromSymbolStart = "76">
                </Location>
                <Location
-                  uuid = "45102D75-E3EB-4CDD-A309-2BF985E6A24E - f57a9063111120f1"
+                  uuid = "45102D75-E3EB-4CDD-A309-2BF985E6A24E - e92028ff96580c2b"
                   shouldBeEnabled = "Yes"
                   ignoreCount = "0"
                   continueAfterRunningActions = "No"
@@ -194,7 +194,7 @@
                   offsetFromSymbolStart = "160">
                </Location>
                <Location
-                  uuid = "45102D75-E3EB-4CDD-A309-2BF985E6A24E - f57a9063111120f1"
+                  uuid = "45102D75-E3EB-4CDD-A309-2BF985E6A24E - e92028ff96580ef1"
                   shouldBeEnabled = "Yes"
                   ignoreCount = "0"
                   continueAfterRunningActions = "No"
@@ -209,7 +209,7 @@
                   offsetFromSymbolStart = "20">
                </Location>
                <Location
-                  uuid = "45102D75-E3EB-4CDD-A309-2BF985E6A24E - 8c9829946ae99eae"
+                  uuid = "45102D75-E3EB-4CDD-A309-2BF985E6A24E - 90c29108eda0b274"
                   shouldBeEnabled = "Yes"
                   ignoreCount = "0"
                   continueAfterRunningActions = "No"
@@ -224,7 +224,7 @@
                   offsetFromSymbolStart = "16">
                </Location>
                <Location
-                  uuid = "45102D75-E3EB-4CDD-A309-2BF985E6A24E - b443c64af9a1024e"
+                  uuid = "45102D75-E3EB-4CDD-A309-2BF985E6A24E - a8197ed67ee82e94"
                   shouldBeEnabled = "Yes"
                   ignoreCount = "0"
                   continueAfterRunningActions = "No"
@@ -239,7 +239,7 @@
                   offsetFromSymbolStart = "172">
                </Location>
                <Location
-                  uuid = "45102D75-E3EB-4CDD-A309-2BF985E6A24E - f61ffa919477ac1f"
+                  uuid = "45102D75-E3EB-4CDD-A309-2BF985E6A24E - ea45420d133e80c5"
                   shouldBeEnabled = "Yes"
                   ignoreCount = "0"
                   continueAfterRunningActions = "No"
@@ -282,10 +282,10 @@
             filePath = "ios-blue-tool-box/scanner/scanner.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "114"
-            endingLineNumber = "114"
-            landmarkName = "centralManager(_:didDiscover:advertisementData:rssi:)"
-            landmarkType = "7">
+            startingLineNumber = "107"
+            endingLineNumber = "107"
+            landmarkName = "unknown"
+            landmarkType = "0">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -298,8 +298,8 @@
             filePath = "ios-blue-tool-box/controller/Capteur.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "371"
-            endingLineNumber = "371"
+            startingLineNumber = "367"
+            endingLineNumber = "367"
             landmarkName = "updateSensorUI(data:)"
             landmarkType = "7">
          </BreakpointContent>
@@ -314,25 +314,9 @@
             filePath = "ios-blue-tool-box/controller/Capteur.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "448"
-            endingLineNumber = "448"
+            startingLineNumber = "444"
+            endingLineNumber = "444"
             landmarkName = "updateSensorUI(data:)"
-            landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            uuid = "C7D7B2B8-F76A-4750-A253-D94A33434473"
-            shouldBeEnabled = "No"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "ios-blue-tool-box/scanner/scanner.swift"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "72"
-            endingLineNumber = "72"
-            landmarkName = "centralManager(_:didDiscover:advertisementData:rssi:)"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
@@ -352,7 +336,7 @@
             landmarkType = "3">
             <Locations>
                <Location
-                  uuid = "C38CD06E-3B33-4D87-B18A-F4342C5F75CD - 5490dd6d634aaf7e"
+                  uuid = "C38CD06E-3B33-4D87-B18A-F4342C5F75CD - 2cb3deadbf61ec90"
                   shouldBeEnabled = "Yes"
                   ignoreCount = "0"
                   continueAfterRunningActions = "No"
@@ -367,7 +351,7 @@
                   offsetFromSymbolStart = "376">
                </Location>
                <Location
-                  uuid = "C38CD06E-3B33-4D87-B18A-F4342C5F75CD - ef8c225a2449683c"
+                  uuid = "C38CD06E-3B33-4D87-B18A-F4342C5F75CD - 97af219af8622bd2"
                   shouldBeEnabled = "Yes"
                   ignoreCount = "0"
                   continueAfterRunningActions = "No"
@@ -458,8 +442,8 @@
             filePath = "ios-blue-tool-box/controller/Capteur.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "514"
-            endingLineNumber = "514"
+            startingLineNumber = "510"
+            endingLineNumber = "510"
             landmarkName = "updateSensorUI(data:)"
             landmarkType = "7">
          </BreakpointContent>
@@ -467,31 +451,15 @@
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
-            uuid = "A3394272-72D7-4C03-A52F-C4B5CDB66F62"
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "ios-blue-tool-box/Target_list/targetTempHumViewController.swift"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "160"
-            endingLineNumber = "160"
-            landmarkName = "viewDidLoad()"
-            landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
             uuid = "FDB9BA77-021B-438C-9E7C-1BE6E3B00D1D"
-            shouldBeEnabled = "Yes"
+            shouldBeEnabled = "No"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "ios-blue-tool-box/Target_list/targetTempHumViewController.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "167"
-            endingLineNumber = "167"
+            startingLineNumber = "130"
+            endingLineNumber = "130"
             landmarkName = "viewDidLoad()"
             landmarkType = "7">
          </BreakpointContent>
@@ -506,8 +474,8 @@
             filePath = "ios-blue-tool-box/Target_list/targetMoveViewController.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "227"
-            endingLineNumber = "227"
+            startingLineNumber = "176"
+            endingLineNumber = "176"
             landmarkName = "viewDidLoad()"
             landmarkType = "7">
          </BreakpointContent>
@@ -515,15 +483,15 @@
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
-            uuid = "FACD3CC4-482A-4A28-9078-CC0B22E15323"
+            uuid = "34CA135D-BC4B-4F50-B555-532C3C9A7BCE"
             shouldBeEnabled = "No"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "ios-blue-tool-box/Target_list/targetMoveViewController.swift"
+            filePath = "ios-blue-tool-box/Target_list/targetMagViewController.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "149"
-            endingLineNumber = "149"
+            startingLineNumber = "228"
+            endingLineNumber = "228"
             landmarkName = "viewDidLoad()"
             landmarkType = "7">
          </BreakpointContent>
@@ -531,33 +499,17 @@
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
-            uuid = "B7314BE7-FDD5-46DD-A767-472B8F86BE25"
+            uuid = "AB1CC608-67C4-44BC-9109-824BD2B938CC"
             shouldBeEnabled = "No"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "ios-blue-tool-box/Target_list/targetMoveViewController.swift"
+            filePath = "ios-blue-tool-box/scanner/ParticlePeripheral.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "147"
-            endingLineNumber = "147"
-            landmarkName = "viewDidLoad()"
-            landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            uuid = "5F906EE7-C30F-4276-B015-713F3A845D57"
-            shouldBeEnabled = "No"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "ios-blue-tool-box/Target_list/targetMoveViewController.swift"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "148"
-            endingLineNumber = "148"
-            landmarkName = "viewDidLoad()"
-            landmarkType = "7">
+            startingLineNumber = "1"
+            endingLineNumber = "1"
+            landmarkName = "unknown"
+            landmarkType = "0">
          </BreakpointContent>
       </BreakpointProxy>
    </Breakpoints>
