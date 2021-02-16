@@ -14,10 +14,10 @@ class targetMoveViewController: UIViewController,ChartViewDelegate {
     
     private var capteur: Capteur!
     let btnPerson = UIButton()
-   
-                        
+    
+    
     let UIimagelowPerson = UIImage(named: "PersonRunning")
-                           let UIimagelowPersonStatic = UIImage(named: "Person")
+    let UIimagelowPersonStatic = UIImage(named: "Person")
     
     let progressRing = UICircularProgressRing(frame:  CGRect(x: 150, y: 200, width: 100, height: 100))
     
@@ -72,55 +72,55 @@ class targetMoveViewController: UIViewController,ChartViewDelegate {
         
         var trouve = true
         let objectTemp1 = Capteur.Temp(temp: 0)
-      //  let objectHum = TempHum(temp: 0, hum: 0)
+        //  let objectHum = TempHum(temp: 0, hum: 0)
         
         var newobject : Capteur.DisplayObject = Capteur.DisplayObject(name: "null", RSSI: 0, identifier: "",battery : 0, typedata : SensorTypes.SensorID, array: [objectTemp1])
         
         for (key,value) in data
         {
-         
-                if(key == identifier)
-                {
-                    
-                    
-                    
-                    
-                    
-                    if(value is SensorMove)
-                    {
-                        if let move = value as? SensorMove
-                        {
-                            let objectMove =
-                                Capteur.Move(nbrPas: move.nbrPas, etat: move.etat)
-                          //  newobject = DisplayObject(name : cle.name, RSSI : cle.RSSI, identifier:  cle.identifier, battery: cle.battery, typedata : cle.typedata,array: [objectTemp] )
-                            //  display.addData(data: objectTemp)
-                           
-                               progressRing.value = CGFloat(move.nbrPas)
-                            print("progress ring" + String(move.nbrPas) + "son nom " + move.name )
-                            if(move.etat == true)
-                            {
-                               btnPerson.setImage(UIimagelowPerson, for: .normal)
-                            }
-                            else {
-                                
-                              btnPerson.setImage(UIimagelowPersonStatic, for: .normal)
-                            }
-                        }
+            
+            if(key == identifier)
+            {
                 
+                
+                
+                
+                
+                if(value is SensorMove)
+                {
+                    if let move = value as? SensorMove
+                    {
+                        let objectMove =
+                            Capteur.Move(nbrPas: move.nbrPas, etat: move.etat)
+                        //  newobject = DisplayObject(name : cle.name, RSSI : cle.RSSI, identifier:  cle.identifier, battery: cle.battery, typedata : cle.typedata,array: [objectTemp] )
+                        //  display.addData(data: objectTemp)
+                        
+                        progressRing.value = CGFloat(move.nbrPas)
+                        print("progress ring" + String(move.nbrPas) + "son nom " + move.name )
+                        if(move.etat == true)
+                        {
+                            btnPerson.setImage(UIimagelowPerson, for: .normal)
+                        }
+                        else {
+                            
+                            btnPerson.setImage(UIimagelowPersonStatic, for: .normal)
+                        }
                     }
                     
-                 
-                    
-           trouve  = false
-                    
-                        displayObject.append(newobject)
                 }
+                
+                
+                
+                trouve  = false
+                
+                displayObject.append(newobject)
+            }
             
-
-                
             
-                
-                
+            
+            
+            
+            
             
             
             
@@ -140,7 +140,7 @@ class targetMoveViewController: UIViewController,ChartViewDelegate {
         
         //   scanner.defineFilterType(sensor: sensorT!)
         scanner.dictionnarySensor.addHandler(handler : handleNewObjectAvailable)
-       
+        
         
         
         //     capteur = Capteur()
@@ -229,9 +229,9 @@ class targetMoveViewController: UIViewController,ChartViewDelegate {
                     if(Move[array.count-1].etat == true)
                     {
                         
-                      
                         
-                       
+                        
+                        
                         btnPerson.frame = CGRect(x: 250, y: 130 ,width: 45, height: 45)
                         btnPerson.blink()
                         btnPerson.setImage(UIimagelowPerson, for: .normal)
@@ -241,7 +241,7 @@ class targetMoveViewController: UIViewController,ChartViewDelegate {
                         
                         let imagePerson = "PersonRunning"
                         let imagePersonStatic = "Person"
-                       
+                        
                         
                         
                         let btnPersonStatic = UIButton()
@@ -263,7 +263,7 @@ class targetMoveViewController: UIViewController,ChartViewDelegate {
         
         // Do any additional setup after loading the view.
         //progressRing = UICircularProgressRing()
-      
+        
         // Change any of the properties you'd like
         progressRing.minValue = 1
         progressRing.maxValue = 32000

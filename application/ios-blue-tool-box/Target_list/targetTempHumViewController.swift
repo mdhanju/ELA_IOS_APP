@@ -10,9 +10,9 @@ import UIKit
 import Charts
 class targetTempHumViewController: UIViewController,ChartViewDelegate {
     
-         let data1 = LineChartData()
+    let data1 = LineChartData()
     var entries = [ChartDataEntry]()
-         var entries1 = [ChartDataEntry]()
+    var entries1 = [ChartDataEntry]()
     
     var lineChart = LineChartView()
     
@@ -62,90 +62,90 @@ class targetTempHumViewController: UIViewController,ChartViewDelegate {
     
     
     func handleNewObjectAvailable(data: ([String : Sensor])) {
-         print("test 1940")
-         updateSensorUI(data: data)
-     }
-     
-     func updateSensorUI(data: ([String : Sensor])) -> Capteur.DisplayObject {
-         
-         var trouve = true
-         let objectTemp1 = Capteur.Temp(temp: 0)
-       //  let objectHum = TempHum(temp: 0, hum: 0)
-         
-         var newobject : Capteur.DisplayObject = Capteur.DisplayObject(name: "null", RSSI: 0, identifier: "",battery : 0, typedata : SensorTypes.SensorID, array: [objectTemp1])
-         
-         for (key,value) in data
-         {
-          
-                 if(key == identifier)
-                 {
-                     
-                     
-                     
-                     
-                     
-                     if(value is SensorTemperatureHumidity)
-                     {
-                         if let tempHum = value as? SensorTemperatureHumidity
-                         {
-                             let objectTemp =
-                                Capteur.TempHum(temp: tempHum.temperature, hum: tempHum.humidity)
-                           entries.append(ChartDataEntry(x: Double(compteur),y: Double(tempHum.temperature)))
-                             entries1.append(ChartDataEntry(x: Double(compteur),y: Double(tempHum.humidity)))
-                            compteur = compteur + 1
-                            compHum = compHum + 1
-                            let line2 = LineChartDataSet(entries: entries, label: .none)
-                            let line1 = LineChartDataSet(entries: entries1, label: .none)
-                          
-                            
-                 line1.setColor(.purple)
-                          line1.setCircleColor(.purple)
-                  line2.setColor(.red)
-                  line2.setCircleColor(.red)
-                          
-                      
-                          
-                               data1.addDataSet(line2)
-                      
-                             data1.addDataSet(line1)
-                            
-                            
-                              lineChart.data = data1
-                            
-                            
-                            
-                            
-                            
-                            // newobject = DisplayObject(name : cle.name, RSSI : cle.RSSI, identifier:  cle.identifier, battery: cle.battery, typedata : cle.typedata,array: [objectTemp] )
-                             //  display.addData(data: objectTemp)
-                            
+        print("test 1940")
+        updateSensorUI(data: data)
+    }
+    
+    func updateSensorUI(data: ([String : Sensor])) -> Capteur.DisplayObject {
+        
+        var trouve = true
+        let objectTemp1 = Capteur.Temp(temp: 0)
+        //  let objectHum = TempHum(temp: 0, hum: 0)
+        
+        var newobject : Capteur.DisplayObject = Capteur.DisplayObject(name: "null", RSSI: 0, identifier: "",battery : 0, typedata : SensorTypes.SensorID, array: [objectTemp1])
+        
+        for (key,value) in data
+        {
+            
+            if(key == identifier)
+            {
+                
+                
+                
+                
+                
+                if(value is SensorTemperatureHumidity)
+                {
+                    if let tempHum = value as? SensorTemperatureHumidity
+                    {
+                        let objectTemp =
+                            Capteur.TempHum(temp: tempHum.temperature, hum: tempHum.humidity)
+                        entries.append(ChartDataEntry(x: Double(compteur),y: Double(tempHum.temperature)))
+                        entries1.append(ChartDataEntry(x: Double(compteur),y: Double(tempHum.humidity)))
+                        compteur = compteur + 1
+                        compHum = compHum + 1
+                        let line2 = LineChartDataSet(entries: entries, label: .none)
+                        let line1 = LineChartDataSet(entries: entries1, label: .none)
                         
-                         }
-                 
-                     }
-                     
-                  
-                     
-            trouve  = false
-                     
-                       //  displayObject.append(newobject)
-                 }
-             
-
-                 
-             
-                 
-                 
-             
-             
-             
-             
-             
-             
-             
-         }
-         return newobject
-     }
+                        
+                        line1.setColor(.purple)
+                        line1.setCircleColor(.purple)
+                        line2.setColor(.red)
+                        line2.setCircleColor(.red)
+                        
+                        
+                        
+                        data1.addDataSet(line2)
+                        
+                        data1.addDataSet(line1)
+                        
+                        
+                        lineChart.data = data1
+                        
+                        
+                        
+                        
+                        
+                        // newobject = DisplayObject(name : cle.name, RSSI : cle.RSSI, identifier:  cle.identifier, battery: cle.battery, typedata : cle.typedata,array: [objectTemp] )
+                        //  display.addData(data: objectTemp)
+                        
+                        
+                    }
+                    
+                }
+                
+                
+                
+                trouve  = false
+                
+                //  displayObject.append(newobject)
+            }
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+        }
+        return newobject
+    }
     
     
     override func viewDidLoad() {
@@ -258,7 +258,7 @@ class targetTempHumViewController: UIViewController,ChartViewDelegate {
         lineChart.center = view.center
         view.addSubview(lineChart)
         
-     
+        
         
         for cle in displayObject {
             if( cle.identifier == identifier)
@@ -269,28 +269,28 @@ class targetTempHumViewController: UIViewController,ChartViewDelegate {
                     for x in 0..<cle.array.count
                     {
                         print("la val de x = " + String(x))
-                         print("la val de compteur = " + String(compteur))
-                       
+                        print("la val de compteur = " + String(compteur))
+                        
                         entries.append(ChartDataEntry(x: Double(x),y: Double(temp[x].temp)))
-                         entries1.append(ChartDataEntry(x: Double(x),y: Double(temp[x].getHum())))
-                         compteur = compteur + 1
+                        entries1.append(ChartDataEntry(x: Double(x),y: Double(temp[x].getHum())))
+                        compteur = compteur + 1
                         compHum = compHum + 1
                     }
                     
                 }
                 
-       
+                
             }
         }
         
-   
+        
         let line1 = LineChartDataSet(entries: entries1, label: "Humidity")
         
         let line2 = LineChartDataSet(entries: entries, label: "Temperature")
-    line1.setColor(.purple)
-            line1.setCircleColor(.purple)
-    line2.setColor(.red)
-    line2.setCircleColor(.red)
+        line1.setColor(.purple)
+        line1.setCircleColor(.purple)
+        line2.setColor(.red)
+        line2.setCircleColor(.red)
         data1.addDataSet(line1)
         data1.addDataSet(line2)
         
