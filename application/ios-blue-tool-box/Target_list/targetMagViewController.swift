@@ -115,11 +115,11 @@ class targetMagViewController: UIViewController {
         scanner.dictionnarySensor.addHandler(handler : handleNewObjectAvailable)
         
         
-        let imageTemp = "temp"
-        let UIimageTemp = UIImage(named: imageTemp)
-        let imageViewTemp = UIImageView(image: UIimageTemp!)
-        imageViewTemp.frame = CGRect(x: 20, y: 70, width: 45, height: 45)
-        self.view.addSubview(imageViewTemp)
+        let imageMagnetic = "porte_blue"
+        let UIimageMagnetic = UIImage(named: imageMagnetic)
+        let imageViewMagnetic = UIImageView(image: UIimageMagnetic!)
+        imageViewMagnetic.frame = CGRect(x: 20, y: 70, width: 45, height: 45)
+        self.view.addSubview(imageViewMagnetic)
         
         let UInameSensor = UITextView()
         UInameSensor.text = nameSensor

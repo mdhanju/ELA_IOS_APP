@@ -94,11 +94,11 @@ class targetAngleViewController: UIViewController,ChartViewDelegate {
         
         
         
-        let imageTemp = "temp"
-        let UIimageTemp = UIImage(named: imageTemp)
-        let imageViewTemp = UIImageView(image: UIimageTemp!)
-        imageViewTemp.frame = CGRect(x: 20, y: 70, width: 45, height: 45)
-        self.view.addSubview(imageViewTemp)
+        let imageAngle = "angle"
+        let UIimageAngle = UIImage(named: imageAngle)
+        let imageViewAngle = UIImageView(image: UIimageAngle!)
+        imageViewAngle.frame = CGRect(x: 20, y: 70, width: 45, height: 45)
+        self.view.addSubview(imageViewAngle)
         
         let imageArray = "sklia"
         let UIarray = UIImage(named: imageArray)

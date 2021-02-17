@@ -92,11 +92,11 @@ class targetMoveViewController: UIViewController,ChartViewDelegate {
         scanner.initializeScanner()
         scanner.dictionnarySensor.addHandler(handler : handleNewObjectAvailable)
 
-        let imageTemp = "temp"
-        let UIimageTemp = UIImage(named: imageTemp)
-        let imageViewTemp = UIImageView(image: UIimageTemp!)
-        imageViewTemp.frame = CGRect(x: 20, y: 70, width: 45, height: 45)
-        self.view.addSubview(imageViewTemp)
+        let imageMove = "mouvement_blue"
+        let UIimageMove = UIImage(named: imageMove)
+        let imageViewMove = UIImageView(image: UIimageMove!)
+        imageViewMove.frame = CGRect(x: 20, y: 70, width: 45, height: 45)
+        self.view.addSubview(imageViewMove)
         
         let UInameSensor = UITextView()
         UInameSensor.text = nameSensor
@@ -118,7 +118,7 @@ class targetMoveViewController: UIViewController,ChartViewDelegate {
         UInameseuil.font = UIFont.systemFont(ofSize: 15)
         UInameseuil.isUserInteractionEnabled = false
         UInameseuil.font = UIFont.boldSystemFont(ofSize: 15)
-        UInameseuil.frame = CGRect(x: 80, y: 350, width: 350, height: 100)
+        UInameseuil.frame = CGRect(x: 80, y: 150, width: 350, height: 100)
         UInameseuil.backgroundColor = .none
         self.view.addSubview(UInameseuil)
         self.view.bringSubviewToFront(UInameseuil)
@@ -127,8 +127,6 @@ class targetMoveViewController: UIViewController,ChartViewDelegate {
         {
             
             let UIbatterie = UITextView()
-            
-            //  UIbatterie.text = "La batterie est de : " + String(battery) + " mV"
             UIbatterie.text = "Low battery"
             
             UIbatterie.textColor = UIColor.red

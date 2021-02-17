@@ -157,9 +157,9 @@ class targetTempHumViewController: UIViewController,ChartViewDelegate {
         
         
         
-        let imageTemp = "temp"
-        let UIimageTemp = UIImage(named: imageTemp)
-        let imageViewTemp = UIImageView(image: UIimageTemp!)
+        let imageTempHum = "humidite_blue"
+        let UIimageTempHum = UIImage(named: imageTempHum)
+        let imageViewTemp = UIImageView(image: UIimageTempHum!)
         imageViewTemp.frame = CGRect(x: 20, y: 70, width: 45, height: 45)
         self.view.addSubview(imageViewTemp)
         
