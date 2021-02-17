@@ -79,8 +79,8 @@ class targetTempHumViewController: UIViewController,ChartViewDelegate {
                     if let tempHum = value as? SensorTemperatureHumidity
                     {
                        
-                        entries.append(ChartDataEntry(x: Double(compteur),y: Double(tempHum.temperature)))
-                        entries1.append(ChartDataEntry(x: Double(compteur),y: Double(tempHum.humidity)))
+                        entries.append(ChartDataEntry(x: Double(compteur),y: Double(tempHum.getTemp())))
+                        entries1.append(ChartDataEntry(x: Double(compteur),y: Double(tempHum.getHum())))
                         compteur = compteur + 1
                         compHum = compHum + 1
                         let line2 = LineChartDataSet(entries: entries, label: .none)

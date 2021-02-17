@@ -404,7 +404,7 @@ class Capteur:  UIViewController, UITableViewDataSource, UITableViewDelegate{
                     {
                         if let temp = value as? SensorTemperature
                         {
-                            let objectTemp = Temp(temp: temp.temperature)
+                            let objectTemp = Temp(temp: temp.getTemp())
                           //  newobject = DisplayObject(name : cle.name, RSSI : cle.RSSI, identifier:  cle.identifier, battery: cle.battery, typedata : cle.typedata,array: [objectTemp] )
                             //  display.addData(data: objectTemp)
                             cle.addData(data: objectTemp)
@@ -418,8 +418,7 @@ class Capteur:  UIViewController, UITableViewDataSource, UITableViewDelegate{
                         if let hum = value as? SensorTemperatureHumidity
                         {
                             let objectTempHum = TempHum(temp: hum.getTemp(), hum: hum.getHum())
-                          //  newobject = DisplayObject(name : cle.name, RSSI : cle.RSSI, identifier:  cle.identifier, battery: cle.battery, typedata : cle.typedata,array: [objectTemp] )
-                            //  display.addData(data: objectTemp)
+ 
                             cle.addData(data: objectTempHum)
                         }
                     }
@@ -429,9 +428,8 @@ class Capteur:  UIViewController, UITableViewDataSource, UITableViewDelegate{
                         if let move = value as? SensorMove
                         {
                             let objectMove =
-                                Move(nbrPas: move.nbrPas, etat: move.etat)
-                          //  newobject = DisplayObject(name : cle.name, RSSI : cle.RSSI, identifier:  cle.identifier, battery: cle.battery, typedata : cle.typedata,array: [objectTemp] )
-                            //  display.addData(data: objectTemp)
+                                Move(nbrPas: move.getNbrPas(), etat: move.getEtat())
+    
                             cle.addData(data: objectMove)
                         }
                     }
@@ -441,7 +439,7 @@ class Capteur:  UIViewController, UITableViewDataSource, UITableViewDelegate{
                         if let mag = value as? SensorMagnetic
                         {
                             let objectMove =
-                                Mag(nbrMagnet: mag.nbrObjet, etat: mag.etat)
+                                Mag(nbrMagnet: mag.getNbrObject(), etat: mag.getEtat())
                           //  newobject = DisplayObject(name : cle.name, RSSI : cle.RSSI, identifier:  cle.identifier, battery: cle.battery, typedata : cle.typedata,array: [objectTemp] )
                             //  display.addData(data: objectTemp)
                             cle.addData(data: objectMove)
@@ -453,7 +451,7 @@ class Capteur:  UIViewController, UITableViewDataSource, UITableViewDelegate{
                         if let angle = value as? SensorAngle
                         {
                             let objectMove =
-                                Angle(x: angle.x, y: angle.y, z: angle.z)
+                                Angle(x: angle.getX(), y: angle.getY(), z: angle.getZ())
                             cle.addData(data: objectMove)
                         }
                     }
@@ -473,7 +471,7 @@ class Capteur:  UIViewController, UITableViewDataSource, UITableViewDelegate{
                     
                     if let temp = value as? SensorTemperature
                     {
-                        let objectTemp = Temp(temp: temp.temperature)
+                        let objectTemp = Temp(temp: temp.getTemp())
                         newobject = DisplayObject(name: value.name, RSSI: value.RSSI, identifier: value.idenfitfier, battery: value.batterylevel, typedata : value.sensorTypes,array: [objectTemp] )
                     }
                 }
@@ -495,7 +493,7 @@ class Capteur:  UIViewController, UITableViewDataSource, UITableViewDelegate{
                     if let move = value as? SensorMove
                     {
                           let objectMove =
-                                                     Move(nbrPas: move.nbrPas, etat: move.etat)
+                                                     Move(nbrPas: move.getNbrPas(), etat: move.getEtat())
                         newobject = DisplayObject(name: value.name, RSSI: value.RSSI, identifier: value.idenfitfier, battery: value.batterylevel, typedata : value.sensorTypes,array: [objectMove] )
                     }
                 }
@@ -507,7 +505,7 @@ class Capteur:  UIViewController, UITableViewDataSource, UITableViewDelegate{
                     if let mag = value as? SensorMagnetic
                     {
                           let objectMove =
-                            Mag(nbrMagnet: mag.nbrObjet, etat: mag.etat)
+                            Mag(nbrMagnet: mag.getNbrObject(), etat: mag.getEtat())
                         newobject = DisplayObject(name: value.name, RSSI: value.RSSI, identifier: value.idenfitfier, battery: value.batterylevel, typedata : value.sensorTypes,array: [objectMove] )
                     }
                 }
@@ -519,7 +517,7 @@ class Capteur:  UIViewController, UITableViewDataSource, UITableViewDelegate{
                     if let angle = value as? SensorAngle
                     {
                           let objectMove =
-                            Angle(x: angle.x, y: angle.y, z: angle.z)
+                            Angle(x: angle.getX(), y: angle.getY(), z: angle.getZ())
                         newobject = DisplayObject(name: value.name, RSSI: value.RSSI, identifier: value.idenfitfier, battery: value.batterylevel, typedata : value.sensorTypes,array: [objectMove] )
                     }
                 }

@@ -64,9 +64,9 @@ class targetMoveViewController: UIViewController,ChartViewDelegate {
                     if let move = value as? SensorMove
                     {
                        
-                        progressRing.value = CGFloat(move.nbrPas)
-                        print("progress ring" + String(move.nbrPas) + "son nom " + move.name )
-                        if(move.etat == true)
+                        progressRing.value = CGFloat(move.getNbrPas())
+                        print("progress ring" + String(move.getNbrPas()) + "son nom " + move.name )
+                        if(move.getEtat() == true)
                         {
                             btnPerson.setImage(UIimagelowPerson, for: .normal)
                         }

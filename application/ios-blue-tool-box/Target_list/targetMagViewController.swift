@@ -70,9 +70,9 @@ class targetMagViewController: UIViewController {
                     if let move = value as? SensorMagnetic
                     {
                         
-                        progressRing.value = CGFloat(move.nbrObjet)
-                        print("progress ring" + String(move.nbrObjet) + "son nom " + move.name )
-                        if(move.etat == true)
+                        progressRing.value = CGFloat(move.getNbrObject())
+                        print("progress ring" + String(move.getNbrObject()) + "son nom " + move.name )
+                        if(move.getEtat() == true)
                         {
                             btnPerson.setImage(UIimagelowPerson, for: .normal)
                         }

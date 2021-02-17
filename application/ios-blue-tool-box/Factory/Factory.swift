@@ -60,7 +60,7 @@ class SensorID: Sensor
  */
 class SensorTemperature: Sensor
 {
-    var temperature : Float = 0.0
+    private var temperature : Float = 0.0
     
     init(name : String,RSSI : Int,batterylevel : Int = -1,sensorTypes: SensorTypes,temperature : Float,identifier : String) {
         super.init(name:name, RSSI:RSSI, batterylevel:batterylevel, sensorTypes:sensorTypes, identifier: identifier)
@@ -86,8 +86,8 @@ class SensorTemperature: Sensor
 
 class SensorTemperatureHumidity: Sensor
 {
-    var temperature: Float = 0
-    var humidity: Int = 0
+    private var temperature: Float = 0
+    private var humidity: Int = 0
     
     init(name : String,RSSI : Int,batterylevel : Int = -1,sensorTypes: SensorTypes,temperature : SensorTemperature,humidity : Int,identifier : String) {
         super.init(name:name, RSSI:RSSI, batterylevel:batterylevel, sensorTypes:sensorTypes, identifier: identifier)
@@ -118,13 +118,23 @@ class SensorTemperatureHumidity: Sensor
 
 class SensorMove: Sensor
 {
-    var nbrPas: Int = 0
-    var etat : Bool = false
+    private var nbrPas: Int = 0
+    private var etat : Bool = false
     
     init(name : String,RSSI : Int,batterylevel : Int = -1,sensorTypes: SensorTypes,nbrPas : Int,etat : Bool = true,identifier : String) {
         super.init(name:name, RSSI:RSSI, batterylevel:batterylevel, sensorTypes:sensorTypes, identifier: identifier)
         self.nbrPas = nbrPas
         self.etat = etat
+    }
+    
+    func getNbrPas()-> Int
+    {
+      return nbrPas
+    }
+    
+    func getEtat()-> Bool
+    {
+      return etat
     }
     
     override  func ExecuterCommmande()
@@ -135,8 +145,9 @@ class SensorMove: Sensor
 
 class SensorMagnetic: Sensor
 {
-    var nbrObjet: Int = 0
-    var etat : Bool = false
+    private var nbrObjet: Int = 0
+    private var etat : Bool = false
+    
     
     init(name : String,RSSI : Int,batterylevel : Int,sensorTypes: SensorTypes,nbrObjet : Int,etat : Bool,identifier: String) {
         super.init(name:name, RSSI:RSSI, batterylevel:batterylevel, sensorTypes:sensorTypes, identifier: identifier)
@@ -162,15 +173,29 @@ class SensorMagnetic: Sensor
 
 class SensorAngle: Sensor
 {
-    var x: Int = 0
-    var y: Int = 0
-    var z: Int = 0
+    private var x: Int = 0
+    private var y: Int = 0
+    private var z: Int = 0
     
     init(name : String,RSSI : Int,batterylevel : Int = -1,sensorTypes: SensorTypes,x : Int , y : Int, z : Int,identifier : String) {
         super.init(name:name, RSSI:RSSI, batterylevel:batterylevel, sensorTypes:sensorTypes, identifier: identifier)
         self.x = x
         self.y = y
         self.z = z
+    }
+    
+    func getX()-> Int
+    {
+      return x
+    }
+    
+    func getY()-> Int
+    {
+      return y
+    }
+    func getZ()-> Int
+    {
+      return z
     }
     
     override func ExecuterCommmande()
@@ -181,14 +206,15 @@ class SensorAngle: Sensor
 
 class SensorEdystone: Sensor
 {
-    var NID : String = ""
-    var BID : String = ""
+    private var NID : String = ""
+    private var BID : String = ""
     
     init(name : String,RSSI : Int,batterylevel : Int = -1,sensorTypes: SensorTypes,NID : String,BID : String,identifier : String) {
         super.init(name:name, RSSI:RSSI, batterylevel:batterylevel, sensorTypes:sensorTypes, identifier: identifier)
         self.NID = NID
         self.BID = BID
     }
+    
     
     override func ExecuterCommmande()
     {
@@ -198,9 +224,9 @@ class SensorEdystone: Sensor
 
 class SensorIbeacon: Sensor
 {
-    var UUID: String = ""
-    var minor: Int = 0
-    var major : Int = 0
+    private var UUID: String = ""
+    private var minor: Int = 0
+    private var major : Int = 0
     
     init(name : String,RSSI : Int,batterylevel : Int = -1, sensorTypes: SensorTypes ,UUID: String,minor : Int ,major : Int,identifier : String) {
         super.init(name:name, RSSI:RSSI, batterylevel:batterylevel, sensorTypes:sensorTypes, identifier: identifier)
@@ -388,7 +414,7 @@ class SensorFactory
         {
             if let mov = id as? SensorMove
             {
-                print("nbr pas : " + String(mov.nbrPas))
+                print("nbr pas : " + String(mov.getNbrPas()))
                 print("nbr pas : " + String(mov.batterylevel))
             }
         }
@@ -397,9 +423,9 @@ class SensorFactory
         {
             if let angle = id as? SensorAngle
             {
-                print("Angle x : " + String(angle.x))
-                print("Angle y: " + String(angle.y))
-                print("Angle z: " + String(angle.z))
+                print("Angle x : " + String(angle.getX()))
+                print("Angle y: " + String(angle.getY()))
+                print("Angle z: " + String(angle.getZ()))
                 print("battery : "+String(angle.batterylevel))
                 
             }
