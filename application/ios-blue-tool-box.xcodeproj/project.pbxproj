@@ -27,6 +27,8 @@
 		16CB846325AC6EF80067E1A0 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16CB846225AC6EF80067E1A0 /* ViewController.swift */; };
 		16CB846825AC6EF90067E1A0 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 16CB846725AC6EF90067E1A0 /* Assets.xcassets */; };
 		16CB846B25AC6EF90067E1A0 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 16CB846925AC6EF90067E1A0 /* LaunchScreen.storyboard */; };
+		16D4397425DD28B500D4B4C7 /* targetIDViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16D4397325DD28B500D4B4C7 /* targetIDViewController.swift */; };
+		16D4398025DD6A7C00D4B4C7 /* Capteur.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16E3AB4F25C85B81001426DD /* Capteur.swift */; };
 		16DFFB6025B0322700CCB063 /* SideMenu.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16DFFB5F25B0322700CCB063 /* SideMenu.swift */; };
 		16DFFB7E25B04E4800CCB063 /* ELAViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16DFFB7D25B04E4800CCB063 /* ELAViewController.swift */; };
 		16DFFB8025B04E6300CCB063 /* BlueTViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16DFFB7F25B04E6300CCB063 /* BlueTViewController.swift */; };
@@ -77,6 +79,7 @@
 		16CB846725AC6EF90067E1A0 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		16CB846A25AC6EF90067E1A0 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		16CB846C25AC6EF90067E1A0 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		16D4397325DD28B500D4B4C7 /* targetIDViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = targetIDViewController.swift; sourceTree = "<group>"; };
 		16DFFB5F25B0322700CCB063 /* SideMenu.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SideMenu.swift; sourceTree = "<group>"; };
 		16DFFB7D25B04E4800CCB063 /* ELAViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ELAViewController.swift; sourceTree = "<group>"; };
 		16DFFB7F25B04E6300CCB063 /* BlueTViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BlueTViewController.swift; sourceTree = "<group>"; };
@@ -124,6 +127,7 @@
 				160BD57B25D5472600F5ED01 /* targetMoveViewController.swift */,
 				16ACF8AA25D692B8008E296A /* targetMagViewController.swift */,
 				16ACF8AC25DA8705008E296A /* targetAngleViewController.swift */,
+				16D4397325DD28B500D4B4C7 /* targetIDViewController.swift */,
 			);
 			path = Target_list;
 			sourceTree = "<group>";
@@ -447,6 +451,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				16D4398025DD6A7C00D4B4C7 /* Capteur.swift in Sources */,
 				169B5E5125BAC6E800627A55 /* ios_blue_tool_boxTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -481,6 +486,7 @@
 				16ACF8AD25DA8705008E296A /* targetAngleViewController.swift in Sources */,
 				16DFFB8825B04EA800CCB063 /* BlueANGViewController.swift in Sources */,
 				16DFFB8225B04E7300CCB063 /* BlueRHTViewController.swift in Sources */,
+				16D4397425DD28B500D4B4C7 /* targetIDViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

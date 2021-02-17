@@ -9,6 +9,7 @@ class targetTempHumViewController: UIViewController,ChartViewDelegate {
     private var lineChart = LineChartView()
     
     
+    
     // Compteur graphe entries
     private var compteur = 0
     // Compteur graphe umdite
@@ -83,17 +84,18 @@ class targetTempHumViewController: UIViewController,ChartViewDelegate {
                         entries1.append(ChartDataEntry(x: Double(compteur),y: Double(tempHum.getHum())))
                         compteur = compteur + 1
                         compHum = compHum + 1
-                        let line2 = LineChartDataSet(entries: entries, label: .none)
-                        let line1 = LineChartDataSet(entries: entries1, label: .none)
-                        
-                        
-                        line1.setColor(.purple)
-                        line1.setCircleColor(.purple)
+                        let line2 = LineChartDataSet(entries: entries, label: "temperature")
                         line2.setColor(.red)
                         line2.setCircleColor(.red)
-                        data1.addDataSet(line2)
-                        data1.addDataSet(line1)
-                        lineChart.data = data1
+                        let line1 = LineChartDataSet(entries: entries1, label: "humidite")
+                        
+                        
+                       
+                        let data = LineChartData(dataSet: line1)
+                       
+                    
+                        data.addDataSet(line2)
+                        lineChart.data = data
                         
                         
                     }
@@ -215,13 +217,13 @@ class targetTempHumViewController: UIViewController,ChartViewDelegate {
         let line1 = LineChartDataSet(entries: entries1, label: "Humidity")
         
         let line2 = LineChartDataSet(entries: entries, label: "Temperature")
-        line1.setColor(.purple)
-        line1.setCircleColor(.purple)
         line2.setColor(.red)
         line2.setCircleColor(.red)
-        data1.addDataSet(line1)
-        data1.addDataSet(line2)
-        lineChart.data = data1
+        let data = LineChartData(dataSet: line1)
+        data.addDataSet(line2)
+     //   data1.addDataSet(line1)
+       // data1.addDataSet(line2)
+        lineChart.data = data
         
     }
     

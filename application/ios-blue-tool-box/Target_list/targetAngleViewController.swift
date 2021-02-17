@@ -1,12 +1,9 @@
 import UIKit
 import Charts
+
 class targetAngleViewController: UIViewController,ChartViewDelegate {
     
-    
-    
-    
     private var lineChart = LineChartView()
-    
     private let nameSensor : String
     private let RSSI : Int
     private let identifier : String
@@ -14,6 +11,20 @@ class targetAngleViewController: UIViewController,ChartViewDelegate {
     private let typedata : SensorTypes
     private let array : [Capteur.Cap]
     private let displayObject : [Capteur.DisplayObject]
+    
+    var entries = [ChartDataEntry]()
+    var entries1 = [ChartDataEntry]()
+    var entries2 = [ChartDataEntry]()
+    
+    // Compteur graphe entries
+    private var compteur = 0
+    // Compteur graphe umdite
+    private var compHum = 0
+    
+    let data1 = LineChartData()
+    
+    private var scanner: Scanner1!
+    private var sensorT : SensorTypes? = nil
 
     init(nameSensor : String,RSSI: Int, identifier : String, battery : Int, typedata : SensorTypes,array: [Capteur.Cap],displayObject : [Capteur.DisplayObject]) {
         self.nameSensor = nameSensor
@@ -40,6 +51,59 @@ class targetAngleViewController: UIViewController,ChartViewDelegate {
         fatalError("init(coder:) has not been implemented")
     }
     
+
+
+    
+    func handleNewObjectAvailable(data: ([String : Sensor])) {
+        updateSensorUI(data: data)
+    }
+    
+    func updateSensorUI(data: ([String : Sensor])) -> Capteur.DisplayObject {
+        
+        let objectTemp1 = Capteur.Temp(temp: 0)
+        
+        let newobject : Capteur.DisplayObject = Capteur.DisplayObject(name: "null", RSSI: 0, identifier: "",battery : 0, typedata : SensorTypes.SensorID, array: [objectTemp1])
+        
+        for (key,value) in data
+        {
+            
+            if(key == identifier)
+            {
+                if(value is SensorAngle)
+                {
+                    if let tempHum = value as? SensorAngle
+                    {
+                        entries.append(ChartDataEntry(x: Double(compteur),y: Double(tempHum.getX())))
+                        entries1.append(ChartDataEntry(x: Double(compteur),y: Double(tempHum.getY())))
+                        entries2.append(ChartDataEntry(x: Double(compteur),y: Double(tempHum.getZ())))
+                        compteur = compteur + 1
+                        compHum = compHum + 1
+                        
+                        let line2 = LineChartDataSet(entries: entries, label: "X")
+                        line2.setColor(.red)
+                        line2.setCircleColor(.red)
+                        let line1 = LineChartDataSet(entries: entries1, label: "Y")
+                        line1.setColor(.green)
+                        line1.setCircleColor(.green)
+                        let line3 = LineChartDataSet(entries: entries2, label: "Z")
+                        
+                        
+                       
+                        let data = LineChartData(dataSet: line1)
+                       
+                    
+                        data.addDataSet(line2)
+                        data.addDataSet(line3)
+                        lineChart.data = data
+                       
+                    }
+                    
+                }
+            }
+        }
+        return newobject
+    }
+    
     
     
     override func viewDidLoad() {
@@ -50,6 +114,9 @@ class targetAngleViewController: UIViewController,ChartViewDelegate {
         
         super.viewDidLoad()
         view.backgroundColor = .white
+        scanner = Scanner1()
+        scanner.initializeScanner()
+        scanner.dictionnarySensor.addHandler(handler : handleNewObjectAvailable)
         
         
         let UInameSensor = UITextView()
@@ -121,9 +188,7 @@ class targetAngleViewController: UIViewController,ChartViewDelegate {
         lineChart.center = view.center
         view.addSubview(lineChart)
         
-        var entries = [ChartDataEntry]()
-        var entries1 = [ChartDataEntry]()
-        var entries2 = [ChartDataEntry]()
+
         
         for cle in displayObject {
             if( cle.identifier == identifier)
@@ -134,6 +199,7 @@ class targetAngleViewController: UIViewController,ChartViewDelegate {
                     for x in 0..<cle.array.count
                     {
                         entries.append(ChartDataEntry(x: Double(x),y: Double(temp[x].getX())))
+                        compteur = compteur + 1
                     }
                     
                 }
@@ -156,18 +222,33 @@ class targetAngleViewController: UIViewController,ChartViewDelegate {
             }
         }
         
-        let data1 = LineChartData()
-        let line1 = LineChartDataSet(entries: entries1, label: "x")
-        let line2 = LineChartDataSet(entries: entries, label: "y")
-        let line3 = LineChartDataSet(entries: entries2, label: "z")
+    
+        let line2 = LineChartDataSet(entries: entries, label: "X")
         line2.setColor(.red)
         line2.setCircleColor(.red)
-        line3.setColor(.green)
-        line3.setCircleColor(.green)
-        data1.addDataSet(line1)
-        data1.addDataSet(line2)
-        data1.addDataSet(line3)
-        lineChart.data = data1
+        let line1 = LineChartDataSet(entries: entries1, label: "Y")
+        line1.setColor(.green)
+        line1.setCircleColor(.green)
+        let line3 = LineChartDataSet(entries: entries2, label: "Z")
+        
+        
+       
+        let data = LineChartData(dataSet: line1)
+       
+    
+        data.addDataSet(line2)
+        data.addDataSet(line3)
+        lineChart.data = data
+        
+        
+        let imageArray = "sklia"
+        let UIarray = UIImage(named: imageArray)
+        
+        var items = [UIBarButtonItem]()
+        items.append(UIBarButtonItem(image: UIarray, landscapeImagePhone: .none, style: .done, target: self, action: #selector(imageTapTemp)))
+        items.append(UIBarButtonItem(title: "Connexion", style: .plain, target: self,action: .none))
+        
+        self.navigationItem.setRightBarButtonItems(items, animated: true)
            
        }
        

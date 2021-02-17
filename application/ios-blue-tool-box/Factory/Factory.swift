@@ -8,11 +8,12 @@ import CoreBluetooth
 class Sensor
 {
     
-    var name : String = "" 
+    var name : String = ""
     var RSSI : Int = 0
     var batterylevel: Int = 0
     var sensorTypes : SensorTypes = SensorTypes.SensorID
     var idenfitfier : String = ""
+    
     
     /* \brief constructor **/
     init(name : String,RSSI : Int,batterylevel : Int = -1,sensorTypes: SensorTypes,identifier : String) {
@@ -21,6 +22,11 @@ class Sensor
         self.batterylevel = batterylevel
         self.sensorTypes = sensorTypes
         self.idenfitfier = identifier
+    }
+    
+    public func getName()->String
+    {
+        return name
     }
     
     /* \brief function execute command **/
@@ -585,6 +591,22 @@ class SensorFactory
                 battery = ConvertionToolbox.ConvertAdvertisingValue(str: String(temperatureStrBattery!))
             }
             id = SensorFactory.shared().getSensorTemperature(sensorTypes: .SensorTemperature, name: tagname, RSSI: Int(truncating: tagRSSI),batterylevel: battery,temperature: ConvertionToolbox.ConvertTemperature(str: String(temp!)),identifier: tagidentifier)
+        }
+        else {
+            
+            var battery : Int = -1
+            if(sensorData![CBUUID(string: "180F")] != nil)
+            {
+                let temperatureStrBattery =  sensorData![CBUUID(string: "180F")]?.debugDescription.dropFirst().dropLast().description
+                battery = ConvertionToolbox.ConvertAdvertisingValue(str: String(temperatureStrBattery!))
+            }
+            if(sensorData![CBUUID(string: "2A19")] != nil)
+            {
+                let temperatureStrBattery =  sensorData![CBUUID(string: "2A19")]?.debugDescription.dropFirst().dropLast().description
+                battery = ConvertionToolbox.ConvertAdvertisingValue(str: String(temperatureStrBattery!))
+            }
+            
+            id = SensorFactory.shared().getSensorID(sensorTypes: .SensorID, name: tagname, RSSI: Int(truncating: tagRSSI),batterylevel: battery ,identifier: tagidentifier)
         }
         
         return id

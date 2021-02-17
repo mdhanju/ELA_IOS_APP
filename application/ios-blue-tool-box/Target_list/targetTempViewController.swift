@@ -42,6 +42,7 @@ class targetTempViewController: UIViewController,ChartViewDelegate {
     private var lineChart = LineChartView()
     
     
+    
     // Compteur graphe entries
     private var compteur = 0
     // Compteur graphe umdite
@@ -103,11 +104,11 @@ class targetTempViewController: UIViewController,ChartViewDelegate {
                         entries.append(ChartDataEntry(x: Double(compteur),y: Double(tempHum.getTemp())))
                         compteur = compteur + 1
                         compHum = compHum + 1
-                        let line2 = LineChartDataSet(entries: entries, label: .none)
-                        line2.setColor(.red)
-                        line2.setCircleColor(.red)
-                        data1.addDataSet(line2)
-                        lineChart.data = data1
+                        
+                        let set = LineChartDataSet(entries: entries, label: "temperature")
+                        let data = LineChartData(dataSet: set)
+                        lineChart.data = data
+                       
                     }
                     
                 }
@@ -189,9 +190,10 @@ class targetTempViewController: UIViewController,ChartViewDelegate {
         
         lineChart.frame = CGRect(x: 0, y: 0,width: self.view.frame.size.width, height:self.view.frame.size.width)
         lineChart.center = view.center
+        
         view.addSubview(lineChart)
         
-        var entries = [ChartDataEntry]()
+       
         for cle in displayObject {
             if( cle.identifier == identifier)
             
@@ -210,6 +212,7 @@ class targetTempViewController: UIViewController,ChartViewDelegate {
         let set = LineChartDataSet(entries: entries, label: "temperature")
         let data = LineChartData(dataSet: set)
         lineChart.data = data
+        
         
     }
     

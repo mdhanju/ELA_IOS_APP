@@ -148,7 +148,18 @@ class targetMoveViewController: UIViewController,ChartViewDelegate {
             btn.blink()
             btn.setImage(UIimagelowBattery, for: .normal)
             self.view.addSubview(btn)
+            
+            
+    
         }
+        let imageArray = "sklia"
+        let UIarray = UIImage(named: imageArray)
+        
+        var items = [UIBarButtonItem]()
+        items.append(UIBarButtonItem(image: UIarray, landscapeImagePhone: .none, style: .done, target: self, action: #selector(imageTapTemp)))
+        items.append(UIBarButtonItem(title: "Connexion", style: .plain, target: self,action: .none))
+        
+        self.navigationItem.setRightBarButtonItems(items, animated: true)
         
         for cle in displayObject {
             if( cle.identifier == identifier)

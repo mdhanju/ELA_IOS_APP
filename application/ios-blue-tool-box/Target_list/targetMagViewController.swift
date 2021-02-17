@@ -42,6 +42,12 @@ class targetMagViewController: UIViewController {
         fatalError("init(coder:) has not been implemented")
     }
     
+    @objc func imageTapTemp() {
+        self.navigationController?.pushViewController(ConnectViewController(nameSensor: nameSensor, RSSI: RSSI, identifier: identifier, battery: battery, typedata:typedata, array: array, displayObject: displayObject), animated: true)
+        view.layoutIfNeeded()
+    }
+
+    
     func handleNewObjectAvailable(data: ([String : Sensor])) {
         print("test 1930")
         updateSensorUI(data: data)
@@ -71,7 +77,7 @@ class targetMagViewController: UIViewController {
                     {
                         
                         progressRing.value = CGFloat(move.getNbrObject())
-                        print("progress ring" + String(move.getNbrObject()) + "son nom " + move.name )
+                        print("progress ring" + String(move.getNbrObject()) + "son nom " + move.name)
                         if(move.getEtat() == true)
                         {
                             btnPerson.setImage(UIimagelowPerson, for: .normal)
@@ -102,6 +108,8 @@ class targetMagViewController: UIViewController {
         }
         return newobject
     }
+    
+    
     
     
     override func viewDidLoad() {
@@ -230,7 +238,21 @@ class targetMagViewController: UIViewController {
         progressRing.valueFormatter = UICircularProgressRingFormatter(valueIndicator: " aimant", rightToLeft: false, showFloatingPoint: false, decimalPlaces: 0)
         
         self.view.addSubview(progressRing)
+        
+        
+        
+        let imageArray = "sklia"
+        let UIarray = UIImage(named: imageArray)
+        
+        var items = [UIBarButtonItem]()
+        items.append(UIBarButtonItem(image: UIarray, landscapeImagePhone: .none, style: .done, target: self, action: #selector(imageTapTemp)))
+        items.append(UIBarButtonItem(title: "Connexion", style: .plain, target: self,action: .none))
+        
+        self.navigationItem.setRightBarButtonItems(items, animated: true)
     }
+    
+    
+    
     
     
 }
