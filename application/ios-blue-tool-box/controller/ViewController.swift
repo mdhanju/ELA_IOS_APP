@@ -1,10 +1,3 @@
-//
-//  ViewController.swift
-//  burger
-//
-//  Created by ELA Innovation on 11/01/2021.
-//  Copyright © 2021 ELA Innovation. All rights reserved.
-//
 import SideMenu
 import UIKit
 

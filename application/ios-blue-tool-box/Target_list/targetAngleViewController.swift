@@ -1,10 +1,3 @@
-//
-//  targetAngleViewController.swift
-//  ios-blue-tool-box
-//
-//  Created by ELA Innovation on 15/02/2021.
-//  Copyright © 2021 ELA Innovation. All rights reserved.
-//
 import UIKit
 import Charts
 class targetAngleViewController: UIViewController,ChartViewDelegate {
@@ -12,7 +5,7 @@ class targetAngleViewController: UIViewController,ChartViewDelegate {
     
     
     
-    var lineChart = LineChartView()
+    private var lineChart = LineChartView()
     
     private let nameSensor : String
     private let RSSI : Int
@@ -21,8 +14,7 @@ class targetAngleViewController: UIViewController,ChartViewDelegate {
     private let typedata : SensorTypes
     private let array : [Capteur.Cap]
     private let displayObject : [Capteur.DisplayObject]
-    
-    //    private let relatedItem : [String]
+
     init(nameSensor : String,RSSI: Int, identifier : String, battery : Int, typedata : SensorTypes,array: [Capteur.Cap],displayObject : [Capteur.DisplayObject]) {
         self.nameSensor = nameSensor
         self.RSSI = RSSI
@@ -59,8 +51,6 @@ class targetAngleViewController: UIViewController,ChartViewDelegate {
         super.viewDidLoad()
         view.backgroundColor = .white
         
-        print(nameSensor)
-        
         
         let UInameSensor = UITextView()
         UInameSensor.text = nameSensor
@@ -72,19 +62,12 @@ class targetAngleViewController: UIViewController,ChartViewDelegate {
         UInameSensor.backgroundColor = .none
         self.view.addSubview(UInameSensor)
         self.view.bringSubviewToFront(UInameSensor)
-        
-        
-        // if(battery != -1)
-        //{
-        
+    
         if(battery != -1)
         {
             
             let UIbatterie = UITextView()
-            
-            //  UIbatterie.text = "La batterie est de : " + String(battery) + " mV"
             UIbatterie.text = "Low battery"
-            
             UIbatterie.textColor = UIColor.red
             UIbatterie.font = UIFont.systemFont(ofSize: 25.0)
             UIbatterie.isUserInteractionEnabled = false
@@ -117,29 +100,13 @@ class targetAngleViewController: UIViewController,ChartViewDelegate {
         imageViewTemp.frame = CGRect(x: 20, y: 70, width: 45, height: 45)
         self.view.addSubview(imageViewTemp)
         
-        
-        /*  let imageConnect = "connection"
-         let UIconnect = UIImage(named: imageConnect)
-         let imageVIewConnect = UIImageView(image: UIconnect!)
-         imageVIewConnect.frame = CGRect(x: 310, y: 70, width: 45, height: 45)
-         imageVIewConnect.isUserInteractionEnabled = true
-         let imageTapGestureRecognizerConnect = UITapGestureRecognizer(target: self, action: #selector(imageTapTemp))
-         imageVIewConnect.addGestureRecognizer(imageTapGestureRecognizerConnect)
-         
-         self.view.addSubview(imageVIewConnect)
-         */
         let imageArray = "sklia"
         let UIarray = UIImage(named: imageArray)
         
         var items = [UIBarButtonItem]()
         items.append(UIBarButtonItem(image: UIarray, landscapeImagePhone: .none, style: .done, target: self, action: #selector(imageTapTemp)))
         items.append(UIBarButtonItem(title: "Connexion", style: .plain, target: self,action: .none))
-        //     items.append(UIBarButtonItem(image: UIconnect, landscapeImagePhone: .none, style: .done, target: self, action: #selector(imageTapTemp)))
-        
         self.navigationItem.setRightBarButtonItems(items, animated: true)
-        //    navigationItem.rightBarButtonItem = UIBarButtonItem(title: c, style: .plain, target: self,action: .none)
-        // navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .fixedSpace, target: self, action: .none)
-        
         lineChart.delegate = self
         
         
@@ -166,7 +133,7 @@ class targetAngleViewController: UIViewController,ChartViewDelegate {
                 {
                     for x in 0..<cle.array.count
                     {
-                        entries.append(ChartDataEntry(x: Double(x),y: Double(temp[x].x)))
+                        entries.append(ChartDataEntry(x: Double(x),y: Double(temp[x].getX())))
                     }
                     
                 }
@@ -175,7 +142,7 @@ class targetAngleViewController: UIViewController,ChartViewDelegate {
                 {
                     for x in 0..<cle.array.count
                     {
-                        entries1.append(ChartDataEntry(x: Double(x),y: Double(temp[x].y)))
+                        entries1.append(ChartDataEntry(x: Double(x),y: Double(temp[x].getY())))
                     }
                     
                 }
@@ -183,18 +150,15 @@ class targetAngleViewController: UIViewController,ChartViewDelegate {
                 {
                     for x in 0..<cle.array.count
                     {
-                        entries2.append(ChartDataEntry(x: Double(x),y: Double(temp[x].z)))
+                        entries2.append(ChartDataEntry(x: Double(x),y: Double(temp[x].getZ())))
                     }
-                    
                 }
             }
         }
         
         let data1 = LineChartData()
         let line1 = LineChartDataSet(entries: entries1, label: "x")
-        
         let line2 = LineChartDataSet(entries: entries, label: "y")
-        
         let line3 = LineChartDataSet(entries: entries2, label: "z")
         line2.setColor(.red)
         line2.setCircleColor(.red)
@@ -203,14 +167,7 @@ class targetAngleViewController: UIViewController,ChartViewDelegate {
         data1.addDataSet(line1)
         data1.addDataSet(line2)
         data1.addDataSet(line3)
-        
-        
-        //let set = LineChartDataSet(
-        //    set.colors = ChartColorTemplates.material()
-        
-        
-        
-           lineChart.data = data1
+        lineChart.data = data1
            
        }
        

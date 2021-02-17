@@ -1,11 +1,3 @@
-//
-//  targetMagViewController.swift
-//  ios-blue-tool-box
-//
-//  Created by ELA Innovation on 12/02/2021.
-//  Copyright © 2021 ELA Innovation. All rights reserved.
-//
-
 import UIKit
 import Charts
 import UICircularProgressRing
@@ -13,17 +5,12 @@ class targetMagViewController: UIViewController {
     
     
     private var capteur: Capteur!
-    let btnPerson = UIButton()
+    private let btnPerson = UIButton()
     
+    private let UIimagelowPerson = UIImage(named: "PersonRunning")
+    private let UIimagelowPersonStatic = UIImage(named: "Person")
     
-    let UIimagelowPerson = UIImage(named: "PersonRunning")
-    let UIimagelowPersonStatic = UIImage(named: "Person")
-    
-    
-    
-    
-    
-    let progressRing = UICircularProgressRing(frame:  CGRect(x: 150, y: 200, width: 100, height: 100))
+    private let progressRing = UICircularProgressRing(frame:  CGRect(x: 150, y: 200, width: 100, height: 100))
 
 
     private let nameSensor : String
@@ -35,10 +22,8 @@ class targetMagViewController: UIViewController {
     
     
     private var displayObject : [Capteur.DisplayObject]
-    
-       private var scanner: Scanner1!
-     
-     var sensorT : SensorTypes? = nil
+    private var scanner: Scanner1!
+    private var sensorT : SensorTypes? = nil
     
     init(nameSensor : String,RSSI: Int, identifier : String, battery : Int, typedata : SensorTypes,array: [Capteur.Cap],displayObject : [Capteur.DisplayObject]) {
         self.nameSensor = nameSensor
@@ -65,11 +50,10 @@ class targetMagViewController: UIViewController {
     
     func updateSensorUI(data: ([String : Sensor])) -> Capteur.DisplayObject {
         
-        var trouve = true
         let objectTemp1 = Capteur.Temp(temp: 0)
         //  let objectHum = TempHum(temp: 0, hum: 0)
         
-        var newobject : Capteur.DisplayObject = Capteur.DisplayObject(name: "null", RSSI: 0, identifier: "",battery : 0, typedata : SensorTypes.SensorID, array: [objectTemp1])
+        let newobject : Capteur.DisplayObject = Capteur.DisplayObject(name: "null", RSSI: 0, identifier: "",battery : 0, typedata : SensorTypes.SensorID, array: [objectTemp1])
         
         for (key,value) in data
         {
@@ -85,8 +69,6 @@ class targetMagViewController: UIViewController {
                 {
                     if let move = value as? SensorMagnetic
                     {
-                        let objectMove =
-                            Capteur.Move(nbrPas: move.nbrObjet, etat: move.etat)
                         
                         progressRing.value = CGFloat(move.nbrObjet)
                         print("progress ring" + String(move.nbrObjet) + "son nom " + move.name )
@@ -101,10 +83,6 @@ class targetMagViewController: UIViewController {
                     }
                     
                 }
-                
-                
-                
-                trouve  = false
                 
                 displayObject.append(newobject)
             }
@@ -200,9 +178,9 @@ class targetMagViewController: UIViewController {
             {
                 if let Move : [Capteur.Mag] = cle.array as? [Capteur.Mag]
                 {
-                    progressRing.value = CGFloat(Move[array.count-1].nbrMagnet)
-                    print(Move[array.count-1].etat == false)
-                    if(Move[array.count-1].etat == true)
+                    progressRing.value = CGFloat(Move[array.count-1].getNbrMagnet())
+                    print(Move[array.count-1].getEtat() == false)
+                    if(Move[array.count-1].getEtat() == true)
                     {
        
                         
@@ -242,7 +220,7 @@ class targetMagViewController: UIViewController {
                     for x in 0..<cle.array.count
                         
                     {
-                        progressRing.value = CGFloat(temp[x].nbrMagnet)
+                        progressRing.value = CGFloat(temp[x].getNbrMagnet())
                     }
                 }
             }

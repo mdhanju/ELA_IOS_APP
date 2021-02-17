@@ -89,7 +89,7 @@ class targetTempViewController: UIViewController,ChartViewDelegate {
         
         let objectTemp1 = Capteur.Temp(temp: 0)
         
-        var newobject : Capteur.DisplayObject = Capteur.DisplayObject(name: "null", RSSI: 0, identifier: "",battery : 0, typedata : SensorTypes.SensorID, array: [objectTemp1])
+        let newobject : Capteur.DisplayObject = Capteur.DisplayObject(name: "null", RSSI: 0, identifier: "",battery : 0, typedata : SensorTypes.SensorID, array: [objectTemp1])
         
         for (key,value) in data
         {
@@ -200,7 +200,7 @@ class targetTempViewController: UIViewController,ChartViewDelegate {
                 {
                     for x in 0..<cle.array.count
                     {
-                        entries.append(ChartDataEntry(x: Double(x),y: Double(temp[x].temp)))
+                        entries.append(ChartDataEntry(x: Double(x),y: Double(temp[x].getTemp())))
                         compteur = compteur + 1
                     }
                     

@@ -16,7 +16,7 @@ class targetMoveViewController: UIViewController,ChartViewDelegate {
     private let array : [Capteur.Cap]
     private var displayObject : [Capteur.DisplayObject]
     private var scanner: Scanner1!
-    var sensorT : SensorTypes? = nil
+    private var sensorT : SensorTypes? = nil
     
     init(nameSensor : String,RSSI: Int, identifier : String, battery : Int, typedata : SensorTypes,array: [Capteur.Cap],displayObject : [Capteur.DisplayObject]) {
         self.nameSensor = nameSensor
@@ -52,7 +52,7 @@ class targetMoveViewController: UIViewController,ChartViewDelegate {
         
         let objectTemp1 = Capteur.Temp(temp: 0)
         
-        var newobject : Capteur.DisplayObject = Capteur.DisplayObject(name: "null", RSSI: 0, identifier: "",battery : 0, typedata : SensorTypes.SensorID, array: [objectTemp1])
+        let newobject : Capteur.DisplayObject = Capteur.DisplayObject(name: "null", RSSI: 0, identifier: "",battery : 0, typedata : SensorTypes.SensorID, array: [objectTemp1])
         
         for (key,value) in data
         {
@@ -160,8 +160,8 @@ class targetMoveViewController: UIViewController,ChartViewDelegate {
                 {
                     
                     
-                    print(Move[array.count-1].etat == false)
-                    if(Move[array.count-1].etat == true)
+                    print(Move[array.count-1].getEtat() == false)
+                    if(Move[array.count-1].getEtat() == true)
                     {
                         
                         
@@ -197,7 +197,7 @@ class targetMoveViewController: UIViewController,ChartViewDelegate {
                     for x in 0..<cle.array.count
                         
                     {
-                        progressRing.value = CGFloat(temp[x].nbrPas)
+                        progressRing.value = CGFloat(temp[x].getNbrPas())
                     }
                 }
             }

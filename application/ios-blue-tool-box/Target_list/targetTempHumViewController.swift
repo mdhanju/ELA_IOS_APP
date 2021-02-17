@@ -2,17 +2,17 @@ import UIKit
 import Charts
 class targetTempHumViewController: UIViewController,ChartViewDelegate {
     
-    let data1 = LineChartData()
-    var entries = [ChartDataEntry]()
-    var entries1 = [ChartDataEntry]()
+    private let data1 = LineChartData()
+    private var entries = [ChartDataEntry]()
+    private var entries1 = [ChartDataEntry]()
     
-    var lineChart = LineChartView()
+    private var lineChart = LineChartView()
     
     
     // Compteur graphe entries
-    var compteur = 0
+    private var compteur = 0
     // Compteur graphe umdite
-    var compHum = 0
+    private var compHum = 0
     
     private let nameSensor : String
     private let RSSI : Int
@@ -24,7 +24,7 @@ class targetTempHumViewController: UIViewController,ChartViewDelegate {
     
     private var scanner: Scanner1!
     
-    var sensorT : SensorTypes? = nil
+    private var sensorT : SensorTypes? = nil
     
     init(nameSensor : String,RSSI: Int, identifier : String, battery : Int, typedata : SensorTypes,array: [Capteur.Cap],displayObject : [Capteur.DisplayObject]) {
         self.nameSensor = nameSensor
@@ -59,10 +59,10 @@ class targetTempHumViewController: UIViewController,ChartViewDelegate {
     
     func updateSensorUI(data: ([String : Sensor])) -> Capteur.DisplayObject {
         
-        var trouve = true
+     
         let objectTemp1 = Capteur.Temp(temp: 0)
         
-        var newobject : Capteur.DisplayObject = Capteur.DisplayObject(name: "null", RSSI: 0, identifier: "",battery : 0, typedata : SensorTypes.SensorID, array: [objectTemp1])
+        let newobject : Capteur.DisplayObject = Capteur.DisplayObject(name: "null", RSSI: 0, identifier: "",battery : 0, typedata : SensorTypes.SensorID, array: [objectTemp1])
         
         for (key,value) in data
         {
@@ -78,8 +78,7 @@ class targetTempHumViewController: UIViewController,ChartViewDelegate {
                 {
                     if let tempHum = value as? SensorTemperatureHumidity
                     {
-                        let objectTemp =
-                            Capteur.TempHum(temp: tempHum.temperature, hum: tempHum.humidity)
+                       
                         entries.append(ChartDataEntry(x: Double(compteur),y: Double(tempHum.temperature)))
                         entries1.append(ChartDataEntry(x: Double(compteur),y: Double(tempHum.humidity)))
                         compteur = compteur + 1
@@ -102,8 +101,6 @@ class targetTempHumViewController: UIViewController,ChartViewDelegate {
                 }
                 
                 
-                
-                trouve  = false
             }
         }
         return newobject
@@ -202,7 +199,7 @@ class targetTempHumViewController: UIViewController,ChartViewDelegate {
                         print("la val de x = " + String(x))
                         print("la val de compteur = " + String(compteur))
                         
-                        entries.append(ChartDataEntry(x: Double(x),y: Double(temp[x].temp)))
+                        entries.append(ChartDataEntry(x: Double(x),y: Double(temp[x].getTemp())))
                         entries1.append(ChartDataEntry(x: Double(x),y: Double(temp[x].getHum())))
                         compteur = compteur + 1
                         compHum = compHum + 1
