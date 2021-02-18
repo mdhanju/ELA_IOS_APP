@@ -11,6 +11,7 @@ class targetAngleViewController: UIViewController,ChartViewDelegate {
     private let typedata : SensorTypes
     private let array : [Capteur.Cap]
     private let displayObject : [Capteur.DisplayObject]
+    var UItemperature = UITextView()
     
     var entries = [ChartDataEntry]()
     var entries1 = [ChartDataEntry]()
@@ -73,6 +74,7 @@ class targetAngleViewController: UIViewController,ChartViewDelegate {
                 {
                     if let tempHum = value as? SensorAngle
                     {
+                        UItemperature.text = String(tempHum.getX()) + "mg  " + String(tempHum.getY()) + "mg  " +  String(tempHum.getZ()) + "mg "
                         entries.append(ChartDataEntry(x: Double(compteur),y: Double(tempHum.getX())))
                         entries1.append(ChartDataEntry(x: Double(compteur),y: Double(tempHum.getY())))
                         entries2.append(ChartDataEntry(x: Double(compteur),y: Double(tempHum.getZ())))
@@ -100,6 +102,12 @@ class targetAngleViewController: UIViewController,ChartViewDelegate {
                     
                 }
             }
+        }
+        if(entries.count >= 8)
+        {
+            entries.removeFirst(1)
+            entries1.removeFirst(1)
+            entries2.removeFirst(1)
         }
         return newobject
     }
@@ -184,9 +192,28 @@ class targetAngleViewController: UIViewController,ChartViewDelegate {
         super.viewDidLayoutSubviews()
         
         
-        lineChart.frame = CGRect(x: 0, y: 0,width: self.view.frame.size.width, height:self.view.frame.size.width)
+        lineChart.frame = CGRect(x: 0, y: 0,width: 350, height:250)
         lineChart.center = view.center
         view.addSubview(lineChart)
+        
+        let line = UIView(frame: CGRect(x: 40, y: 150, width: 290, height: 3))
+        line.backgroundColor =  UIColor(hexString: "#336699")
+        self.view.addSubview(line)
+        
+        let lineBack = UIView(frame: CGRect(x: 40, y: 200, width: 290, height: 3))
+        lineBack.backgroundColor = UIColor(hexString: "#336699")
+        self.view.addSubview(lineBack)
+        
+        
+        UItemperature.text = String("")
+        UItemperature.textColor = UIColor.black
+        UItemperature.font = UIFont.systemFont(ofSize: 25.0)
+        UItemperature.isUserInteractionEnabled = false
+        UItemperature.font = UIFont.boldSystemFont(ofSize: 25)
+        UItemperature.frame = CGRect(x: 60, y: 150, width: 350, height: 100)
+        UItemperature.backgroundColor = .none
+        self.view.addSubview(UItemperature)
+        self.view.bringSubviewToFront(UItemperature)
         
 
         

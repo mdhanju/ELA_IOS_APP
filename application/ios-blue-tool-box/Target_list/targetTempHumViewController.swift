@@ -8,7 +8,7 @@ class targetTempHumViewController: UIViewController,ChartViewDelegate {
     
     private var lineChart = LineChartView()
     
-    
+    var UItemperature = UITextView()
     
     // Compteur graphe entries
     private var compteur = 0
@@ -79,6 +79,7 @@ class targetTempHumViewController: UIViewController,ChartViewDelegate {
                 {
                     if let tempHum = value as? SensorTemperatureHumidity
                     {
+                        UItemperature.text = String(tempHum.getTemp()) + "°C   " + String(tempHum.getHum()) + "%"
                        
                         entries.append(ChartDataEntry(x: Double(compteur),y: Double(tempHum.getTemp())))
                         entries1.append(ChartDataEntry(x: Double(compteur),y: Double(tempHum.getHum())))
@@ -105,6 +106,11 @@ class targetTempHumViewController: UIViewController,ChartViewDelegate {
                 
             }
         }
+        if(entries.count >= 8)
+        {
+            entries.removeFirst(1)
+            entries1.removeFirst(1)
+        }
         return newobject
     }
     
@@ -128,6 +134,17 @@ class targetTempHumViewController: UIViewController,ChartViewDelegate {
         UInameSensor.backgroundColor = .none
         self.view.addSubview(UInameSensor)
         self.view.bringSubviewToFront(UInameSensor)
+        
+        
+        UItemperature.text = String("")
+        UItemperature.textColor = UIColor.black
+        UItemperature.font = UIFont.systemFont(ofSize: 25.0)
+        UItemperature.isUserInteractionEnabled = false
+        UItemperature.font = UIFont.boldSystemFont(ofSize: 25)
+        UItemperature.frame = CGRect(x: 110, y: 150, width: 350, height: 100)
+        UItemperature.backgroundColor = .none
+        self.view.addSubview(UItemperature)
+        self.view.bringSubviewToFront(UItemperature)
 
         if(battery != -1)
         {
@@ -184,9 +201,17 @@ class targetTempHumViewController: UIViewController,ChartViewDelegate {
         super.viewDidLayoutSubviews()
         
         
-        lineChart.frame = CGRect(x: 0, y: 0,width: self.view.frame.size.width, height:self.view.frame.size.width)
+        lineChart.frame = CGRect(x: 0, y: 0,width: 350, height:250)
         lineChart.center = view.center
         view.addSubview(lineChart)
+        
+        let line = UIView(frame: CGRect(x: 40, y: 150, width: 290, height: 3))
+        line.backgroundColor =  UIColor(hexString: "#336699")
+        self.view.addSubview(line)
+        
+        let lineBack = UIView(frame: CGRect(x: 40, y: 200, width: 290, height: 3))
+        lineBack.backgroundColor = UIColor(hexString: "#336699")
+        self.view.addSubview(lineBack)
         
         
         

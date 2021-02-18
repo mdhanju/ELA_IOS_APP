@@ -17,6 +17,7 @@ class targetMoveViewController: UIViewController,ChartViewDelegate {
     private var displayObject : [Capteur.DisplayObject]
     private var scanner: Scanner1!
     private var sensorT : SensorTypes? = nil
+    private var UInameseuil = UITextView()
     
     init(nameSensor : String,RSSI: Int, identifier : String, battery : Int, typedata : SensorTypes,array: [Capteur.Cap],displayObject : [Capteur.DisplayObject]) {
         self.nameSensor = nameSensor
@@ -30,6 +31,8 @@ class targetMoveViewController: UIViewController,ChartViewDelegate {
         
         super.init(nibName : nil , bundle : nil)
     }
+    
+    
     
     
     @objc func imageTapTemp() {
@@ -69,10 +72,14 @@ class targetMoveViewController: UIViewController,ChartViewDelegate {
                         if(move.getEtat() == true)
                         {
                             btnPerson.setImage(UIimagelowPerson, for: .normal)
+                            
+                            UInameseuil.text = "Etat : en déplacement"
                         }
                         else {
                             
                             btnPerson.setImage(UIimagelowPersonStatic, for: .normal)
+                            
+                            UInameseuil.text = "Etat : position statique"
                         }
                     }
                     
@@ -112,14 +119,14 @@ class targetMoveViewController: UIViewController,ChartViewDelegate {
      
         
         
-        let UInameseuil = UITextView()
-        UInameseuil.text = "Etat : En déplacement"
-        UInameseuil.textColor = UIColor.black
-        UInameseuil.font = UIFont.systemFont(ofSize: 15)
-        UInameseuil.isUserInteractionEnabled = false
-        UInameseuil.font = UIFont.boldSystemFont(ofSize: 15)
-        UInameseuil.frame = CGRect(x: 80, y: 150, width: 350, height: 100)
-        UInameseuil.backgroundColor = .none
+        self.UInameseuil = UITextView()
+        self.UInameseuil.text = "Etat : position statique"
+        self.UInameseuil.textColor = UIColor.black
+        self.UInameseuil.font = UIFont.systemFont(ofSize: 15)
+        self.UInameseuil.isUserInteractionEnabled = false
+        self.UInameseuil.font = UIFont.boldSystemFont(ofSize: 15)
+        self.UInameseuil.frame = CGRect(x: 80, y: 150, width: 350, height: 100)
+        self.UInameseuil.backgroundColor = .none
         self.view.addSubview(UInameseuil)
         self.view.bringSubviewToFront(UInameseuil)
         
@@ -175,7 +182,6 @@ class targetMoveViewController: UIViewController,ChartViewDelegate {
                         
                         
                         
-                        
                         btnPerson.frame = CGRect(x: 250, y: 130 ,width: 45, height: 45)
                         btnPerson.blink()
                         btnPerson.setImage(UIimagelowPerson, for: .normal)
@@ -183,9 +189,9 @@ class targetMoveViewController: UIViewController,ChartViewDelegate {
                     }
                     else {
                         
-
+                    
                         btnPerson.frame = CGRect(x: 300, y: 130 ,width: 45, height: 45)
-                        
+                        btnPerson.blink()
                         btnPerson.setImage(UIimagelowPersonStatic, for: .normal)
                         self.view.addSubview(btnPerson)
                         

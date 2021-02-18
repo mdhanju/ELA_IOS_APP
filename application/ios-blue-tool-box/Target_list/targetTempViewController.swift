@@ -261,7 +261,7 @@ class targetTempViewController: UIViewController,ChartViewDelegate {
         super.viewDidLayoutSubviews()
         
         
-        lineChart.frame = CGRect(x: 0, y: 0,width: 350, height:200)
+        lineChart.frame = CGRect(x: 0, y: 0,width: 350, height:250)
         lineChart.center = view.center
         
         view.addSubview(lineChart)

@@ -4,6 +4,8 @@ import CoreBluetooth
 
 class Scanner1: NSObject, CBPeripheralDelegate, CBCentralManagerDelegate {
     
+    var myCharacteristic : CBCharacteristic!
+    
     private var centralManager: CBCentralManager!
     private var peripheral: CBPeripheral!
     
@@ -15,6 +17,8 @@ class Scanner1: NSObject, CBPeripheralDelegate, CBCentralManagerDelegate {
     
     // MARK:
     private var sensorTypeFiler : SensorTypes? = nil
+    
+
     
     override init()
     {
@@ -40,6 +44,9 @@ class Scanner1: NSObject, CBPeripheralDelegate, CBCentralManagerDelegate {
     func initializeScanner()
     {
         centralManager = CBCentralManager(delegate: self, queue: nil)
+        
+        
+        
         
     }
     
@@ -79,6 +86,21 @@ class Scanner1: NSObject, CBPeripheralDelegate, CBCentralManagerDelegate {
         if(advertisementData[CBAdvertisementDataServiceDataKey] != nil)
         {
             let sensorData = advertisementData[CBAdvertisementDataServiceDataKey] as? Dictionary<CBUUID,NSData>
+            
+            
+            /*
+            if let characterArray = service.characteristics as [CBCharacteristic]? {
+                print("la valeur de cc ")
+                   for cc in characterArray {
+                   
+                    print(cc)
+                  
+                       
+                   }
+                print("fin la valeur de cc")
+               }
+       
+            */
             
             if(identifier.count <= 0)
             {

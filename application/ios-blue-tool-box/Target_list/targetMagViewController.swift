@@ -24,6 +24,7 @@ class targetMagViewController: UIViewController {
     private var displayObject : [Capteur.DisplayObject]
     private var scanner: Scanner1!
     private var sensorT : SensorTypes? = nil
+    private var UInameseuil = UITextView()
     
     init(nameSensor : String,RSSI: Int, identifier : String, battery : Int, typedata : SensorTypes,array: [Capteur.Cap],displayObject : [Capteur.DisplayObject]) {
         self.nameSensor = nameSensor
@@ -74,6 +75,7 @@ class targetMagViewController: UIViewController {
                 if(value is SensorMagnetic)
                 {
                     if let move = value as? SensorMagnetic
+                    
                     {
                         
                         progressRing.value = CGFloat(move.getNbrObject())
@@ -81,10 +83,12 @@ class targetMagViewController: UIViewController {
                         if(move.getEtat() == true)
                         {
                             btnPerson.setImage(UIimagelowPerson, for: .normal)
+                            UInameseuil.text = "Etat : en déplacement"
                         }
                         else {
                             
                             btnPerson.setImage(UIimagelowPersonStatic, for: .normal)
+                            UInameseuil.text = "Etat : position statique"
                         }
                     }
                     
@@ -115,7 +119,7 @@ class targetMagViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        view.backgroundColor = .yellow
+        view.backgroundColor = .white
         
         
         scanner = Scanner1()
@@ -141,16 +145,16 @@ class targetMagViewController: UIViewController {
         self.view.bringSubviewToFront(UInameSensor)
         
         
-        let UInameEtat = UITextView()
-        UInameEtat.text = "Etat : En déplacement"
-        UInameEtat.textColor = UIColor.black
-        UInameEtat.font = UIFont.systemFont(ofSize: 15)
-        UInameEtat.isUserInteractionEnabled = false
-        UInameEtat.font = UIFont.boldSystemFont(ofSize: 15)
-        UInameEtat.frame = CGRect(x: 80, y: 130, width: 350, height: 100)
-        UInameEtat.backgroundColor = .none
-        self.view.addSubview(UInameEtat)
-        self.view.bringSubviewToFront(UInameEtat)
+    
+        self.UInameseuil.text = "Etat : position statique"
+        self.UInameseuil.textColor = UIColor.black
+        self.UInameseuil.font = UIFont.systemFont(ofSize: 15)
+        self.UInameseuil.isUserInteractionEnabled = false
+        self.UInameseuil.font = UIFont.boldSystemFont(ofSize: 15)
+        self.UInameseuil.frame = CGRect(x: 80, y: 150, width: 350, height: 100)
+        self.UInameseuil.backgroundColor = .none
+        self.view.addSubview(UInameseuil)
+        self.view.bringSubviewToFront(UInameseuil)
         
         if(battery != -1)
         {
