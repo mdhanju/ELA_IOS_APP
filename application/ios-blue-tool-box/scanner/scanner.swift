@@ -1,7 +1,7 @@
 import UIKit
 import CoreBluetooth
 
-
+import os.log
 class Scanner1: NSObject, CBPeripheralDelegate, CBCentralManagerDelegate {
     
     var myCharacteristic : CBCharacteristic!
@@ -44,11 +44,13 @@ class Scanner1: NSObject, CBPeripheralDelegate, CBCentralManagerDelegate {
     func initializeScanner()
     {
         centralManager = CBCentralManager(delegate: self, queue: nil)
-        
-        
+       
+
         
         
     }
+   
+    // https://community.purplegiraffe.fr/t/se-connecter-en-bluetooth-pour-echanger-des-donnees/665
     
     /**
      * \fn initializeScanner
@@ -76,6 +78,9 @@ class Scanner1: NSObject, CBPeripheralDelegate, CBCentralManagerDelegate {
         }
     }
     
+    
+    
+   
     /**
      * \fn initializeScanner
      * \brief handle the result of the scan : filter type of sensor and we add dictionnary to the array
@@ -87,20 +92,23 @@ class Scanner1: NSObject, CBPeripheralDelegate, CBCentralManagerDelegate {
         {
             let sensorData = advertisementData[CBAdvertisementDataServiceDataKey] as? Dictionary<CBUUID,NSData>
             
-            
-            /*
-            if let characterArray = service.characteristics as [CBCharacteristic]? {
-                print("la valeur de cc ")
-                   for cc in characterArray {
-                   
-                    print(cc)
-                  
-                       
-                   }
-                print("fin la valeur de cc")
-               }
+     
+           
+                
+           
+                // And finally, connect to the peripheral.
+           //     os_log("Connecting to perhiperal %@", peripheral)
+            //    centralManager.connect(peripheral, options: nil)
+           
+                os_log("Connecting to peripheral %@", peripheral)
        
-            */
+              //  centralManager.connect(peripheral, options: nil)
+            peripheral.discoverServices([ParticlePeripheral.uartRx])
+            
+            
+            
+       
+
             
             if(identifier.count <= 0)
             {
@@ -137,6 +145,11 @@ class Scanner1: NSObject, CBPeripheralDelegate, CBCentralManagerDelegate {
         
         
     }
+    
+    
+  
+        
+    
     
 }
 
