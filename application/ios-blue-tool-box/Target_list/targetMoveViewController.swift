@@ -1,7 +1,7 @@
 import UIKit
 import Charts
 import UICircularProgressRing
-class targetMoveViewController: UIViewController,ChartViewDelegate {
+class targetMoveViewController: controllerUI,ChartViewDelegate {
     
     private var capteur: Capteur!
     private let btnPerson = UIButton()
@@ -99,26 +99,11 @@ class targetMoveViewController: UIViewController,ChartViewDelegate {
         scanner.initializeScanner()
         scanner.dictionnarySensor.addHandler(handler : handleNewObjectAvailable)
 
-        let imageMove = "mouvement_blue"
-        let UIimageMove = UIImage(named: imageMove)
-        let imageViewMove = UIImageView(image: UIimageMove!)
-        imageViewMove.frame = CGRect(x: 20, y: 70, width: 45, height: 45)
-        self.view.addSubview(imageViewMove)
+        nameSensorUI(str: nameSensor)
+        batteryUI(battery: battery)
+        logoUI(picture: "mouvement_blue")
         
-        let UInameSensor = UITextView()
-        UInameSensor.text = nameSensor
-        UInameSensor.textColor = UIColor.black
-        UInameSensor.font = UIFont.systemFont(ofSize: 25.0)
-        UInameSensor.isUserInteractionEnabled = false
-        UInameSensor.font = UIFont.boldSystemFont(ofSize: 25)
-        UInameSensor.frame = CGRect(x: 80, y: 70, width: 350, height: 100)
-        UInameSensor.backgroundColor = .none
-        self.view.addSubview(UInameSensor)
-        self.view.bringSubviewToFront(UInameSensor)
-        
-     
-        
-        
+              
         self.UInameseuil = UITextView()
         self.UInameseuil.text = "Etat : position statique"
         self.UInameseuil.textColor = UIColor.black
@@ -130,35 +115,7 @@ class targetMoveViewController: UIViewController,ChartViewDelegate {
         self.view.addSubview(UInameseuil)
         self.view.bringSubviewToFront(UInameseuil)
         
-        if(battery != -1)
-        {
-            
-            let UIbatterie = UITextView()
-            UIbatterie.text = "Low battery"
-            
-            UIbatterie.textColor = UIColor.red
-            UIbatterie.font = UIFont.systemFont(ofSize: 25.0)
-            UIbatterie.isUserInteractionEnabled = false
-            UIbatterie.font = UIFont.boldSystemFont(ofSize: 15)
-            UIbatterie.frame = CGRect(x: 170, y: 560, width: 350, height: 100)
-            UIbatterie.backgroundColor = .none
-            self.view.addSubview(UIbatterie)
-            self.view.bringSubviewToFront(UIbatterie)
-            
-            
-            let imagelowBattery = "lowBattery"
-            let UIimagelowBattery = UIImage(named: imagelowBattery)
-            
-            
-            let btn = UIButton()
-            btn.frame = CGRect(x: 120, y: 560, width: 45, height: 45)
-            btn.blink()
-            btn.setImage(UIimagelowBattery, for: .normal)
-            self.view.addSubview(btn)
-            
-            
-    
-        }
+      
         let imageArray = "sklia"
         let UIarray = UIImage(named: imageArray)
         

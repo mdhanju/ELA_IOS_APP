@@ -1,79 +1,20 @@
 import UIKit
 import Charts
 
-// MARK: Extension
 
-extension UIColor {
-    convenience init(hexString: String, alpha: CGFloat = 1.0) {
-        let hexString: String = hexString.trimmingCharacters(in: CharacterSet.whitespacesAndNewlines)
-        let scanner = Scanner(string: hexString)
-        if (hexString.hasPrefix("#")) {
-            scanner.scanLocation = 1
-        }
-        var color: UInt32 = 0
-        scanner.scanHexInt32(&color)
-        let mask = 0x000000FF
-        let r = Int(color >> 16) & mask
-        let g = Int(color >> 8) & mask
-        let b = Int(color) & mask
-        let red   = CGFloat(r) / 255.0
-        let green = CGFloat(g) / 255.0
-        let blue  = CGFloat(b) / 255.0
-        self.init(red:red, green:green, blue:blue, alpha:alpha)
-    }
-    func toHexString() -> String {
-        var r:CGFloat = 0
-        var g:CGFloat = 0
-        var b:CGFloat = 0
-        var a:CGFloat = 0
-        getRed(&r, green: &g, blue: &b, alpha: &a)
-        let rgb:Int = (Int)(r*255)<<16 | (Int)(g*255)<<8 | (Int)(b*255)<<0
-        return String(format:"#%06x", rgb)
-    }
-}
-
-
-
-extension UIButton {
-    func blink() {
-        self.alpha = 0.0;
-        UIView.animate(withDuration: 0.6, //Time duration you want,
-                       delay: 0.0,
-                       options: [.curveEaseInOut, .autoreverse, .repeat],
-                       animations: { [weak self] in self?.alpha = 1.0 },
-                       completion: { [weak self] _ in self?.alpha = 0.0 })
-    }
-    
-    func stopBlink() {
-        self.layer.removeAllAnimations()
-        self.alpha = 1.0;
-        self.isHidden = false
-        // [self.layer removeAllAnimations];
-    }
-}
-
-extension UIView {
-    func blink(duration: TimeInterval = 0.5, delay: TimeInterval = 0.0, alpha: CGFloat = 0.0) {
-        UIView.animate(withDuration: duration, delay: delay, options: [.curveEaseInOut, .repeat, .autoreverse], animations: {
-            self.alpha = alpha
-        })
-    }
-}
 
 // MARK: Class
 
 
 
-class targetTempViewController: controllerUI,ChartViewDelegate {
+class targetTempViewController: controllerGrapheUI,ChartViewDelegate {
     
     
     private let data1 = LineChartData()
     private var entries = [ChartDataEntry]()
     private var entries1 = [ChartDataEntry]()
     private var lineChart = LineChartView()
-    private var numberTemperature = 25
-   var UItemperature = UITextView()
-    
+    private var donnee : String = ""
     
     // Compteur graphe entries
     private var compteur = 0
@@ -135,7 +76,9 @@ class targetTempViewController: controllerUI,ChartViewDelegate {
                 {
                     if let tempHum = value as? SensorTemperature
                     {
-                        UItemperature.text = String(tempHum.getTemp()) + "°C"
+                       // UItemperature.text = String(tempHum.getTemp()) + "°C"
+                        //donnee = String(tempHum.getTemp()) + "°C"
+                    valueUI(donnees: String(tempHum.getTemp()) + "°C")
                         entries.append(ChartDataEntry(x: Double(compteur),y: Double(tempHum.getTemp())))
                         compteur = compteur + 1
                         compHum = compHum + 1
@@ -167,13 +110,7 @@ class targetTempViewController: controllerUI,ChartViewDelegate {
         
         super.viewDidLoad()
         
-        let line = UIView(frame: CGRect(x: 40, y: 150, width: 290, height: 3))
-        line.backgroundColor =  UIColor(hexString: "#336699")
-        self.view.addSubview(line)
-        
-        let lineBack = UIView(frame: CGRect(x: 40, y: 200, width: 290, height: 3))
-        lineBack.backgroundColor = UIColor(hexString: "#336699")
-        self.view.addSubview(lineBack)
+
         
        // view.backgroundColor = .white
         scanner = Scanner1()
@@ -184,16 +121,9 @@ class targetTempViewController: controllerUI,ChartViewDelegate {
         nameSensorUI(str: nameSensor)
         batteryUI(battery: battery)
         logoUI(picture: "temp")
+      //  valueUI(donnees: donnee)
         
-        UItemperature.text = String("")
-        UItemperature.textColor = UIColor.black
-        UItemperature.font = UIFont.systemFont(ofSize: 25.0)
-        UItemperature.isUserInteractionEnabled = false
-        UItemperature.font = UIFont.boldSystemFont(ofSize: 25)
-        UItemperature.frame = CGRect(x: 150, y: 150, width: 350, height: 100)
-        UItemperature.backgroundColor = .none
-        self.view.addSubview(UItemperature)
-        self.view.bringSubviewToFront(UItemperature)
+
     
         
     

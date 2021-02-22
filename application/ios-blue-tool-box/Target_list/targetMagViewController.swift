@@ -1,7 +1,7 @@
 import UIKit
 import Charts
 import UICircularProgressRing
-class targetMagViewController: UIViewController {
+class targetMagViewController: controllerUI {
     
     
     private var capteur: Capteur!
@@ -127,22 +127,10 @@ class targetMagViewController: UIViewController {
         scanner.dictionnarySensor.addHandler(handler : handleNewObjectAvailable)
         
         
-        let imageMagnetic = "porte_blue"
-        let UIimageMagnetic = UIImage(named: imageMagnetic)
-        let imageViewMagnetic = UIImageView(image: UIimageMagnetic!)
-        imageViewMagnetic.frame = CGRect(x: 20, y: 70, width: 45, height: 45)
-        self.view.addSubview(imageViewMagnetic)
-        
-        let UInameSensor = UITextView()
-        UInameSensor.text = nameSensor
-        UInameSensor.textColor = UIColor.black
-        UInameSensor.font = UIFont.systemFont(ofSize: 25.0)
-        UInameSensor.isUserInteractionEnabled = false
-        UInameSensor.font = UIFont.boldSystemFont(ofSize: 25)
-        UInameSensor.frame = CGRect(x: 80, y: 70, width: 350, height: 100)
-        UInameSensor.backgroundColor = .none
-        self.view.addSubview(UInameSensor)
-        self.view.bringSubviewToFront(UInameSensor)
+       
+        nameSensorUI(str: nameSensor)
+        batteryUI(battery: battery)
+        logoUI(picture: "porte_blue")
         
         
     
@@ -156,33 +144,7 @@ class targetMagViewController: UIViewController {
         self.view.addSubview(UInameseuil)
         self.view.bringSubviewToFront(UInameseuil)
         
-        if(battery != -1)
-        {
-            
-            let UIbatterie = UITextView()
-            UIbatterie.text = "Low battery"
-            
-            UIbatterie.textColor = UIColor.red
-            UIbatterie.font = UIFont.systemFont(ofSize: 25.0)
-            UIbatterie.isUserInteractionEnabled = false
-            UIbatterie.font = UIFont.boldSystemFont(ofSize: 15)
-            UIbatterie.frame = CGRect(x: 170, y: 560, width: 350, height: 100)
-            UIbatterie.backgroundColor = .none
-            self.view.addSubview(UIbatterie)
-            self.view.bringSubviewToFront(UIbatterie)
-            
-            
-            let imagelowBattery = "lowBattery"
-            let UIimagelowBattery = UIImage(named: imagelowBattery)
-            
-            
-            let btn = UIButton()
-            btn.frame = CGRect(x: 120, y: 560, width: 45, height: 45)
-            btn.blink()
-            btn.setImage(UIimagelowBattery, for: .normal)
-            self.view.addSubview(btn)
-            
-        }
+    
         
         for cle in displayObject {
             if( cle.identifier == identifier)

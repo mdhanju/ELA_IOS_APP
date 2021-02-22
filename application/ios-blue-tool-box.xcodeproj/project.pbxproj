@@ -30,6 +30,8 @@
 		16D4397425DD28B500D4B4C7 /* targetIDViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16D4397325DD28B500D4B4C7 /* targetIDViewController.swift */; };
 		16D4398025DD6A7C00D4B4C7 /* Capteur.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16E3AB4F25C85B81001426DD /* Capteur.swift */; };
 		16D4398A25E3A99700D4B4C7 /* controllerUI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16D4398925E3A99600D4B4C7 /* controllerUI.swift */; };
+		16D4399C25E3C91800D4B4C7 /* controllerGrapheUI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16D4399B25E3C91800D4B4C7 /* controllerGrapheUI.swift */; };
+		16D439A025E3EC1900D4B4C7 /* controllerEtat.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16D4399F25E3EC1900D4B4C7 /* controllerEtat.swift */; };
 		16DFFB6025B0322700CCB063 /* SideMenu.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16DFFB5F25B0322700CCB063 /* SideMenu.swift */; };
 		16DFFB7E25B04E4800CCB063 /* ELAViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16DFFB7D25B04E4800CCB063 /* ELAViewController.swift */; };
 		16DFFB8025B04E6300CCB063 /* BlueTViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16DFFB7F25B04E6300CCB063 /* BlueTViewController.swift */; };
@@ -82,6 +84,8 @@
 		16CB846C25AC6EF90067E1A0 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		16D4397325DD28B500D4B4C7 /* targetIDViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = targetIDViewController.swift; sourceTree = "<group>"; };
 		16D4398925E3A99600D4B4C7 /* controllerUI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = controllerUI.swift; sourceTree = "<group>"; };
+		16D4399B25E3C91800D4B4C7 /* controllerGrapheUI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = controllerGrapheUI.swift; sourceTree = "<group>"; };
+		16D4399F25E3EC1900D4B4C7 /* controllerEtat.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = controllerEtat.swift; sourceTree = "<group>"; };
 		16DFFB5F25B0322700CCB063 /* SideMenu.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SideMenu.swift; sourceTree = "<group>"; };
 		16DFFB7D25B04E4800CCB063 /* ELAViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ELAViewController.swift; sourceTree = "<group>"; };
 		16DFFB7F25B04E6300CCB063 /* BlueTViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BlueTViewController.swift; sourceTree = "<group>"; };
@@ -131,6 +135,8 @@
 				16ACF8AC25DA8705008E296A /* targetAngleViewController.swift */,
 				16D4397325DD28B500D4B4C7 /* targetIDViewController.swift */,
 				16D4398925E3A99600D4B4C7 /* controllerUI.swift */,
+				16D4399B25E3C91800D4B4C7 /* controllerGrapheUI.swift */,
+				16D4399F25E3EC1900D4B4C7 /* controllerEtat.swift */,
 			);
 			path = Target_list;
 			sourceTree = "<group>";
@@ -487,7 +493,9 @@
 				16E3AB5225C98C37001426DD /* chart.swift in Sources */,
 				16DFFB8625B04E9500CCB063 /* BlueMAGViewController.swift in Sources */,
 				160BD57025D13C2300F5ED01 /* AproposViewController.swift in Sources */,
+				16D439A025E3EC1900D4B4C7 /* controllerEtat.swift in Sources */,
 				16ACF8AD25DA8705008E296A /* targetAngleViewController.swift in Sources */,
+				16D4399C25E3C91800D4B4C7 /* controllerGrapheUI.swift in Sources */,
 				16DFFB8825B04EA800CCB063 /* BlueANGViewController.swift in Sources */,
 				16DFFB8225B04E7300CCB063 /* BlueRHTViewController.swift in Sources */,
 				16D4397425DD28B500D4B4C7 /* targetIDViewController.swift in Sources */,

@@ -100,10 +100,17 @@ class Scanner1: NSObject, CBPeripheralDelegate, CBCentralManagerDelegate {
            //     os_log("Connecting to perhiperal %@", peripheral)
             //    centralManager.connect(peripheral, options: nil)
            
-                os_log("Connecting to peripheral %@", peripheral)
+          //      os_log("Connecting to peripheral %@", peripheral)
        
               //  centralManager.connect(peripheral, options: nil)
-            peripheral.discoverServices([ParticlePeripheral.uartRx])
+         
+            
+            
+            
+            
+            //      os_log("Connecting to peripheral %@", peripheral)
+            
+            //   peripheral.discoverServices([ParticlePeripheral.uartRx])
             
             
             

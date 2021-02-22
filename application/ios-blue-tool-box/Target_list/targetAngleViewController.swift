@@ -1,7 +1,7 @@
 import UIKit
 import Charts
 
-class targetAngleViewController: UIViewController,ChartViewDelegate {
+class targetAngleViewController: controllerGrapheUI,ChartViewDelegate {
     
     private var lineChart = LineChartView()
     private let nameSensor : String
@@ -11,7 +11,7 @@ class targetAngleViewController: UIViewController,ChartViewDelegate {
     private let typedata : SensorTypes
     private let array : [Capteur.Cap]
     private let displayObject : [Capteur.DisplayObject]
-    var UItemperature = UITextView()
+    var donnee : String = ""
     
     var entries = [ChartDataEntry]()
     var entries1 = [ChartDataEntry]()
@@ -74,7 +74,8 @@ class targetAngleViewController: UIViewController,ChartViewDelegate {
                 {
                     if let tempHum = value as? SensorAngle
                     {
-                        UItemperature.text = String(tempHum.getX()) + "mg  " + String(tempHum.getY()) + "mg  " +  String(tempHum.getZ()) + "mg "
+                        valueUI(donnees: String(tempHum.getX()) + "mg  " + String(tempHum.getY()) + "mg  " +  String(tempHum.getZ()) + "mg ")
+                     
                         entries.append(ChartDataEntry(x: Double(compteur),y: Double(tempHum.getX())))
                         entries1.append(ChartDataEntry(x: Double(compteur),y: Double(tempHum.getY())))
                         entries2.append(ChartDataEntry(x: Double(compteur),y: Double(tempHum.getZ())))
@@ -126,54 +127,15 @@ class targetAngleViewController: UIViewController,ChartViewDelegate {
         scanner.initializeScanner()
         scanner.dictionnarySensor.addHandler(handler : handleNewObjectAvailable)
         
-        
-        let UInameSensor = UITextView()
-        UInameSensor.text = nameSensor
-        UInameSensor.textColor = UIColor.black
-        UInameSensor.font = UIFont.systemFont(ofSize: 25.0)
-        UInameSensor.isUserInteractionEnabled = false
-        UInameSensor.font = UIFont.boldSystemFont(ofSize: 25)
-        UInameSensor.frame = CGRect(x: 80, y: 50, width: 350, height: 100)
-        UInameSensor.backgroundColor = .none
-        self.view.addSubview(UInameSensor)
-        self.view.bringSubviewToFront(UInameSensor)
+        nameSensorUI(str: nameSensor)
+        batteryUI(battery: battery)
+        logoUI(picture: "angle")
     
-        if(battery != -1)
-        {
-            
-            let UIbatterie = UITextView()
-            UIbatterie.text = "Low battery"
-            UIbatterie.textColor = UIColor.red
-            UIbatterie.font = UIFont.systemFont(ofSize: 25.0)
-            UIbatterie.isUserInteractionEnabled = false
-            UIbatterie.font = UIFont.boldSystemFont(ofSize: 15)
-            UIbatterie.frame = CGRect(x: 170, y: 560, width: 350, height: 100)
-            UIbatterie.backgroundColor = .none
-            self.view.addSubview(UIbatterie)
-            self.view.bringSubviewToFront(UIbatterie)
-            
-            
-            let imagelowBattery = "lowBattery"
-            let UIimagelowBattery = UIImage(named: imagelowBattery)
-            
-            
-            let btn = UIButton()
-            btn.frame = CGRect(x: 120, y: 560, width: 45, height: 45)
-            btn.blink()
-            btn.setImage(UIimagelowBattery, for: .normal)
-            self.view.addSubview(btn)
-            
-            //   Timer.scheduledTimer(timeInterval: 0.1, target: self, selector: #selector(self.alarmAlertActivate), userInfo: nil, repeats: true)
-        }
+
         
         
         
-        
-        let imageAngle = "angle"
-        let UIimageAngle = UIImage(named: imageAngle)
-        let imageViewAngle = UIImageView(image: UIimageAngle!)
-        imageViewAngle.frame = CGRect(x: 20, y: 70, width: 45, height: 45)
-        self.view.addSubview(imageViewAngle)
+  
         
         let imageArray = "sklia"
         let UIarray = UIImage(named: imageArray)
@@ -205,15 +167,7 @@ class targetAngleViewController: UIViewController,ChartViewDelegate {
         self.view.addSubview(lineBack)
         
         
-        UItemperature.text = String("")
-        UItemperature.textColor = UIColor.black
-        UItemperature.font = UIFont.systemFont(ofSize: 25.0)
-        UItemperature.isUserInteractionEnabled = false
-        UItemperature.font = UIFont.boldSystemFont(ofSize: 25)
-        UItemperature.frame = CGRect(x: 60, y: 150, width: 350, height: 100)
-        UItemperature.backgroundColor = .none
-        self.view.addSubview(UItemperature)
-        self.view.bringSubviewToFront(UItemperature)
+        
         
 
         
