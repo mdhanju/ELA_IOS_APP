@@ -132,7 +132,7 @@ class targetTempHumViewController: controllerGrapheUI,ChartViewDelegate {
         batteryUI(battery: battery)
         logoUI(picture: "humidite_blue")
         
-        
+        textUI(size: 130)
         
     
         

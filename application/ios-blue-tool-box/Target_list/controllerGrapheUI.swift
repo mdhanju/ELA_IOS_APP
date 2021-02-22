@@ -12,7 +12,7 @@ import UIKit
 
 class controllerGrapheUI: controllerUI {
     
-    var UItemperature = UITextView()
+    var UItext = UITextView()
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -27,23 +27,26 @@ class controllerGrapheUI: controllerUI {
         
         
        
-        UItemperature.text = ""
-        UItemperature.textColor = UIColor.black
-        UItemperature.font = UIFont.systemFont(ofSize: 25.0)
-        UItemperature.isUserInteractionEnabled = false
-        UItemperature.font = UIFont.boldSystemFont(ofSize: 25)
-        UItemperature.frame = CGRect(x: 150, y: 150, width: 350, height: 100)
-        UItemperature.backgroundColor = .none
-        self.view.addSubview(UItemperature)
-        self.view.bringSubviewToFront(UItemperature)
+       
 
         // Do any additional setup after loading the view.
     }
-    
+    func textUI(size : Int)
+    {
+        UItext.text = ""
+        UItext.textColor = UIColor.black
+        UItext.font = UIFont.systemFont(ofSize: 25.0)
+        UItext.isUserInteractionEnabled = false
+        UItext.font = UIFont.boldSystemFont(ofSize: 25)
+        UItext.frame = CGRect(x: size, y: 150, width: 350, height: 100)
+        UItext.backgroundColor = .none
+        self.view.addSubview(UItext)
+        self.view.bringSubviewToFront(UItext)
+    }
     
     func valueUI(donnees : String)
     {
-        UItemperature.text = donnees
+        UItext.text = donnees
     }
     
   

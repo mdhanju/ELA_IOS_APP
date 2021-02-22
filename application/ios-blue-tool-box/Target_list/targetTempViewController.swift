@@ -2,11 +2,6 @@ import UIKit
 import Charts
 
 
-
-// MARK: Class
-
-
-
 class targetTempViewController: controllerGrapheUI,ChartViewDelegate {
     
     
@@ -44,10 +39,7 @@ class targetTempViewController: controllerGrapheUI,ChartViewDelegate {
         
         super.init(nibName : nil , bundle : nil)
     }
-    
 
-    
-    
     @objc func imageTapTemp() {
         self.navigationController?.pushViewController(ConnectViewController(nameSensor: nameSensor, RSSI: RSSI, identifier: identifier, battery: battery, typedata:typedata, array: array, displayObject: displayObject), animated: true)
         view.layoutIfNeeded()
@@ -121,13 +113,8 @@ class targetTempViewController: controllerGrapheUI,ChartViewDelegate {
         nameSensorUI(str: nameSensor)
         batteryUI(battery: battery)
         logoUI(picture: "temp")
-      //  valueUI(donnees: donnee)
-        
+        textUI(size: 150)
 
-    
-        
-    
-        
         let imageArray = "sklia"
         let UIarray = UIImage(named: imageArray)
         
@@ -138,9 +125,7 @@ class targetTempViewController: controllerGrapheUI,ChartViewDelegate {
         self.navigationItem.setRightBarButtonItems(items, animated: true)
         
         lineChart.delegate = self
-        
-        
-        
+
     }
     
     override func viewDidLayoutSubviews() {
@@ -177,8 +162,6 @@ class targetTempViewController: controllerGrapheUI,ChartViewDelegate {
         
         
     }
-    
-    
 }
 
 

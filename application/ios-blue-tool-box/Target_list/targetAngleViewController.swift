@@ -130,7 +130,7 @@ class targetAngleViewController: controllerGrapheUI,ChartViewDelegate {
         nameSensorUI(str: nameSensor)
         batteryUI(battery: battery)
         logoUI(picture: "angle")
-    
+        textUI(size: 60)
 
         
         
