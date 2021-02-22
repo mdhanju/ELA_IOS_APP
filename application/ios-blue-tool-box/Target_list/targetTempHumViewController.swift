@@ -119,7 +119,7 @@ class targetTempHumViewController: controllerGrapheUI,ChartViewDelegate {
     override func viewDidLoad() {
 
         super.viewDidLoad()
-        view.backgroundColor = .white
+      
         scanner = Scanner1()
         scanner.initializeScanner()
         scanner.dictionnarySensor.addHandler(handler : handleNewObjectAvailable)

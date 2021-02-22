@@ -122,7 +122,7 @@ class targetAngleViewController: controllerGrapheUI,ChartViewDelegate {
         
         
         super.viewDidLoad()
-        view.backgroundColor = .white
+       
         scanner = Scanner1()
         scanner.initializeScanner()
         scanner.dictionnarySensor.addHandler(handler : handleNewObjectAvailable)

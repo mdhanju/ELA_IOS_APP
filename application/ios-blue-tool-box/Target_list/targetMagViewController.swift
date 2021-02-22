@@ -1,17 +1,15 @@
 import UIKit
 import Charts
 import UICircularProgressRing
-class targetMagViewController: controllerUI {
+class targetMagViewController: controllerEtat {
     
-    
+  //commentaire
     private var capteur: Capteur!
-    private let btnPerson = UIButton()
-    
-    private let UIimagelowPerson = UIImage(named: "PersonRunning")
-    private let UIimagelowPersonStatic = UIImage(named: "Person")
+  
     
     private let progressRing = UICircularProgressRing(frame:  CGRect(x: 150, y: 200, width: 100, height: 100))
-
+    private let UIimagelowPerson = UIImage(named: "PersonRunning")
+    private let UIimagelowPersonStatic = UIImage(named: "Person")
 
     private let nameSensor : String
     private let RSSI : Int
@@ -24,7 +22,7 @@ class targetMagViewController: controllerUI {
     private var displayObject : [Capteur.DisplayObject]
     private var scanner: Scanner1!
     private var sensorT : SensorTypes? = nil
-    private var UInameseuil = UITextView()
+ 
     
     init(nameSensor : String,RSSI: Int, identifier : String, battery : Int, typedata : SensorTypes,array: [Capteur.Cap],displayObject : [Capteur.DisplayObject]) {
         self.nameSensor = nameSensor
@@ -82,13 +80,16 @@ class targetMagViewController: controllerUI {
                         print("progress ring" + String(move.getNbrObject()) + "son nom " + move.name)
                         if(move.getEtat() == true)
                         {
-                            btnPerson.setImage(UIimagelowPerson, for: .normal)
-                            UInameseuil.text = "Etat : en déplacement"
+                  //          btnPerson.setImage(UIimagelowPerson, for: .normal)
+                   //         UInameseuil.text = "Etat : en déplacement"
+                            
+                            setEtat(image : UIimagelowPerson!,str : "Etat : en déplacement")
                         }
                         else {
                             
-                            btnPerson.setImage(UIimagelowPersonStatic, for: .normal)
-                            UInameseuil.text = "Etat : position statique"
+                     //       btnPerson.setImage(UIimagelowPersonStatic, for: .normal)
+                      //      UInameseuil.text = "Etat : position statique"
+                            setEtat(image : UIimagelowPersonStatic!,str : "Etat : en statique")
                         }
                     }
                     
@@ -119,7 +120,7 @@ class targetMagViewController: controllerUI {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        view.backgroundColor = .white
+
         
         
         scanner = Scanner1()
@@ -134,15 +135,7 @@ class targetMagViewController: controllerUI {
         
         
     
-        self.UInameseuil.text = "Etat : position statique"
-        self.UInameseuil.textColor = UIColor.black
-        self.UInameseuil.font = UIFont.systemFont(ofSize: 15)
-        self.UInameseuil.isUserInteractionEnabled = false
-        self.UInameseuil.font = UIFont.boldSystemFont(ofSize: 15)
-        self.UInameseuil.frame = CGRect(x: 80, y: 150, width: 350, height: 100)
-        self.UInameseuil.backgroundColor = .none
-        self.view.addSubview(UInameseuil)
-        self.view.bringSubviewToFront(UInameseuil)
+   
         
     
         
@@ -160,10 +153,12 @@ class targetMagViewController: controllerUI {
                         
                         
                     
-                        btnPerson.frame = CGRect(x: 250, y: 130 ,width: 45, height: 45)
-                        btnPerson.blink()
-                        btnPerson.setImage(UIimagelowPerson, for: .normal)
-                        self.view.addSubview(btnPerson)
+                        //btnPerson.frame = CGRect(x: 250, y: 130 ,width: 45, height: 45)
+                       // btnPerson.blink()
+                      //  btnPerson.setImage(UIimagelowPerson, for: .normal)
+                    //    self.view.addSubview(btnPerson)
+                        setEtat(image : UIimagelowPerson!,str : "Etat : en déplacement")
+                        
                     }
                     else {
                         
@@ -171,10 +166,11 @@ class targetMagViewController: controllerUI {
                         
                         
                     
-                        btnPerson.frame = CGRect(x: 300, y: 130 ,width: 45, height: 45)
+                //        btnPerson.frame = CGRect(x: 300, y: 130 ,width: 45, height: 45)
                         
-                        btnPerson.setImage(UIimagelowPersonStatic, for: .normal)
-                        self.view.addSubview(btnPerson)
+                 //       btnPerson.setImage(UIimagelowPersonStatic, for: .normal)
+                  //      self.view.addSubview(btnPerson)
+                        setEtat(image : UIimagelowPersonStatic!,str : "Etat : en statique")
                         
                         
                     }

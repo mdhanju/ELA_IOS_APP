@@ -36,6 +36,11 @@ class controllerEtat: controllerUI {
     {
         btnPerson.setImage(image, for: .normal)
         UInameseuil.text = str
+        
+        btnPerson.frame = CGRect(x: 300, y: 130 ,width: 45, height: 45)
+                
+        
+            self.view.addSubview(btnPerson)
     }
     
 
