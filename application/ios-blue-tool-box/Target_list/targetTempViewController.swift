@@ -64,7 +64,7 @@ extension UIView {
 
 
 
-class targetTempViewController: UIViewController,ChartViewDelegate {
+class targetTempViewController: controllerUI,ChartViewDelegate {
     
     
     private let data1 = LineChartData()
@@ -175,24 +175,15 @@ class targetTempViewController: UIViewController,ChartViewDelegate {
         lineBack.backgroundColor = UIColor(hexString: "#336699")
         self.view.addSubview(lineBack)
         
-        view.backgroundColor = .white
+       // view.backgroundColor = .white
         scanner = Scanner1()
         scanner.initializeScanner()
         scanner.dictionnarySensor.addHandler(handler : handleNewObjectAvailable)
         
         
-        let UInameSensor = UITextView()
-        UInameSensor.text = nameSensor
-        UInameSensor.textColor = UIColor.black
-        UInameSensor.font = UIFont.systemFont(ofSize: 25.0)
-        UInameSensor.isUserInteractionEnabled = false
-        UInameSensor.font = UIFont.boldSystemFont(ofSize: 25)
-        UInameSensor.frame = CGRect(x: 80, y: 70, width: 350, height: 100)
-        UInameSensor.backgroundColor = .none
-        self.view.addSubview(UInameSensor)
-        self.view.bringSubviewToFront(UInameSensor)
-        
-        
+        nameSensorUI(str: nameSensor)
+        batteryUI(battery: battery)
+        logoUI(picture: "temp")
         
         UItemperature.text = String("")
         UItemperature.textColor = UIColor.black
@@ -203,44 +194,9 @@ class targetTempViewController: UIViewController,ChartViewDelegate {
         UItemperature.backgroundColor = .none
         self.view.addSubview(UItemperature)
         self.view.bringSubviewToFront(UItemperature)
+    
         
-
-        
-        
-        
-
-        
-        
-        if(battery != -1)
-        {
-            
-            let UIbatterie = UITextView()
-            UIbatterie.text = "Low battery"
-            UIbatterie.textColor = UIColor.red
-            UIbatterie.font = UIFont.systemFont(ofSize: 25.0)
-            UIbatterie.isUserInteractionEnabled = false
-            UIbatterie.font = UIFont.boldSystemFont(ofSize: 15)
-            UIbatterie.frame = CGRect(x: 170, y: 560, width: 350, height: 100)
-            UIbatterie.backgroundColor = .none
-            self.view.addSubview(UIbatterie)
-            self.view.bringSubviewToFront(UIbatterie)
-            
-            
-            let imagelowBattery = "lowBattery"
-            let UIimagelowBattery = UIImage(named: imagelowBattery)
-            let btn = UIButton()
-            btn.frame = CGRect(x: 120, y: 560, width: 45, height: 45)
-            btn.blink()
-            btn.setImage(UIimagelowBattery, for: .normal)
-            self.view.addSubview(btn)
-        }
-        
-        
-        let imageTemp = "temp"
-        let UIimageTemp = UIImage(named: imageTemp)
-        let imageViewTemp = UIImageView(image: UIimageTemp!)
-        imageViewTemp.frame = CGRect(x: 20, y: 70, width: 45, height: 45)
-        self.view.addSubview(imageViewTemp)
+    
         
         let imageArray = "sklia"
         let UIarray = UIImage(named: imageArray)
