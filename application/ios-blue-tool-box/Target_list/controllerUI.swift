@@ -75,13 +75,27 @@ extension UIView {
 }
 
 class controllerUI: UIViewController {
+    
+    
+  
  
     override func viewDidLoad() {
         super.viewDidLoad()
         view.backgroundColor = .white
+        
+        
+      
+       
+        
+        
    
         
     }
+    
+    
+    
+   
+        
     
   public func nameSensorUI(str : String)
     {

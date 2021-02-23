@@ -5,7 +5,7 @@ import SwiftUI
 
 class Capteur:  UIViewController, UITableViewDataSource, UITableViewDelegate{
     
-    private var scanner: Scanner1!
+    private var scanner: Scanner1? = nil
     private var display: [ DisplayObject] = []
     private var isStartButton : Bool = true
     private var sensorT : SensorTypes? = nil
@@ -299,8 +299,8 @@ class Capteur:  UIViewController, UITableViewDataSource, UITableViewDelegate{
         uiScrollView.backgroundColor = .green
         self.view.addSubview(uiScrollView)
         
-        scanner = Scanner1()
-        scanner.initializeScanner()
+        scanner = Scanner1.getInstance()
+        
         tableview.contentInset = UIEdgeInsets(top: 80,left: 0,bottom: 0,right: 0)
         //  tableview.backgroundColor = .green
         tableview.dataSource = self
@@ -343,11 +343,11 @@ class Capteur:  UIViewController, UITableViewDataSource, UITableViewDelegate{
         if (isStartButton == true)
         {
             buttonStart!.setImage(UIImage(named: "start_s"), for: .normal)
-            scanner = Scanner1()
-            scanner.initializeScanner()
+            scanner = Scanner1.getInstance()
             
-            scanner.defineFilterType(sensor: sensorT!)
-            scanner.dictionnarySensor.addHandler(handler : handleNewObjectAvailable)
+            
+            scanner?.defineFilterType(sensor: sensorT!)
+            scanner?.dictionnarySensor.addHandler(handler : handleNewObjectAvailable)
             print("El toro de Mardid")
             
             self.showToast(message: "Le scan a démarré", font: .systemFont(ofSize: 12.0))
@@ -367,7 +367,7 @@ class Capteur:  UIViewController, UITableViewDataSource, UITableViewDelegate{
         }
         
         buttonStart!.setImage(UIImage(named: "start"), for: .normal)
-        scanner.stopScanner()
+        Scanner1.getInstance().stopScanner()
         
         print("El toro de Mardid")
         self.showToast(message: "Le scan est terminé", font: .systemFont(ofSize: 12.0))

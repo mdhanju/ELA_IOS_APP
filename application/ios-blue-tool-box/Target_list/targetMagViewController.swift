@@ -1,5 +1,6 @@
 import UIKit
 import Charts
+import CoreBluetooth
 import UICircularProgressRing
 class targetMagViewController: controllerEtat {
     
@@ -17,6 +18,7 @@ class targetMagViewController: controllerEtat {
     private let battery : Int
     private let typedata : SensorTypes
     private let array : [Capteur.Cap]
+  //  private let peripheral : CBPeripheral
     
     
     private var displayObject : [Capteur.DisplayObject]
@@ -123,8 +125,8 @@ class targetMagViewController: controllerEtat {
 
         
         
-        scanner = Scanner1()
-        scanner.initializeScanner()
+        scanner = Scanner1.getInstance()
+        
         scanner.dictionnarySensor.addHandler(handler : handleNewObjectAvailable)
         
         

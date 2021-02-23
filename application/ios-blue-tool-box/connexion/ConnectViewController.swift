@@ -9,7 +9,7 @@ class ConnectViewController: UIViewController {
     private let typedata : SensorTypes
     private let array : [Capteur.Cap]
     private let displayObject : [Capteur.DisplayObject]
-    
+    private var scanner: sendScanner!
     
     init(nameSensor : String,RSSI: Int, identifier : String, battery : Int, typedata : SensorTypes,array: [Capteur.Cap],displayObject : [Capteur.DisplayObject]) {
         self.nameSensor = nameSensor
@@ -38,6 +38,10 @@ class ConnectViewController: UIViewController {
         
         view.backgroundColor = .white
         
+        
+        
+        //scanner = sendScanner()
+        //scanner.initializeScanner()
         
         
         let UInameSensor = UITextView()

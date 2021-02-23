@@ -120,8 +120,8 @@ class targetTempHumViewController: controllerGrapheUI,ChartViewDelegate {
 
         super.viewDidLoad()
       
-        scanner = Scanner1()
-        scanner.initializeScanner()
+        scanner = Scanner1.getInstance()
+        
         scanner.dictionnarySensor.addHandler(handler : handleNewObjectAvailable)
         
         

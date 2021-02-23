@@ -15,7 +15,7 @@ class targetMoveViewController: controllerEtat,ChartViewDelegate {
     private let typedata : SensorTypes
     private let array : [Capteur.Cap]
     private var displayObject : [Capteur.DisplayObject]
-    private var scanner: Scanner1!
+    private var scanner: Scanner1? = nil
     private var sensorT : SensorTypes? = nil
   
     
@@ -93,9 +93,8 @@ class targetMoveViewController: controllerEtat,ChartViewDelegate {
         super.viewDidLoad()
     
         
-        scanner = Scanner1()
-        scanner.initializeScanner()
-        scanner.dictionnarySensor.addHandler(handler : handleNewObjectAvailable)
+        scanner = Scanner1.getInstance()
+        scanner?.dictionnarySensor.addHandler(handler : handleNewObjectAvailable)
 
         nameSensorUI(str: nameSensor)
         batteryUI(battery: battery)

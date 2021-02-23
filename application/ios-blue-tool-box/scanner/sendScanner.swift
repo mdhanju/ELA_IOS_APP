@@ -1,8 +1,18 @@
+//
+//  sendScanner.swift
+//  ios-blue-tool-box
+//
+//  Created by ELA Innovation on 23/02/2021.
+//  Copyright © 2021 ELA Innovation. All rights reserved.
+//
+
+import Foundation
+
 import UIKit
 import CoreBluetooth
 
 import os.log
-class Scanner1: NSObject, CBPeripheralDelegate, CBCentralManagerDelegate {
+class sendScanner: NSObject, CBPeripheralDelegate, CBCentralManagerDelegate {
     
     var myCharacteristic : CBCharacteristic!
     
@@ -14,28 +24,15 @@ class Scanner1: NSObject, CBPeripheralDelegate, CBCentralManagerDelegate {
     
     // MARK: Dictionnary who stock sensor
     public var dictionnarySensor : Event<([String : Sensor])>
-    public var peripheral1 : Event<(CBPeripheral)>
     
     // MARK:
     private var sensorTypeFiler : SensorTypes? = nil
     
-    private static var _instance:Scanner1? = nil
+
     
-    public static func getInstance()-> Scanner1
-    {
-        if(self._instance == nil)
-        {
-            self._instance = Scanner1()
-            self._instance?.initializeScanner()
-        }
-        return self._instance!
-    }
-    
-    private override init()
+    override init()
     {
         dictionnarySensor = Event<([String : Sensor])>()
-        peripheral1 = Event<(CBPeripheral)>()
-        
     }
     /**
      * \fn defineFilterType
@@ -89,20 +86,14 @@ class Scanner1: NSObject, CBPeripheralDelegate, CBCentralManagerDelegate {
         }
     }
     
-    func ConnectToTag(peripheral: CBPeripheral)
-    {
-        
-        centralManager.connect(peripheral, options: nil)
-    }
     
     func centralManager(_ central: CBCentralManager, didConnect peripheral: CBPeripheral) {
-        
+        os_log("Connected %@", peripheral)
     }
     
     func centralManager(_ central: CBCentralManager, didFailToConnect peripheral: CBPeripheral, error: Error?) {
-        
+        os_log("Failed %@", peripheral)
     }
-    
    
     /**
      * \fn initializeScanner
@@ -115,17 +106,25 @@ class Scanner1: NSObject, CBPeripheralDelegate, CBCentralManagerDelegate {
         {
             let sensorData = advertisementData[CBAdvertisementDataServiceDataKey] as? Dictionary<CBUUID,NSData>
             
-     
+            if(peripheral.name == "P MAG C003F5")
+            {
+                centralManager.stopScan()
+                os_log("Connecting to peripheral %@", peripheral)
            
+                centralManager.connect(peripheral, options: nil)
+                
+                os_log("Connecting to peripheral %@", peripheral)
+                
+                peripheral.discoverServices([ParticlePeripheral.uartRx])
+            }
+            
                 
            
                 // And finally, connect to the peripheral.
            //     os_log("Connecting to perhiperal %@", peripheral)
             //    centralManager.connect(peripheral, options: nil)
            
-          //      os_log("Connecting to peripheral %@", peripheral)
-       
-              //  centralManager.connect(peripheral, options: nil)
+            
          
             
             
@@ -133,7 +132,7 @@ class Scanner1: NSObject, CBPeripheralDelegate, CBCentralManagerDelegate {
             
             //      os_log("Connecting to peripheral %@", peripheral)
             
-            //   peripheral.discoverServices([ParticlePeripheral.uartRx])
+            
             
             
             
@@ -182,6 +181,3 @@ class Scanner1: NSObject, CBPeripheralDelegate, CBCentralManagerDelegate {
     
     
 }
-
-
-

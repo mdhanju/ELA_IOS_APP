@@ -123,8 +123,8 @@ class targetAngleViewController: controllerGrapheUI,ChartViewDelegate {
         
         super.viewDidLoad()
        
-        scanner = Scanner1()
-        scanner.initializeScanner()
+        scanner = Scanner1.getInstance()
+        
         scanner.dictionnarySensor.addHandler(handler : handleNewObjectAvailable)
         
         nameSensorUI(str: nameSensor)
@@ -136,14 +136,7 @@ class targetAngleViewController: controllerGrapheUI,ChartViewDelegate {
         
         
   
-        
-        let imageArray = "sklia"
-        let UIarray = UIImage(named: imageArray)
-        
-        var items = [UIBarButtonItem]()
-        items.append(UIBarButtonItem(image: UIarray, landscapeImagePhone: .none, style: .done, target: self, action: #selector(imageTapTemp)))
-        items.append(UIBarButtonItem(title: "Connexion", style: .plain, target: self,action: .none))
-        self.navigationItem.setRightBarButtonItems(items, animated: true)
+      
         lineChart.delegate = self
         
         
