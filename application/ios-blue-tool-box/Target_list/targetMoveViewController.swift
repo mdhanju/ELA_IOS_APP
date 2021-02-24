@@ -1,6 +1,8 @@
 import UIKit
 import Charts
 import UICircularProgressRing
+import CoreBluetooth
+
 class targetMoveViewController: controllerEtat,ChartViewDelegate {
     
     private var capteur: Capteur!
@@ -54,8 +56,8 @@ class targetMoveViewController: controllerEtat,ChartViewDelegate {
     func updateSensorUI(data: ([String : Sensor])) -> Capteur.DisplayObject {
         
         let objectTemp1 = Capteur.Temp(temp: 0)
-        
-        let newobject : Capteur.DisplayObject = Capteur.DisplayObject(name: "null", RSSI: 0, identifier: "",battery : 0, typedata : SensorTypes.SensorID, array: [objectTemp1])
+        var peripheral : CBPeripheral? = nil
+        let newobject : Capteur.DisplayObject = Capteur.DisplayObject(name: "null", RSSI: 0, identifier: "",battery : 0, typedata : SensorTypes.SensorID, array: [objectTemp1], peripheral: peripheral!)
         
         for (key,value) in data
         {

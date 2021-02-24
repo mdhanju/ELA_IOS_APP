@@ -58,9 +58,10 @@ class targetMagViewController: controllerEtat {
     func updateSensorUI(data: ([String : Sensor])) -> Capteur.DisplayObject {
         
         let objectTemp1 = Capteur.Temp(temp: 0)
-        //  let objectHum = TempHum(temp: 0, hum: 0)
+        var peripheral : CBPeripheral? = nil
+       
+        let newobject : Capteur.DisplayObject = Capteur.DisplayObject(name: "null", RSSI: 0, identifier: "",battery : 0, typedata : SensorTypes.SensorID, array: [objectTemp1],peripheral: peripheral!)
         
-        let newobject : Capteur.DisplayObject = Capteur.DisplayObject(name: "null", RSSI: 0, identifier: "",battery : 0, typedata : SensorTypes.SensorID, array: [objectTemp1])
         
         for (key,value) in data
         {

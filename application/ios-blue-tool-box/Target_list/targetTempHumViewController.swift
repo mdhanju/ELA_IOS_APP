@@ -1,5 +1,6 @@
 import UIKit
 import Charts
+import CoreBluetooth
 class targetTempHumViewController: controllerGrapheUI,ChartViewDelegate {
     
     private let data1 = LineChartData()
@@ -62,8 +63,8 @@ class targetTempHumViewController: controllerGrapheUI,ChartViewDelegate {
         
      
         let objectTemp1 = Capteur.Temp(temp: 0)
-        
-        let newobject : Capteur.DisplayObject = Capteur.DisplayObject(name: "null", RSSI: 0, identifier: "",battery : 0, typedata : SensorTypes.SensorID, array: [objectTemp1])
+        var peripheral : CBPeripheral? = nil
+        let newobject : Capteur.DisplayObject = Capteur.DisplayObject(name: "null", RSSI: 0, identifier: "",battery : 0, typedata : SensorTypes.SensorTemperature, array: [objectTemp1], peripheral: peripheral!)
         
         for (key,value) in data
         {

@@ -13,15 +13,17 @@ class Sensor
     var batterylevel: Int = 0
     var sensorTypes : SensorTypes = SensorTypes.SensorID
     var idenfitfier : String = ""
+    var peripheral : CBPeripheral
     
     
     /* \brief constructor **/
-    init(name : String,RSSI : Int,batterylevel : Int = -1,sensorTypes: SensorTypes,identifier : String) {
+    init(name : String,RSSI : Int,batterylevel : Int = -1,sensorTypes: SensorTypes,identifier : String, peripheral : CBPeripheral) {
         self.name = name
         self.RSSI = RSSI
         self.batterylevel = batterylevel
         self.sensorTypes = sensorTypes
         self.idenfitfier = identifier
+        self.peripheral = peripheral
     }
     
     public func getName()->String
@@ -68,8 +70,8 @@ class SensorTemperature: Sensor
 {
     private var temperature : Float = 0.0
     
-    init(name : String,RSSI : Int,batterylevel : Int = -1,sensorTypes: SensorTypes,temperature : Float,identifier : String) {
-        super.init(name:name, RSSI:RSSI, batterylevel:batterylevel, sensorTypes:sensorTypes, identifier: identifier)
+    init(name : String,RSSI : Int,batterylevel : Int = -1,sensorTypes: SensorTypes,temperature : Float,identifier : String, peripheral : CBPeripheral) {
+        super.init(name:name, RSSI:RSSI, batterylevel:batterylevel, sensorTypes:sensorTypes, identifier: identifier,peripheral: peripheral)
         self.temperature = temperature
     }
     
@@ -95,8 +97,8 @@ class SensorTemperatureHumidity: Sensor
     private var temperature: Float = 0
     private var humidity: Int = 0
     
-    init(name : String,RSSI : Int,batterylevel : Int = -1,sensorTypes: SensorTypes,temperature : SensorTemperature,humidity : Int,identifier : String) {
-        super.init(name:name, RSSI:RSSI, batterylevel:batterylevel, sensorTypes:sensorTypes, identifier: identifier)
+    init(name : String,RSSI : Int,batterylevel : Int = -1,sensorTypes: SensorTypes,temperature : SensorTemperature,humidity : Int,identifier : String, peripheral : CBPeripheral) {
+        super.init(name:name, RSSI:RSSI, batterylevel:batterylevel, sensorTypes:sensorTypes, identifier: identifier,peripheral: peripheral)
         self.temperature = temperature.getTemp()
         self.humidity = humidity
     }
@@ -127,8 +129,8 @@ class SensorMove: Sensor
     private var nbrPas: Int = 0
     private var etat : Bool = false
     
-    init(name : String,RSSI : Int,batterylevel : Int = -1,sensorTypes: SensorTypes,nbrPas : Int,etat : Bool = true,identifier : String) {
-        super.init(name:name, RSSI:RSSI, batterylevel:batterylevel, sensorTypes:sensorTypes, identifier: identifier)
+    init(name : String,RSSI : Int,batterylevel : Int = -1,sensorTypes: SensorTypes,nbrPas : Int,etat : Bool = true,identifier : String, peripheral : CBPeripheral) {
+        super.init(name:name, RSSI:RSSI, batterylevel:batterylevel, sensorTypes:sensorTypes, identifier: identifier,peripheral: peripheral)
         self.nbrPas = nbrPas
         self.etat = etat
     }
@@ -155,8 +157,8 @@ class SensorMagnetic: Sensor
     private var etat : Bool = false
     
     
-    init(name : String,RSSI : Int,batterylevel : Int,sensorTypes: SensorTypes,nbrObjet : Int,etat : Bool,identifier: String) {
-        super.init(name:name, RSSI:RSSI, batterylevel:batterylevel, sensorTypes:sensorTypes, identifier: identifier)
+    init(name : String,RSSI : Int,batterylevel : Int,sensorTypes: SensorTypes,nbrObjet : Int,etat : Bool,identifier: String, peripheral : CBPeripheral) {
+        super.init(name:name, RSSI:RSSI, batterylevel:batterylevel, sensorTypes:sensorTypes, identifier: identifier,peripheral: peripheral)
         self.nbrObjet = nbrObjet
         self.etat = etat
     }
@@ -183,8 +185,8 @@ class SensorAngle: Sensor
     private var y: Int = 0
     private var z: Int = 0
     
-    init(name : String,RSSI : Int,batterylevel : Int = -1,sensorTypes: SensorTypes,x : Int , y : Int, z : Int,identifier : String) {
-        super.init(name:name, RSSI:RSSI, batterylevel:batterylevel, sensorTypes:sensorTypes, identifier: identifier)
+    init(name : String,RSSI : Int,batterylevel : Int = -1,sensorTypes: SensorTypes,x : Int , y : Int, z : Int,identifier : String, peripheral : CBPeripheral) {
+        super.init(name:name, RSSI:RSSI, batterylevel:batterylevel, sensorTypes:sensorTypes, identifier: identifier,peripheral: peripheral)
         self.x = x
         self.y = y
         self.z = z
@@ -215,8 +217,8 @@ class SensorEdystone: Sensor
     private var NID : String = ""
     private var BID : String = ""
     
-    init(name : String,RSSI : Int,batterylevel : Int = -1,sensorTypes: SensorTypes,NID : String,BID : String,identifier : String) {
-        super.init(name:name, RSSI:RSSI, batterylevel:batterylevel, sensorTypes:sensorTypes, identifier: identifier)
+    init(name : String,RSSI : Int,batterylevel : Int = -1,sensorTypes: SensorTypes,NID : String,BID : String,identifier : String, peripheral : CBPeripheral) {
+        super.init(name:name, RSSI:RSSI, batterylevel:batterylevel, sensorTypes:sensorTypes, identifier: identifier,peripheral: peripheral)
         self.NID = NID
         self.BID = BID
     }
@@ -234,8 +236,8 @@ class SensorIbeacon: Sensor
     private var minor: Int = 0
     private var major : Int = 0
     
-    init(name : String,RSSI : Int,batterylevel : Int = -1, sensorTypes: SensorTypes ,UUID: String,minor : Int ,major : Int,identifier : String) {
-        super.init(name:name, RSSI:RSSI, batterylevel:batterylevel, sensorTypes:sensorTypes, identifier: identifier)
+    init(name : String,RSSI : Int,batterylevel : Int = -1, sensorTypes: SensorTypes ,UUID: String,minor : Int ,major : Int,identifier : String, peripheral : CBPeripheral) {
+        super.init(name:name, RSSI:RSSI, batterylevel:batterylevel, sensorTypes:sensorTypes, identifier: identifier,peripheral: peripheral)
         self.UUID=UUID
         self.minor = minor
         self.major = major
@@ -258,41 +260,41 @@ class SensorFactory
     
     
     
-    func getSensorID(sensorTypes : SensorTypes,name : String,RSSI : Int, batterylevel : Int = -1, identifier : String)->Sensor
+    func getSensorID(sensorTypes : SensorTypes,name : String,RSSI : Int, batterylevel : Int = -1, identifier : String,peripheral : CBPeripheral )->Sensor
     {
-        return SensorID(name : name,RSSI : RSSI,batterylevel : batterylevel,sensorTypes : sensorTypes, identifier: identifier)
+        return SensorID(name : name,RSSI : RSSI,batterylevel : batterylevel,sensorTypes : sensorTypes, identifier: identifier,peripheral: peripheral)
     }
     
     func getSensorTemperature(sensorTypes : SensorTypes,name : String,RSSI : Int, batterylevel : Int = -1,
-                              temperature : Float = -1,identifier: String)->Sensor
+                              temperature : Float = -1,identifier: String,peripheral : CBPeripheral)->Sensor
     {
-        return SensorTemperature(name : name,RSSI : RSSI,batterylevel : batterylevel,sensorTypes : sensorTypes,temperature : temperature,identifier: identifier)
+        return SensorTemperature(name : name,RSSI : RSSI,batterylevel : batterylevel,sensorTypes : sensorTypes,temperature : temperature,identifier: identifier, peripheral: peripheral)
     }
-    func getSensorTemperatureHumidity(sensorTypes : SensorTypes,name : String,RSSI : Int, batterylevel : Int = -1,humidity :Int = -1,objectTemperature : SensorTemperature? =       nil,identifier: String)->Sensor
+    func getSensorTemperatureHumidity(sensorTypes : SensorTypes,name : String,RSSI : Int, batterylevel : Int = -1,humidity :Int = -1,objectTemperature : SensorTemperature? =  nil,identifier: String, peripheral : CBPeripheral)->Sensor
     {
-        return SensorTemperatureHumidity(name : name,RSSI : RSSI,batterylevel : batterylevel,sensorTypes : sensorTypes,temperature : objectTemperature! ,humidity : humidity,identifier: identifier)
+        return SensorTemperatureHumidity(name : name,RSSI : RSSI,batterylevel : batterylevel,sensorTypes : sensorTypes,temperature : objectTemperature! ,humidity : humidity,identifier: identifier,peripheral: peripheral)
     }
-    func getSensorMove(sensorTypes : SensorTypes,name : String,RSSI : Int, batterylevel : Int = -1,nbrPas : Int = 0,etat : Bool = false,identifier: String)->Sensor
+    func getSensorMove(sensorTypes : SensorTypes,name : String,RSSI : Int, batterylevel : Int = -1,nbrPas : Int = 0,etat : Bool = false,identifier: String, peripheral : CBPeripheral)->Sensor
     {
-        return SensorMove(name : name,RSSI : RSSI,batterylevel : batterylevel,sensorTypes : sensorTypes,nbrPas : nbrPas, etat : etat,identifier: identifier)
+        return SensorMove(name : name,RSSI : RSSI,batterylevel : batterylevel,sensorTypes : sensorTypes,nbrPas : nbrPas, etat : etat,identifier: identifier,peripheral : peripheral)
     }
-    func getSensorMagnetic(sensorTypes : SensorTypes,name : String,RSSI : Int, batterylevel : Int = -1,nbrObjet : Int = 0,etat : Bool = false,identifier: String)->Sensor
+    func getSensorMagnetic(sensorTypes : SensorTypes,name : String,RSSI : Int, batterylevel : Int = -1,nbrObjet : Int = 0,etat : Bool = false,identifier: String,peripheral : CBPeripheral)->Sensor
     {
-        return SensorMagnetic(name : name,RSSI : RSSI,batterylevel : batterylevel,sensorTypes: sensorTypes,nbrObjet : nbrObjet,etat : etat,identifier: identifier)
-    }
-    
-    func getSensorAngle(sensorTypes : SensorTypes,name : String,RSSI : Int, batterylevel : Int = -1,x : Int = 0, y : Int = 0, z : Int = 0,identifier: String)->Sensor
-    {
-        return SensorAngle(name : name,RSSI : RSSI,batterylevel : batterylevel,sensorTypes: sensorTypes,x : x , y : y, z : z,identifier: identifier)
-    }
-    func getSensorEdystone(sensorTypes : SensorTypes,name : String,RSSI : Int, batterylevel : Int = -1,NID : String = "", BID : String = "",identifier : String)->Sensor
-    {
-        return SensorEdystone(name : name,RSSI : RSSI,batterylevel : batterylevel,sensorTypes: sensorTypes,NID : NID,BID : BID, identifier: identifier)
+        return SensorMagnetic(name : name,RSSI : RSSI,batterylevel : batterylevel,sensorTypes: sensorTypes,nbrObjet : nbrObjet,etat : etat,identifier: identifier,peripheral: peripheral)
     }
     
-    func getSensorIbeacon(sensorTypes : SensorTypes,name : String,RSSI : Int, batterylevel : Int = -1,UUID : String = "", minor : Int = 0,major : Int = 0,identifier : String)->Sensor
+    func getSensorAngle(sensorTypes : SensorTypes,name : String,RSSI : Int, batterylevel : Int = -1,x : Int = 0, y : Int = 0, z : Int = 0,identifier: String ,peripheral : CBPeripheral)->Sensor
     {
-        return SensorIbeacon(name : name,RSSI : RSSI,batterylevel : batterylevel ,sensorTypes: sensorTypes , UUID: UUID,minor : minor ,major : major, identifier: identifier)
+        return SensorAngle(name : name,RSSI : RSSI,batterylevel : batterylevel,sensorTypes: sensorTypes,x : x , y : y, z : z,identifier: identifier,peripheral : peripheral)
+    }
+    func getSensorEdystone(sensorTypes : SensorTypes,name : String,RSSI : Int, batterylevel : Int = -1,NID : String = "", BID : String = "",identifier : String,peripheral : CBPeripheral)->Sensor
+    {
+        return SensorEdystone(name : name,RSSI : RSSI,batterylevel : batterylevel,sensorTypes: sensorTypes,NID : NID,BID : BID, identifier: identifier,peripheral: peripheral)
+    }
+    
+    func getSensorIbeacon(sensorTypes : SensorTypes,name : String,RSSI : Int, batterylevel : Int = -1,UUID : String = "", minor : Int = 0,major : Int = 0,identifier : String,peripheral : CBPeripheral)->Sensor
+    {
+        return SensorIbeacon(name : name,RSSI : RSSI,batterylevel : batterylevel ,sensorTypes: sensorTypes , UUID: UUID,minor : minor ,major : major, identifier: identifier,peripheral : peripheral)
     }
     
     
@@ -493,7 +495,7 @@ class SensorFactory
      * \param [in] sensorData : dictionnary of data containning bluetooth short UUID and data to decode
      * \return Sensor object typed
      */
-    func get(sensorData : Dictionary<CBUUID,NSData>?, tagname : String, tagRSSI : NSNumber, tagidentifier : String) -> Sensor?
+    func get(sensorData : Dictionary<CBUUID,NSData>?, tagname : String, tagRSSI : NSNumber, tagidentifier : String,peripheral : CBPeripheral) -> Sensor?
     {
         
         
@@ -526,11 +528,11 @@ class SensorFactory
            
             if(String(sensorData![CBUUID(string: "2A3F")]!.debugDescription.dropFirst().dropFirst().dropLast()) == "1")
             {
-                id = SensorFactory.shared().getSensorMove(sensorTypes: .SensorMove, name: tagname , RSSI: Int(truncating: tagRSSI),batterylevel: battery, nbrPas: ConvertionToolbox.ConvertAdvertisingValue(str: String(counter!)), etat: ConvertionToolbox.convertHexaToEtatInv(str: String(counter!)),identifier: tagidentifier)
+                id = SensorFactory.shared().getSensorMove(sensorTypes: .SensorMove, name: tagname , RSSI: Int(truncating: tagRSSI),batterylevel: battery, nbrPas: ConvertionToolbox.ConvertAdvertisingValue(str: String(counter!)), etat: ConvertionToolbox.convertHexaToEtatInv(str: String(counter!)),identifier: tagidentifier,peripheral: peripheral)
             }
             else if (String(sensorData![CBUUID(string: "2A3F")]!.debugDescription.dropFirst().dropFirst().dropLast()) == "0")
             {
-                id = SensorFactory.shared().getSensorMagnetic(sensorTypes: .SensorMagnetic, name: tagname , RSSI: Int(truncating: tagRSSI), batterylevel: battery, nbrObjet: ConvertionToolbox.ConvertAdvertisingValue(str: String(counter!)), etat: ConvertionToolbox.convertHexaToEtatInv(str: String(counter!)), identifier: tagidentifier)
+                id = SensorFactory.shared().getSensorMagnetic(sensorTypes: .SensorMagnetic, name: tagname , RSSI: Int(truncating: tagRSSI), batterylevel: battery, nbrObjet: ConvertionToolbox.ConvertAdvertisingValue(str: String(counter!)), etat: ConvertionToolbox.convertHexaToEtatInv(str: String(counter!)), identifier: tagidentifier,peripheral: peripheral)
             }
         }
         else if(sensorData![CBUUID(string: "2AA1")] != nil)
@@ -548,7 +550,7 @@ class SensorFactory
                 let angleStrBattery = sensorData![CBUUID(string: "2A19")]?.debugDescription.dropFirst().dropLast().description
                 battery = ConvertionToolbox.ConvertAdvertisingValue(str: String(angleStrBattery!))
             }
-            id = SensorFactory.shared().getSensorAngle(sensorTypes: .SensorAngle, name: tagname, RSSI: Int(truncating: tagRSSI),batterylevel: battery,  x: Int(ConvertionToolbox.ConvertAngle(str: ConvertionToolbox.ANG(str: String(ang!), index: 0))), y: Int(ConvertionToolbox.ConvertAngle(str: ConvertionToolbox.ANG(str: String(ang!), index: 4))), z: Int(ConvertionToolbox.ConvertAngle(str: ConvertionToolbox.ANG(str: String(ang!), index: 9))),identifier: tagidentifier)
+            id = SensorFactory.shared().getSensorAngle(sensorTypes: .SensorAngle, name: tagname, RSSI: Int(truncating: tagRSSI),batterylevel: battery,  x: Int(ConvertionToolbox.ConvertAngle(str: ConvertionToolbox.ANG(str: String(ang!), index: 0))), y: Int(ConvertionToolbox.ConvertAngle(str: ConvertionToolbox.ANG(str: String(ang!), index: 4))), z: Int(ConvertionToolbox.ConvertAngle(str: ConvertionToolbox.ANG(str: String(ang!), index: 9))),identifier: tagidentifier,peripheral: peripheral)
             
         }
             
@@ -557,7 +559,8 @@ class SensorFactory
         {
             let temp = sensorData![CBUUID(string: "2A6E")]?.debugDescription.dropFirst().dropLast()
             let hum = sensorData![CBUUID(string: "2A6F")]?.debugDescription.dropFirst().dropLast()
-            let temperature = SensorTemperature(name: tagname, RSSI: Int(truncating: tagRSSI), sensorTypes: .SensorTemperature, temperature: ConvertionToolbox.ConvertTemperature(str: String(temp!)),identifier: tagidentifier)
+            let temperature = SensorTemperature(name: tagname, RSSI: Int(truncating: tagRSSI), sensorTypes: .SensorTemperature, temperature: ConvertionToolbox.ConvertTemperature(str: String(temp!)),identifier: tagidentifier, peripheral: peripheral)
+            
             var battery : Int = -1
             if(sensorData![CBUUID(string: "180F")] != nil)
             {
@@ -570,7 +573,7 @@ class SensorFactory
                 let RHTstrBattery = sensorData![CBUUID(string: "2A19")]?.debugDescription.dropFirst().dropLast().description
                 battery = ConvertionToolbox.ConvertAdvertisingValue(str: String(RHTstrBattery!))
             }
-            id = SensorFactory.shared().getSensorTemperatureHumidity(sensorTypes: .SensorTemperatureHumidity, name: tagname, RSSI: Int(truncating: tagRSSI),batterylevel: battery,  humidity: ConvertionToolbox.ConvertHumidite(str: String(hum!)), objectTemperature: temperature,identifier: tagidentifier)
+            id = SensorFactory.shared().getSensorTemperatureHumidity(sensorTypes: .SensorTemperatureHumidity, name: tagname, RSSI: Int(truncating: tagRSSI),batterylevel: battery,  humidity: ConvertionToolbox.ConvertHumidite(str: String(hum!)), objectTemperature: temperature,identifier: tagidentifier,peripheral: peripheral)
             
             
             
@@ -590,7 +593,7 @@ class SensorFactory
                 let temperatureStrBattery =  sensorData![CBUUID(string: "2A19")]?.debugDescription.dropFirst().dropLast().description
                 battery = ConvertionToolbox.ConvertAdvertisingValue(str: String(temperatureStrBattery!))
             }
-            id = SensorFactory.shared().getSensorTemperature(sensorTypes: .SensorTemperature, name: tagname, RSSI: Int(truncating: tagRSSI),batterylevel: battery,temperature: ConvertionToolbox.ConvertTemperature(str: String(temp!)),identifier: tagidentifier)
+            id = SensorFactory.shared().getSensorTemperature(sensorTypes: .SensorTemperature, name: tagname, RSSI: Int(truncating: tagRSSI),batterylevel: battery,temperature: ConvertionToolbox.ConvertTemperature(str: String(temp!)),identifier: tagidentifier, peripheral: peripheral)
         }
         else {
             
@@ -606,7 +609,7 @@ class SensorFactory
                 battery = ConvertionToolbox.ConvertAdvertisingValue(str: String(temperatureStrBattery!))
             }
             
-            id = SensorFactory.shared().getSensorID(sensorTypes: .SensorID, name: tagname, RSSI: Int(truncating: tagRSSI),batterylevel: battery ,identifier: tagidentifier)
+            id = SensorFactory.shared().getSensorID(sensorTypes: .SensorID, name: tagname, RSSI: Int(truncating: tagRSSI),batterylevel: battery ,identifier: tagidentifier, peripheral: peripheral)
         }
         
         return id

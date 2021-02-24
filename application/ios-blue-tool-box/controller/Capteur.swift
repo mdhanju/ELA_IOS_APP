@@ -132,8 +132,9 @@ class Capteur:  UIViewController, UITableViewDataSource, UITableViewDelegate{
         public var battery : Int
         public var typedata : SensorTypes
         public var array : [Cap]
+        public var peripheral : CBPeripheral
         
-        init(name : String, RSSI: Int, identifier : String, battery : Int, typedata : SensorTypes,array : [Cap] = [Cap.init()])
+        init(name : String, RSSI: Int, identifier : String, battery : Int, typedata : SensorTypes,array : [Cap] = [Cap.init()], peripheral: CBPeripheral)
         {
             self.name = name
             self.RSSI = RSSI
@@ -141,6 +142,7 @@ class Capteur:  UIViewController, UITableViewDataSource, UITableViewDelegate{
             self.battery = battery
             self.typedata = typedata
             self.array = array
+            self.peripheral = peripheral
         }
         
    
@@ -393,11 +395,14 @@ class Capteur:  UIViewController, UITableViewDataSource, UITableViewDelegate{
     }
     
     func updateSensorUI(data: ([String : Sensor])) -> DisplayObject {
-        
+        var peripheral : CBPeripheral? = CBPeripheral.value()
         var trouve = true
         let objectTemp1 = Temp(temp: 0)
         
-        var newobject : DisplayObject = DisplayObject(name: "null", RSSI: 0, identifier: "",battery : 0, typedata : SensorTypes.SensorID, array: [objectTemp1])
+        var newobject : DisplayObject = DisplayObject(name: "null", RSSI: 0, identifier: "",battery : 0, typedata : SensorTypes.SensorID, array: [objectTemp1],peripheral: peripheral!)
+        
+        
+        
         
         for (key,value) in data
         {
@@ -406,6 +411,7 @@ class Capteur:  UIViewController, UITableViewDataSource, UITableViewDelegate{
                 if(key == cle.identifier)
                 {
                     cle.RSSI = value.RSSI
+                    cle.peripheral = value.peripheral
                     
                     
                     if(value is SensorTemperature)
@@ -478,7 +484,7 @@ class Capteur:  UIViewController, UITableViewDataSource, UITableViewDelegate{
                     
                   
                        
-                        newobject = DisplayObject(name: value.name, RSSI: value.RSSI, identifier: value.idenfitfier, battery: value.batterylevel, typedata : value.sensorTypes )
+                    newobject = DisplayObject(name: value.name, RSSI: value.RSSI, identifier: value.idenfitfier, battery: value.batterylevel, typedata : value.sensorTypes, peripheral: value.peripheral )
                     
                 }
             
@@ -489,7 +495,7 @@ class Capteur:  UIViewController, UITableViewDataSource, UITableViewDelegate{
                     if let temp = value as? SensorTemperature
                     {
                         let objectTemp = Temp(temp: temp.getTemp())
-                        newobject = DisplayObject(name: value.name, RSSI: value.RSSI, identifier: value.idenfitfier, battery: value.batterylevel, typedata : value.sensorTypes,array: [objectTemp] )
+                        newobject = DisplayObject(name: value.name, RSSI: value.RSSI, identifier: value.idenfitfier, battery: value.batterylevel, typedata : value.sensorTypes,array: [objectTemp], peripheral: value.peripheral  )
                     }
                 }
                 
@@ -499,7 +505,7 @@ class Capteur:  UIViewController, UITableViewDataSource, UITableViewDelegate{
                     if let tempHum = value as? SensorTemperatureHumidity
                     {
                         let objectTempHum = TempHum(temp: tempHum.getTemp(), hum: tempHum.getHum())
-                        newobject = DisplayObject(name: value.name, RSSI: value.RSSI, identifier: value.idenfitfier, battery: value.batterylevel, typedata : value.sensorTypes,array: [objectTempHum] )
+                        newobject = DisplayObject(name: value.name, RSSI: value.RSSI, identifier: value.idenfitfier, battery: value.batterylevel, typedata : value.sensorTypes,array: [objectTempHum], peripheral: value.peripheral )
                     }
                 }
                 
@@ -511,7 +517,7 @@ class Capteur:  UIViewController, UITableViewDataSource, UITableViewDelegate{
                     {
                           let objectMove =
                                                      Move(nbrPas: move.getNbrPas(), etat: move.getEtat())
-                        newobject = DisplayObject(name: value.name, RSSI: value.RSSI, identifier: value.idenfitfier, battery: value.batterylevel, typedata : value.sensorTypes,array: [objectMove] )
+                        newobject = DisplayObject(name: value.name, RSSI: value.RSSI, identifier: value.idenfitfier, battery: value.batterylevel, typedata : value.sensorTypes,array: [objectMove],peripheral: value.peripheral )
                     }
                 }
                 
@@ -523,7 +529,7 @@ class Capteur:  UIViewController, UITableViewDataSource, UITableViewDelegate{
                     {
                           let objectMove =
                             Mag(nbrMagnet: mag.getNbrObject(), etat: mag.getEtat())
-                        newobject = DisplayObject(name: value.name, RSSI: value.RSSI, identifier: value.idenfitfier, battery: value.batterylevel, typedata : value.sensorTypes,array: [objectMove] )
+                        newobject = DisplayObject(name: value.name, RSSI: value.RSSI, identifier: value.idenfitfier, battery: value.batterylevel, typedata : value.sensorTypes,array: [objectMove],peripheral: value.peripheral)
                     }
                 }
                 
@@ -535,7 +541,7 @@ class Capteur:  UIViewController, UITableViewDataSource, UITableViewDelegate{
                     {
                           let objectMove =
                             Angle(x: angle.getX(), y: angle.getY(), z: angle.getZ())
-                        newobject = DisplayObject(name: value.name, RSSI: value.RSSI, identifier: value.idenfitfier, battery: value.batterylevel, typedata : value.sensorTypes,array: [objectMove] )
+                        newobject = DisplayObject(name: value.name, RSSI: value.RSSI, identifier: value.idenfitfier, battery: value.batterylevel, typedata : value.sensorTypes,array: [objectMove], peripheral: value.peripheral )
                     }
                 }
                 

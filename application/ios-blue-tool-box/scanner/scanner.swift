@@ -148,7 +148,7 @@ class Scanner1: NSObject, CBPeripheralDelegate, CBCentralManagerDelegate {
                 
                 identifier.append(peripheral.identifier.description)
                 
-                let id = SensorFactory.shared().get(sensorData: sensorData, tagname: peripheral.name?.description ?? "", tagRSSI: RSSI, tagidentifier: peripheral.identifier.description)
+                let id = SensorFactory.shared().get(sensorData: sensorData, tagname: peripheral.name?.description ?? "", tagRSSI: RSSI, tagidentifier: peripheral.identifier.description,peripheral: peripheral)
                 
                 if( id != nil)
                 {
@@ -157,6 +157,7 @@ class Scanner1: NSObject, CBPeripheralDelegate, CBCentralManagerDelegate {
                    if(nil == self.sensorTypeFiler)
                     {
                         dictionnarySensor.raise(data : [peripheral.identifier.description:id!])
+                 
                     }
                     else
                     {
@@ -165,6 +166,7 @@ class Scanner1: NSObject, CBPeripheralDelegate, CBCentralManagerDelegate {
                         if(self.sensorTypeFiler == id?.sensorTypes)
                         {
                             dictionnarySensor.raise(data : [peripheral.identifier.description:id!])
+                          
                         }
                    }
                      

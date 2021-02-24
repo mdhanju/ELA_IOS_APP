@@ -1,5 +1,6 @@
 import UIKit
 import Charts
+import CoreBluetooth
 
 class targetAngleViewController: controllerGrapheUI,ChartViewDelegate {
     
@@ -62,8 +63,9 @@ class targetAngleViewController: controllerGrapheUI,ChartViewDelegate {
     func updateSensorUI(data: ([String : Sensor])) -> Capteur.DisplayObject {
         
         let objectTemp1 = Capteur.Temp(temp: 0)
+        var a : CBPeripheral? = nil
         
-        let newobject : Capteur.DisplayObject = Capteur.DisplayObject(name: "null", RSSI: 0, identifier: "",battery : 0, typedata : SensorTypes.SensorID, array: [objectTemp1])
+        let newobject : Capteur.DisplayObject = Capteur.DisplayObject(name: "null", RSSI: 0, identifier: "",battery : 0, typedata : SensorTypes.SensorID, array: [objectTemp1],peripheral: a!)
         
         for (key,value) in data
         {

@@ -1,6 +1,6 @@
 import UIKit
 import Charts
-
+import CoreBluetooth
 
 class targetTempViewController: controllerGrapheUI,ChartViewDelegate {
     
@@ -26,6 +26,7 @@ class targetTempViewController: controllerGrapheUI,ChartViewDelegate {
     private let displayObject : [Capteur.DisplayObject]
     private var scanner: Scanner1!
     private var sensorT : SensorTypes? = nil
+   
     
     init(nameSensor : String,RSSI: Int, identifier : String, battery : Int, typedata : SensorTypes,array: [Capteur.Cap],displayObject : [Capteur.DisplayObject]) {
         self.nameSensor = nameSensor
@@ -35,6 +36,7 @@ class targetTempViewController: controllerGrapheUI,ChartViewDelegate {
         self.typedata = typedata
         self.array = array
         self.displayObject = displayObject
+   
         
         
         super.init(nibName : nil , bundle : nil)
@@ -56,8 +58,11 @@ class targetTempViewController: controllerGrapheUI,ChartViewDelegate {
     func updateSensorUI(data: ([String : Sensor])) -> Capteur.DisplayObject {
         
         let objectTemp1 = Capteur.Temp(temp: 0)
+        var a : CBPeripheral? = nil
         
-        let newobject : Capteur.DisplayObject = Capteur.DisplayObject(name: "null", RSSI: 0, identifier: "",battery : 0, typedata : SensorTypes.SensorID, array: [objectTemp1])
+        let newobject : Capteur.DisplayObject = Capteur.DisplayObject(name: "null", RSSI: 0, identifier: "",battery : 0, typedata : SensorTypes.SensorID, array: [objectTemp1],peripheral: a!)
+        
+        
         
         for (key,value) in data
         {

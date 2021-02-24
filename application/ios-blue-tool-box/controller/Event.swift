@@ -15,4 +15,6 @@ class Event<T> {
             handler(data)
         }
     }
+    
+
 }

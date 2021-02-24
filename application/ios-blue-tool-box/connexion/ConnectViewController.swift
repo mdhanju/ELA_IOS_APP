@@ -1,5 +1,5 @@
 import UIKit
-
+import CoreBluetooth
 class ConnectViewController: UIViewController {
     
     private let nameSensor : String
@@ -9,7 +9,7 @@ class ConnectViewController: UIViewController {
     private let typedata : SensorTypes
     private let array : [Capteur.Cap]
     private let displayObject : [Capteur.DisplayObject]
-    private var scanner: sendScanner!
+    private var scanner: Scanner1!
     
     init(nameSensor : String,RSSI: Int, identifier : String, battery : Int, typedata : SensorTypes,array: [Capteur.Cap],displayObject : [Capteur.DisplayObject]) {
         self.nameSensor = nameSensor
@@ -29,7 +29,47 @@ class ConnectViewController: UIViewController {
     }
     
     
+    func handleNewObjectAvailable(data: ([String : Sensor])) {
+        updateSensorUI(data: data)
+    }
     
+    func updateSensorUI(data: ([String : Sensor])) -> Capteur.DisplayObject {
+        
+        let objectTemp1 = Capteur.Temp(temp: 0)
+        var a : CBPeripheral? = nil
+        
+        let newobject : Capteur.DisplayObject = Capteur.DisplayObject(name: "null", RSSI: 0, identifier: "",battery : 0, typedata : SensorTypes.SensorID, array: [objectTemp1],peripheral: a!)
+        
+        
+        
+        for (key,value) in data
+        {
+            
+            if(key == identifier)
+            {
+                if(value is SensorMagnetic)
+                {
+                    if let mag = value as? SensorMagnetic
+                    {
+                       // UItemperature.text = String(tempHum.getTemp()) + "°C"
+                        //donnee = String(tempHum.getTemp()) + "°C"
+                  
+                        print(mag.peripheral)
+                    }
+                    
+                }
+            }
+        }
+
+        
+        
+        return newobject
+    }
+    
+    
+
+    
+   
     
     
     
@@ -37,7 +77,9 @@ class ConnectViewController: UIViewController {
         super.viewDidLoad()
         
         view.backgroundColor = .white
+        scanner = Scanner1.getInstance()
         
+        scanner.dictionnarySensor.addHandler(handler : handleNewObjectAvailable)
         
         
         //scanner = sendScanner()
