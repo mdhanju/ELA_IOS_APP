@@ -125,18 +125,26 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		16069E0225E64D6B00889FC4 /* ControllerRefractorUI */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = ControllerRefractorUI;
+			sourceTree = "<group>";
+		};
 		160BD57725D521F700F5ED01 /* Target_list */ = {
 			isa = PBXGroup;
 			children = (
+				16D4398925E3A99600D4B4C7 /* controllerUI.swift */,
+				16D4399B25E3C91800D4B4C7 /* controllerGrapheUI.swift */,
+				16D4399F25E3EC1900D4B4C7 /* controllerEtat.swift */,
+				16069E0225E64D6B00889FC4 /* ControllerRefractorUI */,
 				160BD57125D1516A00F5ED01 /* targetTempViewController.swift */,
 				160BD57925D5235D00F5ED01 /* targetTempHumViewController.swift */,
 				160BD57B25D5472600F5ED01 /* targetMoveViewController.swift */,
 				16ACF8AA25D692B8008E296A /* targetMagViewController.swift */,
 				16ACF8AC25DA8705008E296A /* targetAngleViewController.swift */,
 				16D4397325DD28B500D4B4C7 /* targetIDViewController.swift */,
-				16D4398925E3A99600D4B4C7 /* controllerUI.swift */,
-				16D4399B25E3C91800D4B4C7 /* controllerGrapheUI.swift */,
-				16D4399F25E3EC1900D4B4C7 /* controllerEtat.swift */,
 			);
 			path = Target_list;
 			sourceTree = "<group>";

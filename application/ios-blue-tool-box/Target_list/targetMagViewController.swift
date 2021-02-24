@@ -7,7 +7,7 @@ class targetMagViewController: controllerEtat {
     private var capteur: Capteur!
   
     
-    private let progressRing = UICircularProgressRing(frame:  CGRect(x: 150, y: 200, width: 100, height: 100))
+    private let progressRing = UICircularProgressRing(frame:  CGRect(x: 100, y: 350, width: 230, height: 230))
     private let UIimagelowPerson = UIImage(named: "PersonRunning")
     private let UIimagelowPersonStatic = UIImage(named: "Person")
 
@@ -83,13 +83,13 @@ class targetMagViewController: controllerEtat {
                   //          btnPerson.setImage(UIimagelowPerson, for: .normal)
                    //         UInameseuil.text = "Etat : en déplacement"
                             
-                            setEtat(image : UIimagelowPerson!,str : "Etat : en déplacement")
+                            setEtat(image : UIimagelowPerson!,str : "Etat : déplacement")
                         }
                         else {
                             
                      //       btnPerson.setImage(UIimagelowPersonStatic, for: .normal)
                       //      UInameseuil.text = "Etat : position statique"
-                            setEtat(image : UIimagelowPersonStatic!,str : "Etat : en statique")
+                            setEtat(image : UIimagelowPersonStatic!,str : "Etat : statique")
                         }
                     }
                     
@@ -157,7 +157,7 @@ class targetMagViewController: controllerEtat {
                        // btnPerson.blink()
                       //  btnPerson.setImage(UIimagelowPerson, for: .normal)
                     //    self.view.addSubview(btnPerson)
-                        setEtat(image : UIimagelowPerson!,str : "Etat : en déplacement")
+                        setEtat(image : UIimagelowPerson!,str : "Etat : déplacement")
                         
                     }
                     else {
@@ -170,7 +170,7 @@ class targetMagViewController: controllerEtat {
                         
                  //       btnPerson.setImage(UIimagelowPersonStatic, for: .normal)
                   //      self.view.addSubview(btnPerson)
-                        setEtat(image : UIimagelowPersonStatic!,str : "Etat : en statique")
+                        setEtat(image : UIimagelowPersonStatic!,str : "Etat : statique")
                         
                         
                     }

@@ -9,7 +9,7 @@ import ios_blue_tool_box
 import XCTest
 
 
-
+/*
 
 class ios_blue_tool_boxTests: XCTestCase {
 
@@ -223,6 +223,8 @@ class ios_blue_tool_boxTests: XCTestCase {
             XCTAssertEqual(ConvertionToolbox.ConvertHumidite(str: "00"),0)
         }
     
+  
+    
     
     
     
@@ -230,3 +232,4 @@ class ios_blue_tool_boxTests: XCTestCase {
 }
 
 
+*/

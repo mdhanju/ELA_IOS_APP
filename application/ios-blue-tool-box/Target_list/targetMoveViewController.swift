@@ -7,7 +7,7 @@ class targetMoveViewController: controllerEtat,ChartViewDelegate {
    
     private let UIimagelowPerson = UIImage(named: "PersonRunning")
     private let UIimagelowPersonStatic = UIImage(named: "Person")
-    private let progressRing = UICircularProgressRing(frame:  CGRect(x: 150, y: 200, width: 100, height: 100))
+    private let progressRing = UICircularProgressRing(frame:  CGRect(x: 100, y: 350, width: 230, height: 230))
     private let nameSensor : String
     private let RSSI : Int
     private let identifier : String
@@ -73,11 +73,11 @@ class targetMoveViewController: controllerEtat,ChartViewDelegate {
                         {
                        
                             
-                            setEtat(image : UIimagelowPerson!,str : "Etat : en déplacement")
+                            setEtat(image : UIimagelowPerson!,str : "Etat : déplacement")
                         }
                         else {
                             
-                            setEtat(image : UIimagelowPersonStatic!,str : "Etat : en statique")
+                            setEtat(image : UIimagelowPersonStatic!,str : "Etat : statique")
                         }
                     }
                     
@@ -128,12 +128,12 @@ class targetMoveViewController: controllerEtat,ChartViewDelegate {
                         
                         
                         
-                        setEtat(image : UIimagelowPerson!,str : "Etat : en déplacement")
+                        setEtat(image : UIimagelowPerson!,str : "Etat : déplacement")
                     }
                     else {
                         
                     
-                        setEtat(image : UIimagelowPersonStatic!,str : "Etat : en statique")
+                        setEtat(image : UIimagelowPersonStatic!,str : "Etat : statique")
                         
                         
                     }
@@ -159,7 +159,7 @@ class targetMoveViewController: controllerEtat,ChartViewDelegate {
         }
         progressRing.innerRingColor = UIColor.orange
         
-        progressRing.valueFormatter = UICircularProgressRingFormatter(valueIndicator: " pas", rightToLeft: false, showFloatingPoint: false, decimalPlaces: 0)
+        progressRing.valueFormatter = UICircularProgressRingFormatter(valueIndicator: " mouvements", rightToLeft: false, showFloatingPoint: false, decimalPlaces: 0)
         
         self.view.addSubview(progressRing)
     }

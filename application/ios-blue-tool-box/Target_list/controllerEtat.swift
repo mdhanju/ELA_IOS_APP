@@ -18,13 +18,20 @@ class controllerEtat: controllerUI {
         super.viewDidLoad()
         
         
+        let line = UIView(frame: CGRect(x: 40, y: 150, width: 290, height: 3))
+        line.backgroundColor =  UIColor(hexString: "#336699")
+        self.view.addSubview(line)
         
-        self.UInameseuil.text = "Etat : position statique"
+        let lineBack = UIView(frame: CGRect(x: 40, y: 200, width: 290, height: 3))
+        lineBack.backgroundColor = UIColor(hexString: "#336699")
+        self.view.addSubview(lineBack)
+        
+        self.UInameseuil.text = "Etat : statique"
         self.UInameseuil.textColor = UIColor.black
-        self.UInameseuil.font = UIFont.systemFont(ofSize: 15)
+        self.UInameseuil.font = UIFont.systemFont(ofSize: 25)
         self.UInameseuil.isUserInteractionEnabled = false
-        self.UInameseuil.font = UIFont.boldSystemFont(ofSize: 15)
-        self.UInameseuil.frame = CGRect(x: 80, y: 150, width: 350, height: 100)
+        self.UInameseuil.font = UIFont.boldSystemFont(ofSize: 25)
+        self.UInameseuil.frame = CGRect(x: 110, y: 150, width: 350, height: 100)
         self.UInameseuil.backgroundColor = .none
         self.view.addSubview(UInameseuil)
         self.view.bringSubviewToFront(UInameseuil)
@@ -37,7 +44,7 @@ class controllerEtat: controllerUI {
         btnPerson.setImage(image, for: .normal)
         UInameseuil.text = str
         
-        btnPerson.frame = CGRect(x: 300, y: 130 ,width: 45, height: 45)
+        btnPerson.frame = CGRect(x: 180, y: 250 ,width: 45, height: 45)
                 
         
             self.view.addSubview(btnPerson)
