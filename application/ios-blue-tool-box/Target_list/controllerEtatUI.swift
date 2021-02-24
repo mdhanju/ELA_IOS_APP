@@ -1,23 +1,26 @@
 import UIKit
-import Charts
 import UICircularProgressRing
-class targetMoveViewController: controllerEtat,ChartViewDelegate {
+class controllerEtatUI: controllerUI {
+    
+
+     let nameSensor : String
+     let RSSI : Int
+     let identifier : String
+     let battery : Int
+     let typedata : SensorTypes
+     let  array : [Capteur.Cap]
+     var  displayObject : [Capteur.DisplayObject]
+    
     
     private var capteur: Capteur!
    
     private let UIimagelowPerson = UIImage(named: "PersonRunning")
     private let UIimagelowPersonStatic = UIImage(named: "Person")
-    private let progressRing = UICircularProgressRing(frame:  CGRect(x: 100, y: 350, width: 230, height: 230))
-    private let nameSensor : String
-    private let RSSI : Int
-    private let identifier : String
-    private let battery : Int
-    private let typedata : SensorTypes
-    private let array : [Capteur.Cap]
-    private var displayObject : [Capteur.DisplayObject]
+    private let progressRing = UICircularProgressRing(frame:  CGRect(x: 70, y: 350, width: 230, height: 230))
+
     private var scanner: Scanner1!
     private var sensorT : SensorTypes? = nil
-  
+    
     
     init(nameSensor : String,RSSI: Int, identifier : String, battery : Int, typedata : SensorTypes,array: [Capteur.Cap],displayObject : [Capteur.DisplayObject]) {
         self.nameSensor = nameSensor
@@ -32,17 +35,14 @@ class targetMoveViewController: controllerEtat,ChartViewDelegate {
         super.init(nibName : nil , bundle : nil)
     }
     
-    
-    
-    
-    @objc func imageTapTemp() {
-        self.navigationController?.pushViewController(ConnectViewController(nameSensor: nameSensor, RSSI: RSSI, identifier: identifier, battery: battery, typedata: typedata,array: array, displayObject: displayObject), animated: true)
-        view.layoutIfNeeded()
-    }
-    
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
+    
+    
+
+    private var UInameseuil = UITextView()
+    private let btnPerson = UIButton()
     
     func handleNewObjectAvailable(data: ([String : Sensor]))
     {
@@ -83,41 +83,74 @@ class targetMoveViewController: controllerEtat,ChartViewDelegate {
                     
                 }
                 
+                if(value is SensorMagnetic)
+                {
+                    if let move = value as? SensorMagnetic
+                    {
+                       
+                        progressRing.value = CGFloat(move.getNbrObject())
+                        print("progress ring" + String(move.getNbrObject()) + "son nom " + move.name )
+                        if(move.getEtat() == true)
+                        {
+                       
+                            
+                            setEtat(image : UIimagelowPerson!,str : "Etat : déplacement")
+                        }
+                        else {
+                            
+                            setEtat(image : UIimagelowPersonStatic!,str : "Etat : statique")
+                        }
+                    }
+                    
+                }
+                
                 displayObject.append(newobject)
             }
 
         }
         return newobject
     }
-    override func viewDidLoad() {
-        super.viewDidLoad()
-    
-        
-        scanner = Scanner1()
-        scanner.initializeScanner()
-        scanner.dictionnarySensor.addHandler(handler : handleNewObjectAvailable)
 
+    override func viewDidLoad() {
+        
+        
         nameSensorUI(str: nameSensor)
         batteryUI(battery: battery)
         logoUI(picture: "mouvement_blue")
         
-              
-   
+        scanner = Scanner1()
+        scanner.initializeScanner()
+        scanner.dictionnarySensor.addHandler(handler : handleNewObjectAvailable)
         
-      
-        let imageArray = "sklia"
-        let UIarray = UIImage(named: imageArray)
         
-        var items = [UIBarButtonItem]()
-        items.append(UIBarButtonItem(image: UIarray, landscapeImagePhone: .none, style: .done, target: self, action: #selector(imageTapTemp)))
-        items.append(UIBarButtonItem(title: "Connexion", style: .plain, target: self,action: .none))
+        super.viewDidLoad()
         
-        self.navigationItem.setRightBarButtonItems(items, animated: true)
+        
+        let line = UIView(frame: CGRect(x: 40, y: 150, width: 290, height: 3))
+        line.backgroundColor =  UIColor(hexString: "#336699")
+        self.view.addSubview(line)
+        
+        let lineBack = UIView(frame: CGRect(x: 40, y: 200, width: 290, height: 3))
+        lineBack.backgroundColor = UIColor(hexString: "#336699")
+        self.view.addSubview(lineBack)
+        
+        self.UInameseuil.text = "Etat : statique"
+        self.UInameseuil.textColor = UIColor.black
+        self.UInameseuil.font = UIFont.systemFont(ofSize: 25)
+        self.UInameseuil.isUserInteractionEnabled = false
+        self.UInameseuil.font = UIFont.boldSystemFont(ofSize: 25)
+        self.UInameseuil.frame = CGRect(x: 110, y: 150, width: 350, height: 100)
+        self.UInameseuil.backgroundColor = .none
+        self.view.addSubview(UInameseuil)
+        self.view.bringSubviewToFront(UInameseuil)
+
+        // Do any additional setup after loading the view.
         
         for cle in displayObject {
             if( cle.identifier == identifier)
                 
             {
+                
                 if let Move : [Capteur.Move] = cle.array as? [Capteur.Move]
                 {
                     
@@ -159,18 +192,36 @@ class targetMoveViewController: controllerEtat,ChartViewDelegate {
         }
         progressRing.innerRingColor = UIColor.orange
         
-        progressRing.valueFormatter = UICircularProgressRingFormatter(valueIndicator: " mouvements", rightToLeft: false, showFloatingPoint: false, decimalPlaces: 0)
+        progressRing.valueFormatter = UICircularProgressRingFormatter(valueIndicator: " step", rightToLeft: false, showFloatingPoint: false, decimalPlaces: 0)
         
         self.view.addSubview(progressRing)
     }
     
+    func setEtat(image : UIImage,str : String)
+    {
+        btnPerson.setImage(image, for: .normal)
+        UInameseuil.text = str
+        
+        btnPerson.frame = CGRect(x: 180, y: 250 ,width: 45, height: 45)
+                
+        
+            self.view.addSubview(btnPerson)
+    }
     
     func initializeInfoSensor(sensor : SensorTypes)
     {
         sensorT = sensor
     }
     
-    
-    
-    
+
+    /*
+    // MARK: - Navigation
+
+    // In a storyboard-based application, you will often want to do a little preparation before navigation
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        // Get the new view controller using segue.destination.
+        // Pass the selected object to the new view controller.
+    }
+    */
+
 }

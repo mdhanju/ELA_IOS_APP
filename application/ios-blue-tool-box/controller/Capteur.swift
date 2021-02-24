@@ -237,7 +237,7 @@ class Capteur:  UIViewController, UITableViewDataSource, UITableViewDelegate{
         if(typedata == SensorTypes.SensorMove)
                     {
          
-         self.navigationController?.pushViewController(targetMoveViewController(nameSensor: string1 ,RSSI: RSSI, identifier : identifier, battery : battery, typedata : typedata,array : arr,displayObject : display), animated: true)
+         self.navigationController?.pushViewController(controllerEtatUI(nameSensor: string1 ,RSSI: RSSI, identifier : identifier, battery : battery, typedata : typedata,array : arr,displayObject : display), animated: true)
           self.navigationController?.navigationBar.tintColor = .black
          }
         
@@ -245,7 +245,7 @@ class Capteur:  UIViewController, UITableViewDataSource, UITableViewDelegate{
         if(typedata == SensorTypes.SensorMagnetic)
                      {
           
-          self.navigationController?.pushViewController(targetMagViewController(nameSensor: string1 ,RSSI: RSSI, identifier : identifier, battery : battery, typedata : typedata,array : arr,displayObject : display), animated: true)
+          self.navigationController?.pushViewController(controllerEtatUI(nameSensor: string1 ,RSSI: RSSI, identifier : identifier, battery : battery, typedata : typedata,array : arr,displayObject : display), animated: true)
            self.navigationController?.navigationBar.tintColor = .black
           }
         

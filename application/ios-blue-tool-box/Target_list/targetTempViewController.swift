@@ -8,7 +8,7 @@ class targetTempViewController: controllerGrapheUI,ChartViewDelegate {
     private let data1 = LineChartData()
     private var entries = [ChartDataEntry]()
     private var entries1 = [ChartDataEntry]()
-    private var lineChart = LineChartView()
+    private var lineChart = LineChartView(frame: CGRect(x: 0, y: 500,width: 350, height:250))
     private var donnee : String = ""
     
     // Compteur graphe entries
@@ -132,8 +132,8 @@ class targetTempViewController: controllerGrapheUI,ChartViewDelegate {
         super.viewDidLayoutSubviews()
         
         
-        lineChart.frame = CGRect(x: 0, y: 0,width: 350, height:250)
-        lineChart.center = view.center
+        lineChart.frame = CGRect(x: 0, y: 300,width: 350, height:250)
+      //  lineChart.center = view.center
         
         view.addSubview(lineChart)
         

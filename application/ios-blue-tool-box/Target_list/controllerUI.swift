@@ -1,14 +1,3 @@
-//
-//  File.swift
-//  ios-blue-tool-box
-//
-//  Created by ELA Innovation on 22/02/2021.
-//  Copyright © 2021 ELA Innovation. All rights reserved.
-//
-
-
-
-
 import Foundation
 
 import UIKit
@@ -82,6 +71,8 @@ class controllerUI: UIViewController {
    
         
     }
+    
+
     
   public func nameSensorUI(str : String)
     {

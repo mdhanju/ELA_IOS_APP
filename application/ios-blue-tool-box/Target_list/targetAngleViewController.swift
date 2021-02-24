@@ -74,7 +74,7 @@ class targetAngleViewController: controllerGrapheUI,ChartViewDelegate {
                 {
                     if let tempHum = value as? SensorAngle
                     {
-                        valueUI(donnees: String(tempHum.getX()) + "mg  " + String(tempHum.getY()) + "mg  " +  String(tempHum.getZ()) + "mg ")
+                        valueUI(donnees: "x : " + String( tempHum.getX()) + "mg  y :" + String(tempHum.getY()) + "mg  z : " +  String(tempHum.getZ()) + "mg ")
                      
                         entries.append(ChartDataEntry(x: Double(compteur),y: Double(tempHum.getX())))
                         entries1.append(ChartDataEntry(x: Double(compteur),y: Double(tempHum.getY())))
@@ -130,7 +130,7 @@ class targetAngleViewController: controllerGrapheUI,ChartViewDelegate {
         nameSensorUI(str: nameSensor)
         batteryUI(battery: battery)
         logoUI(picture: "angle")
-        textUI(size: 60)
+        textUI(size: 15)
 
         
         
@@ -154,17 +154,10 @@ class targetAngleViewController: controllerGrapheUI,ChartViewDelegate {
         super.viewDidLayoutSubviews()
         
         
-        lineChart.frame = CGRect(x: 0, y: 0,width: 350, height:250)
-        lineChart.center = view.center
+        lineChart.frame = CGRect(x: 0, y: 300,width: 350, height:250)
+        //lineChart.center = view.center
         view.addSubview(lineChart)
         
-        let line = UIView(frame: CGRect(x: 40, y: 150, width: 290, height: 3))
-        line.backgroundColor =  UIColor(hexString: "#336699")
-        self.view.addSubview(line)
-        
-        let lineBack = UIView(frame: CGRect(x: 40, y: 200, width: 290, height: 3))
-        lineBack.backgroundColor = UIColor(hexString: "#336699")
-        self.view.addSubview(lineBack)
         
         
         

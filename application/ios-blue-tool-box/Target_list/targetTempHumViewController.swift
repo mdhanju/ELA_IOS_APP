@@ -155,8 +155,8 @@ class targetTempHumViewController: controllerGrapheUI,ChartViewDelegate {
         super.viewDidLayoutSubviews()
         
         
-        lineChart.frame = CGRect(x: 0, y: 0,width: 350, height:250)
-        lineChart.center = view.center
+        lineChart.frame = CGRect(x: 0, y: 300,width: 350, height:250)
+   //     lineChart.center = view.center
         view.addSubview(lineChart)
         
         let line = UIView(frame: CGRect(x: 40, y: 150, width: 290, height: 3))

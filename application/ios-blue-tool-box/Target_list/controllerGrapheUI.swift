@@ -1,16 +1,12 @@
-//
-//  controllerGrapheUI.swift
-//  ios-blue-tool-box
-//
-//  Created by ELA Innovation on 22/02/2021.
-//  Copyright © 2021 ELA Innovation. All rights reserved.
-//
-
 import UIKit
 
 
 
 class controllerGrapheUI: controllerUI {
+    
+    
+    
+    
     
     var UItext = UITextView()
 
@@ -43,6 +39,8 @@ class controllerGrapheUI: controllerUI {
         self.view.addSubview(UItext)
         self.view.bringSubviewToFront(UItext)
     }
+    
+    
     
     func valueUI(donnees : String)
     {
