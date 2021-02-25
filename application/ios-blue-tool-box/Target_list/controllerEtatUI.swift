@@ -220,7 +220,7 @@ class controllerEtatUI: controllerUI {
         }
         progressRing.minValue = 1
         progressRing.maxValue = 32000
-        for cle in displayObject {
+     /*   for cle in displayObject {
             if( cle.identifier == identifier)
                 
             {
@@ -229,11 +229,12 @@ class controllerEtatUI: controllerUI {
                     for x in 0..<cle.array.count
                         
                     {
-                        progressRing.value = CGFloat(temp[x].getNbrPas())
+                    progressRing.value = CGFloat(temp[x].getNbrPas())
                     }
                 }
             }
         }
+ */
         progressRing.innerRingColor = UIColor.orange
         
         progressRing.valueFormatter = UICircularProgressRingFormatter(valueIndicator: " step", rightToLeft: false, showFloatingPoint: false, decimalPlaces: 0)

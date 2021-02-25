@@ -67,9 +67,10 @@ class ELAViewController: UIViewController, UINavigationControllerDelegate {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-         self.navigationController?.navigationBar.tintColor = .black
-        self.view.backgroundColor = UIColor(patternImage: UIImage(named: "back_main")!.scalePreservingAspectRatio(targetSize: CGSize(width: UIScreen.main.bounds.height, height:100 * UIScreen.main.bounds.height/100)))
         
+         self.navigationController?.navigationBar.tintColor = .black
+       self.view.backgroundColor = UIColor(patternImage: UIImage(named: "back_main")!.scalePreservingAspectRatio(targetSize: CGSize(width: UIScreen.main.bounds.height, height:100 * UIScreen.main.bounds.height/100)))
+    
         
         let imageView0 = UITextView()
         imageView0.text = "Blue Tool Box"

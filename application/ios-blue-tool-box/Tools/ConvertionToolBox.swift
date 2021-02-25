@@ -286,6 +286,101 @@ public class ConvertionToolbox : NSObject {
                 return Float(Int32(decimal)) / 100.0
             }
      }
+    
+    public static func ConvertMagnetique1(str : String)-> Int
+     {
+        print("hexadecimal")
+        print(str)
+
+     if(str == "")
+         {
+          return 0
+         }
+       
+    let LSB : String = String(str.prefix(2))
+    let MSB : String = String(str.suffix(2))
+    var str : String =  MSB + LSB
+       
+        str = String(hexaToBinary(str: str).dropLast())
+    print(str)
+     
+     // var str1 = ""
+     
+       //str1  =  str + "0"
+        
+     var ini : Int = 0
+
+     var sum : Int = 0
+     var cpt : Int = 0
+
+     for char in str.reversed()
+     {
+       if( char == "1" && ini != 0)
+           {
+            sum = sum + cpt
+        print(sum)
+           }
+         
+       cpt = cpt * 2;
+
+       if(ini == 0 && char == "1")
+          {
+            
+             sum = sum + 1
+        
+     
+          }
+        if(ini == 0)
+        {
+            cpt = cpt + 2
+        }
+        ini = ini + 1
+     }
+
+     return sum
+
+     }
+    
+    public static func ConvertAdvertisingValue1(str : String)-> Int
+     {
+
+     if(str == "")
+         {
+          return 0
+         }
+       
+    let LSB : String = String(str.prefix(2))
+    let MSB : String = String(str.suffix(2))
+    var str : String =  MSB + LSB
+       str = hexaToBinary(str: str)
+        str.dropLast()
+
+    var ini : Int = 0
+
+    var sum : Int = 0
+    var cpt : Int = 0
+
+    for char in str.reversed()
+       {
+       if( char == "1")
+           {
+            sum = sum + cpt
+           }
+         
+       cpt = cpt * 2;
+
+       if(ini == 0)
+          {
+              ini = ini + 1
+              cpt = cpt + 1
+          }
+        
+     }
+
+     return sum
+
+     }
+    
 
       /**
        * \fn convertHexaToSumExpo

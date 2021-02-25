@@ -85,7 +85,7 @@ class ViewController:UIViewController,MenuControllerDelegate
         blueMAGController.view.isHidden = true
         blueANGController.view.isHidden = true
         debugController.view.isHidden = true
-        
+        ELAController.view.isHidden = false
         
         
         
@@ -112,7 +112,7 @@ class ViewController:UIViewController,MenuControllerDelegate
             blueMAGController.view.isHidden = true
             blueANGController.view.isHidden = true
             debugController.view.isHidden = true
-            
+            ELAController.view.isHidden = false 
             
         case.blueID:
             blueIDController.view.isHidden = false
@@ -122,6 +122,7 @@ class ViewController:UIViewController,MenuControllerDelegate
             blueMAGController.view.isHidden = true
             blueANGController.view.isHidden = true
             debugController.view.isHidden = true
+            ELAController.view.isHidden = true
         case.blueT:
             blueIDController.view.isHidden = true
             blueTController.view.isHidden = false
@@ -130,7 +131,7 @@ class ViewController:UIViewController,MenuControllerDelegate
             blueMAGController.view.isHidden = true
             blueANGController.view.isHidden = true
             debugController.view.isHidden = true
-            
+            ELAController.view.isHidden = true
             
         case .blueRHT:
             blueIDController.view.isHidden = true
@@ -140,6 +141,7 @@ class ViewController:UIViewController,MenuControllerDelegate
             blueMAGController.view.isHidden = true
             blueANGController.view.isHidden = true
             debugController.view.isHidden = true
+            ELAController.view.isHidden = true
         case .blueMOV:
             blueIDController.view.isHidden = true
             blueTController.view.isHidden = true
@@ -148,6 +150,7 @@ class ViewController:UIViewController,MenuControllerDelegate
             blueMAGController.view.isHidden = true
             blueANGController.view.isHidden = true
             debugController.view.isHidden = true
+            ELAController.view.isHidden = true
         case .blueMAG:
             blueIDController.view.isHidden = true
             blueTController.view.isHidden = true
@@ -156,6 +159,7 @@ class ViewController:UIViewController,MenuControllerDelegate
             blueMAGController.view.isHidden = false
             blueANGController.view.isHidden = true
             debugController.view.isHidden = true
+            ELAController.view.isHidden = true
         case .blueANG:
             blueIDController.view.isHidden = true
             blueTController.view.isHidden = true
@@ -164,6 +168,7 @@ class ViewController:UIViewController,MenuControllerDelegate
             blueMAGController.view.isHidden = true
             blueANGController.view.isHidden = false
             debugController.view.isHidden = true
+            ELAController.view.isHidden = true
         case .debug:
             blueTController.view.isHidden = true
             blueRHTController.view.isHidden = true
@@ -171,6 +176,7 @@ class ViewController:UIViewController,MenuControllerDelegate
             blueMAGController.view.isHidden = true
             blueANGController.view.isHidden = true
             debugController.view.isHidden = false
+            ELAController.view.isHidden = true
         }
         
     }
