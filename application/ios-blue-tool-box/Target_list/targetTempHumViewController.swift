@@ -71,7 +71,26 @@ class targetTempHumViewController: controllerGrapheUI,ChartViewDelegate {
             if(key == identifier)
             {
                 
-                
+                if(value is SensorTemperature)
+                {
+                    if let tempHum = value as? SensorTemperature
+                    {
+                       // UItemperature.text = String(tempHum.getTemp()) + "°C"
+                        //donnee = String(tempHum.getTemp()) + "°C"
+                    valueUI(donnees: String(tempHum.getTemp()) + "°C")
+                        entries.append(ChartDataEntry(x: Double(compteur),y: Double(tempHum.getTemp())))
+                        compteur = compteur + 1
+                        compHum = compHum + 1
+                        
+                        let set = LineChartDataSet(entries: entries, label: "temperature")
+                        set.setColor(UIColor(hexString: "#336699"))
+                        set.setCircleColor(UIColor(hexString: "#336699"))
+                        let data = LineChartData(dataSet: set)
+                        lineChart.data = data
+                       
+                    }
+                    
+                }
                 
                 
                 
@@ -110,6 +129,10 @@ class targetTempHumViewController: controllerGrapheUI,ChartViewDelegate {
         if(entries.count >= 8)
         {
             entries.removeFirst(1)
+            
+        }
+        if(entries1.count >= 8)
+        {
             entries1.removeFirst(1)
         }
         return newobject
@@ -173,6 +196,9 @@ class targetTempHumViewController: controllerGrapheUI,ChartViewDelegate {
             if( cle.identifier == identifier)
                 
             {
+                if(cle is SensorTemperatureHumidity)
+                {
+                    
                 if let temp : [Capteur.TempHum] = cle.array as? [Capteur.TempHum]
                 {
                     for x in 0..<cle.array.count
@@ -187,7 +213,21 @@ class targetTempHumViewController: controllerGrapheUI,ChartViewDelegate {
                     }
                     
                 }
+                }
                 
+                if(cle is SensorTemperature)
+                {
+                    if let temp : [Capteur.Temp] = cle.array as? [Capteur.Temp]
+                    {
+                      
+                        for x in 0..<cle.array.count
+                        {
+                            entries.append(ChartDataEntry(x: Double(x),y: Double(temp[x].getTemp())))
+                            compteur = compteur + 1
+                        }
+                        
+                    }
+                }
                 
             }
         }

@@ -9,7 +9,6 @@
 /* Begin PBXBuildFile section */
 		160BD56E25CDA39200F5ED01 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 160BD56C25CDA39200F5ED01 /* Main.storyboard */; };
 		160BD57025D13C2300F5ED01 /* AproposViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 160BD56F25D13C2300F5ED01 /* AproposViewController.swift */; };
-		160BD57225D1516A00F5ED01 /* targetTempViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 160BD57125D1516A00F5ED01 /* targetTempViewController.swift */; };
 		160BD57625D3DCBF00F5ED01 /* ConnectViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 160BD57525D3DCBF00F5ED01 /* ConnectViewController.swift */; };
 		160BD57A25D5235D00F5ED01 /* targetTempHumViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 160BD57925D5235D00F5ED01 /* targetTempHumViewController.swift */; };
 		16715DF525C40142007F0AC2 /* Event.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16715DF425C40142007F0AC2 /* Event.swift */; };
@@ -59,7 +58,6 @@
 		13A51FB9F8FB3D662E7D70E2 /* Pods_ios_blue_tool_boxTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_ios_blue_tool_boxTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		160BD56D25CDA39200F5ED01 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		160BD56F25D13C2300F5ED01 /* AproposViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AproposViewController.swift; sourceTree = "<group>"; };
-		160BD57125D1516A00F5ED01 /* targetTempViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = targetTempViewController.swift; sourceTree = "<group>"; };
 		160BD57525D3DCBF00F5ED01 /* ConnectViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConnectViewController.swift; sourceTree = "<group>"; };
 		160BD57925D5235D00F5ED01 /* targetTempHumViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = targetTempHumViewController.swift; sourceTree = "<group>"; };
 		16715DF425C40142007F0AC2 /* Event.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Event.swift; sourceTree = "<group>"; };
@@ -129,7 +127,6 @@
 				16D4398925E3A99600D4B4C7 /* controllerUI.swift */,
 				16D4399B25E3C91800D4B4C7 /* controllerGrapheUI.swift */,
 				16D4399F25E3EC1900D4B4C7 /* controllerEtatUI.swift */,
-				160BD57125D1516A00F5ED01 /* targetTempViewController.swift */,
 				160BD57925D5235D00F5ED01 /* targetTempHumViewController.swift */,
 				16ACF8AC25DA8705008E296A /* targetAngleViewController.swift */,
 				16D4397325DD28B500D4B4C7 /* targetIDViewController.swift */,
@@ -471,7 +468,6 @@
 				169B5E3C25B9C7C400627A55 /* ParticlePeripheral.swift in Sources */,
 				16CB845F25AC6EF80067E1A0 /* AppDelegate.swift in Sources */,
 				16CB846125AC6EF80067E1A0 /* SceneDelegate.swift in Sources */,
-				160BD57225D1516A00F5ED01 /* targetTempViewController.swift in Sources */,
 				16DFFB7E25B04E4800CCB063 /* ELAViewController.swift in Sources */,
 				16DFFB6025B0322700CCB063 /* SideMenu.swift in Sources */,
 				16D4398A25E3A99700D4B4C7 /* controllerUI.swift in Sources */,
