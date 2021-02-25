@@ -31,7 +31,9 @@ class ViewController:UIViewController,MenuControllerDelegate
         menu.delegate = self
         sideMenu?.leftSide = true;
         
+        
         SideMenuManager.default.leftMenuNavigationController = sideMenu
+        SideMenuManager.default.rightMenuNavigationController = sideMenu
         SideMenuManager.default.addPanGestureToPresent(toView: view)
         
         addChildControllers()
@@ -85,7 +87,7 @@ class ViewController:UIViewController,MenuControllerDelegate
         blueMAGController.view.isHidden = true
         blueANGController.view.isHidden = true
         debugController.view.isHidden = true
-        ELAController.view.isHidden = false
+        
         
         
         
@@ -97,7 +99,7 @@ class ViewController:UIViewController,MenuControllerDelegate
     
     
     func didSelectMenuItem(named: SideMenuItem) {
-        sideMenu?.dismiss(animated: true, completion: nil)
+    sideMenu?.dismiss(animated: true, completion: nil)
         
         title = named.rawValue
         
