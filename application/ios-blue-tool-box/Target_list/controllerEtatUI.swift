@@ -86,13 +86,13 @@ class controllerEtatUI: controllerUI {
                             */
                             
                             setEtat(image : UIimagelowPerson!,str : "Etat : déplacement")
-                            btnPerson.blink()
+                         //   btnPerson.blink()
                         }
                         else {
                        //     shapeLayer.removeAllAnimations()
                      //       shapeLayer.fillColor = UIColor.clear.cgColor
                             setEtat(image : UIimagelowPersonStatic!,str : "Etat : statique")
-                            btnPerson.stopBlink()
+                           // btnPerson.stopBlink()
                            
                         }
                     }
@@ -159,7 +159,16 @@ class controllerEtatUI: controllerUI {
         
         nameSensorUI(str: nameSensor)
         batteryUI(battery: battery)
-        logoUI(picture: "mouvement_blue")
+        if( typedata == SensorTypes.SensorMove)
+        {
+            logoUI(picture: "mouvement_blue")
+        }
+        
+        if( typedata == SensorTypes.SensorMagnetic)
+        {
+            logoUI(picture: "porte_blue")
+        }
+       
         
         scanner = Scanner1()
         scanner.initializeScanner()
@@ -205,13 +214,13 @@ class controllerEtatUI: controllerUI {
                     //    shapeLayer.fillColor = UIColor.yellow.cgColor
                         
                         setEtat(image : UIimagelowPerson!,str : "Etat : déplacement")
-                        btnPerson.blink()
+                //        btnPerson.blink()
                     }
                     else {
                         
                     //    shapeLayer.fillColor = UIColor.clear.cgColor
                         setEtat(image : UIimagelowPersonStatic!,str : "Etat : statique")
-                        btnPerson.stopBlink()
+                  //      btnPerson.stopBlink()
                         
                     }
                     
@@ -247,7 +256,7 @@ class controllerEtatUI: controllerUI {
         btnPerson.setImage(image, for: .normal)
         UInameseuil.text = str
         
-        btnPerson.frame = CGRect(x: 180, y: 250 ,width: 45, height: 45)
+        btnPerson.frame = CGRect(x: 170, y: 250 ,width: 45, height: 45)
                 
         
             self.view.addSubview(btnPerson)
