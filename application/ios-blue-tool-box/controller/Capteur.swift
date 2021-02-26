@@ -221,7 +221,7 @@ class Capteur:  UIViewController, UITableViewDataSource, UITableViewDelegate{
         if(typedata == SensorTypes.SensorTemperature)
                    {
         
-        self.navigationController?.pushViewController(targetTempHumViewController(nameSensor: string1 ,RSSI: RSSI, identifier : identifier, battery : battery, typedata : typedata,array : arr,displayObject : display), animated: true)
+        self.navigationController?.pushViewController(targetGrapheViewController(nameSensor: string1 ,RSSI: RSSI, identifier : identifier, battery : battery, typedata : typedata,array : arr,displayObject : display), animated: true)
          self.navigationController?.navigationBar.tintColor = .black
         }
         
@@ -229,7 +229,7 @@ class Capteur:  UIViewController, UITableViewDataSource, UITableViewDelegate{
         if(typedata == SensorTypes.SensorTemperatureHumidity)
                    {
         
-        self.navigationController?.pushViewController(targetTempHumViewController(nameSensor: string1 ,RSSI: RSSI, identifier : identifier, battery : battery, typedata : typedata,array : arr,displayObject : display), animated: true)
+        self.navigationController?.pushViewController(targetGrapheViewController(nameSensor: string1 ,RSSI: RSSI, identifier : identifier, battery : battery, typedata : typedata,array : arr,displayObject : display), animated: true)
          self.navigationController?.navigationBar.tintColor = .black
         }
         
@@ -252,7 +252,7 @@ class Capteur:  UIViewController, UITableViewDataSource, UITableViewDelegate{
        if(typedata == SensorTypes.SensorAngle)
                      {
           
-          self.navigationController?.pushViewController(targetAngleViewController(nameSensor: string1 ,RSSI: RSSI, identifier : identifier, battery : battery, typedata : typedata,array : arr,displayObject : display), animated: true)
+          self.navigationController?.pushViewController(targetGrapheViewController(nameSensor: string1 ,RSSI: RSSI, identifier : identifier, battery : battery, typedata : typedata,array : arr,displayObject : display), animated: true)
            self.navigationController?.navigationBar.tintColor = .black
           }
         

@@ -1,10 +1,11 @@
 import UIKit
 import Charts
-class targetTempHumViewController: controllerGrapheUI,ChartViewDelegate {
+class targetGrapheViewController: controllerGrapheUI,ChartViewDelegate {
     
     private let data1 = LineChartData()
     private var entries = [ChartDataEntry]()
     private var entries1 = [ChartDataEntry]()
+    private var entries2 = [ChartDataEntry]()
     
     private var lineChart = LineChartView()
     
@@ -70,6 +71,39 @@ class targetTempHumViewController: controllerGrapheUI,ChartViewDelegate {
             
             if(key == identifier)
             {
+                if(value is SensorAngle)
+                {
+                    if let tempHum = value as? SensorAngle
+                    {
+                        valueUI(donnees: "x : " + String( tempHum.getX()) + "mg  y :" + String(tempHum.getY()) + "mg  z : " +  String(tempHum.getZ()) + "mg ")
+                     
+                        entries.append(ChartDataEntry(x: Double(compteur),y: Double(tempHum.getX())))
+                        entries1.append(ChartDataEntry(x: Double(compteur),y: Double(tempHum.getY())))
+                        entries2.append(ChartDataEntry(x: Double(compteur),y: Double(tempHum.getZ())))
+                        compteur = compteur + 1
+                        compHum = compHum + 1
+                        
+                        let line2 = LineChartDataSet(entries: entries, label: "X")
+                        line2.setColor(.red)
+                        line2.setCircleColor(.red)
+                        let line1 = LineChartDataSet(entries: entries1, label: "Y")
+                        line1.setColor(.green)
+                        line1.setCircleColor(.green)
+                        let line3 = LineChartDataSet(entries: entries2, label: "Z")
+                        
+                        
+                       
+                        let data = LineChartData(dataSet: line1)
+                       
+                    
+                        data.addDataSet(line2)
+                        data.addDataSet(line3)
+                        lineChart.data = data
+                       
+                    }
+                    
+                }
+
                 
                 if(value is SensorTemperature)
                 {
@@ -135,6 +169,11 @@ class targetTempHumViewController: controllerGrapheUI,ChartViewDelegate {
         {
             entries1.removeFirst(1)
         }
+        
+        if(entries2.count >= 8)
+        {
+            entries2.removeFirst(1)
+        }
         return newobject
     }
     
@@ -153,9 +192,24 @@ class targetTempHumViewController: controllerGrapheUI,ChartViewDelegate {
 
         nameSensorUI(str: nameSensor)
         batteryUI(battery: battery)
+        if( typedata == SensorTypes.SensorTemperatureHumidity)
+        {
         logoUI(picture: "humidite_blue")
+        textUI(size: 110)
+        }
         
-        textUI(size: 130)
+        if( typedata == SensorTypes.SensorTemperature)
+        {
+        logoUI(picture: "temp")
+            textUI(size: 130)
+        }
+        
+        if( typedata == SensorTypes.SensorAngle)
+        {
+        logoUI(picture: "angle")
+            textUI(size: 30)
+        }
+       
         
     
         
@@ -196,6 +250,35 @@ class targetTempHumViewController: controllerGrapheUI,ChartViewDelegate {
             if( cle.identifier == identifier)
                 
             {
+                if( cle.typedata is SensorAngle)
+                {
+                    if let temp : [Capteur.Angle] = cle.array as? [Capteur.Angle]
+                    {
+                        for x in 0..<cle.array.count
+                        {
+                            entries.append(ChartDataEntry(x: Double(x),y: Double(temp[x].getX())))
+                            compteur = compteur + 1
+                        }
+                        
+                    }
+                    
+                    if let temp : [Capteur.Angle] = cle.array as? [Capteur.Angle]
+                    {
+                        for x in 0..<cle.array.count
+                        {
+                            entries1.append(ChartDataEntry(x: Double(x),y: Double(temp[x].getY())))
+                        }
+                        
+                    }
+                    if let temp : [Capteur.Angle] = cle.array as? [Capteur.Angle]
+                    {
+                        for x in 0..<cle.array.count
+                        {
+                            entries2.append(ChartDataEntry(x: Double(x),y: Double(temp[x].getZ())))
+                        }
+                    }
+                }
+                
                 if(cle is SensorTemperatureHumidity)
                 {
                     

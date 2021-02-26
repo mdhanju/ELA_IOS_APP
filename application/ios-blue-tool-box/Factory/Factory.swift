@@ -526,11 +526,11 @@ class SensorFactory
            
             if(String(sensorData![CBUUID(string: "2A3F")]!.debugDescription.dropFirst().dropFirst().dropLast()) == "1")
             {
-                id = SensorFactory.shared().getSensorMove(sensorTypes: .SensorMove, name: tagname , RSSI: Int(truncating: tagRSSI),batterylevel: battery, nbrPas: ConvertionToolbox.ConvertMagnetique1(str: String(data!)), etat: ConvertionToolbox.convertHexaToEtatInv(str: String(counter!)),identifier: tagidentifier)
+                id = SensorFactory.shared().getSensorMove(sensorTypes: .SensorMove, name: tagname , RSSI: Int(truncating: tagRSSI),batterylevel: battery, nbrPas: ConvertionToolbox.ConvertMagnetique1(str: String(counter!)), etat: ConvertionToolbox.convertHexaToEtatInv(str: String(counter!)),identifier: tagidentifier)
             }
             else if (String(sensorData![CBUUID(string: "2A3F")]!.debugDescription.dropFirst().dropFirst().dropLast()) == "0")
             {
-                id = SensorFactory.shared().getSensorMagnetic(sensorTypes: .SensorMagnetic, name: tagname , RSSI: Int(truncating: tagRSSI), batterylevel: battery, nbrObjet: ConvertionToolbox.ConvertMagnetique1(str: String(data!)), etat: ConvertionToolbox.convertHexaToEtatInv(str: String(counter!)), identifier: tagidentifier)
+                id = SensorFactory.shared().getSensorMagnetic(sensorTypes: .SensorMagnetic, name: tagname , RSSI: Int(truncating: tagRSSI), batterylevel: battery, nbrObjet: ConvertionToolbox.ConvertMagnetique1(str: String(counter!)), etat: ConvertionToolbox.convertHexaToEtatInv(str: String(counter!)), identifier: tagidentifier)
             }
         }
         else if(sensorData![CBUUID(string: "2AA1")] != nil)
