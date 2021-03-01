@@ -1,6 +1,6 @@
 import UIKit
 import Charts
-class targetGrapheViewController: controllerGrapheUI,ChartViewDelegate {
+class controllerGrapheUI: controllerUI, ChartViewDelegate {
     
     private let data1 = LineChartData()
     private var entries = [ChartDataEntry]()
@@ -176,14 +176,14 @@ class targetGrapheViewController: controllerGrapheUI,ChartViewDelegate {
         }
         return newobject
     }
-    func textUI(size : Int)
+    func textUI(x : Int,size : Float)
     {
         UItext.text = ""
         UItext.textColor = UIColor.black
-        UItext.font = UIFont.systemFont(ofSize: 25.0)
+        UItext.font = UIFont.systemFont(ofSize: CGFloat(size))
         UItext.isUserInteractionEnabled = false
-        UItext.font = UIFont.boldSystemFont(ofSize: 25)
-        UItext.frame = CGRect(x: size, y: 150, width: 350, height: 100)
+        UItext.font = UIFont.boldSystemFont(ofSize: CGFloat(size))
+        UItext.frame = CGRect(x: x, y: 150, width: 350, height: 100)
         UItext.backgroundColor = .none
         self.view.addSubview(UItext)
         self.view.bringSubviewToFront(UItext)
@@ -213,19 +213,19 @@ class targetGrapheViewController: controllerGrapheUI,ChartViewDelegate {
         if( typedata == SensorTypes.SensorTemperatureHumidity)
         {
             logoUI(picture: "humidite_blue")
-            textUI(size: 110)
+            textUI(x: 110,size: 25.0)
         }
         
         if( typedata == SensorTypes.SensorTemperature)
         {
             logoUI(picture: "temp")
-            textUI(size: 130)
+            textUI(x: 130,size : 25.0)
         }
         
         if( typedata == SensorTypes.SensorAngle)
         {
             logoUI(picture: "angle")
-            textUI(size: 30)
+            textUI(x: 30,size : 22.0)
         }
         
         
