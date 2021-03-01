@@ -9,7 +9,7 @@ class controllerGrapheUI: controllerUI {
     
     
     var UItext = UITextView()
-
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -22,9 +22,9 @@ class controllerGrapheUI: controllerUI {
         self.view.addSubview(lineBack)
         
         
-       
-       
-
+        
+        
+        
         // Do any additional setup after loading the view.
     }
     func textUI(size : Int)
@@ -47,16 +47,16 @@ class controllerGrapheUI: controllerUI {
         UItext.text = donnees
     }
     
-  
-
+    
+    
     /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
-    }
-    */
-
+     // MARK: - Navigation
+     
+     // In a storyboard-based application, you will often want to do a little preparation before navigation
+     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+     // Get the new view controller using segue.destination.
+     // Pass the selected object to the new view controller.
+     }
+     */
+    
 }

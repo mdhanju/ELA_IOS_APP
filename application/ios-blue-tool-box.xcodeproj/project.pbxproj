@@ -37,7 +37,6 @@
 		16DFFB8825B04EA800CCB063 /* BlueANGViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16DFFB8725B04EA800CCB063 /* BlueANGViewController.swift */; };
 		16DFFB8A25B04EB700CCB063 /* DebugViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16DFFB8925B04EB700CCB063 /* DebugViewController.swift */; };
 		16E3AB5025C85B81001426DD /* Capteur.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16E3AB4F25C85B81001426DD /* Capteur.swift */; };
-		16E3AB5225C98C37001426DD /* chart.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16E3AB5125C98C37001426DD /* chart.swift */; };
 		6A15620FD4B806F2DC20D453 /* Pods_ios_blue_tool_boxTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 13A51FB9F8FB3D662E7D70E2 /* Pods_ios_blue_tool_boxTests.framework */; };
 		F345DA6157E5EA62E10A95E8 /* Pods_ios_blue_tool_box.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D656AE1D4970AA6697C7B341 /* Pods_ios_blue_tool_box.framework */; };
 /* End PBXBuildFile section */
@@ -87,7 +86,6 @@
 		16DFFB8725B04EA800CCB063 /* BlueANGViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BlueANGViewController.swift; sourceTree = "<group>"; };
 		16DFFB8925B04EB700CCB063 /* DebugViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DebugViewController.swift; sourceTree = "<group>"; };
 		16E3AB4F25C85B81001426DD /* Capteur.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Capteur.swift; sourceTree = "<group>"; };
-		16E3AB5125C98C37001426DD /* chart.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = chart.swift; sourceTree = "<group>"; };
 		4FB62F6858D95B7DCB425CCA /* Pods-ios-blue-tool-boxTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ios-blue-tool-boxTests.release.xcconfig"; path = "Target Support Files/Pods-ios-blue-tool-boxTests/Pods-ios-blue-tool-boxTests.release.xcconfig"; sourceTree = "<group>"; };
 		52182F6E82FCD44DFF8525BF /* Pods-burger.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-burger.release.xcconfig"; path = "Target Support Files/Pods-burger/Pods-burger.release.xcconfig"; sourceTree = "<group>"; };
 		9666F81F13CBD837B9945F81 /* Pods-burger.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-burger.debug.xcconfig"; path = "Target Support Files/Pods-burger/Pods-burger.debug.xcconfig"; sourceTree = "<group>"; };
@@ -160,7 +158,6 @@
 				16DFFB5F25B0322700CCB063 /* SideMenu.swift */,
 				16715DF425C40142007F0AC2 /* Event.swift */,
 				16E3AB4F25C85B81001426DD /* Capteur.swift */,
-				16E3AB5125C98C37001426DD /* chart.swift */,
 			);
 			path = controller;
 			sourceTree = "<group>";
@@ -475,7 +472,6 @@
 				16DFFB8A25B04EB700CCB063 /* DebugViewController.swift in Sources */,
 				160BD57625D3DCBF00F5ED01 /* ConnectViewController.swift in Sources */,
 				16DFFB8425B04E8600CCB063 /* BlueMOVViewController.swift in Sources */,
-				16E3AB5225C98C37001426DD /* chart.swift in Sources */,
 				16DFFB8625B04E9500CCB063 /* BlueMAGViewController.swift in Sources */,
 				160BD57025D13C2300F5ED01 /* AproposViewController.swift in Sources */,
 				16D439A025E3EC1900D4B4C7 /* controllerEtatUI.swift in Sources */,

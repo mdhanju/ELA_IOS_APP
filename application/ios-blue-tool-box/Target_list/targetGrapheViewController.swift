@@ -61,7 +61,7 @@ class targetGrapheViewController: controllerGrapheUI,ChartViewDelegate {
     
     func updateSensorUI(data: ([String : Sensor])) -> Capteur.DisplayObject {
         
-     
+        
         let objectTemp1 = Capteur.Temp(temp: 0)
         
         let newobject : Capteur.DisplayObject = Capteur.DisplayObject(name: "null", RSSI: 0, identifier: "",battery : 0, typedata : SensorTypes.SensorID, array: [objectTemp1])
@@ -76,7 +76,7 @@ class targetGrapheViewController: controllerGrapheUI,ChartViewDelegate {
                     if let tempHum = value as? SensorAngle
                     {
                         valueUI(donnees: "x : " + String( tempHum.getX()) + "mg  y :" + String(tempHum.getY()) + "mg  z : " +  String(tempHum.getZ()) + "mg ")
-                     
+                        
                         entries.append(ChartDataEntry(x: Double(compteur),y: Double(tempHum.getX())))
                         entries1.append(ChartDataEntry(x: Double(compteur),y: Double(tempHum.getY())))
                         entries2.append(ChartDataEntry(x: Double(compteur),y: Double(tempHum.getZ())))
@@ -92,26 +92,26 @@ class targetGrapheViewController: controllerGrapheUI,ChartViewDelegate {
                         let line3 = LineChartDataSet(entries: entries2, label: "Z")
                         
                         
-                       
+                        
                         let data = LineChartData(dataSet: line1)
-                       
-                    
+                        
+                        
                         data.addDataSet(line2)
                         data.addDataSet(line3)
                         lineChart.data = data
-                       
+                        
                     }
                     
                 }
-
+                
                 
                 if(value is SensorTemperature)
                 {
                     if let tempHum = value as? SensorTemperature
                     {
-                       // UItemperature.text = String(tempHum.getTemp()) + "°C"
+                        // UItemperature.text = String(tempHum.getTemp()) + "°C"
                         //donnee = String(tempHum.getTemp()) + "°C"
-                    valueUI(donnees: String(tempHum.getTemp()) + "°C")
+                        valueUI(donnees: String(tempHum.getTemp()) + "°C")
                         entries.append(ChartDataEntry(x: Double(compteur),y: Double(tempHum.getTemp())))
                         compteur = compteur + 1
                         compHum = compHum + 1
@@ -121,7 +121,7 @@ class targetGrapheViewController: controllerGrapheUI,ChartViewDelegate {
                         set.setCircleColor(UIColor(hexString: "#336699"))
                         let data = LineChartData(dataSet: set)
                         lineChart.data = data
-                       
+                        
                     }
                     
                 }
@@ -133,8 +133,8 @@ class targetGrapheViewController: controllerGrapheUI,ChartViewDelegate {
                     if let tempHum = value as? SensorTemperatureHumidity
                     {
                         valueUI(donnees: String(tempHum.getTemp()) + "°C   " + String(tempHum.getHum()) + "%")
-                 
-                       
+                        
+                        
                         entries.append(ChartDataEntry(x: Double(compteur),y: Double(tempHum.getTemp())))
                         entries1.append(ChartDataEntry(x: Double(compteur),y: Double(tempHum.getHum())))
                         compteur = compteur + 1
@@ -145,10 +145,10 @@ class targetGrapheViewController: controllerGrapheUI,ChartViewDelegate {
                         let line1 = LineChartDataSet(entries: entries1, label: "humidite")
                         
                         
-                       
+                        
                         let data = LineChartData(dataSet: line1)
-                       
-                    
+                        
+                        
                         data.addDataSet(line2)
                         lineChart.data = data
                         
@@ -179,39 +179,39 @@ class targetGrapheViewController: controllerGrapheUI,ChartViewDelegate {
     
     
     override func viewDidLoad() {
-
+        
         super.viewDidLoad()
-      
+        
         scanner = Scanner1()
         scanner.initializeScanner()
         scanner.dictionnarySensor.addHandler(handler : handleNewObjectAvailable)
         
         
-    
         
-
+        
+        
         nameSensorUI(str: nameSensor)
         batteryUI(battery: battery)
         if( typedata == SensorTypes.SensorTemperatureHumidity)
         {
-        logoUI(picture: "humidite_blue")
-        textUI(size: 110)
+            logoUI(picture: "humidite_blue")
+            textUI(size: 110)
         }
         
         if( typedata == SensorTypes.SensorTemperature)
         {
-        logoUI(picture: "temp")
+            logoUI(picture: "temp")
             textUI(size: 130)
         }
         
         if( typedata == SensorTypes.SensorAngle)
         {
-        logoUI(picture: "angle")
+            logoUI(picture: "angle")
             textUI(size: 30)
         }
-       
         
-    
+        
+        
         
         
         let imageArray = "sklia"
@@ -233,7 +233,7 @@ class targetGrapheViewController: controllerGrapheUI,ChartViewDelegate {
         
         
         lineChart.frame = CGRect(x: 0, y: 300,width: 350, height:250)
-   //     lineChart.center = view.center
+        //     lineChart.center = view.center
         view.addSubview(lineChart)
         
         let line = UIView(frame: CGRect(x: 40, y: 150, width: 290, height: 3))
@@ -248,7 +248,7 @@ class targetGrapheViewController: controllerGrapheUI,ChartViewDelegate {
         
         for cle in displayObject {
             if( cle.identifier == identifier)
-                
+            
             {
                 if( cle.typedata is SensorAngle)
                 {
@@ -282,27 +282,27 @@ class targetGrapheViewController: controllerGrapheUI,ChartViewDelegate {
                 if(cle is SensorTemperatureHumidity)
                 {
                     
-                if let temp : [Capteur.TempHum] = cle.array as? [Capteur.TempHum]
-                {
-                    for x in 0..<cle.array.count
+                    if let temp : [Capteur.TempHum] = cle.array as? [Capteur.TempHum]
                     {
-                        print("la val de x = " + String(x))
-                        print("la val de compteur = " + String(compteur))
+                        for x in 0..<cle.array.count
+                        {
+                            print("la val de x = " + String(x))
+                            print("la val de compteur = " + String(compteur))
+                            
+                            entries.append(ChartDataEntry(x: Double(x),y: Double(temp[x].getTemp())))
+                            entries1.append(ChartDataEntry(x: Double(x),y: Double(temp[x].getHum())))
+                            compteur = compteur + 1
+                            compHum = compHum + 1
+                        }
                         
-                        entries.append(ChartDataEntry(x: Double(x),y: Double(temp[x].getTemp())))
-                        entries1.append(ChartDataEntry(x: Double(x),y: Double(temp[x].getHum())))
-                        compteur = compteur + 1
-                        compHum = compHum + 1
                     }
-                    
-                }
                 }
                 
                 if(cle is SensorTemperature)
                 {
                     if let temp : [Capteur.Temp] = cle.array as? [Capteur.Temp]
                     {
-                      
+                        
                         for x in 0..<cle.array.count
                         {
                             entries.append(ChartDataEntry(x: Double(x),y: Double(temp[x].getTemp())))
@@ -323,8 +323,8 @@ class targetGrapheViewController: controllerGrapheUI,ChartViewDelegate {
         line2.setCircleColor(.red)
         let data = LineChartData(dataSet: line1)
         data.addDataSet(line2)
-     //   data1.addDataSet(line1)
-       // data1.addDataSet(line2)
+        //   data1.addDataSet(line1)
+        // data1.addDataSet(line2)
         lineChart.data = data
         
     }

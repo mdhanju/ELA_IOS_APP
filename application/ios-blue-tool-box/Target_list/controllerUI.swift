@@ -64,17 +64,17 @@ extension UIView {
 }
 
 class controllerUI: UIViewController {
- 
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         view.backgroundColor = .white
-   
+        
         
     }
     
-
     
-  public func nameSensorUI(str : String)
+    
+    public func nameSensorUI(str : String)
     {
         let UInameSensor = UITextView()
         UInameSensor.text = str

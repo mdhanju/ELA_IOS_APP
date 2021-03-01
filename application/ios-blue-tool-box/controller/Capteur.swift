@@ -14,7 +14,7 @@ class Capteur:  UIViewController, UITableViewDataSource, UITableViewDelegate{
     private var isStopButton = false
     
     public var dictionnarySensorSacond : Event<([String : Sensor])>? = nil
-
+    
     public class Cap
     {
         
@@ -22,52 +22,52 @@ class Capteur:  UIViewController, UITableViewDataSource, UITableViewDelegate{
     
     public class Move : Cap
     {
-       private var nbrPas: Int = 0
-       private var etat : Bool = false
+        private var nbrPas: Int = 0
+        private var etat : Bool = false
         
-      init(nbrPas : Int, etat : Bool) {
-        self.nbrPas = nbrPas
-        self.etat = etat
+        init(nbrPas : Int, etat : Bool) {
+            self.nbrPas = nbrPas
+            self.etat = etat
         }
-      func getNbrPas()-> Int
-      {
-        return nbrPas
-      }
-      
-      func getEtat()-> Bool
-      {
-        return etat
-      }
-    
+        func getNbrPas()-> Int
+        {
+            return nbrPas
+        }
+        
+        func getEtat()-> Bool
+        {
+            return etat
+        }
+        
     }
     
     
     public class Mag : Cap
     {
-       private var nbrMagnet: Int = 0
-       private var etat : Bool = false
+        private var nbrMagnet: Int = 0
+        private var etat : Bool = false
         
-      init(nbrMagnet : Int, etat : Bool) {
-        self.nbrMagnet = nbrMagnet
-        self.etat = etat
+        init(nbrMagnet : Int, etat : Bool) {
+            self.nbrMagnet = nbrMagnet
+            self.etat = etat
         }
         
         func getNbrMagnet()-> Int
         {
-          return nbrMagnet
+            return nbrMagnet
         }
         
         func getEtat()-> Bool
         {
-          return etat
+            return etat
         }
     }
     
     public class Angle : Cap
     {
-       private var x : Int = 0
-       private  var y : Int = 0
-       private var z : Int = 0
+        private var x : Int = 0
+        private  var y : Int = 0
+        private var z : Int = 0
         
         init(x: Int,y:Int, z:Int) {
             self.x = x
@@ -76,16 +76,16 @@ class Capteur:  UIViewController, UITableViewDataSource, UITableViewDelegate{
         }
         func getX()-> Int
         {
-          return x
+            return x
         }
         
         func getY()-> Int
         {
-          return y
+            return y
         }
         func getZ()-> Int
         {
-          return z
+            return z
         }
         
     }
@@ -143,7 +143,7 @@ class Capteur:  UIViewController, UITableViewDataSource, UITableViewDelegate{
             self.array = array
         }
         
-   
+        
         public func addData(data : Cap)
         {
             self.array.append(data)
@@ -219,72 +219,72 @@ class Capteur:  UIViewController, UITableViewDataSource, UITableViewDelegate{
         
         // si c'est un capteur de temperature
         if(typedata == SensorTypes.SensorTemperature)
-                   {
-        
-        self.navigationController?.pushViewController(targetGrapheViewController(nameSensor: string1 ,RSSI: RSSI, identifier : identifier, battery : battery, typedata : typedata,array : arr,displayObject : display), animated: true)
-         self.navigationController?.navigationBar.tintColor = .black
+        {
+            
+            self.navigationController?.pushViewController(targetGrapheViewController(nameSensor: string1 ,RSSI: RSSI, identifier : identifier, battery : battery, typedata : typedata,array : arr,displayObject : display), animated: true)
+            self.navigationController?.navigationBar.tintColor = .black
         }
         
         
         if(typedata == SensorTypes.SensorTemperatureHumidity)
-                   {
-        
-        self.navigationController?.pushViewController(targetGrapheViewController(nameSensor: string1 ,RSSI: RSSI, identifier : identifier, battery : battery, typedata : typedata,array : arr,displayObject : display), animated: true)
-         self.navigationController?.navigationBar.tintColor = .black
+        {
+            
+            self.navigationController?.pushViewController(targetGrapheViewController(nameSensor: string1 ,RSSI: RSSI, identifier : identifier, battery : battery, typedata : typedata,array : arr,displayObject : display), animated: true)
+            self.navigationController?.navigationBar.tintColor = .black
         }
         
         
         if(typedata == SensorTypes.SensorMove)
-                    {
-         
-         self.navigationController?.pushViewController(controllerEtatUI(nameSensor: string1 ,RSSI: RSSI, identifier : identifier, battery : battery, typedata : typedata,array : arr,displayObject : display), animated: true)
-          self.navigationController?.navigationBar.tintColor = .black
-         }
+        {
+            
+            self.navigationController?.pushViewController(controllerEtatUI(nameSensor: string1 ,RSSI: RSSI, identifier : identifier, battery : battery, typedata : typedata,array : arr,displayObject : display), animated: true)
+            self.navigationController?.navigationBar.tintColor = .black
+        }
         
         
         if(typedata == SensorTypes.SensorMagnetic)
-                     {
-          
-          self.navigationController?.pushViewController(controllerEtatUI(nameSensor: string1 ,RSSI: RSSI, identifier : identifier, battery : battery, typedata : typedata,array : arr,displayObject : display), animated: true)
-           self.navigationController?.navigationBar.tintColor = .black
-          }
+        {
+            
+            self.navigationController?.pushViewController(controllerEtatUI(nameSensor: string1 ,RSSI: RSSI, identifier : identifier, battery : battery, typedata : typedata,array : arr,displayObject : display), animated: true)
+            self.navigationController?.navigationBar.tintColor = .black
+        }
         
-       if(typedata == SensorTypes.SensorAngle)
-                     {
-          
-          self.navigationController?.pushViewController(targetGrapheViewController(nameSensor: string1 ,RSSI: RSSI, identifier : identifier, battery : battery, typedata : typedata,array : arr,displayObject : display), animated: true)
-           self.navigationController?.navigationBar.tintColor = .black
-          }
+        if(typedata == SensorTypes.SensorAngle)
+        {
+            
+            self.navigationController?.pushViewController(targetGrapheViewController(nameSensor: string1 ,RSSI: RSSI, identifier : identifier, battery : battery, typedata : typedata,array : arr,displayObject : display), animated: true)
+            self.navigationController?.navigationBar.tintColor = .black
+        }
         
         if(typedata == SensorTypes.SensorID)
-                      {
-           
-           self.navigationController?.pushViewController(targetIDViewController(nameSensor: string1 ,RSSI: RSSI, identifier : identifier, battery : battery, typedata : typedata,array : arr,displayObject : display), animated: true)
+        {
+            
+            self.navigationController?.pushViewController(targetIDViewController(nameSensor: string1 ,RSSI: RSSI, identifier : identifier, battery : battery, typedata : typedata,array : arr,displayObject : display), animated: true)
             self.navigationController?.navigationBar.tintColor = .black
-           }
+        }
         //
- 
+        
     }
     
-
+    
     private let tableview : UITableView =
-    {
-        let tableview = UITableView()
-        tableview.register(UITableViewCell.self, forCellReuseIdentifier: "cell")
-        
-        tableview.estimatedRowHeight = 0
-        tableview.estimatedSectionHeaderHeight = 0
-        tableview.estimatedSectionFooterHeight = 0
-        tableview.rowHeight = 70
-        tableview.frame.size.height = tableview.contentSize.height
-        tableview.allowsMultipleSelection = false
-        tableview.allowsMultipleSelectionDuringEditing = false
-        tableview.allowsSelectionDuringEditing = false
-        
-        
-        return tableview
-        
-    }()
+        {
+            let tableview = UITableView()
+            tableview.register(UITableViewCell.self, forCellReuseIdentifier: "cell")
+            
+            tableview.estimatedRowHeight = 0
+            tableview.estimatedSectionHeaderHeight = 0
+            tableview.estimatedSectionFooterHeight = 0
+            tableview.rowHeight = 70
+            tableview.frame.size.height = tableview.contentSize.height
+            tableview.allowsMultipleSelection = false
+            tableview.allowsMultipleSelectionDuringEditing = false
+            tableview.allowsSelectionDuringEditing = false
+            
+            
+            return tableview
+            
+        }()
     
     override func viewDidLoad()
     {
@@ -413,20 +413,20 @@ class Capteur:  UIViewController, UITableViewDataSource, UITableViewDelegate{
                         if let temp = value as? SensorTemperature
                         {
                             let objectTemp = Temp(temp: temp.getTemp())
-                          //  newobject = DisplayObject(name : cle.name, RSSI : cle.RSSI, identifier:  cle.identifier, battery: cle.battery, typedata : cle.typedata,array: [objectTemp] )
+                            //  newobject = DisplayObject(name : cle.name, RSSI : cle.RSSI, identifier:  cle.identifier, battery: cle.battery, typedata : cle.typedata,array: [objectTemp] )
                             //  display.addData(data: objectTemp)
                             cle.addData(data: objectTemp)
                         }
                     }
                     
-                  
+                    
                     
                     if(value is SensorTemperatureHumidity)
                     {
                         if let hum = value as? SensorTemperatureHumidity
                         {
                             let objectTempHum = TempHum(temp: hum.getTemp(), hum: hum.getHum())
- 
+                            
                             cle.addData(data: objectTempHum)
                         }
                     }
@@ -437,7 +437,7 @@ class Capteur:  UIViewController, UITableViewDataSource, UITableViewDelegate{
                         {
                             let objectMove =
                                 Move(nbrPas: move.getNbrPas(), etat: move.getEtat())
-    
+                            
                             cle.addData(data: objectMove)
                         }
                     }
@@ -448,7 +448,7 @@ class Capteur:  UIViewController, UITableViewDataSource, UITableViewDelegate{
                         {
                             let objectMove =
                                 Mag(nbrMagnet: mag.getNbrObject(), etat: mag.getEtat())
-              
+                            
                             cle.addData(data: objectMove)
                         }
                     }
@@ -463,12 +463,12 @@ class Capteur:  UIViewController, UITableViewDataSource, UITableViewDelegate{
                         }
                     }
                     
-           
-                    
-              
                     
                     
-           trouve  = false
+                    
+                    
+                    
+                    trouve  = false
                 }
             }
             if(trouve == true)
@@ -476,12 +476,12 @@ class Capteur:  UIViewController, UITableViewDataSource, UITableViewDelegate{
                 if(value is SensorID)
                 {
                     
-                  
-                       
-                        newobject = DisplayObject(name: value.name, RSSI: value.RSSI, identifier: value.idenfitfier, battery: value.batterylevel, typedata : value.sensorTypes )
+                    
+                    
+                    newobject = DisplayObject(name: value.name, RSSI: value.RSSI, identifier: value.idenfitfier, battery: value.batterylevel, typedata : value.sensorTypes )
                     
                 }
-            
+                
                 
                 if(value is SensorTemperature)
                 {
@@ -509,8 +509,8 @@ class Capteur:  UIViewController, UITableViewDataSource, UITableViewDelegate{
                     
                     if let move = value as? SensorMove
                     {
-                          let objectMove =
-                                                     Move(nbrPas: move.getNbrPas(), etat: move.getEtat())
+                        let objectMove =
+                            Move(nbrPas: move.getNbrPas(), etat: move.getEtat())
                         newobject = DisplayObject(name: value.name, RSSI: value.RSSI, identifier: value.idenfitfier, battery: value.batterylevel, typedata : value.sensorTypes,array: [objectMove] )
                     }
                 }
@@ -521,7 +521,7 @@ class Capteur:  UIViewController, UITableViewDataSource, UITableViewDelegate{
                     
                     if let mag = value as? SensorMagnetic
                     {
-                          let objectMove =
+                        let objectMove =
                             Mag(nbrMagnet: mag.getNbrObject(), etat: mag.getEtat())
                         newobject = DisplayObject(name: value.name, RSSI: value.RSSI, identifier: value.idenfitfier, battery: value.batterylevel, typedata : value.sensorTypes,array: [objectMove] )
                     }
@@ -533,7 +533,7 @@ class Capteur:  UIViewController, UITableViewDataSource, UITableViewDelegate{
                     
                     if let angle = value as? SensorAngle
                     {
-                          let objectMove =
+                        let objectMove =
                             Angle(x: angle.getX(), y: angle.getY(), z: angle.getZ())
                         newobject = DisplayObject(name: value.name, RSSI: value.RSSI, identifier: value.idenfitfier, battery: value.batterylevel, typedata : value.sensorTypes,array: [objectMove] )
                     }

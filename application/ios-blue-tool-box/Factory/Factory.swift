@@ -135,12 +135,12 @@ class SensorMove: Sensor
     
     func getNbrPas()-> Int
     {
-      return nbrPas
+        return nbrPas
     }
     
     func getEtat()-> Bool
     {
-      return etat
+        return etat
     }
     
     override  func ExecuterCommmande()
@@ -192,16 +192,16 @@ class SensorAngle: Sensor
     
     func getX()-> Int
     {
-      return x
+        return x
     }
     
     func getY()-> Int
     {
-      return y
+        return y
     }
     func getZ()-> Int
     {
-      return z
+        return z
     }
     
     override func ExecuterCommmande()
@@ -364,8 +364,8 @@ class SensorFactory
                 dictionnarySensor[tagidentifier] = mov
             }
         }
-            
-            
+        
+        
         else if(sensor is SensorAngle)
         {
             if let angle = sensor as? SensorAngle
@@ -374,7 +374,7 @@ class SensorFactory
                 
             }
         }
-            
+        
         else if(sensor is SensorTemperature)
         {
             if let tempfloat = sensor as? SensorTemperature
@@ -383,8 +383,8 @@ class SensorFactory
                 
             }
         }
-            
-            
+        
+        
         else if(sensor is SensorTemperatureHumidity)
         {
             if let humidity = sensor as? SensorTemperatureHumidity
@@ -393,9 +393,9 @@ class SensorFactory
                 
             }
         }
-            
-            
-            
+        
+        
+        
         else if(sensor is SensorMagnetic)
         {
             if let magnetic = sensor as? SensorMagnetic
@@ -436,7 +436,7 @@ class SensorFactory
                 
             }
         }
-            
+        
         else if(id is SensorTemperature)
         {
             if let tempfloat = id as? SensorTemperature
@@ -446,10 +446,10 @@ class SensorFactory
                 
             }
         }
-            
-            
-            
-            
+        
+        
+        
+        
         else if(id is SensorTemperatureHumidity)
         {
             if let humidity = id as? SensorTemperatureHumidity
@@ -460,9 +460,9 @@ class SensorFactory
                 
             }
         }
-            
-            
-            
+        
+        
+        
         else if(id is SensorMagnetic)
         {
             if let magnetic = id as? SensorMagnetic
@@ -507,7 +507,7 @@ class SensorFactory
         
         //MARK:: move avec batterie
         if( sensorData![CBUUID(string: "2A3F")] != nil
-            && sensorData![CBUUID(string: "2A06")] != nil)
+                && sensorData![CBUUID(string: "2A06")] != nil)
         {
             let counter = sensorData![CBUUID(string: "2A06")]?.debugDescription.dropFirst().dropLast()
             let data = sensorData![CBUUID(string: "2A3F")]?.debugDescription.dropFirst().dropLast()
@@ -523,7 +523,7 @@ class SensorFactory
                 let tempStrBattery : String? = sensorData![CBUUID(string: "2A19")]?.debugDescription.dropFirst().dropLast().description
                 battery = ConvertionToolbox.ConvertAdvertisingValue(str: String(tempStrBattery!))
             }
-           
+            
             if(String(sensorData![CBUUID(string: "2A3F")]!.debugDescription.dropFirst().dropFirst().dropLast()) == "1")
             {
                 id = SensorFactory.shared().getSensorMove(sensorTypes: .SensorMove, name: tagname , RSSI: Int(truncating: tagRSSI),batterylevel: battery, nbrPas: ConvertionToolbox.ConvertMagnetique1(str: String(counter!)), etat: ConvertionToolbox.convertHexaToEtatInv(str: String(counter!)),identifier: tagidentifier)
@@ -551,8 +551,8 @@ class SensorFactory
             id = SensorFactory.shared().getSensorAngle(sensorTypes: .SensorAngle, name: tagname, RSSI: Int(truncating: tagRSSI),batterylevel: battery,  x: Int(ConvertionToolbox.ConvertAngle(str: ConvertionToolbox.ANG(str: String(ang!), index: 0))), y: Int(ConvertionToolbox.ConvertAngle(str: ConvertionToolbox.ANG(str: String(ang!), index: 4))), z: Int(ConvertionToolbox.ConvertAngle(str: ConvertionToolbox.ANG(str: String(ang!), index: 9))),identifier: tagidentifier)
             
         }
-            
-            
+        
+        
         else if(sensorData![CBUUID(string: "2A6E")] != nil && sensorData![CBUUID(string: "2A6F")] != nil)
         {
             let temp = sensorData![CBUUID(string: "2A6E")]?.debugDescription.dropFirst().dropLast()

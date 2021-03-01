@@ -18,7 +18,7 @@ class Scanner1: NSObject, CBPeripheralDelegate, CBCentralManagerDelegate {
     // MARK:
     private var sensorTypeFiler : SensorTypes? = nil
     
-
+    
     
     override init()
     {
@@ -44,12 +44,12 @@ class Scanner1: NSObject, CBPeripheralDelegate, CBCentralManagerDelegate {
     func initializeScanner()
     {
         centralManager = CBCentralManager(delegate: self, queue: nil)
-       
-
+        
+        
         
         
     }
-   
+    
     // https://community.purplegiraffe.fr/t/se-connecter-en-bluetooth-pour-echanger-des-donnees/665
     
     /**
@@ -80,7 +80,7 @@ class Scanner1: NSObject, CBPeripheralDelegate, CBCentralManagerDelegate {
     
     
     
-   
+    
     /**
      * \fn initializeScanner
      * \brief handle the result of the scan : filter type of sensor and we add dictionnary to the array
@@ -92,18 +92,18 @@ class Scanner1: NSObject, CBPeripheralDelegate, CBCentralManagerDelegate {
         {
             let sensorData = advertisementData[CBAdvertisementDataServiceDataKey] as? Dictionary<CBUUID,NSData>
             
-     
-           
-                
-           
-                // And finally, connect to the peripheral.
-           //     os_log("Connecting to perhiperal %@", peripheral)
+            
+            
+            
+            
+            // And finally, connect to the peripheral.
+            //     os_log("Connecting to perhiperal %@", peripheral)
             //    centralManager.connect(peripheral, options: nil)
-           
-          //      os_log("Connecting to peripheral %@", peripheral)
-       
-              //  centralManager.connect(peripheral, options: nil)
-         
+            
+            //      os_log("Connecting to peripheral %@", peripheral)
+            
+            //  centralManager.connect(peripheral, options: nil)
+            
             
             
             
@@ -114,8 +114,8 @@ class Scanner1: NSObject, CBPeripheralDelegate, CBCentralManagerDelegate {
             
             
             
-       
-
+            
+            
             
             if(identifier.count <= 0)
             {
@@ -131,20 +131,20 @@ class Scanner1: NSObject, CBPeripheralDelegate, CBCentralManagerDelegate {
                 {
                     
                     
-                   if(nil == self.sensorTypeFiler)
+                    if(nil == self.sensorTypeFiler)
                     {
                         dictionnarySensor.raise(data : [peripheral.identifier.description:id!])
                     }
                     else
                     {
- 
+                        
                         
                         if(self.sensorTypeFiler == id?.sensorTypes)
                         {
                             dictionnarySensor.raise(data : [peripheral.identifier.description:id!])
                         }
-                   }
-                     
+                    }
+                    
                 }
                 
             }
@@ -154,8 +154,8 @@ class Scanner1: NSObject, CBPeripheralDelegate, CBCentralManagerDelegate {
     }
     
     
-  
-        
+    
+    
     
     
 }

@@ -9,7 +9,7 @@ class targetIDViewController: controllerUI {
     private let typedata : SensorTypes
     private let array : [Capteur.Cap]
     private let displayObject : [Capteur.DisplayObject]
-
+    
     init(nameSensor : String,RSSI: Int, identifier : String, battery : Int, typedata : SensorTypes,array: [Capteur.Cap],displayObject : [Capteur.DisplayObject]) {
         self.nameSensor = nameSensor
         self.RSSI = RSSI
@@ -31,18 +31,18 @@ class targetIDViewController: controllerUI {
         self.navigationController?.pushViewController(ConnectViewController(nameSensor: nameSensor, RSSI: RSSI, identifier: identifier, battery: battery, typedata:typedata, array: array, displayObject: displayObject), animated: true)
         view.layoutIfNeeded()
     }
-
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
         view.backgroundColor = .white
         
-
-    
+        
+        
         nameSensorUI(str: nameSensor)
         batteryUI(battery: battery)
         logoUI(picture: "blue")
         
     }
-
+    
 }

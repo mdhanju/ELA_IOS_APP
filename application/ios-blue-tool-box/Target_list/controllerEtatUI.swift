@@ -2,25 +2,25 @@ import UIKit
 import UICircularProgressRing
 class controllerEtatUI: controllerUI {
     let circlePath = UIBezierPath(arcCenter: CGPoint(x: 180, y: 250), radius: CGFloat(20), startAngle: CGFloat(0), endAngle: CGFloat(Double.pi * 2), clockwise: true)
-        
+    
     let shapeLayer = CAShapeLayer()
     
-
-     let nameSensor : String
-     let RSSI : Int
-     let identifier : String
-     let battery : Int
-     let typedata : SensorTypes
-     let  array : [Capteur.Cap]
-     var  displayObject : [Capteur.DisplayObject]
+    
+    let nameSensor : String
+    let RSSI : Int
+    let identifier : String
+    let battery : Int
+    let typedata : SensorTypes
+    let  array : [Capteur.Cap]
+    var  displayObject : [Capteur.DisplayObject]
     
     
     private var capteur: Capteur!
-   
+    
     private let UIimagelowPerson = UIImage(named: "PersonRunning")
     private let UIimagelowPersonStatic = UIImage(named: "Person")
     private let progressRing = UICircularProgressRing(frame:  CGRect(x: 70, y: 350, width: 230, height: 230))
-
+    
     private var scanner: Scanner1!
     private var sensorT : SensorTypes? = nil
     
@@ -43,15 +43,15 @@ class controllerEtatUI: controllerUI {
     }
     
     
-
+    
     private var UInameseuil = UITextView()
     private let btnPerson = UIButton()
     
     func handleNewObjectAvailable(data: ([String : Sensor]))
     {
-    print("test 1930")
-    updateSensorUI(data: data)
-                                                                
+        print("test 1930")
+        updateSensorUI(data: data)
+        
     }
     
     func updateSensorUI(data: ([String : Sensor])) -> Capteur.DisplayObject {
@@ -69,31 +69,31 @@ class controllerEtatUI: controllerUI {
                 {
                     if let move = value as? SensorMove
                     {
-                       
+                        
                         progressRing.value = CGFloat(move.getNbrPas())
                         print("progress ring" + String(move.getNbrPas()) + "son nom " + move.name )
                         if(move.getEtat() == true)
                         {
-                       
-                         /*   shapeLayer.fillColor = UIColor.yellow.cgColor
-                            let animation = CABasicAnimation(keyPath: "strokeEnd")
-                            animation.fromValue = 0
-                            animation.toValue = 1
-                            animation.duration = 2
-                            animation.autoreverses = true
-                            animation.repeatCount = .infinity
-                          shapeLayer.add(animation, forKey: "line")
-                            */
+                            
+                            /*   shapeLayer.fillColor = UIColor.yellow.cgColor
+                             let animation = CABasicAnimation(keyPath: "strokeEnd")
+                             animation.fromValue = 0
+                             animation.toValue = 1
+                             animation.duration = 2
+                             animation.autoreverses = true
+                             animation.repeatCount = .infinity
+                             shapeLayer.add(animation, forKey: "line")
+                             */
                             
                             setEtat(image : UIimagelowPerson!,str : "Etat : déplacement")
-                         //   btnPerson.blink()
+                            //   btnPerson.blink()
                         }
                         else {
-                       //     shapeLayer.removeAllAnimations()
-                     //       shapeLayer.fillColor = UIColor.clear.cgColor
+                            //     shapeLayer.removeAllAnimations()
+                            //       shapeLayer.fillColor = UIColor.clear.cgColor
                             setEtat(image : UIimagelowPersonStatic!,str : "Etat : statique")
-                           // btnPerson.stopBlink()
-                           
+                            // btnPerson.stopBlink()
+                            
                         }
                     }
                     
@@ -103,20 +103,20 @@ class controllerEtatUI: controllerUI {
                 {
                     if let move = value as? SensorMagnetic
                     {
-                       
+                        
                         progressRing.value = CGFloat(move.getNbrObject())
                         print("progress ring" + String(move.getNbrObject()) + "son nom " + move.name )
                         if(move.getEtat() == true)
                         {
-                       
-                          //  shapeLayer.fillColor = UIColor.yellow.cgColor
+                            
+                            //  shapeLayer.fillColor = UIColor.yellow.cgColor
                             setEtat(image : UIimagelowPerson!,str : "Etat : déplacement")
-                           
+                            
                         }
                         else {
                             //shapeLayer.fillColor = UIColor.clear.cgColor
                             setEtat(image : UIimagelowPersonStatic!,str : "Etat : statique")
-                         
+                            
                         }
                     }
                     
@@ -124,38 +124,13 @@ class controllerEtatUI: controllerUI {
                 
                 displayObject.append(newobject)
             }
-
+            
         }
         return newobject
     }
-
+    
     override func viewDidLoad() {
         
-        
-     
-       /* shapeLayer.path = circlePath.cgPath
-        
-        // Change the fill color
-        shapeLayer.fillColor = UIColor.clear.cgColor
-        // You can change the stroke color
-        shapeLayer.strokeColor = UIColor.systemBlue.cgColor
-       // shapeLayer.backgroundColor = UIColor.red.cgColor
-     
-        // You can change the line width
-        shapeLayer.lineWidth = 3.0
-            
-        view.layer.addSublayer(shapeLayer)
-        
-        
-        let animation = CABasicAnimation(keyPath: "strokeEnd")
-        animation.fromValue = 0
-        animation.toValue = 1
-        animation.duration = 2
-        animation.autoreverses = false
-        animation.repeatCount = .infinity
-        shapeLayer.add(animation, forKey: "line")
-        
-        */
         
         nameSensorUI(str: nameSensor)
         batteryUI(battery: battery)
@@ -168,7 +143,7 @@ class controllerEtatUI: controllerUI {
         {
             logoUI(picture: "porte_blue")
         }
-       
+        
         
         scanner = Scanner1()
         scanner.initializeScanner()
@@ -195,12 +170,12 @@ class controllerEtatUI: controllerUI {
         self.UInameseuil.backgroundColor = .none
         self.view.addSubview(UInameseuil)
         self.view.bringSubviewToFront(UInameseuil)
-
+        
         // Do any additional setup after loading the view.
         
         for cle in displayObject {
             if( cle.identifier == identifier)
-                
+            
             {
                 
                 if let Move : [Capteur.Move] = cle.array as? [Capteur.Move]
@@ -211,16 +186,16 @@ class controllerEtatUI: controllerUI {
                     if(Move[array.count-1].getEtat() == true)
                     {
                         
-                    //    shapeLayer.fillColor = UIColor.yellow.cgColor
+                        //    shapeLayer.fillColor = UIColor.yellow.cgColor
                         
                         setEtat(image : UIimagelowPerson!,str : "Etat : déplacement")
-                //        btnPerson.blink()
+                        //        btnPerson.blink()
                     }
                     else {
                         
-                    //    shapeLayer.fillColor = UIColor.clear.cgColor
+                        //    shapeLayer.fillColor = UIColor.clear.cgColor
                         setEtat(image : UIimagelowPersonStatic!,str : "Etat : statique")
-                  //      btnPerson.stopBlink()
+                        //      btnPerson.stopBlink()
                         
                     }
                     
@@ -229,21 +204,21 @@ class controllerEtatUI: controllerUI {
         }
         progressRing.minValue = 1
         progressRing.maxValue = 32000
-     /*   for cle in displayObject {
-            if( cle.identifier == identifier)
-                
-            {
-                if let temp : [Capteur.Move] = cle.array as? [Capteur.Move]
-                {
-                    for x in 0..<cle.array.count
-                        
-                    {
-                    progressRing.value = CGFloat(temp[x].getNbrPas())
-                    }
-                }
-            }
-        }
- */
+        /*   for cle in displayObject {
+         if( cle.identifier == identifier)
+         
+         {
+         if let temp : [Capteur.Move] = cle.array as? [Capteur.Move]
+         {
+         for x in 0..<cle.array.count
+         
+         {
+         progressRing.value = CGFloat(temp[x].getNbrPas())
+         }
+         }
+         }
+         }
+         */
         progressRing.innerRingColor = UIColor.orange
         
         progressRing.valueFormatter = UICircularProgressRingFormatter(valueIndicator: " step", rightToLeft: false, showFloatingPoint: false, decimalPlaces: 0)
@@ -257,9 +232,9 @@ class controllerEtatUI: controllerUI {
         UInameseuil.text = str
         
         btnPerson.frame = CGRect(x: 170, y: 250 ,width: 45, height: 45)
-                
         
-            self.view.addSubview(btnPerson)
+        
+        self.view.addSubview(btnPerson)
     }
     
     func initializeInfoSensor(sensor : SensorTypes)
@@ -267,15 +242,15 @@ class controllerEtatUI: controllerUI {
         sensorT = sensor
     }
     
-
+    
     /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
-    }
-    */
-
+     // MARK: - Navigation
+     
+     // In a storyboard-based application, you will often want to do a little preparation before navigation
+     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+     // Get the new view controller using segue.destination.
+     // Pass the selected object to the new view controller.
+     }
+     */
+    
 }
