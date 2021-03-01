@@ -5,7 +5,8 @@ class controllerEtatUI: controllerUI {
     
     let shapeLayer = CAShapeLayer()
     
-    
+    var UItext = UITextView()
+
     let nameSensor : String
     let RSSI : Int
     let identifier : String
@@ -225,6 +226,28 @@ class controllerEtatUI: controllerUI {
         
         self.view.addSubview(progressRing)
     }
+    
+    
+    func textUI(size : Int)
+    {
+        UItext.text = ""
+        UItext.textColor = UIColor.black
+        UItext.font = UIFont.systemFont(ofSize: 25.0)
+        UItext.isUserInteractionEnabled = false
+        UItext.font = UIFont.boldSystemFont(ofSize: 25)
+        UItext.frame = CGRect(x: size, y: 150, width: 350, height: 100)
+        UItext.backgroundColor = .none
+        self.view.addSubview(UItext)
+        self.view.bringSubviewToFront(UItext)
+    }
+    
+    
+    
+    func valueUI(donnees : String)
+    {
+        UItext.text = donnees
+    }
+    
     
     func setEtat(image : UIImage,str : String)
     {

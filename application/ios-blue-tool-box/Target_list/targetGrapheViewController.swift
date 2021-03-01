@@ -6,7 +6,7 @@ class targetGrapheViewController: controllerGrapheUI,ChartViewDelegate {
     private var entries = [ChartDataEntry]()
     private var entries1 = [ChartDataEntry]()
     private var entries2 = [ChartDataEntry]()
-    
+    var UItext = UITextView()
     private var lineChart = LineChartView()
     
     var donnee : String = ""
@@ -176,7 +176,25 @@ class targetGrapheViewController: controllerGrapheUI,ChartViewDelegate {
         }
         return newobject
     }
+    func textUI(size : Int)
+    {
+        UItext.text = ""
+        UItext.textColor = UIColor.black
+        UItext.font = UIFont.systemFont(ofSize: 25.0)
+        UItext.isUserInteractionEnabled = false
+        UItext.font = UIFont.boldSystemFont(ofSize: 25)
+        UItext.frame = CGRect(x: size, y: 150, width: 350, height: 100)
+        UItext.backgroundColor = .none
+        self.view.addSubview(UItext)
+        self.view.bringSubviewToFront(UItext)
+    }
     
+    
+    
+    func valueUI(donnees : String)
+    {
+        UItext.text = donnees
+    }
     
     override func viewDidLoad() {
         
@@ -222,6 +240,12 @@ class targetGrapheViewController: controllerGrapheUI,ChartViewDelegate {
         items.append(UIBarButtonItem(title: "Connexion", style: .plain, target: self,action: .none))
         
         self.navigationItem.setRightBarButtonItems(items, animated: true)
+        
+        var item = [UIBarButtonItem]()
+        item.append(UIBarButtonItem(title: "Blue T", style: .plain, target: self,action: .none))
+    
+        
+        
         lineChart.delegate = self
         
         

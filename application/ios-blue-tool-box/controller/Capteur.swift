@@ -413,8 +413,6 @@ class Capteur:  UIViewController, UITableViewDataSource, UITableViewDelegate{
                         if let temp = value as? SensorTemperature
                         {
                             let objectTemp = Temp(temp: temp.getTemp())
-                            //  newobject = DisplayObject(name : cle.name, RSSI : cle.RSSI, identifier:  cle.identifier, battery: cle.battery, typedata : cle.typedata,array: [objectTemp] )
-                            //  display.addData(data: objectTemp)
                             cle.addData(data: objectTemp)
                         }
                     }

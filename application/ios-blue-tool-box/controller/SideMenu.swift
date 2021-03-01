@@ -60,11 +60,7 @@ class MenuController: UITableViewController {
     public var delegate: MenuControllerDelegate?
     
     private let menuItems: [SideMenuItem]
-    /*  private let color = UIColor(red: 33/255.0,
-     green: 33/255.0,
-     blue: 33/255.0,
-     alpha: 1)
-     */
+
     init(with menuItems: [SideMenuItem]) {
         self.menuItems = menuItems
         super.init(nibName: nil, bundle: nil)
