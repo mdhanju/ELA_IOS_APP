@@ -44,14 +44,8 @@ class Scanner1: NSObject, CBPeripheralDelegate, CBCentralManagerDelegate {
     func initializeScanner()
     {
         centralManager = CBCentralManager(delegate: self, queue: nil)
-        
-        
-        
-        
     }
-    
-    // https://community.purplegiraffe.fr/t/se-connecter-en-bluetooth-pour-echanger-des-donnees/665
-    
+        
     /**
      * \fn initializeScanner
      * \brief function to initialize a new scanner and associate to a central manager object

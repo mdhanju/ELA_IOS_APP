@@ -22,10 +22,7 @@ class ELAViewController: UIViewController, UINavigationControllerDelegate {
         
         self.navigationController?.pushViewController(BlueIDViewController(), animated: true)
         view.layoutIfNeeded()
-        
-        
-        // https://www.youtube.com/watch?v=gw3vWyNTkSg
-        //https://www.youtube.com/watch?v=UVIQ7fkw_N8
+ 
     }
     
     

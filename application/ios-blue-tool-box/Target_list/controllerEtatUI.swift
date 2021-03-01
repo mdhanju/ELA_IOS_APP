@@ -75,26 +75,12 @@ class controllerEtatUI: controllerUI {
                         print("progress ring" + String(move.getNbrPas()) + "son nom " + move.name )
                         if(move.getEtat() == true)
                         {
-                            
-                            /*   shapeLayer.fillColor = UIColor.yellow.cgColor
-                             let animation = CABasicAnimation(keyPath: "strokeEnd")
-                             animation.fromValue = 0
-                             animation.toValue = 1
-                             animation.duration = 2
-                             animation.autoreverses = true
-                             animation.repeatCount = .infinity
-                             shapeLayer.add(animation, forKey: "line")
-                             */
-                            
                             setEtat(image : UIimagelowPerson!,str : "Etat : déplacement")
-                            //   btnPerson.blink()
+                           
                         }
                         else {
-                            //     shapeLayer.removeAllAnimations()
-                            //       shapeLayer.fillColor = UIColor.clear.cgColor
+                        
                             setEtat(image : UIimagelowPersonStatic!,str : "Etat : statique")
-                            // btnPerson.stopBlink()
-                            
                         }
                     }
                     
@@ -109,13 +95,11 @@ class controllerEtatUI: controllerUI {
                         print("progress ring" + String(move.getNbrObject()) + "son nom " + move.name )
                         if(move.getEtat() == true)
                         {
-                            
-                            //  shapeLayer.fillColor = UIColor.yellow.cgColor
                             setEtat(image : UIimagelowPerson!,str : "Etat : déplacement")
                             
                         }
                         else {
-                            //shapeLayer.fillColor = UIColor.clear.cgColor
+    
                             setEtat(image : UIimagelowPersonStatic!,str : "Etat : statique")
                             
                         }
@@ -186,17 +170,14 @@ class controllerEtatUI: controllerUI {
                     print(Move[array.count-1].getEtat() == false)
                     if(Move[array.count-1].getEtat() == true)
                     {
-                        
-                        //    shapeLayer.fillColor = UIColor.yellow.cgColor
-                        
+       
                         setEtat(image : UIimagelowPerson!,str : "Etat : déplacement")
-                        //        btnPerson.blink()
+                   
                     }
                     else {
                         
-                        //    shapeLayer.fillColor = UIColor.clear.cgColor
+
                         setEtat(image : UIimagelowPersonStatic!,str : "Etat : statique")
-                        //      btnPerson.stopBlink()
                         
                     }
                     
@@ -205,23 +186,7 @@ class controllerEtatUI: controllerUI {
         }
         progressRing.minValue = 1
         progressRing.maxValue = 32000
-        /*   for cle in displayObject {
-         if( cle.identifier == identifier)
-         
-         {
-         if let temp : [Capteur.Move] = cle.array as? [Capteur.Move]
-         {
-         for x in 0..<cle.array.count
-         
-         {
-         progressRing.value = CGFloat(temp[x].getNbrPas())
-         }
-         }
-         }
-         }
-         */
         progressRing.innerRingColor = UIColor.orange
-        
         progressRing.valueFormatter = UICircularProgressRingFormatter(valueIndicator: " step", rightToLeft: false, showFloatingPoint: false, decimalPlaces: 0)
         
         self.view.addSubview(progressRing)
@@ -264,16 +229,6 @@ class controllerEtatUI: controllerUI {
     {
         sensorT = sensor
     }
-    
-    
-    /*
-     // MARK: - Navigation
-     
-     // In a storyboard-based application, you will often want to do a little preparation before navigation
-     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-     // Get the new view controller using segue.destination.
-     // Pass the selected object to the new view controller.
-     }
-     */
+
     
 }

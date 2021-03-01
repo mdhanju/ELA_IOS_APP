@@ -109,8 +109,6 @@ class controllerGrapheUI: controllerUI, ChartViewDelegate {
                 {
                     if let tempHum = value as? SensorTemperature
                     {
-                        // UItemperature.text = String(tempHum.getTemp()) + "°C"
-                        //donnee = String(tempHum.getTemp()) + "°C"
                         valueUI(donnees: String(tempHum.getTemp()) + "°C")
                         entries.append(ChartDataEntry(x: Double(compteur),y: Double(tempHum.getTemp())))
                         compteur = compteur + 1
@@ -354,3 +352,5 @@ class controllerGrapheUI: controllerUI, ChartViewDelegate {
     }
     
 }
+
+
