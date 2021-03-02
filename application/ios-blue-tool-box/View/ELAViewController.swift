@@ -110,11 +110,18 @@ class ELAViewController: UIViewController, UINavigationControllerDelegate {
         let imageTapGestureRecognizerApropos = UITapGestureRecognizer(target: self, action: #selector(ELAViewController.imageTapApropos))
         UIimageApropos.addGestureRecognizer(imageTapGestureRecognizerApropos)
         self.view.addSubview( UIimageApropos)
-        
-        //UImenuImage(namePicture: "A Propos", size_x: 135, size_y: 600, size_width: 300, size_height: 45, selector: #selector(ELAViewController.imageTapApropos))
+
         
     }
     
+    /// The picture on the menu for change page
+    /// - Parameters:
+    ///   - namePicture: name of the picture
+    ///   - size_x: position in x
+    ///   - size_y: position in y
+    ///   - size_width: width of the picture
+    ///   - size_height: height of the picture
+    ///   - selector: function selector
     func UImenuImage(namePicture : String,size_x : Int,size_y :Int,size_width : Int,size_height : Int, selector : Selector?)
     {
         let imageID = namePicture
@@ -129,5 +136,4 @@ class ELAViewController: UIViewController, UINavigationControllerDelegate {
         self.view.bringSubviewToFront(imageViewID)
     }
     
-    //ELAViewController.imageTapID
 }

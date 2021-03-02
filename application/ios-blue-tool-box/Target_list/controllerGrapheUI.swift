@@ -55,8 +55,8 @@ class controllerGrapheUI: controllerUI, ChartViewDelegate {
     func grapheColorLabel(label : String)
     {
         let set = LineChartDataSet(entries: entries, label: label)
-        set.setColor(UIColor(hexString: "#336699"))
-        set.setCircleColor(UIColor(hexString: "#336699"))
+        set.setColor(UIColor(hexString: colorBox))
+        set.setCircleColor(UIColor(hexString: colorBox))
         let data = LineChartData(dataSet: set)
         lineChart.data = data
     }

@@ -3,7 +3,7 @@ import UIKit
 
 /// Controller of user interface for each sensor
 class controllerUI: UIViewController {
-    
+    var colorBox : String = "#336699"
     var UItext = UITextView()
     
     override func viewDidLoad() {
@@ -97,11 +97,11 @@ class controllerUI: UIViewController {
     func line()
     {
         let line = UIView(frame: CGRect(x: 40, y: 150, width: 290, height: 3))
-        line.backgroundColor =  UIColor(hexString: "#336699")
+        line.backgroundColor =  UIColor(hexString: colorBox)
         self.view.addSubview(line)
         
         let lineBack = UIView(frame: CGRect(x: 40, y: 200, width: 290, height: 3))
-        lineBack.backgroundColor = UIColor(hexString: "#336699")
+        lineBack.backgroundColor = UIColor(hexString: colorBox)
         self.view.addSubview(lineBack)
     }
 }

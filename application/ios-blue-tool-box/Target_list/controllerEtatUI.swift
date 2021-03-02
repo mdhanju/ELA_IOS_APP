@@ -13,7 +13,7 @@ class controllerEtatUI: controllerUI {
     
    
     
-    var colorBox : String = "#336699"
+    
     var stateStatic : String = "Etat : statique"
     var stateMove : String = "Etat : déplacement"
 
@@ -93,9 +93,7 @@ class controllerEtatUI: controllerUI {
                 
                 if let Move : [SensorCaracteristic.Move] = cle.array as? [SensorCaracteristic.Move]
                 {
-                    
-                    
-                    print(Move[array.count-1].getEtat() == false)
+
                     if(Move[array.count-1].getEtat() == true)
                     {
        
@@ -196,6 +194,7 @@ class controllerEtatUI: controllerUI {
         self.view.addSubview(btnPerson)
     }
     
+    /// statique ou deplacement
     func UItextState()
     {
         self.UInameState.text = stateStatic
