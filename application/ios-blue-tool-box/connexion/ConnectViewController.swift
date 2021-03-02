@@ -8,10 +8,10 @@ class ConnectViewController: UIViewController {
     private let battery : Int
     private let typedata : SensorTypes
     private let array : [SensorCaracteristic.Cap]
-    private let displayObject : [Capteur.DisplayObject]
+    private let displayObject : [displayObjectCharacteristic.DisplayObject]
     
     
-    init(nameSensor : String,RSSI: Int, identifier : String, battery : Int, typedata : SensorTypes,array: [SensorCaracteristic.Cap],displayObject : [Capteur.DisplayObject]) {
+    init(nameSensor : String,RSSI: Int, identifier : String, battery : Int, typedata : SensorTypes,array: [SensorCaracteristic.Cap],displayObject : [displayObjectCharacteristic.DisplayObject]) {
         self.nameSensor = nameSensor
         self.RSSI = RSSI
         self.identifier = identifier

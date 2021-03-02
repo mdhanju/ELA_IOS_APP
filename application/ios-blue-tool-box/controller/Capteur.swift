@@ -6,7 +6,7 @@ import SwiftUI
 class Capteur:  UIViewController, UITableViewDataSource, UITableViewDelegate{
     
     private var scanner: Scanner1!
-    private var display: [ DisplayObject] = []
+    private var display: [ displayObjectCharacteristic.DisplayObject] = []
     private var isStartButton : Bool = true
     private var sensorT : SensorTypes? = nil
     private var buttonStart : UIButton? = nil
@@ -17,36 +17,7 @@ class Capteur:  UIViewController, UITableViewDataSource, UITableViewDelegate{
     
     
     
-    
-    class DisplayObject {
-        
-        public var name: String
-        public var RSSI: Int
-        public var identifier : String
-        public var battery : Int
-        public var typedata : SensorTypes
-        public var array : [SensorCaracteristic.Cap]
-        
-        init(name : String, RSSI: Int, identifier : String, battery : Int, typedata : SensorTypes,array : [SensorCaracteristic.Cap] = [SensorCaracteristic.Cap.init()])
-        {
-            self.name = name
-            self.RSSI = RSSI
-            self.identifier = identifier
-            self.battery = battery
-            self.typedata = typedata
-            self.array = array
-        }
-        
-        
-        public func addData(data : SensorCaracteristic.Cap)
-        {
-            self.array.append(data)
-            if(self.array.count > 20)
-            {
-                self.array.remove(at: 0)
-            }
-        }
-    }
+
     
     
     
@@ -112,51 +83,39 @@ class Capteur:  UIViewController, UITableViewDataSource, UITableViewDelegate{
         
         
         // si c'est un capteur de temperature
-        if(typedata == SensorTypes.SensorTemperature)
-        {
-            
+        
+        
+        switch typedata {
+        
+        case SensorTypes.SensorTemperature:
             self.navigationController?.pushViewController(controllerGrapheUI(nameSensor: string1 ,RSSI: RSSI, identifier : identifier, battery : battery, typedata : typedata,array : arr,displayObject : display), animated: true)
             self.navigationController?.navigationBar.tintColor = .black
-        }
         
-        
-        if(typedata == SensorTypes.SensorTemperatureHumidity)
-        {
-            
+        case SensorTypes.SensorTemperatureHumidity:
             self.navigationController?.pushViewController(controllerGrapheUI(nameSensor: string1 ,RSSI: RSSI, identifier : identifier, battery : battery, typedata : typedata,array : arr,displayObject : display), animated: true)
             self.navigationController?.navigationBar.tintColor = .black
-        }
-        
-        
-        if(typedata == SensorTypes.SensorMove)
-        {
             
+        case SensorTypes.SensorMove:
             self.navigationController?.pushViewController(controllerEtatUI(nameSensor: string1 ,RSSI: RSSI, identifier : identifier, battery : battery, typedata : typedata,array : arr,displayObject : display), animated: true)
             self.navigationController?.navigationBar.tintColor = .black
-        }
-        
-        
-        if(typedata == SensorTypes.SensorMagnetic)
-        {
-            
+        case SensorTypes.SensorMagnetic:
             self.navigationController?.pushViewController(controllerEtatUI(nameSensor: string1 ,RSSI: RSSI, identifier : identifier, battery : battery, typedata : typedata,array : arr,displayObject : display), animated: true)
             self.navigationController?.navigationBar.tintColor = .black
-        }
-        
-        if(typedata == SensorTypes.SensorAngle)
-        {
-            
+        case SensorTypes.SensorAngle:
             self.navigationController?.pushViewController(controllerGrapheUI(nameSensor: string1 ,RSSI: RSSI, identifier : identifier, battery : battery, typedata : typedata,array : arr,displayObject : display), animated: true)
             self.navigationController?.navigationBar.tintColor = .black
-        }
-        
-        if(typedata == SensorTypes.SensorID)
-        {
-            
+        case SensorTypes.SensorID:
             self.navigationController?.pushViewController(controllerGrapheUI(nameSensor: string1 ,RSSI: RSSI, identifier : identifier, battery : battery, typedata : typedata,array : arr,displayObject : display), animated: true)
             self.navigationController?.navigationBar.tintColor = .black
+            
+     
+
+        default:
+            print("error inside switch class Capteur")
         }
-        //
+        
+  
+       
         
     }
     
@@ -286,12 +245,12 @@ class Capteur:  UIViewController, UITableViewDataSource, UITableViewDelegate{
         updateSensorUI(data: data)
     }
     
-    func updateSensorUI(data: ([String : Sensor])) -> DisplayObject {
+    func updateSensorUI(data: ([String : Sensor])) -> displayObjectCharacteristic.DisplayObject {
         
         var trouve = true
         let objectTemp1 = SensorCaracteristic.Temp(temp: 0)
         
-        var newobject : DisplayObject = DisplayObject(name: "null", RSSI: 0, identifier: "",battery : 0, typedata : SensorTypes.SensorID, array: [objectTemp1])
+        var newobject : displayObjectCharacteristic.DisplayObject = displayObjectCharacteristic.DisplayObject(name: "null", RSSI: 0, identifier: "",battery : 0, typedata : SensorTypes.SensorID, array: [objectTemp1])
         
         for (key,value) in data
         {
@@ -301,30 +260,18 @@ class Capteur:  UIViewController, UITableViewDataSource, UITableViewDelegate{
                 {
                     cle.RSSI = value.RSSI
                     
+                    switch value {
                     
-                    if(value is SensorTemperature)
-                    {
+                    case is SensorTemperature:
+                        
                         if let temp = value as? SensorTemperature
                         {
                             let objectTemp = SensorCaracteristic.Temp(temp: temp.getTemp())
                             cle.addData(data: objectTemp)
                         }
-                    }
-                    
-                    
-                    
-                    if(value is SensorTemperatureHumidity)
-                    {
-                        if let hum = value as? SensorTemperatureHumidity
-                        {
-                            let objectTempHum = SensorCaracteristic.TempHum(temp: hum.getTemp(), hum: hum.getHum())
-                            
-                            cle.addData(data: objectTempHum)
-                        }
-                    }
-                    
-                    if(value is SensorMove)
-                    {
+                        
+                    case is SensorMove:
+                        
                         if let move = value as? SensorMove
                         {
                             let objectMove =
@@ -332,28 +279,35 @@ class Capteur:  UIViewController, UITableViewDataSource, UITableViewDelegate{
                             
                             cle.addData(data: objectMove)
                         }
-                    }
-                    
-                    if(value is SensorMagnetic)
-                    {
+                        
+                    case is SensorMagnetic:
+                        
                         if let mag = value as? SensorMagnetic
                         {
-                            let objectMove =
+                            let objectMagnetic =
                                 SensorCaracteristic.Mag(nbrMagnet: mag.getNbrObject(), etat: mag.getEtat())
                             
-                            cle.addData(data: objectMove)
+                            cle.addData(data: objectMagnetic)
                         }
-                    }
-                    
-                    if(value is SensorAngle)
-                    {
+                    case is SensorAngle:
+                        
                         if let angle = value as? SensorAngle
                         {
-                            let objectMove =
+                            let objectAngle =
                                 SensorCaracteristic.Angle(x: angle.getX(), y: angle.getY(), z: angle.getZ())
-                            cle.addData(data: objectMove)
+                            cle.addData(data: objectAngle)
                         }
+                        
+                        
+                    
+                    default: print("not a sensor")
+                    
                     }
+
+                    
+                 
+                    
+                  
                     
                     
                     
@@ -365,71 +319,61 @@ class Capteur:  UIViewController, UITableViewDataSource, UITableViewDelegate{
             }
             if(trouve == true)
             {
-                if(value is SensorID)
-                {
-                    
-                    
-                    
-                    newobject = DisplayObject(name: value.name, RSSI: value.RSSI, identifier: value.idenfitfier, battery: value.batterylevel, typedata : value.sensorTypes )
-                    
-                }
+                switch value {
                 
-                
-                if(value is SensorTemperature)
-                {
+                case is SensorID:
+                    newobject = displayObjectCharacteristic.DisplayObject(name: value.name, RSSI: value.RSSI, identifier: value.idenfitfier, battery: value.batterylevel, typedata : value.sensorTypes )
                     
+                case is SensorTemperature:
                     if let temp = value as? SensorTemperature
                     {
                         let objectTemp = SensorCaracteristic.Temp(temp: temp.getTemp())
-                        newobject = DisplayObject(name: value.name, RSSI: value.RSSI, identifier: value.idenfitfier, battery: value.batterylevel, typedata : value.sensorTypes,array: [objectTemp] )
+                        newobject = displayObjectCharacteristic.DisplayObject(name: value.name, RSSI: value.RSSI, identifier: value.idenfitfier, battery: value.batterylevel, typedata : value.sensorTypes,array: [objectTemp] )
                     }
-                }
-                
-                if(value is SensorTemperatureHumidity)
-                {
-                    
+                case is SensorTemperatureHumidity:
                     if let tempHum = value as? SensorTemperatureHumidity
                     {
                         let objectTempHum = SensorCaracteristic.TempHum(temp: tempHum.getTemp(), hum: tempHum.getHum())
-                        newobject = DisplayObject(name: value.name, RSSI: value.RSSI, identifier: value.idenfitfier, battery: value.batterylevel, typedata : value.sensorTypes,array: [objectTempHum] )
+                        newobject = displayObjectCharacteristic.DisplayObject(name: value.name, RSSI: value.RSSI, identifier: value.idenfitfier, battery: value.batterylevel, typedata : value.sensorTypes,array: [objectTempHum] )
                     }
-                }
-                
-                
-                if(value is SensorMove)
-                {
+                    
+                case is SensorMove:
                     
                     if let move = value as? SensorMove
                     {
                         let objectMove =
                             SensorCaracteristic.Move(nbrPas: move.getNbrPas(), etat: move.getEtat())
-                        newobject = DisplayObject(name: value.name, RSSI: value.RSSI, identifier: value.idenfitfier, battery: value.batterylevel, typedata : value.sensorTypes,array: [objectMove] )
+                        newobject = displayObjectCharacteristic.DisplayObject(name: value.name, RSSI: value.RSSI, identifier: value.idenfitfier, battery: value.batterylevel, typedata : value.sensorTypes,array: [objectMove] )
                     }
-                }
-                
-                
-                if(value is SensorMagnetic)
-                {
+               
+                case is SensorMagnetic:
                     
                     if let mag = value as? SensorMagnetic
                     {
                         let objectMove =
                             SensorCaracteristic.Mag(nbrMagnet: mag.getNbrObject(), etat: mag.getEtat())
-                        newobject = DisplayObject(name: value.name, RSSI: value.RSSI, identifier: value.idenfitfier, battery: value.batterylevel, typedata : value.sensorTypes,array: [objectMove] )
+                        newobject = displayObjectCharacteristic.DisplayObject(name: value.name, RSSI: value.RSSI, identifier: value.idenfitfier, battery: value.batterylevel, typedata : value.sensorTypes,array: [objectMove] )
                     }
-                }
-                
-                
-                if(value is SensorAngle)
-                {
+                    
+                case is SensorAngle:
                     
                     if let angle = value as? SensorAngle
                     {
                         let objectMove =
                             SensorCaracteristic.Angle(x: angle.getX(), y: angle.getY(), z: angle.getZ())
-                        newobject = DisplayObject(name: value.name, RSSI: value.RSSI, identifier: value.idenfitfier, battery: value.batterylevel, typedata : value.sensorTypes,array: [objectMove] )
+                        newobject = displayObjectCharacteristic.DisplayObject(name: value.name, RSSI: value.RSSI, identifier: value.idenfitfier, battery: value.batterylevel, typedata : value.sensorTypes,array: [objectMove] )
                     }
-                }
+                    
+                    
+                    
+                    
+                default : print("not a sensor")
+                    }
+                
+
+                
+                
+          
                 
                 
                 

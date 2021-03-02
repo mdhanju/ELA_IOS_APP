@@ -35,7 +35,7 @@ class Sensor
     }
 }
 
-enum SensorTypes
+public enum SensorTypes
 {
     
     case SensorEdystone

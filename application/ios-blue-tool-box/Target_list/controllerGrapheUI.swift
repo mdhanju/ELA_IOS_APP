@@ -26,13 +26,13 @@ class controllerGrapheUI: controllerUI, ChartViewDelegate {
     private let battery : Int
     private let typedata : SensorTypes
     private let array : [SensorCaracteristic.Cap]
-    private let displayObject : [Capteur.DisplayObject]
+    private let displayObject : [displayObjectCharacteristic.DisplayObject]
     
     private var scanner: Scanner1!
     
     private var sensorT : SensorTypes? = nil
     
-    init(nameSensor : String,RSSI: Int, identifier : String, battery : Int, typedata : SensorTypes,array: [SensorCaracteristic.Cap],displayObject : [Capteur.DisplayObject]) {
+    init(nameSensor : String,RSSI: Int, identifier : String, battery : Int, typedata : SensorTypes,array: [SensorCaracteristic.Cap],displayObject : [displayObjectCharacteristic.DisplayObject]) {
         self.nameSensor = nameSensor
         self.RSSI = RSSI
         self.identifier = identifier
@@ -74,20 +74,22 @@ class controllerGrapheUI: controllerUI, ChartViewDelegate {
     /// Update the UICircular bar value with the value of sensor
     /// - Parameter data: dtictionnary of sensor the key is peripheral.identifier and Sensor is define in the factory
     /// - Returns: DisplayObject  that store the information of sensor
-    func updateSensorUI(data: ([String : Sensor])) -> Capteur.DisplayObject {
+    func updateSensorUI(data: ([String : Sensor])) -> displayObjectCharacteristic.DisplayObject {
         
         
         let objectTemp1 = SensorCaracteristic.Temp(temp: 0)
         
-        let newobject : Capteur.DisplayObject = Capteur.DisplayObject(name: "null", RSSI: 0, identifier: "",battery : 0, typedata : SensorTypes.SensorID, array: [objectTemp1])
+        let newobject : displayObjectCharacteristic.DisplayObject = displayObjectCharacteristic.DisplayObject(name: "null", RSSI: 0, identifier: "",battery : 0, typedata : SensorTypes.SensorID, array: [objectTemp1])
         
         for (key,value) in data
         {
             
             if(key == identifier)
             {
-                if(value is SensorAngle)
-                {
+           
+                switch value {
+                
+                case is SensorAngle:
                     if let angle = value as? SensorAngle
                     {
                         valueUI(donnees: "x : " + String( angle.getX()) + "mg  y :" + String(angle.getY()) + "mg  z : " +  String(angle.getZ()) + "mg ")
@@ -116,44 +118,36 @@ class controllerGrapheUI: controllerUI, ChartViewDelegate {
                         lineChart.data = data
                         
                     }
-                    
-                }
                 
                 
-                if(value is SensorTemperature)
-                {
+                case is SensorTemperature:
+                   
                     if let temp = value as? SensorTemperature
                     {
                         valueUI(donnees: String(temp.getTemp()) + "°C")
                         entries.append(ChartDataEntry(x: Double(compteur),y: Double(temp.getTemp())))
                         compteur = compteur + 1
                         compHum = compHum + 1
-                        
                         grapheColorLabel(label: "temperature")
-                        
                     }
                     
-                }
-                
-                if(value is SensorID)
-                {
-                    if let ID = value as? SensorID
-                    {
-                        valueUI(donnees: String(ID.RSSI) + " dbm")
-                        entries.append(ChartDataEntry(x: Double(compteur),y: Double(ID.RSSI)))
-                        compteur = compteur + 1
-                        compHum = compHum + 1
-                        
-                        grapheColorLabel(label: "dbm")
-                        
-                    }
                     
-                }
+                    
+                    
+                case is SensorID:
                 
-                
-                
-                if(value is SensorTemperatureHumidity)
-                {
+                        if let ID = value as? SensorID
+                        {
+                            valueUI(donnees: String(ID.RSSI) + " dbm")
+                            entries.append(ChartDataEntry(x: Double(compteur),y: Double(ID.RSSI)))
+                            compteur = compteur + 1
+                            compHum = compHum + 1
+                            
+                            grapheColorLabel(label: "dbm")
+                        }
+                    
+                case is SensorTemperatureHumidity:
+                    
                     if let tempHum = value as? SensorTemperatureHumidity
                     {
                         valueUI(donnees: String(tempHum.getTemp()) + "°C   " + String(tempHum.getHum()) + "%")
@@ -179,7 +173,18 @@ class controllerGrapheUI: controllerUI, ChartViewDelegate {
                         
                     }
                     
+                
+                    
+                    
+                default : print("this is not a Sensor controllerGrapheUI")
+                    
                 }
+                
+                
+                
+                
+                
+            
                 
                 
             }
