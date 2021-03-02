@@ -1,11 +1,3 @@
-//
-//  ConvertionToolbox.swift
-//  ios-blue-tool-box
-//
-//  Created by ELA Innovation on 20/01/2021.
-//  Copyright © 2021 ELA Innovation. All rights reserved.
-//
-
 import Foundation
 
 /**
@@ -64,7 +56,7 @@ public class ConvertionToolbox : NSObject {
         }
         
         sumA = sumB + sumA
-        print("\n" + sumA)
+ 
         return sumA
     }
     
@@ -267,8 +259,7 @@ public class ConvertionToolbox : NSObject {
     
     public static func ConvertMagnetique1(str : String)-> Int
     {
-        print("hexadecimal")
-        print(str)
+      
         
         if(str == "")
         {
@@ -280,7 +271,8 @@ public class ConvertionToolbox : NSObject {
         var str : String =  MSB + LSB
         
         str = String(hexaToBinary(str: str).dropLast())
-        print(str)
+       
+        
         
         // var str1 = ""
         
@@ -296,7 +288,7 @@ public class ConvertionToolbox : NSObject {
             if( char == "1" && ini != 0)
             {
                 sum = sum + cpt
-                print(sum)
+                
             }
             
             cpt = cpt * 2;

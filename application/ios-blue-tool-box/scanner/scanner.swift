@@ -60,14 +60,14 @@ class Scanner1: NSObject, CBPeripheralDelegate, CBCentralManagerDelegate {
     // If we're powered on, start scanning
     func centralManagerDidUpdateState(_ central: CBCentralManager)
     {
-        print("Central state update")
+      //  print("Central state update")
         if central.state != .poweredOn
         {
-            print("Central is not powered on")
+        //    print("Central is not powered on")
         }
         else
         {
-            print("Central scanning for", ParticlePeripheral.uartRx);
+          //  print("Central scanning for", ParticlePeripheral.uartRx);
             centralManager.scanForPeripherals(withServices: nil, options: nil)
         }
     }

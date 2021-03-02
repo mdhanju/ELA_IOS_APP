@@ -89,76 +89,13 @@ class ELAViewController: UIViewController, UINavigationControllerDelegate {
         self.view.addSubview(imageView)
         
         self.view.bringSubviewToFront(imageView)
-        
-        let imageID = "blue"
-        let UIimageID = UIImage(named: imageID)
-        let imageViewID = UIImageView(image: UIimageID!)
-        imageViewID.frame = CGRect(x: 50, y: 450, width: 45, height: 45)
-        imageViewID.isUserInteractionEnabled = true
-        let imageTapGestureRecognizerID = UITapGestureRecognizer(target: self, action: #selector(ELAViewController.imageTapID))
-        imageViewID.addGestureRecognizer(imageTapGestureRecognizerID)
-        self.view.addSubview(imageViewID)
-        
-        
-        
-        
-        let imageTemp = "temp"
-        let UIimageTemp = UIImage(named: imageTemp)
-        let imageViewTemp = UIImageView(image: UIimageTemp!)
-        imageViewTemp.frame = CGRect(x: 150, y: 450, width: 45, height: 45)
-        imageViewTemp.isUserInteractionEnabled = true
-        let imageTapGestureRecognizerTemp = UITapGestureRecognizer(target: self, action: #selector(ELAViewController.imageTapTemp))
-        imageViewTemp.addGestureRecognizer(imageTapGestureRecognizerTemp)
-        self.view.addSubview(imageViewTemp)
-        
-        
-        let imageRHT = "humidite_blue"
-        let UIimageRHT = UIImage(named: imageRHT)
-        let imageViewRHT = UIImageView(image: UIimageRHT!)
-        imageViewRHT.frame = CGRect(x: 250, y: 450, width: 45, height: 45)
-        self.view.addSubview(imageViewRHT)
-        imageViewRHT.isUserInteractionEnabled = true
-        let imageTapGestureRecognizerRHT = UITapGestureRecognizer(target: self, action: #selector(ELAViewController.imageTapRHT))
-        imageViewRHT.addGestureRecognizer(imageTapGestureRecognizerRHT)
-        //Imageview on Top of View
-        self.view.bringSubviewToFront(imageViewRHT)
-        
-        
-        let imageMOV = "mouvement_blue"
-        let UIimageMOV = UIImage(named: imageMOV)
-        let imageViewMOV = UIImageView(image: UIimageMOV!)
-        imageViewMOV.frame = CGRect(x: 50, y: 520, width: 45, height: 45)
-        self.view.addSubview(imageViewMOV)
-        imageViewMOV.isUserInteractionEnabled = true
-        let imageTapGestureRecognizerMOV = UITapGestureRecognizer(target: self, action: #selector(ELAViewController.imageTapMOV))
-        imageViewMOV.addGestureRecognizer(imageTapGestureRecognizerMOV)
-        self.view.bringSubviewToFront(imageViewMOV)
-        
-        
-        
-        let imageMAG = "porte_blue"
-        let UIimageMAG = UIImage(named: imageMAG)
-        let imageViewMAG = UIImageView(image: UIimageMAG!)
-        imageViewMAG.frame = CGRect(x: 150, y: 520, width: 45, height: 45)
-        self.view.addSubview(imageViewMAG)
-        imageViewMAG.isUserInteractionEnabled = true
-        let imageTapGestureRecognizerMAG = UITapGestureRecognizer(target: self, action: #selector(ELAViewController.imageTapMAG))
-        imageViewMAG.addGestureRecognizer(imageTapGestureRecognizerMAG)
-        self.view.bringSubviewToFront(imageViewMAG)
-        
-        
-        let imageANG = "angle"
-        let UIimageANG = UIImage(named: imageANG)
-        let imageViewANG = UIImageView(image: UIimageANG!)
-        imageViewANG.frame = CGRect(x: 250, y: 520, width: 45, height: 45)
-        self.view.addSubview(imageViewANG)
-        imageViewANG.isUserInteractionEnabled = true
-        let imageTapGestureRecognizerANG = UITapGestureRecognizer(target: self, action: #selector(ELAViewController.imageTapANG))
-        imageViewANG.addGestureRecognizer(imageTapGestureRecognizerANG)
-        self.view.bringSubviewToFront(imageViewANG)
-        
-        
-        
+
+        UImenuImage(namePicture: "temp", size_x: 50, size_y: 450, size_width: 45, size_height: 45, selector: #selector(ELAViewController.imageTapID))
+        UImenuImage(namePicture: "temp", size_x: 150, size_y: 450, size_width: 45, size_height: 45, selector: #selector(ELAViewController.imageTapTemp))
+        UImenuImage(namePicture: "humidite_blue", size_x: 250, size_y: 450, size_width: 45, size_height: 45, selector: #selector(ELAViewController.imageTapMOV))
+        UImenuImage(namePicture: "mouvement_blue", size_x: 50, size_y: 520, size_width: 45, size_height: 45, selector: #selector(ELAViewController.imageTapMOV))
+        UImenuImage(namePicture: "porte_blue", size_x: 150, size_y: 520, size_width: 45, size_height: 45, selector: #selector(ELAViewController.imageTapANG))
+        UImenuImage(namePicture: "angle", size_x: 250, size_y: 520, size_width: 45, size_height: 45, selector: #selector(ELAViewController.imageTapANG))
         
         
         let UIimageApropos = UITextView()
@@ -174,7 +111,23 @@ class ELAViewController: UIViewController, UINavigationControllerDelegate {
         UIimageApropos.addGestureRecognizer(imageTapGestureRecognizerApropos)
         self.view.addSubview( UIimageApropos)
         
+        //UImenuImage(namePicture: "A Propos", size_x: 135, size_y: 600, size_width: 300, size_height: 45, selector: #selector(ELAViewController.imageTapApropos))
+        
     }
     
+    func UImenuImage(namePicture : String,size_x : Int,size_y :Int,size_width : Int,size_height : Int, selector : Selector?)
+    {
+        let imageID = namePicture
+        let UIimageID = UIImage(named: imageID)
+        let imageViewID = UIImageView(image: UIimageID!)
+        imageViewID.frame = CGRect(x: size_x, y: size_y, width: size_width, height: size_height)
+        self.view.addSubview(imageViewID)
+        imageViewID.isUserInteractionEnabled = true
+        let imageTapGestureRecognizerID = UITapGestureRecognizer(target: self, action: selector)
+        imageViewID.addGestureRecognizer(imageTapGestureRecognizerID)
+        //self.view.addSubview(imageViewID)
+        self.view.bringSubviewToFront(imageViewID)
+    }
     
+    //ELAViewController.imageTapID
 }

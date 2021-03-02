@@ -201,7 +201,7 @@ class Capteur:  UIViewController, UITableViewDataSource, UITableViewDelegate{
             
             scanner.defineFilterType(sensor: sensorT!)
             scanner.dictionnarySensor.addHandler(handler : handleNewObjectAvailable)
-            print("El toro de Mardid")
+            
             
             self.showToast(message: "Le scan a démarré", font: .systemFont(ofSize: 12.0))
             
@@ -222,7 +222,6 @@ class Capteur:  UIViewController, UITableViewDataSource, UITableViewDelegate{
         buttonStart!.setImage(UIImage(named: "start"), for: .normal)
         scanner.stopScanner()
         
-        print("El toro de Mardid")
         self.showToast(message: "Le scan est terminé", font: .systemFont(ofSize: 12.0))
         
         self.display.removeAll()

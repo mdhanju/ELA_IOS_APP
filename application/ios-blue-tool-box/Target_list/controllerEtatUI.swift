@@ -151,16 +151,6 @@ class controllerEtatUI: controllerUI {
                         progressRing.value = CGFloat(move.getNbrPas())
                         print("progress ring" + String(move.getNbrPas()) + "son nom " + move.name )
                         state = move.getEtat()
-                        /*
-                        if(move.getEtat() == true)
-                        {
-                            setEtat(image : UIimagelowPerson!,str : stateMove)
-                        }
-                        else {
-                        
-                            setEtat(image : UIimagelowPersonStatic!,str : stateStatic)
-                        }
- */
                     }
                     
                 }
@@ -172,18 +162,6 @@ class controllerEtatUI: controllerUI {
                         progressRing.value = CGFloat(magnetic.getNbrObject())
                         print("progress ring" + String(magnetic.getNbrObject()) + "son nom " + magnetic.name )
                         state = magnetic.getEtat()
-                        /*
-                        if(magnetic.getEtat() == true)
-                        {
-                            setEtat(image : UIimagelowPerson!,str : stateMove)
-                            
-                        }
-                        else {
-    
-                            setEtat(image : UIimagelowPersonStatic!,str : stateStatic)
-                            
-                        }
- */
                     }
                     
                 }
