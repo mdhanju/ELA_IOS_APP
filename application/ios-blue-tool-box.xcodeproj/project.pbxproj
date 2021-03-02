@@ -14,7 +14,8 @@
 		1623D02025ED4AAC00E84701 /* UIcolor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1623D01F25ED4AAC00E84701 /* UIcolor.swift */; };
 		1623D02625ED4B0F00E84701 /* UIbutton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1623D02525ED4B0F00E84701 /* UIbutton.swift */; };
 		1623D02A25ED4B4100E84701 /* UIview.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1623D02925ED4B4100E84701 /* UIview.swift */; };
-		1623D02F25EE466800E84701 /* capClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1623D02E25EE466800E84701 /* capClass.swift */; };
+		1623D02F25EE466800E84701 /* SensorCaracteristic.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1623D02E25EE466800E84701 /* SensorCaracteristic.swift */; };
+		1623D04225EE750400E84701 /* displayObject.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1623D04125EE750400E84701 /* displayObject.swift */; };
 		16715DF525C40142007F0AC2 /* Event.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16715DF425C40142007F0AC2 /* Event.swift */; };
 		16920C8725B1B271008ABBF1 /* BlueIDViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16920C8625B1B271008ABBF1 /* BlueIDViewController.swift */; };
 		16920C9825B1CD2E008ABBF1 /* Factory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16920C9725B1CD2E008ABBF1 /* Factory.swift */; };
@@ -27,7 +28,6 @@
 		16CB846325AC6EF80067E1A0 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16CB846225AC6EF80067E1A0 /* ViewController.swift */; };
 		16CB846825AC6EF90067E1A0 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 16CB846725AC6EF90067E1A0 /* Assets.xcassets */; };
 		16CB846B25AC6EF90067E1A0 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 16CB846925AC6EF90067E1A0 /* LaunchScreen.storyboard */; };
-		16D4397425DD28B500D4B4C7 /* targetIDViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16D4397325DD28B500D4B4C7 /* targetIDViewController.swift */; };
 		16D4398025DD6A7C00D4B4C7 /* Capteur.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16E3AB4F25C85B81001426DD /* Capteur.swift */; };
 		16D4398A25E3A99700D4B4C7 /* controllerUI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16D4398925E3A99600D4B4C7 /* controllerUI.swift */; };
 		16D439A025E3EC1900D4B4C7 /* controllerEtatUI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16D4399F25E3EC1900D4B4C7 /* controllerEtatUI.swift */; };
@@ -63,7 +63,8 @@
 		1623D01F25ED4AAC00E84701 /* UIcolor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIcolor.swift; sourceTree = "<group>"; };
 		1623D02525ED4B0F00E84701 /* UIbutton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIbutton.swift; sourceTree = "<group>"; };
 		1623D02925ED4B4100E84701 /* UIview.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIview.swift; sourceTree = "<group>"; };
-		1623D02E25EE466800E84701 /* capClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = capClass.swift; sourceTree = "<group>"; };
+		1623D02E25EE466800E84701 /* SensorCaracteristic.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SensorCaracteristic.swift; sourceTree = "<group>"; };
+		1623D04125EE750400E84701 /* displayObject.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = displayObject.swift; sourceTree = "<group>"; };
 		16715DF425C40142007F0AC2 /* Event.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Event.swift; sourceTree = "<group>"; };
 		16920C8625B1B271008ABBF1 /* BlueIDViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BlueIDViewController.swift; sourceTree = "<group>"; };
 		16920C9725B1CD2E008ABBF1 /* Factory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Factory.swift; sourceTree = "<group>"; };
@@ -80,7 +81,6 @@
 		16CB846725AC6EF90067E1A0 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		16CB846A25AC6EF90067E1A0 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		16CB846C25AC6EF90067E1A0 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		16D4397325DD28B500D4B4C7 /* targetIDViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = targetIDViewController.swift; sourceTree = "<group>"; };
 		16D4398925E3A99600D4B4C7 /* controllerUI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = controllerUI.swift; sourceTree = "<group>"; };
 		16D4399F25E3EC1900D4B4C7 /* controllerEtatUI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = controllerEtatUI.swift; sourceTree = "<group>"; };
 		16DFFB5F25B0322700CCB063 /* SideMenu.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SideMenu.swift; sourceTree = "<group>"; };
@@ -127,7 +127,6 @@
 				16D4398925E3A99600D4B4C7 /* controllerUI.swift */,
 				16D4399F25E3EC1900D4B4C7 /* controllerEtatUI.swift */,
 				160BD57925D5235D00F5ED01 /* controllerGrapheUI.swift */,
-				16D4397325DD28B500D4B4C7 /* targetIDViewController.swift */,
 			);
 			path = Target_list;
 			sourceTree = "<group>";
@@ -150,10 +149,18 @@
 			path = extension;
 			sourceTree = "<group>";
 		};
-		1623D02D25EE45D000E84701 /* DisplayObject */ = {
+		1623D02D25EE45D000E84701 /* SensorCaracteristic */ = {
 			isa = PBXGroup;
 			children = (
-				1623D02E25EE466800E84701 /* capClass.swift */,
+				1623D02E25EE466800E84701 /* SensorCaracteristic.swift */,
+			);
+			path = SensorCaracteristic;
+			sourceTree = "<group>";
+		};
+		1623D04025EE74B700E84701 /* DisplayObject */ = {
+			isa = PBXGroup;
+			children = (
+				1623D04125EE750400E84701 /* displayObject.swift */,
 			);
 			path = DisplayObject;
 			sourceTree = "<group>";
@@ -242,7 +249,8 @@
 		16CB845D25AC6EF80067E1A0 /* ios-blue-tool-box */ = {
 			isa = PBXGroup;
 			children = (
-				1623D02D25EE45D000E84701 /* DisplayObject */,
+				1623D04025EE74B700E84701 /* DisplayObject */,
+				1623D02D25EE45D000E84701 /* SensorCaracteristic */,
 				1623D01E25ED4A6100E84701 /* extension */,
 				169B5E3625B9C65B00627A55 /* Tools */,
 				16CB845E25AC6EF80067E1A0 /* AppDelegate.swift */,
@@ -504,9 +512,9 @@
 				16D439A025E3EC1900D4B4C7 /* controllerEtatUI.swift in Sources */,
 				16DFFB8825B04EA800CCB063 /* BlueANGViewController.swift in Sources */,
 				16DFFB8225B04E7300CCB063 /* BlueRHTViewController.swift in Sources */,
-				16D4397425DD28B500D4B4C7 /* targetIDViewController.swift in Sources */,
 				1623D02025ED4AAC00E84701 /* UIcolor.swift in Sources */,
-				1623D02F25EE466800E84701 /* capClass.swift in Sources */,
+				1623D02F25EE466800E84701 /* SensorCaracteristic.swift in Sources */,
+				1623D04225EE750400E84701 /* displayObject.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

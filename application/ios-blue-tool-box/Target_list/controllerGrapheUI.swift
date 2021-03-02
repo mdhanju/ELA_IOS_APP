@@ -25,14 +25,14 @@ class controllerGrapheUI: controllerUI, ChartViewDelegate {
     private let identifier : String
     private let battery : Int
     private let typedata : SensorTypes
-    private let array : [Capteur.Cap]
+    private let array : [SensorCaracteristic.Cap]
     private let displayObject : [Capteur.DisplayObject]
     
     private var scanner: Scanner1!
     
     private var sensorT : SensorTypes? = nil
     
-    init(nameSensor : String,RSSI: Int, identifier : String, battery : Int, typedata : SensorTypes,array: [Capteur.Cap],displayObject : [Capteur.DisplayObject]) {
+    init(nameSensor : String,RSSI: Int, identifier : String, battery : Int, typedata : SensorTypes,array: [SensorCaracteristic.Cap],displayObject : [Capteur.DisplayObject]) {
         self.nameSensor = nameSensor
         self.RSSI = RSSI
         self.identifier = identifier
@@ -52,6 +52,14 @@ class controllerGrapheUI: controllerUI, ChartViewDelegate {
         view.layoutIfNeeded()
     }
     
+    func grapheColorLabel(label : String)
+    {
+        let set = LineChartDataSet(entries: entries, label: label)
+        set.setColor(UIColor(hexString: "#336699"))
+        set.setCircleColor(UIColor(hexString: "#336699"))
+        let data = LineChartData(dataSet: set)
+        lineChart.data = data
+    }
     
     
     required init?(coder: NSCoder) {
@@ -69,7 +77,7 @@ class controllerGrapheUI: controllerUI, ChartViewDelegate {
     func updateSensorUI(data: ([String : Sensor])) -> Capteur.DisplayObject {
         
         
-        let objectTemp1 = Capteur.Temp(temp: 0)
+        let objectTemp1 = SensorCaracteristic.Temp(temp: 0)
         
         let newobject : Capteur.DisplayObject = Capteur.DisplayObject(name: "null", RSSI: 0, identifier: "",battery : 0, typedata : SensorTypes.SensorID, array: [objectTemp1])
         
@@ -121,11 +129,7 @@ class controllerGrapheUI: controllerUI, ChartViewDelegate {
                         compteur = compteur + 1
                         compHum = compHum + 1
                         
-                        let set = LineChartDataSet(entries: entries, label: "temperature")
-                        set.setColor(UIColor(hexString: "#336699"))
-                        set.setCircleColor(UIColor(hexString: "#336699"))
-                        let data = LineChartData(dataSet: set)
-                        lineChart.data = data
+                        grapheColorLabel(label: "temperature")
                         
                     }
                     
@@ -140,11 +144,7 @@ class controllerGrapheUI: controllerUI, ChartViewDelegate {
                         compteur = compteur + 1
                         compHum = compHum + 1
                         
-                        let set = LineChartDataSet(entries: entries, label: " dbm")
-                        set.setColor(UIColor(hexString: "#336699"))
-                        set.setCircleColor(UIColor(hexString: "#336699"))
-                        let data = LineChartData(dataSet: set)
-                        lineChart.data = data
+                        grapheColorLabel(label: "dbm")
                         
                     }
                     

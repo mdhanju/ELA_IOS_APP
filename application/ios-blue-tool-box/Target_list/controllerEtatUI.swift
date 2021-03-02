@@ -22,7 +22,7 @@ class controllerEtatUI: controllerUI {
     let identifier : String
     let battery : Int
     let typedata : SensorTypes
-    let  array : [Capteur.Cap]
+    let  array : [SensorCaracteristic.Cap]
     var  displayObject : [Capteur.DisplayObject]
     
     
@@ -39,7 +39,7 @@ class controllerEtatUI: controllerUI {
     private var UInameState = UITextView()
     private let btnPerson = UIButton()
     
-    init(nameSensor : String,RSSI: Int, identifier : String, battery : Int, typedata : SensorTypes,array: [Capteur.Cap],displayObject : [Capteur.DisplayObject]) {
+    init(nameSensor : String,RSSI: Int, identifier : String, battery : Int, typedata : SensorTypes,array: [SensorCaracteristic.Cap],displayObject : [Capteur.DisplayObject]) {
         self.nameSensor = nameSensor
         self.RSSI = RSSI
         self.identifier = identifier
@@ -91,7 +91,7 @@ class controllerEtatUI: controllerUI {
             
             {
                 
-                if let Move : [Capteur.Move] = cle.array as? [Capteur.Move]
+                if let Move : [SensorCaracteristic.Move] = cle.array as? [SensorCaracteristic.Move]
                 {
                     
                     
@@ -133,7 +133,7 @@ class controllerEtatUI: controllerUI {
     /// - Returns: DisplayObject  that store the information of sensor
     func updateSensorUI(data: ([String : Sensor])) -> Capteur.DisplayObject {
         
-        let objectTemp1 = Capteur.Temp(temp: 0)
+        let objectTemp1 = SensorCaracteristic.Temp(temp: 0)
         
         let newobject : Capteur.DisplayObject = Capteur.DisplayObject(name: "null", RSSI: 0, identifier: "",battery : 0, typedata : SensorTypes.SensorID, array: [objectTemp1])
         
@@ -142,6 +142,7 @@ class controllerEtatUI: controllerUI {
             // A REFACTORISER POUR FAIRE QU'UNE FONCTION
             if(key == identifier)
             {
+                var state = false
                 if(value is SensorMove)
                 {
                     if let move = value as? SensorMove
@@ -149,6 +150,8 @@ class controllerEtatUI: controllerUI {
                         
                         progressRing.value = CGFloat(move.getNbrPas())
                         print("progress ring" + String(move.getNbrPas()) + "son nom " + move.name )
+                        state = move.getEtat()
+                        /*
                         if(move.getEtat() == true)
                         {
                             setEtat(image : UIimagelowPerson!,str : stateMove)
@@ -157,10 +160,10 @@ class controllerEtatUI: controllerUI {
                         
                             setEtat(image : UIimagelowPersonStatic!,str : stateStatic)
                         }
+ */
                     }
                     
                 }
-                
                 if(value is SensorMagnetic)
                 {
                     if let magnetic = value as? SensorMagnetic
@@ -168,6 +171,8 @@ class controllerEtatUI: controllerUI {
                         
                         progressRing.value = CGFloat(magnetic.getNbrObject())
                         print("progress ring" + String(magnetic.getNbrObject()) + "son nom " + magnetic.name )
+                        state = magnetic.getEtat()
+                        /*
                         if(magnetic.getEtat() == true)
                         {
                             setEtat(image : UIimagelowPerson!,str : stateMove)
@@ -178,11 +183,20 @@ class controllerEtatUI: controllerUI {
                             setEtat(image : UIimagelowPersonStatic!,str : stateStatic)
                             
                         }
+ */
                     }
                     
                 }
                 
                 displayObject.append(newobject)
+                if(state == true)
+                {
+                    setEtat(image : UIimagelowPerson!,str : stateMove)
+                }
+                else {
+                
+                    setEtat(image : UIimagelowPersonStatic!,str : stateStatic)
+                }
             }
             
         }
