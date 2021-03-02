@@ -1,69 +1,10 @@
 import Foundation
-
 import UIKit
 
-
-
-// MARK: Extension
-
-extension UIColor {
-    convenience init(hexString: String, alpha: CGFloat = 1.0) {
-        let hexString: String = hexString.trimmingCharacters(in: CharacterSet.whitespacesAndNewlines)
-        let scanner = Scanner(string: hexString)
-        if (hexString.hasPrefix("#")) {
-            scanner.scanLocation = 1
-        }
-        var color: UInt32 = 0
-        scanner.scanHexInt32(&color)
-        let mask = 0x000000FF
-        let r = Int(color >> 16) & mask
-        let g = Int(color >> 8) & mask
-        let b = Int(color) & mask
-        let red   = CGFloat(r) / 255.0
-        let green = CGFloat(g) / 255.0
-        let blue  = CGFloat(b) / 255.0
-        self.init(red:red, green:green, blue:blue, alpha:alpha)
-    }
-    func toHexString() -> String {
-        var r:CGFloat = 0
-        var g:CGFloat = 0
-        var b:CGFloat = 0
-        var a:CGFloat = 0
-        getRed(&r, green: &g, blue: &b, alpha: &a)
-        let rgb:Int = (Int)(r*255)<<16 | (Int)(g*255)<<8 | (Int)(b*255)<<0
-        return String(format:"#%06x", rgb)
-    }
-}
-
-
-
-extension UIButton {
-    func blink() {
-        self.alpha = 0.0;
-        UIView.animate(withDuration: 0.6, //Time duration you want,
-                       delay: 0.0,
-                       options: [.curveEaseInOut, .autoreverse, .repeat],
-                       animations: { [weak self] in self?.alpha = 1.0 },
-                       completion: { [weak self] _ in self?.alpha = 0.0 })
-    }
-    
-    func stopBlink() {
-        self.layer.removeAllAnimations()
-        self.alpha = 1.0;
-        self.isHidden = false
-        // [self.layer removeAllAnimations];
-    }
-}
-
-extension UIView {
-    func blink(duration: TimeInterval = 0.5, delay: TimeInterval = 0.0, alpha: CGFloat = 0.0) {
-        UIView.animate(withDuration: duration, delay: delay, options: [.curveEaseInOut, .repeat, .autoreverse], animations: {
-            self.alpha = alpha
-        })
-    }
-}
-
+/// Controller of user interface for each sensor
 class controllerUI: UIViewController {
+    
+    var UItext = UITextView()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -73,7 +14,8 @@ class controllerUI: UIViewController {
     }
     
     
-    
+    /// This function allow you to define the the name of sensor of each sensor for the UI
+    /// - Parameter str: this string correspond to the display the name at the top of the User Interface
     public func nameSensorUI(str : String)
     {
         let UInameSensor = UITextView()
@@ -87,6 +29,10 @@ class controllerUI: UIViewController {
         self.view.addSubview(UInameSensor)
         self.view.bringSubviewToFront(UInameSensor)
     }
+    
+    
+    /// This function allow you to define the the battery level of each sensor for the UI
+    /// - Parameter battery: this string correspond to the display the battery level at the top of the User Interface
     public func batteryUI(battery : Int)
     {
         if(battery != -1)
@@ -114,6 +60,10 @@ class controllerUI: UIViewController {
         }
     }
     
+ 
+    
+    /// This function allow you to define the logo of each sensor for the UI
+    /// - Parameter picture: logo picture at the top of the user interface
     public func logoUI(picture : String)
     {
         let imageTemp = picture
@@ -123,5 +73,35 @@ class controllerUI: UIViewController {
         self.view.addSubview(imageViewTemp)
     }
     
+  
+   
     
+    /// function allow you to define value or state of sensor at top of the top of the user interface
+    /// - Parameters:
+    ///   - x: margin-left
+    ///   - size: size of the text
+    func textUI(x : Int,size : Float)
+    {
+        UItext.text = ""
+        UItext.textColor = UIColor.black
+        UItext.font = UIFont.systemFont(ofSize: CGFloat(size))
+        UItext.isUserInteractionEnabled = false
+        UItext.font = UIFont.boldSystemFont(ofSize: CGFloat(size))
+        UItext.frame = CGRect(x: x, y: 150, width: 350, height: 100)
+        UItext.backgroundColor = .none
+        self.view.addSubview(UItext)
+        self.view.bringSubviewToFront(UItext)
+    }
+    
+    
+    func line()
+    {
+        let line = UIView(frame: CGRect(x: 40, y: 150, width: 290, height: 3))
+        line.backgroundColor =  UIColor(hexString: "#336699")
+        self.view.addSubview(line)
+        
+        let lineBack = UIView(frame: CGRect(x: 40, y: 200, width: 290, height: 3))
+        lineBack.backgroundColor = UIColor(hexString: "#336699")
+        self.view.addSubview(lineBack)
+    }
 }

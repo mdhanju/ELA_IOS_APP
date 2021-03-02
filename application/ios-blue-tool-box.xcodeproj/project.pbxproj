@@ -11,6 +11,9 @@
 		160BD57025D13C2300F5ED01 /* AproposViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 160BD56F25D13C2300F5ED01 /* AproposViewController.swift */; };
 		160BD57625D3DCBF00F5ED01 /* ConnectViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 160BD57525D3DCBF00F5ED01 /* ConnectViewController.swift */; };
 		160BD57A25D5235D00F5ED01 /* controllerGrapheUI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 160BD57925D5235D00F5ED01 /* controllerGrapheUI.swift */; };
+		1623D02025ED4AAC00E84701 /* UIcolor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1623D01F25ED4AAC00E84701 /* UIcolor.swift */; };
+		1623D02625ED4B0F00E84701 /* UIbutton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1623D02525ED4B0F00E84701 /* UIbutton.swift */; };
+		1623D02A25ED4B4100E84701 /* UIview.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1623D02925ED4B4100E84701 /* UIview.swift */; };
 		16715DF525C40142007F0AC2 /* Event.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16715DF425C40142007F0AC2 /* Event.swift */; };
 		16920C8725B1B271008ABBF1 /* BlueIDViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16920C8625B1B271008ABBF1 /* BlueIDViewController.swift */; };
 		16920C9825B1CD2E008ABBF1 /* Factory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16920C9725B1CD2E008ABBF1 /* Factory.swift */; };
@@ -56,6 +59,9 @@
 		160BD56F25D13C2300F5ED01 /* AproposViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AproposViewController.swift; sourceTree = "<group>"; };
 		160BD57525D3DCBF00F5ED01 /* ConnectViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConnectViewController.swift; sourceTree = "<group>"; };
 		160BD57925D5235D00F5ED01 /* controllerGrapheUI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = controllerGrapheUI.swift; sourceTree = "<group>"; };
+		1623D01F25ED4AAC00E84701 /* UIcolor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIcolor.swift; sourceTree = "<group>"; };
+		1623D02525ED4B0F00E84701 /* UIbutton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIbutton.swift; sourceTree = "<group>"; };
+		1623D02925ED4B4100E84701 /* UIview.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIview.swift; sourceTree = "<group>"; };
 		16715DF425C40142007F0AC2 /* Event.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Event.swift; sourceTree = "<group>"; };
 		16920C8625B1B271008ABBF1 /* BlueIDViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BlueIDViewController.swift; sourceTree = "<group>"; };
 		16920C9725B1CD2E008ABBF1 /* Factory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Factory.swift; sourceTree = "<group>"; };
@@ -130,6 +136,23 @@
 				160BD57525D3DCBF00F5ED01 /* ConnectViewController.swift */,
 			);
 			path = connexion;
+			sourceTree = "<group>";
+		};
+		1623D01E25ED4A6100E84701 /* extension */ = {
+			isa = PBXGroup;
+			children = (
+				1623D01F25ED4AAC00E84701 /* UIcolor.swift */,
+				1623D02525ED4B0F00E84701 /* UIbutton.swift */,
+				1623D02925ED4B4100E84701 /* UIview.swift */,
+			);
+			path = extension;
+			sourceTree = "<group>";
+		};
+		1623D02D25EE45D000E84701 /* capteur */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = capteur;
 			sourceTree = "<group>";
 		};
 		16920C8825B1B2DC008ABBF1 /* View */ = {
@@ -216,6 +239,8 @@
 		16CB845D25AC6EF80067E1A0 /* ios-blue-tool-box */ = {
 			isa = PBXGroup;
 			children = (
+				1623D02D25EE45D000E84701 /* capteur */,
+				1623D01E25ED4A6100E84701 /* extension */,
 				169B5E3625B9C65B00627A55 /* Tools */,
 				16CB845E25AC6EF80067E1A0 /* AppDelegate.swift */,
 				16CB846025AC6EF80067E1A0 /* SceneDelegate.swift */,
@@ -454,6 +479,7 @@
 				169B5E5625BACD6F00627A55 /* ConvertionToolBox.swift in Sources */,
 				16CB846325AC6EF80067E1A0 /* ViewController.swift in Sources */,
 				169B5E3C25B9C7C400627A55 /* ParticlePeripheral.swift in Sources */,
+				1623D02625ED4B0F00E84701 /* UIbutton.swift in Sources */,
 				16CB845F25AC6EF80067E1A0 /* AppDelegate.swift in Sources */,
 				16CB846125AC6EF80067E1A0 /* SceneDelegate.swift in Sources */,
 				16DFFB7E25B04E4800CCB063 /* ELAViewController.swift in Sources */,
@@ -471,10 +497,12 @@
 				16DFFB8425B04E8600CCB063 /* BlueMOVViewController.swift in Sources */,
 				16DFFB8625B04E9500CCB063 /* BlueMAGViewController.swift in Sources */,
 				160BD57025D13C2300F5ED01 /* AproposViewController.swift in Sources */,
+				1623D02A25ED4B4100E84701 /* UIview.swift in Sources */,
 				16D439A025E3EC1900D4B4C7 /* controllerEtatUI.swift in Sources */,
 				16DFFB8825B04EA800CCB063 /* BlueANGViewController.swift in Sources */,
 				16DFFB8225B04E7300CCB063 /* BlueRHTViewController.swift in Sources */,
 				16D4397425DD28B500D4B4C7 /* targetIDViewController.swift in Sources */,
+				1623D02025ED4AAC00E84701 /* UIcolor.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

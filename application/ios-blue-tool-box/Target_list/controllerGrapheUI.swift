@@ -1,15 +1,18 @@
 import UIKit
 import Charts
+/// controller for the sensor temperature, humidity and angle
 class controllerGrapheUI: controllerUI, ChartViewDelegate {
     
     private let data1 = LineChartData()
     private var entries = [ChartDataEntry]()
     private var entries1 = [ChartDataEntry]()
     private var entries2 = [ChartDataEntry]()
-    var UItext = UITextView()
+   
     private var lineChart = LineChartView()
     
     var donnee : String = ""
+    
+    private var MaxValueInGraph : Int = 8
     
     // Compteur graphe entries
     private var compteur = 0
@@ -42,6 +45,7 @@ class controllerGrapheUI: controllerUI, ChartViewDelegate {
     }
     
     
+    /// Navigate to the page for give order to tag.
     @objc func imageTapTemp() {
         self.navigationController?.pushViewController(ConnectViewController(nameSensor: nameSensor, RSSI: RSSI, identifier: identifier, battery: battery, typedata: typedata, array: array, displayObject: displayObject), animated: true)
         view.layoutIfNeeded()
@@ -53,12 +57,14 @@ class controllerGrapheUI: controllerUI, ChartViewDelegate {
         fatalError("init(coder:) has not been implemented")
     }
     
-    
+    /// retrieve  dictionnary of sensor from scanner1.swift
+    /// - Parameter data: dictionnary[key,value]
     func handleNewObjectAvailable(data: ([String : Sensor])) {
-        print("test 1940")
         updateSensorUI(data: data)
     }
-    
+    /// Update the UICircular bar value with the value of sensor
+    /// - Parameter data: dtictionnary of sensor the key is peripheral.identifier and Sensor is define in the factory
+    /// - Returns: DisplayObject  that store the information of sensor
     func updateSensorUI(data: ([String : Sensor])) -> Capteur.DisplayObject {
         
         
@@ -73,13 +79,13 @@ class controllerGrapheUI: controllerUI, ChartViewDelegate {
             {
                 if(value is SensorAngle)
                 {
-                    if let tempHum = value as? SensorAngle
+                    if let angle = value as? SensorAngle
                     {
-                        valueUI(donnees: "x : " + String( tempHum.getX()) + "mg  y :" + String(tempHum.getY()) + "mg  z : " +  String(tempHum.getZ()) + "mg ")
+                        valueUI(donnees: "x : " + String( angle.getX()) + "mg  y :" + String(angle.getY()) + "mg  z : " +  String(angle.getZ()) + "mg ")
                         
-                        entries.append(ChartDataEntry(x: Double(compteur),y: Double(tempHum.getX())))
-                        entries1.append(ChartDataEntry(x: Double(compteur),y: Double(tempHum.getY())))
-                        entries2.append(ChartDataEntry(x: Double(compteur),y: Double(tempHum.getZ())))
+                        entries.append(ChartDataEntry(x: Double(compteur),y: Double(angle.getX())))
+                        entries1.append(ChartDataEntry(x: Double(compteur),y: Double(angle.getY())))
+                        entries2.append(ChartDataEntry(x: Double(compteur),y: Double(angle.getZ())))
                         compteur = compteur + 1
                         compHum = compHum + 1
                         
@@ -107,10 +113,10 @@ class controllerGrapheUI: controllerUI, ChartViewDelegate {
                 
                 if(value is SensorTemperature)
                 {
-                    if let tempHum = value as? SensorTemperature
+                    if let temp = value as? SensorTemperature
                     {
-                        valueUI(donnees: String(tempHum.getTemp()) + "°C")
-                        entries.append(ChartDataEntry(x: Double(compteur),y: Double(tempHum.getTemp())))
+                        valueUI(donnees: String(temp.getTemp()) + "°C")
+                        entries.append(ChartDataEntry(x: Double(compteur),y: Double(temp.getTemp())))
                         compteur = compteur + 1
                         compHum = compHum + 1
                         
@@ -158,37 +164,29 @@ class controllerGrapheUI: controllerUI, ChartViewDelegate {
                 
             }
         }
-        if(entries.count >= 8)
+        // delete first value of array for keep only 8 value on the graph
+        if(entries.count >= MaxValueInGraph)
         {
             entries.removeFirst(1)
             
         }
-        if(entries1.count >= 8)
+        if(entries1.count >= MaxValueInGraph)
         {
             entries1.removeFirst(1)
         }
         
-        if(entries2.count >= 8)
+        if(entries2.count >= MaxValueInGraph)
         {
             entries2.removeFirst(1)
         }
         return newobject
     }
-    func textUI(x : Int,size : Float)
-    {
-        UItext.text = ""
-        UItext.textColor = UIColor.black
-        UItext.font = UIFont.systemFont(ofSize: CGFloat(size))
-        UItext.isUserInteractionEnabled = false
-        UItext.font = UIFont.boldSystemFont(ofSize: CGFloat(size))
-        UItext.frame = CGRect(x: x, y: 150, width: 350, height: 100)
-        UItext.backgroundColor = .none
-        self.view.addSubview(UItext)
-        self.view.bringSubviewToFront(UItext)
-    }
+
     
     
     
+    /// take the value of graph and print it on title
+    /// - Parameter donnees: the string data on top of the user interface screen
     func valueUI(donnees : String)
     {
         UItext.text = donnees
@@ -208,6 +206,7 @@ class controllerGrapheUI: controllerUI, ChartViewDelegate {
         
         nameSensorUI(str: nameSensor)
         batteryUI(battery: battery)
+        line()
         if( typedata == SensorTypes.SensorTemperatureHumidity)
         {
             logoUI(picture: "humidite_blue")
@@ -250,6 +249,7 @@ class controllerGrapheUI: controllerUI, ChartViewDelegate {
         
     }
     
+    /// Design of UICharts the graph with color and label, size set  
     override func viewDidLayoutSubviews() {
         super.viewDidLayoutSubviews()
         
@@ -258,96 +258,8 @@ class controllerGrapheUI: controllerUI, ChartViewDelegate {
         //     lineChart.center = view.center
         view.addSubview(lineChart)
         
-        let line = UIView(frame: CGRect(x: 40, y: 150, width: 290, height: 3))
-        line.backgroundColor =  UIColor(hexString: "#336699")
-        self.view.addSubview(line)
         
-        let lineBack = UIView(frame: CGRect(x: 40, y: 200, width: 290, height: 3))
-        lineBack.backgroundColor = UIColor(hexString: "#336699")
-        self.view.addSubview(lineBack)
-        
-        
-        
-        for cle in displayObject {
-            if( cle.identifier == identifier)
-            
-            {
-                if( cle.typedata is SensorAngle)
-                {
-                    if let temp : [Capteur.Angle] = cle.array as? [Capteur.Angle]
-                    {
-                        for x in 0..<cle.array.count
-                        {
-                            entries.append(ChartDataEntry(x: Double(x),y: Double(temp[x].getX())))
-                            compteur = compteur + 1
-                        }
-                        
-                    }
-                    
-                    if let temp : [Capteur.Angle] = cle.array as? [Capteur.Angle]
-                    {
-                        for x in 0..<cle.array.count
-                        {
-                            entries1.append(ChartDataEntry(x: Double(x),y: Double(temp[x].getY())))
-                        }
-                        
-                    }
-                    if let temp : [Capteur.Angle] = cle.array as? [Capteur.Angle]
-                    {
-                        for x in 0..<cle.array.count
-                        {
-                            entries2.append(ChartDataEntry(x: Double(x),y: Double(temp[x].getZ())))
-                        }
-                    }
-                }
-                
-                if(cle is SensorTemperatureHumidity)
-                {
-                    
-                    if let temp : [Capteur.TempHum] = cle.array as? [Capteur.TempHum]
-                    {
-                        for x in 0..<cle.array.count
-                        {
-                            print("la val de x = " + String(x))
-                            print("la val de compteur = " + String(compteur))
-                            
-                            entries.append(ChartDataEntry(x: Double(x),y: Double(temp[x].getTemp())))
-                            entries1.append(ChartDataEntry(x: Double(x),y: Double(temp[x].getHum())))
-                            compteur = compteur + 1
-                            compHum = compHum + 1
-                        }
-                        
-                    }
-                }
-                
-                if(cle is SensorTemperature)
-                {
-                    if let temp : [Capteur.Temp] = cle.array as? [Capteur.Temp]
-                    {
-                        
-                        for x in 0..<cle.array.count
-                        {
-                            entries.append(ChartDataEntry(x: Double(x),y: Double(temp[x].getTemp())))
-                            compteur = compteur + 1
-                        }
-                        
-                    }
-                }
-                
-            }
-        }
-        
-        
-        let line1 = LineChartDataSet(entries: entries1, label: "Humidity")
-        
-        let line2 = LineChartDataSet(entries: entries, label: "Temperature")
-        line2.setColor(.red)
-        line2.setCircleColor(.red)
-        let data = LineChartData(dataSet: line1)
-        data.addDataSet(line2)
-        //   data1.addDataSet(line1)
-        // data1.addDataSet(line2)
-        lineChart.data = data
+     
         
     }
     

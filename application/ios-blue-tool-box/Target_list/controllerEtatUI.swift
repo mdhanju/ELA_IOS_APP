@@ -1,11 +1,21 @@
 import UIKit
 import UICircularProgressRing
+
+/**
+    This class is usefull to display a windows with graphical values plot.
+    This object ihnerit from controllerUI Object
+
+*/
 class controllerEtatUI: controllerUI {
     let circlePath = UIBezierPath(arcCenter: CGPoint(x: 180, y: 250), radius: CGFloat(20), startAngle: CGFloat(0), endAngle: CGFloat(Double.pi * 2), clockwise: true)
     
     let shapeLayer = CAShapeLayer()
     
-    var UItext = UITextView()
+   
+    
+    var colorBox : String = "#336699"
+    var stateStatic : String = "Etat : statique"
+    var stateMove : String = "Etat : déplacement"
 
     let nameSensor : String
     let RSSI : Int
@@ -26,6 +36,9 @@ class controllerEtatUI: controllerUI {
     private var sensorT : SensorTypes? = nil
     
     
+    private var UInameState = UITextView()
+    private let btnPerson = UIButton()
+    
     init(nameSensor : String,RSSI: Int, identifier : String, battery : Int, typedata : SensorTypes,array: [Capteur.Cap],displayObject : [Capteur.DisplayObject]) {
         self.nameSensor = nameSensor
         self.RSSI = RSSI
@@ -42,82 +55,11 @@ class controllerEtatUI: controllerUI {
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
-    
-    
-    
-    private var UInameseuil = UITextView()
-    private let btnPerson = UIButton()
-    
-    func handleNewObjectAvailable(data: ([String : Sensor]))
-    {
-        print("test 1930")
-        updateSensorUI(data: data)
-        
-    }
-    
-    func updateSensorUI(data: ([String : Sensor])) -> Capteur.DisplayObject {
-        
-        let objectTemp1 = Capteur.Temp(temp: 0)
-        
-        let newobject : Capteur.DisplayObject = Capteur.DisplayObject(name: "null", RSSI: 0, identifier: "",battery : 0, typedata : SensorTypes.SensorID, array: [objectTemp1])
-        
-        for (key,value) in data
-        {
-            
-            if(key == identifier)
-            {
-                if(value is SensorMove)
-                {
-                    if let move = value as? SensorMove
-                    {
-                        
-                        progressRing.value = CGFloat(move.getNbrPas())
-                        print("progress ring" + String(move.getNbrPas()) + "son nom " + move.name )
-                        if(move.getEtat() == true)
-                        {
-                            setEtat(image : UIimagelowPerson!,str : "Etat : déplacement")
-                           
-                        }
-                        else {
-                        
-                            setEtat(image : UIimagelowPersonStatic!,str : "Etat : statique")
-                        }
-                    }
-                    
-                }
-                
-                if(value is SensorMagnetic)
-                {
-                    if let move = value as? SensorMagnetic
-                    {
-                        
-                        progressRing.value = CGFloat(move.getNbrObject())
-                        print("progress ring" + String(move.getNbrObject()) + "son nom " + move.name )
-                        if(move.getEtat() == true)
-                        {
-                            setEtat(image : UIimagelowPerson!,str : "Etat : déplacement")
-                            
-                        }
-                        else {
-    
-                            setEtat(image : UIimagelowPersonStatic!,str : "Etat : statique")
-                            
-                        }
-                    }
-                    
-                }
-                
-                displayObject.append(newobject)
-            }
-            
-        }
-        return newobject
-    }
-    
+
     override func viewDidLoad() {
         
-        
         nameSensorUI(str: nameSensor)
+        UItextState()
         batteryUI(battery: battery)
         if( typedata == SensorTypes.SensorMove)
         {
@@ -129,32 +71,18 @@ class controllerEtatUI: controllerUI {
             logoUI(picture: "porte_blue")
         }
         
-        
+        // declare scanner to scan bluetooth devices
         scanner = Scanner1()
         scanner.initializeScanner()
         scanner.dictionnarySensor.addHandler(handler : handleNewObjectAvailable)
         
-        
         super.viewDidLoad()
         
+        line()
         
-        let line = UIView(frame: CGRect(x: 40, y: 150, width: 290, height: 3))
-        line.backgroundColor =  UIColor(hexString: "#336699")
-        self.view.addSubview(line)
+
         
-        let lineBack = UIView(frame: CGRect(x: 40, y: 200, width: 290, height: 3))
-        lineBack.backgroundColor = UIColor(hexString: "#336699")
-        self.view.addSubview(lineBack)
-        
-        self.UInameseuil.text = "Etat : statique"
-        self.UInameseuil.textColor = UIColor.black
-        self.UInameseuil.font = UIFont.systemFont(ofSize: 25)
-        self.UInameseuil.isUserInteractionEnabled = false
-        self.UInameseuil.font = UIFont.boldSystemFont(ofSize: 25)
-        self.UInameseuil.frame = CGRect(x: 110, y: 150, width: 350, height: 100)
-        self.UInameseuil.backgroundColor = .none
-        self.view.addSubview(UInameseuil)
-        self.view.bringSubviewToFront(UInameseuil)
+
         
         // Do any additional setup after loading the view.
         
@@ -171,13 +99,13 @@ class controllerEtatUI: controllerUI {
                     if(Move[array.count-1].getEtat() == true)
                     {
        
-                        setEtat(image : UIimagelowPerson!,str : "Etat : déplacement")
+                        setEtat(image : UIimagelowPerson!,str : stateMove)
                    
                     }
                     else {
                         
 
-                        setEtat(image : UIimagelowPersonStatic!,str : "Etat : statique")
+                        setEtat(image : UIimagelowPersonStatic!,str : stateStatic)
                         
                     }
                     
@@ -193,31 +121,82 @@ class controllerEtatUI: controllerUI {
     }
     
     
-    func textUI(size : Int)
+    /// retrieve  dictionnary of sensor from scanner1.swift
+    /// - Parameter data: dictionnary[key,value]
+    func handleNewObjectAvailable(data: ([String : Sensor]))
     {
-        UItext.text = ""
-        UItext.textColor = UIColor.black
-        UItext.font = UIFont.systemFont(ofSize: 25.0)
-        UItext.isUserInteractionEnabled = false
-        UItext.font = UIFont.boldSystemFont(ofSize: 25)
-        UItext.frame = CGRect(x: size, y: 150, width: 350, height: 100)
-        UItext.backgroundColor = .none
-        self.view.addSubview(UItext)
-        self.view.bringSubviewToFront(UItext)
+        updateSensorUI(data: data)
     }
     
+    /// Update the UICircular bar value with the value of sensor
+    /// - Parameter data: dtictionnary of sensor the key is peripheral.identifier and Sensor is define in the factory
+    /// - Returns: DisplayObject  that store the information of sensor
+    func updateSensorUI(data: ([String : Sensor])) -> Capteur.DisplayObject {
+        
+        let objectTemp1 = Capteur.Temp(temp: 0)
+        
+        let newobject : Capteur.DisplayObject = Capteur.DisplayObject(name: "null", RSSI: 0, identifier: "",battery : 0, typedata : SensorTypes.SensorID, array: [objectTemp1])
+        
+        for (key,value) in data
+        {
+            // A REFACTORISER POUR FAIRE QU'UNE FONCTION
+            if(key == identifier)
+            {
+                if(value is SensorMove)
+                {
+                    if let move = value as? SensorMove
+                    {
+                        
+                        progressRing.value = CGFloat(move.getNbrPas())
+                        print("progress ring" + String(move.getNbrPas()) + "son nom " + move.name )
+                        if(move.getEtat() == true)
+                        {
+                            setEtat(image : UIimagelowPerson!,str : stateMove)
+                        }
+                        else {
+                        
+                            setEtat(image : UIimagelowPersonStatic!,str : stateStatic)
+                        }
+                    }
+                    
+                }
+                
+                if(value is SensorMagnetic)
+                {
+                    if let magnetic = value as? SensorMagnetic
+                    {
+                        
+                        progressRing.value = CGFloat(magnetic.getNbrObject())
+                        print("progress ring" + String(magnetic.getNbrObject()) + "son nom " + magnetic.name )
+                        if(magnetic.getEtat() == true)
+                        {
+                            setEtat(image : UIimagelowPerson!,str : stateMove)
+                            
+                        }
+                        else {
     
-    
-    func valueUI(donnees : String)
-    {
-        UItext.text = donnees
+                            setEtat(image : UIimagelowPersonStatic!,str : stateStatic)
+                            
+                        }
+                    }
+                    
+                }
+                
+                displayObject.append(newobject)
+            }
+            
+        }
+        return newobject
     }
     
-    
+    /// Display on screen the state  on/off by a picture
+    /// - Parameters:
+    ///   - image: picture show the sensor is moving
+    ///   - str: update the number inside UIprogressBar
     func setEtat(image : UIImage,str : String)
     {
         btnPerson.setImage(image, for: .normal)
-        UInameseuil.text = str
+        UInameState.text = str
         
         btnPerson.frame = CGRect(x: 170, y: 250 ,width: 45, height: 45)
         
@@ -225,10 +204,21 @@ class controllerEtatUI: controllerUI {
         self.view.addSubview(btnPerson)
     }
     
+    func UItextState()
+    {
+        self.UInameState.text = stateStatic
+        self.UInameState.textColor = UIColor.black
+        self.UInameState.font = UIFont.systemFont(ofSize: 25)
+        self.UInameState.isUserInteractionEnabled = false
+        self.UInameState.font = UIFont.boldSystemFont(ofSize: 25)
+        self.UInameState.frame = CGRect(x: 110, y: 150, width: 350, height: 100)
+        self.UInameState.backgroundColor = .none
+        self.view.addSubview(UInameState)
+        self.view.bringSubviewToFront(UInameState)
+    }
+    
     func initializeInfoSensor(sensor : SensorTypes)
     {
         sensorT = sensor
     }
-
-    
 }
