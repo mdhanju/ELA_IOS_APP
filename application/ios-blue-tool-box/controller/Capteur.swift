@@ -21,6 +21,10 @@ class Capteur:  UIViewController, UITableViewDataSource, UITableViewDelegate{
     
     
     
+    /// Show text when the scan start
+    /// - Parameters:
+    ///   - message: the can start or the scan stop
+    ///   - font: the size of the message
     func showToast(message: String, font: UIFont) {
         let toastLabel = UILabel()
         toastLabel.backgroundColor = UIColor.black.withAlphaComponent(0.6)
