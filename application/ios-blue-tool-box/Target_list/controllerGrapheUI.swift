@@ -7,6 +7,7 @@ class controllerGrapheUI: controllerUI, ChartViewDelegate {
     private var entries = [ChartDataEntry]()
     private var entries1 = [ChartDataEntry]()
     private var entries2 = [ChartDataEntry]()
+    private var entries4 = [ChartDataEntry]()
    
     private var lineChart = LineChartView()
     
@@ -130,6 +131,25 @@ class controllerGrapheUI: controllerUI, ChartViewDelegate {
                     
                 }
                 
+                if(value is SensorID)
+                {
+                    if let ID = value as? SensorID
+                    {
+                        valueUI(donnees: String(ID.RSSI) + " dbm")
+                        entries.append(ChartDataEntry(x: Double(compteur),y: Double(ID.RSSI)))
+                        compteur = compteur + 1
+                        compHum = compHum + 1
+                        
+                        let set = LineChartDataSet(entries: entries, label: " dbm")
+                        set.setColor(UIColor(hexString: "#336699"))
+                        set.setCircleColor(UIColor(hexString: "#336699"))
+                        let data = LineChartData(dataSet: set)
+                        lineChart.data = data
+                        
+                    }
+                    
+                }
+                
                 
                 
                 if(value is SensorTemperatureHumidity)
@@ -223,6 +243,12 @@ class controllerGrapheUI: controllerUI, ChartViewDelegate {
         {
             logoUI(picture: "angle")
             textUI(x: 30,size : 22.0)
+        }
+        
+        if( typedata == SensorTypes.SensorID)
+        {
+            logoUI(picture: "blue")
+            textUI(x: 110,size : 25.0)
         }
         
         

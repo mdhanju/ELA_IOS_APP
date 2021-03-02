@@ -592,7 +592,7 @@ class SensorFactory
             }
             id = SensorFactory.shared().getSensorTemperature(sensorTypes: .SensorTemperature, name: tagname, RSSI: Int(truncating: tagRSSI),batterylevel: battery,temperature: ConvertionToolbox.ConvertTemperature(str: String(temp!)),identifier: tagidentifier)
         }
-        else {
+        else if(tagname != "") {
             
             var battery : Int = -1
             if(sensorData![CBUUID(string: "180F")] != nil)

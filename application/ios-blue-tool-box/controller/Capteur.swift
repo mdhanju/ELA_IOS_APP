@@ -259,7 +259,7 @@ class Capteur:  UIViewController, UITableViewDataSource, UITableViewDelegate{
         if(typedata == SensorTypes.SensorID)
         {
             
-            self.navigationController?.pushViewController(targetIDViewController(nameSensor: string1 ,RSSI: RSSI, identifier : identifier, battery : battery, typedata : typedata,array : arr,displayObject : display), animated: true)
+            self.navigationController?.pushViewController(controllerGrapheUI(nameSensor: string1 ,RSSI: RSSI, identifier : identifier, battery : battery, typedata : typedata,array : arr,displayObject : display), animated: true)
             self.navigationController?.navigationBar.tintColor = .black
         }
         //
