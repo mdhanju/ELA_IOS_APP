@@ -15,6 +15,5 @@ extension UIButton {
         self.layer.removeAllAnimations()
         self.alpha = 1.0;
         self.isHidden = false
-        // [self.layer removeAllAnimations];
     }
 }

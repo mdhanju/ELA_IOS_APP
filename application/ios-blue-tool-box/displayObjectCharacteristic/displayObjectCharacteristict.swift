@@ -3,7 +3,8 @@ import Foundation
 
 public class displayObjectCharacteristic
 {
-
+    
+    /// DisplayObject i used for store data of sensor
  public class DisplayObject {
         
         public var name: String
