@@ -1,6 +1,4 @@
-   public class SensorCaracteristic
-   {
-    
+
     /// class that have attribute and property of each object
    public class Cap
     {
@@ -114,4 +112,4 @@
     
     
     
-   }
+   

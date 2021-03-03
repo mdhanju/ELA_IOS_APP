@@ -1,8 +1,7 @@
 import Foundation
 
 
-public class displayObjectCharacteristic
-{
+
     
     /// DisplayObject i used for store data of sensor
  public class DisplayObject {
@@ -12,9 +11,9 @@ public class displayObjectCharacteristic
         public var identifier : String
         public var battery : Int
         public var typedata : SensorTypes
-        public var array : [SensorCaracteristic.Cap]
+        public var array : [Cap]
         
-        init(name : String, RSSI: Int, identifier : String, battery : Int, typedata : SensorTypes,array : [SensorCaracteristic.Cap] = [SensorCaracteristic.Cap.init()])
+        init(name : String, RSSI: Int, identifier : String, battery : Int, typedata : SensorTypes,array : [Cap] = [Cap.init()])
         {
             self.name = name
             self.RSSI = RSSI
@@ -25,7 +24,7 @@ public class displayObjectCharacteristic
         }
         
         
-        public func addData(data : SensorCaracteristic.Cap)
+        public func addData(data : Cap)
         {
             self.array.append(data)
             if(self.array.count > 20)
@@ -34,4 +33,4 @@ public class displayObjectCharacteristic
             }
         }
     }
-}
+

@@ -22,8 +22,8 @@ class controllerEtatUI: controllerUI {
     let identifier : String
     let battery : Int
     let typedata : SensorTypes
-    let  array : [SensorCaracteristic.Cap]
-    var  displayObject : [displayObjectCharacteristic.DisplayObject]
+    let  array : [Cap]
+    var  displayObject : [DisplayObject]
     
 
     private var capteur: Capteur!
@@ -39,7 +39,7 @@ class controllerEtatUI: controllerUI {
     private var UInameState = UITextView()
     private let btnPerson = UIButton()
     
-    init(nameSensor : String,RSSI: Int, identifier : String, battery : Int, typedata : SensorTypes,array: [SensorCaracteristic.Cap],displayObject : [displayObjectCharacteristic.DisplayObject]) {
+    init(nameSensor : String,RSSI: Int, identifier : String, battery : Int, typedata : SensorTypes,array: [Cap],displayObject : [DisplayObject]) {
         self.nameSensor = nameSensor
         self.RSSI = RSSI
         self.identifier = identifier
@@ -91,7 +91,7 @@ class controllerEtatUI: controllerUI {
             
             {
                 
-                if let Move : [SensorCaracteristic.Move] = cle.array as? [SensorCaracteristic.Move]
+                if let Move : [Move] = cle.array as? [Move]
                 {
 
                     if(Move[array.count-1].getEtat() == true)
@@ -129,11 +129,11 @@ class controllerEtatUI: controllerUI {
     /// Update the UICircular bar value with the value of sensor
     /// - Parameter data: dtictionnary of sensor the key is peripheral.identifier and Sensor is define in the factory
     /// - Returns: DisplayObject  that store the information of sensor
-    func updateSensorUI(data: ([String : Sensor])) -> displayObjectCharacteristic.DisplayObject {
+    func updateSensorUI(data: ([String : Sensor])) -> DisplayObject {
         
-        let objectTemp1 = SensorCaracteristic.Temp(temp: 0)
+        let objectTemp1 = Temp(temp: 0)
         
-        let newobject : displayObjectCharacteristic.DisplayObject = displayObjectCharacteristic.DisplayObject(name: "null", RSSI: 0, identifier: "",battery : 0, typedata : SensorTypes.SensorID, array: [objectTemp1])
+        let newobject : DisplayObject = DisplayObject(name: "null", RSSI: 0, identifier: "",battery : 0, typedata : SensorTypes.SensorID, array: [objectTemp1])
         
         for (key,value) in data
         {
