@@ -121,7 +121,7 @@ class controllerEtatUI: controllerUI {
         
         let objectTemp1 = Temp(temp: 0)
         
-        let newobject : DisplayObject = DisplayObject(name: "null", RSSI: 0, identifier: "",battery : 0, typedata : SensorTypes.SensorID, array: [objectTemp1])
+        let newobject : DisplayObject = DisplayObject(name: "null", RSSI: 0, identifier: "",battery_level : 0, typedata : SensorTypes.SensorID, array: [objectTemp1])
         
         for (key,value) in data
         {

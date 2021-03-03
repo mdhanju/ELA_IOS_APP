@@ -77,8 +77,8 @@ class Capteur:  UIViewController, UITableViewDataSource, UITableViewDelegate{
         let string1 = display[indexPath.row].name
         let RSSI = display[indexPath.row].RSSI
         let identifier = display[indexPath.row].identifier
-        let battery = display[indexPath.row].battery
-        let typedata = display[indexPath.row].typedata
+        let battery = display[indexPath.row].batterylevel
+        let typedata = display[indexPath.row].sensorTypes
         let arr : [Cap] = display[indexPath.row].array
         
         
@@ -244,7 +244,7 @@ class Capteur:  UIViewController, UITableViewDataSource, UITableViewDelegate{
         var trouve = true
         let objectTemp1 = Temp(temp: 0)
         
-        var newobject : DisplayObject = DisplayObject(name: "null", RSSI: 0, identifier: "",battery : 0, typedata : SensorTypes.SensorID, array: [objectTemp1])
+        var newobject : DisplayObject = DisplayObject(name: "null", RSSI: 0, identifier: "",battery_level : 0, typedata : SensorTypes.SensorID, array: [objectTemp1])
         
         for (key,value) in data
         {
@@ -306,19 +306,19 @@ class Capteur:  UIViewController, UITableViewDataSource, UITableViewDelegate{
                 switch value {
                 
                 case is SensorID:
-                    newobject = DisplayObject(name: value.name, RSSI: value.RSSI, identifier: value.identifier, battery: value.batterylevel, typedata : value.sensorTypes )
+                    newobject = DisplayObject(name: value.name, RSSI: value.RSSI, identifier: value.identifier, battery_level: value.batterylevel, typedata : value.sensorTypes )
                     
                 case is SensorTemperature:
                     if let temp = value as? SensorTemperature
                     {
                         let objectTemp = Temp(temp: temp.getTemp())
-                        newobject = DisplayObject(name: value.name, RSSI: value.RSSI, identifier: value.identifier, battery: value.batterylevel, typedata : value.sensorTypes,array: [objectTemp] )
+                        newobject = DisplayObject(name: value.name, RSSI: value.RSSI, identifier: value.identifier, battery_level: value.batterylevel, typedata : value.sensorTypes,array: [objectTemp] )
                     }
                 case is SensorTemperatureHumidity:
                     if let tempHum = value as? SensorTemperatureHumidity
                     {
                         let objectTempHum = TempHum(temp: tempHum.getTemp(), hum: tempHum.getHum())
-                        newobject = DisplayObject(name: value.name, RSSI: value.RSSI, identifier: value.identifier, battery: value.batterylevel, typedata : value.sensorTypes,array: [objectTempHum] )
+                        newobject = DisplayObject(name: value.name, RSSI: value.RSSI, identifier: value.identifier, battery_level: value.batterylevel, typedata : value.sensorTypes,array: [objectTempHum] )
                     }
                     
                 case is SensorMove:
@@ -327,7 +327,7 @@ class Capteur:  UIViewController, UITableViewDataSource, UITableViewDelegate{
                     {
                         let objectMove =
                             Move(nbrPas: move.getNbrPas(), etat: move.getEtat())
-                        newobject = DisplayObject(name: value.name, RSSI: value.RSSI, identifier: value.identifier, battery: value.batterylevel, typedata : value.sensorTypes,array: [objectMove] )
+                        newobject = DisplayObject(name: value.name, RSSI: value.RSSI, identifier: value.identifier, battery_level: value.batterylevel, typedata : value.sensorTypes,array: [objectMove] )
                     }
                     
                 case is SensorMagnetic:
@@ -336,7 +336,7 @@ class Capteur:  UIViewController, UITableViewDataSource, UITableViewDelegate{
                     {
                         let objectMove =
                             Mag(nbrMagnet: mag.getNbrObject(), etat: mag.getEtat())
-                        newobject = DisplayObject(name: value.name, RSSI: value.RSSI, identifier: value.identifier, battery: value.batterylevel, typedata : value.sensorTypes,array: [objectMove] )
+                        newobject = DisplayObject(name: value.name, RSSI: value.RSSI, identifier: value.identifier, battery_level: value.batterylevel, typedata : value.sensorTypes,array: [objectMove] )
                     }
                     
                 case is SensorAngle:
@@ -345,7 +345,7 @@ class Capteur:  UIViewController, UITableViewDataSource, UITableViewDelegate{
                     {
                         let objectMove =
                             Angle(x: angle.getX(), y: angle.getY(), z: angle.getZ())
-                        newobject = DisplayObject(name: value.name, RSSI: value.RSSI, identifier: value.identifier, battery: value.batterylevel, typedata : value.sensorTypes,array: [objectMove] )
+                        newobject = DisplayObject(name: value.name, RSSI: value.RSSI, identifier: value.identifier, battery_level: value.batterylevel, typedata : value.sensorTypes,array: [objectMove] )
                     }
       
                 default : print("not a sensor")

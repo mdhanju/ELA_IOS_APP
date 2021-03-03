@@ -15,11 +15,11 @@ import Foundation
 public class Sensor
 {
     
-    var name : String = ""
-    var RSSI : Int = 0
-    var batterylevel: Int = 0
-    var sensorTypes : SensorTypes = SensorTypes.SensorID
-    var identifier : String = ""
+    public var name : String = ""
+    public var RSSI : Int = 0
+    public var batterylevel: Int = 0
+    public var sensorTypes : SensorTypes = SensorTypes.SensorID
+    public var identifier : String = ""
     
     
     /* \brief constructor **/

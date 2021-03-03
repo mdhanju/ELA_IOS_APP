@@ -4,24 +4,22 @@ import Foundation
 
     
     /// DisplayObject i used for store data of sensor
-public class DisplayObject {
+public class DisplayObject : Sensor{
         
-        public var name: String
-        public var RSSI: Int
-        public var identifier : String
-        public var battery : Int
+     
+      
     
-        public var typedata : SensorTypes
+
         public var array : [Cap]
         
-        init(name : String, RSSI: Int, identifier : String, battery : Int, typedata : SensorTypes,array : [Cap] = [Cap.init()])
+        init(name : String, RSSI: Int, identifier : String, battery_level : Int, typedata : SensorTypes,array : [Cap] = [Cap.init()])
         {
-            self.name = name
-            self.RSSI = RSSI
-            self.identifier = identifier
-            self.battery = battery
-            self.typedata = typedata
+            
             self.array = array
+            
+            super.init(name: name, RSSI: RSSI, batterylevel: battery_level, sensorTypes: typedata, identifier: identifier)
+            //self.typedata = typedata
+            
         }
         
         
