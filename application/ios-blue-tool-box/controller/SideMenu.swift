@@ -41,6 +41,11 @@ class MenuController: UITableViewController {
     
     // Table
     
+    /// count number of pages handle by Burger menu
+    /// - Parameters:
+    ///   - tableView: UItableview
+    ///   - section: row or column
+    /// - Returns: number of menuItem
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return menuItems.count
     }
@@ -65,6 +70,10 @@ class MenuController: UITableViewController {
         return cell
     }
     
+    /// When you select a page of menu burger you select a page
+    /// - Parameters:
+    ///   - tableView: UItableview
+    ///   - indexPath: IndexPath
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         tableView.deselectRow(at: indexPath, animated: true)
         // Relay to delegate about menu item selection

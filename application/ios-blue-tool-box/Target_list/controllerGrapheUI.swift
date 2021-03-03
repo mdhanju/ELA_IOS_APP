@@ -107,9 +107,6 @@ class controllerGrapheUI: controllerUI, ChartViewDelegate {
                         line1.setColor(.green)
                         line1.setCircleColor(.green)
                         let line3 = LineChartDataSet(entries: entries2, label: "Z")
-                        
-                        
-                        
                         let data = LineChartData(dataSet: line1)
                         
                         
@@ -130,10 +127,7 @@ class controllerGrapheUI: controllerUI, ChartViewDelegate {
                         compHum = compHum + 1
                         grapheColorLabel(label: "temperature")
                     }
-                    
-                    
-                    
-                    
+
                 case is SensorID:
                 
                         if let ID = value as? SensorID
@@ -161,31 +155,17 @@ class controllerGrapheUI: controllerUI, ChartViewDelegate {
                         line2.setColor(.red)
                         line2.setCircleColor(.red)
                         let line1 = LineChartDataSet(entries: entries1, label: "humidite")
-                        
-                        
-                        
                         let data = LineChartData(dataSet: line1)
                         
                         
                         data.addDataSet(line2)
                         lineChart.data = data
                         
-                        
                     }
-                    
-                
-                    
-                    
+ 
                 default : print("this is not a Sensor controllerGrapheUI")
                     
                 }
-                
-                
-                
-                
-                
-            
-                
                 
             }
         }
@@ -272,12 +252,8 @@ class controllerGrapheUI: controllerUI, ChartViewDelegate {
         var item = [UIBarButtonItem]()
         item.append(UIBarButtonItem(title: "Blue T", style: .plain, target: self,action: .none))
     
-        
-        
         lineChart.delegate = self
-        
-        
-        
+
     }
     
     /// Design of UICharts the graph with color and label, size set  
@@ -288,9 +264,6 @@ class controllerGrapheUI: controllerUI, ChartViewDelegate {
         lineChart.frame = CGRect(x: 0, y: 300,width: 350, height:250)
         //     lineChart.center = view.center
         view.addSubview(lineChart)
-        
-        
-     
         
     }
     

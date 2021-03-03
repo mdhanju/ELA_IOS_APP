@@ -77,11 +77,7 @@ class SensorFactory
             print("la valeur du dico " + " \(key)")
         }
     }
-    
-    
-    
-    
-    
+
     /**
      * \fn updateDictionnary
      * \brief add Sensor to dictionnary
@@ -98,8 +94,7 @@ class SensorFactory
         
         
     }
-    
-    
+
     
     /**
      * \fn addDictionnary

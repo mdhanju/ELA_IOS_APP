@@ -301,47 +301,6 @@ public class ConvertionToolbox : NSObject {
         
     }
     
-    public static func ConvertAdvertisingValue1(str : String)-> Int
-    {
-        
-        if(str == "")
-        {
-            return 0
-        }
-        
-        let LSB : String = String(str.prefix(2))
-        let MSB : String = String(str.suffix(2))
-        var str : String =  MSB + LSB
-        str = hexaToBinary(str: str)
-        str.dropLast()
-        
-        var ini : Int = 0
-        
-        var sum : Int = 0
-        var cpt : Int = 0
-        
-        for char in str.reversed()
-        {
-            if( char == "1")
-            {
-                sum = sum + cpt
-            }
-            
-            cpt = cpt * 2;
-            
-            if(ini == 0)
-            {
-                ini = ini + 1
-                cpt = cpt + 1
-            }
-            
-        }
-        
-        return sum
-        
-    }
-    
-    
     /**
      * \fn convertHexaToSumExpo
      * \brief sum of pow of 2 for the string
@@ -387,51 +346,7 @@ public class ConvertionToolbox : NSObject {
         return sum
         
     }
-    /**
-     * \fn convertHexaToSumExpo
-     * \brief sum of pow of 2 for the string
-     * \param [in] String : hexadecimal
-     * \return Int
-     **/
     
-    public static func ConvertMagnetique(str : String)-> Int
-    {
-        
-        if(str == "")
-        {
-            return 0
-        }
-        
-        let LSB : String = String(str.prefix(2))
-        let MSB : String = String(str.suffix(2))
-        var str : String =  MSB + LSB
-        str = hexaToBinary(str: str)
-        
-        var ini : Int = 0
-        
-        var sum : Int = 0
-        var cpt : Int = 0
-        
-        for char in str.reversed()
-        {
-            if( char == "1")
-            {
-                sum = sum + cpt
-            }
-            
-            cpt = cpt * 2;
-            
-            if(ini == 0)
-            {
-                ini = ini + 1
-                cpt = cpt + 1
-            }
-            
-        }
-        
-        return sum
-        
-    }
     
     /**
      * \fnConvertHumidite

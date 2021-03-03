@@ -3,11 +3,8 @@ import UIKit
 
 class ViewController:UIViewController,MenuControllerDelegate
 {
-    
-    
-    
+
     private var sideMenu: SideMenuNavigationController?
-    
     private let ELAController = ELAViewController()
     private let blueIDController = BlueIDViewController()
     private let blueTController = BlueTViewController()
@@ -17,14 +14,8 @@ class ViewController:UIViewController,MenuControllerDelegate
     private let blueANGController = BlueANGViewController()
     private let debugController = DebugViewController()
     
-    
-    
-    
-    
-    
     override func viewDidLoad() {
         super.viewDidLoad()
-        
         
         let menu = MenuController(with: SideMenuItem.allCases)
         sideMenu = SideMenuNavigationController(rootViewController: menu)
@@ -49,8 +40,6 @@ class ViewController:UIViewController,MenuControllerDelegate
         addChild(blueANGController)
         addChild(debugController)
         
-        
-        
         view.addSubview(ELAController.view)
         view.addSubview(blueIDController.view)
         view.addSubview(blueTController.view)
@@ -59,8 +48,6 @@ class ViewController:UIViewController,MenuControllerDelegate
         view.addSubview(blueMAGController.view)
         view.addSubview(blueANGController.view)
         view.addSubview(debugController.view)
-        
-        
         
         ELAController.view.frame = view.bounds
         blueIDController.view.frame = view.bounds
@@ -88,9 +75,6 @@ class ViewController:UIViewController,MenuControllerDelegate
         blueANGController.view.isHidden = true
         debugController.view.isHidden = true
         
-        
-        
-        
     }
     
     @IBAction func Menu(_ sender: Any) {
@@ -102,8 +86,7 @@ class ViewController:UIViewController,MenuControllerDelegate
     sideMenu?.dismiss(animated: true, completion: nil)
         
         title = named.rawValue
-        
-        
+
         switch named
         {
         case.ELA:

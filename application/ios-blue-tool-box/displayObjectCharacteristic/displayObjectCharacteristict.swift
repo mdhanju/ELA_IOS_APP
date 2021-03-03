@@ -10,6 +10,7 @@ import Foundation
         public var RSSI: Int
         public var identifier : String
         public var battery : Int
+    
         public var typedata : SensorTypes
         public var array : [Cap]
         

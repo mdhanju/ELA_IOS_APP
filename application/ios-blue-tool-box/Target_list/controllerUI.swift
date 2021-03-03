@@ -12,8 +12,6 @@ class controllerUI: UIViewController {
         
         
     }
-    
-    
     /// This function allow you to define the the name of sensor of each sensor for the UI
     /// - Parameter str: this string correspond to the display the name at the top of the User Interface
     public func nameSensorUI(str : String)

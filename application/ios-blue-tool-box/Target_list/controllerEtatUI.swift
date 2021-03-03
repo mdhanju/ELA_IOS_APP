@@ -10,10 +10,6 @@ class controllerEtatUI: controllerUI {
     let circlePath = UIBezierPath(arcCenter: CGPoint(x: 180, y: 250), radius: CGFloat(20), startAngle: CGFloat(0), endAngle: CGFloat(Double.pi * 2), clockwise: true)
     
     let shapeLayer = CAShapeLayer()
-    
-   
-    
-    
     var stateStatic : String = "Etat : statique"
     var stateMove : String = "Etat : déplacement"
 
@@ -79,11 +75,7 @@ class controllerEtatUI: controllerUI {
         super.viewDidLoad()
         
         line()
-        
 
-        
-
-        
         // Do any additional setup after loading the view.
         
         for cle in displayObject {
@@ -96,13 +88,9 @@ class controllerEtatUI: controllerUI {
 
                     if(Move[array.count-1].getEtat() == true)
                     {
-       
                         setEtat(image : UIimagelowPerson!,str : stateMove)
-                   
                     }
                     else {
-                        
-
                         setEtat(image : UIimagelowPersonStatic!,str : stateStatic)
                         
                     }

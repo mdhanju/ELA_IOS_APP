@@ -2,6 +2,8 @@ import UIKit
 import CoreBluetooth
 
 import os.log
+
+
 class Scanner1: NSObject, CBPeripheralDelegate, CBCentralManagerDelegate {
     
     var myCharacteristic : CBCharacteristic!

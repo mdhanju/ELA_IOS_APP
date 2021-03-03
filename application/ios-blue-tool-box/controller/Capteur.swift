@@ -14,13 +14,7 @@ class Capteur:  UIViewController, UITableViewDataSource, UITableViewDelegate{
     private var isStopButton = false
     
     public var dictionnarySensorSacond : Event<([String : Sensor])>? = nil
-    
-    
-    
-    
-    
-    
-    
+
     /// Show text when the scan start
     /// - Parameters:
     ///   - message: the can start or the scan stop
@@ -52,13 +46,15 @@ class Capteur:  UIViewController, UITableViewDataSource, UITableViewDelegate{
         })
     }
     
+    /// count row in tableView
+    /// - Parameters:
+    ///   - tableView: choose a UITableView
+    ///   - section: row or column
+    /// - Returns: the number of row or column
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return display.count
     }
-    
-    
-    
-    
+
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
@@ -111,16 +107,11 @@ class Capteur:  UIViewController, UITableViewDataSource, UITableViewDelegate{
         case SensorTypes.SensorID:
             self.navigationController?.pushViewController(controllerGrapheUI(nameSensor: string1 ,RSSI: RSSI, identifier : identifier, battery : battery, typedata : typedata,array : arr,displayObject : display), animated: true)
             self.navigationController?.navigationBar.tintColor = .black
-            
-            
-            
+              
         default:
             print("error inside switch class Capteur")
         }
-        
-        
-        
-        
+
     }
     
     
@@ -306,17 +297,7 @@ class Capteur:  UIViewController, UITableViewDataSource, UITableViewDelegate{
                     default: print("not a sensor")
                         
                     }
-                    
-                    
-                    
-                    
-                    
-                    
-                    
-                    
-                    
-                    
-                    
+  
                     trouve  = false
                 }
             }
@@ -366,29 +347,15 @@ class Capteur:  UIViewController, UITableViewDataSource, UITableViewDelegate{
                             Angle(x: angle.getX(), y: angle.getY(), z: angle.getZ())
                         newobject = DisplayObject(name: value.name, RSSI: value.RSSI, identifier: value.idenfitfier, battery: value.batterylevel, typedata : value.sensorTypes,array: [objectMove] )
                     }
-                    
-                    
-                    
-                    
+      
                 default : print("not a sensor")
                 }
-                
-                
-                
-                
-                
-                
-                
-                
+   
                 display.append(newobject)
                 
                 
             }
-            
-            
-            
-            
-            
+
             self.tableview.reloadData()
         }
         return newobject
