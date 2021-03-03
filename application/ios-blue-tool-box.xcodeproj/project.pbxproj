@@ -20,7 +20,7 @@
 		1623D04E25EFB7E700E84701 /* NSregularExpression.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1623D04D25EFB7E700E84701 /* NSregularExpression.swift */; };
 		1623D05325EFB95000E84701 /* SideMenuItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1623D05225EFB95000E84701 /* SideMenuItem.swift */; };
 		16443E5325EFBB56000235B7 /* SensorTypes.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16443E5225EFBB56000235B7 /* SensorTypes.swift */; };
-		16443E5825EFBC1D000235B7 /* sensor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16443E5725EFBC1D000235B7 /* sensor.swift */; };
+		16443E5825EFBC1D000235B7 /* Sensor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16443E5725EFBC1D000235B7 /* Sensor.swift */; };
 		16443E5E25EFBD88000235B7 /* SensorID.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16443E5D25EFBD88000235B7 /* SensorID.swift */; };
 		16443E6225EFBD95000235B7 /* SensorTemperature.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16443E6125EFBD95000235B7 /* SensorTemperature.swift */; };
 		16443E6625EFBDD8000235B7 /* SensorTemperatureHumidity.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16443E6525EFBDD8000235B7 /* SensorTemperatureHumidity.swift */; };
@@ -82,7 +82,7 @@
 		1623D04D25EFB7E700E84701 /* NSregularExpression.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NSregularExpression.swift; sourceTree = "<group>"; };
 		1623D05225EFB95000E84701 /* SideMenuItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SideMenuItem.swift; sourceTree = "<group>"; };
 		16443E5225EFBB56000235B7 /* SensorTypes.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SensorTypes.swift; sourceTree = "<group>"; };
-		16443E5725EFBC1D000235B7 /* sensor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = sensor.swift; sourceTree = "<group>"; };
+		16443E5725EFBC1D000235B7 /* Sensor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Sensor.swift; sourceTree = "<group>"; };
 		16443E5D25EFBD88000235B7 /* SensorID.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SensorID.swift; sourceTree = "<group>"; };
 		16443E6125EFBD95000235B7 /* SensorTemperature.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SensorTemperature.swift; sourceTree = "<group>"; };
 		16443E6525EFBDD8000235B7 /* SensorTemperatureHumidity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SensorTemperatureHumidity.swift; sourceTree = "<group>"; };
@@ -205,7 +205,7 @@
 		16443E5625EFBC00000235B7 /* ModelSensor */ = {
 			isa = PBXGroup;
 			children = (
-				16443E5725EFBC1D000235B7 /* sensor.swift */,
+				16443E5725EFBC1D000235B7 /* Sensor.swift */,
 				16443E5D25EFBD88000235B7 /* SensorID.swift */,
 				16443E6125EFBD95000235B7 /* SensorTemperature.swift */,
 				16443E6525EFBDD8000235B7 /* SensorTemperatureHumidity.swift */,
@@ -569,7 +569,7 @@
 				160BD57625D3DCBF00F5ED01 /* ConnectViewController.swift in Sources */,
 				16DFFB8425B04E8600CCB063 /* BlueMOVViewController.swift in Sources */,
 				16DFFB8625B04E9500CCB063 /* BlueMAGViewController.swift in Sources */,
-				16443E5825EFBC1D000235B7 /* sensor.swift in Sources */,
+				16443E5825EFBC1D000235B7 /* Sensor.swift in Sources */,
 				160BD57025D13C2300F5ED01 /* AproposViewController.swift in Sources */,
 				16443E7A25EFBE93000235B7 /* SensorIbeacon.swift in Sources */,
 				16443E6625EFBDD8000235B7 /* SensorTemperatureHumidity.swift in Sources */,

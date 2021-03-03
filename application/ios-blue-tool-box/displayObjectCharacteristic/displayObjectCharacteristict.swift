@@ -4,7 +4,7 @@ import Foundation
 
     
     /// DisplayObject i used for store data of sensor
- public class DisplayObject {
+public class DisplayObject {
         
         public var name: String
         public var RSSI: Int

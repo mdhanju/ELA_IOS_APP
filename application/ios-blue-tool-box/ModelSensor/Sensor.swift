@@ -12,14 +12,14 @@ import Foundation
  * \class Sensor
  * \brief base object for all sensors
  */
-class Sensor
+public class Sensor
 {
     
     var name : String = ""
     var RSSI : Int = 0
     var batterylevel: Int = 0
     var sensorTypes : SensorTypes = SensorTypes.SensorID
-    var idenfitfier : String = ""
+    var identifier : String = ""
     
     
     /* \brief constructor **/
@@ -28,7 +28,7 @@ class Sensor
         self.RSSI = RSSI
         self.batterylevel = batterylevel
         self.sensorTypes = sensorTypes
-        self.idenfitfier = identifier
+        self.identifier = identifier
     }
     
     public func getName()->String
