@@ -18,7 +18,7 @@ class controllerEtatUI: controllerUI {
     let identifier : String
     let battery : Int
     let typedata : SensorTypes
-    let  array : [Cap]
+    let  array : [displayData]
     var  displayObject : [DisplayObject]
     
 
@@ -35,7 +35,7 @@ class controllerEtatUI: controllerUI {
     private var UInameState = UITextView()
     private let btnPerson = UIButton()
     
-    init(nameSensor : String,RSSI: Int, identifier : String, battery : Int, typedata : SensorTypes,array: [Cap],displayObject : [DisplayObject]) {
+    init(nameSensor : String,RSSI: Int, identifier : String, battery : Int, typedata : SensorTypes,array: [displayData],displayObject : [DisplayObject]) {
         self.nameSensor = nameSensor
         self.RSSI = RSSI
         self.identifier = identifier

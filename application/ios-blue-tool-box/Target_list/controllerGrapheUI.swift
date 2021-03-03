@@ -25,14 +25,14 @@ class controllerGrapheUI: controllerUI, ChartViewDelegate {
     private let identifier : String
     private let battery : Int
     private let typedata : SensorTypes
-    private let array : [Cap]
+    private let array : [displayData]
     private let displayObject : [DisplayObject]
     
     private var scanner: Scanner1!
     
     private var sensorT : SensorTypes? = nil
     
-    init(nameSensor : String,RSSI: Int, identifier : String, battery : Int, typedata : SensorTypes,array: [Cap],displayObject : [DisplayObject]) {
+    init(nameSensor : String,RSSI: Int, identifier : String, battery : Int, typedata : SensorTypes,array: [displayData],displayObject : [DisplayObject]) {
         self.nameSensor = nameSensor
         self.RSSI = RSSI
         self.identifier = identifier

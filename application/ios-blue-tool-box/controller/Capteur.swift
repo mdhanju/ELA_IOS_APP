@@ -79,7 +79,7 @@ class Capteur:  UIViewController, UITableViewDataSource, UITableViewDelegate{
         let identifier = display[indexPath.row].identifier
         let battery = display[indexPath.row].batterylevel
         let typedata = display[indexPath.row].sensorTypes
-        let arr : [Cap] = display[indexPath.row].array
+        let arr : [displayData] = display[indexPath.row].array
         
         
         // si c'est un capteur de temperature

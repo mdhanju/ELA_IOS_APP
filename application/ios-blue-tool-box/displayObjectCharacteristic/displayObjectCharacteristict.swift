@@ -10,9 +10,9 @@ public class DisplayObject : Sensor{
       
     
 
-        public var array : [Cap]
+        public var array : [displayData]
         
-        init(name : String, RSSI: Int, identifier : String, battery_level : Int, typedata : SensorTypes,array : [Cap] = [Cap.init()])
+        init(name : String, RSSI: Int, identifier : String, battery_level : Int, typedata : SensorTypes,array : [displayData] = [displayData.init()])
         {
             
             self.array = array
@@ -23,7 +23,7 @@ public class DisplayObject : Sensor{
         }
         
         
-        public func addData(data : Cap)
+        public func addData(data : displayData)
         {
             self.array.append(data)
             if(self.array.count > 20)

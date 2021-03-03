@@ -1,12 +1,12 @@
 
     /// class that have attribute and property of each object
-public class Cap
+public class displayData
 {
 
 }
     
     
-    public class Move : Cap
+    public class Move : displayData
     {
         private var nbrPas: Int = 0
         private var etat : Bool = false
@@ -28,7 +28,7 @@ public class Cap
     }
     
     
-    public class Mag : Cap
+    public class Mag : displayData
     {
         private var nbrMagnet: Int = 0
         private var etat : Bool = false
@@ -49,7 +49,7 @@ public class Cap
         }
     }
     
-    public class Angle : Cap
+    public class Angle : displayData
     {
         private var x : Int = 0
         private  var y : Int = 0
@@ -77,7 +77,7 @@ public class Cap
     }
     
     
-    public class TempHum : Cap
+    public class TempHum : displayData
     {
         private var temp : Float
         private var hum : Int
@@ -97,7 +97,7 @@ public class Cap
         
     }
     
-    public class Temp : Cap
+    public class Temp : displayData
     {
         private var temp : Float
         init(temp : Float) {
