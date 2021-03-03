@@ -13,6 +13,8 @@ class SensorTemperature: Sensor
         self.temperature = temperature
     }
     
+
+    
     func getTemp()->Float
     {
         return temperature
