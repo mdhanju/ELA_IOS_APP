@@ -7,20 +7,10 @@ import Foundation
  * \return Bool
  **/
 
-public extension NSRegularExpression {
-    func matches(_ string: String) -> Bool {
-        let range = NSRange(location: 0, length: string.utf16.count)
-        return firstMatch(in: string, options: [], range: range) != nil
-    }
-}
+
 
 public class ConvertionToolbox : NSObject {
-    
-    
-    
-    
-    
-    
+
     /**
      * \fn ANG
      * \brief function to calculate x or y or z aceleration

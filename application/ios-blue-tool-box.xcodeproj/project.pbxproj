@@ -16,6 +16,11 @@
 		1623D02A25ED4B4100E84701 /* UIview.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1623D02925ED4B4100E84701 /* UIview.swift */; };
 		1623D02F25EE466800E84701 /* SensorCaracteristic.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1623D02E25EE466800E84701 /* SensorCaracteristic.swift */; };
 		1623D04225EE750400E84701 /* displayObjectCharacteristict.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1623D04125EE750400E84701 /* displayObjectCharacteristict.swift */; };
+		1623D04A25EFB74E00E84701 /* UIimage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1623D04925EFB74E00E84701 /* UIimage.swift */; };
+		1623D04E25EFB7E700E84701 /* NSregularExpression.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1623D04D25EFB7E700E84701 /* NSregularExpression.swift */; };
+		1623D05325EFB95000E84701 /* SideMenuItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1623D05225EFB95000E84701 /* SideMenuItem.swift */; };
+		16443E5325EFBB56000235B7 /* SensorTypes.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16443E5225EFBB56000235B7 /* SensorTypes.swift */; };
+		16443E5825EFBC1D000235B7 /* sensor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16443E5725EFBC1D000235B7 /* sensor.swift */; };
 		16715DF525C40142007F0AC2 /* Event.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16715DF425C40142007F0AC2 /* Event.swift */; };
 		16920C8725B1B271008ABBF1 /* BlueIDViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16920C8625B1B271008ABBF1 /* BlueIDViewController.swift */; };
 		16920C9825B1CD2E008ABBF1 /* Factory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16920C9725B1CD2E008ABBF1 /* Factory.swift */; };
@@ -65,6 +70,11 @@
 		1623D02925ED4B4100E84701 /* UIview.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIview.swift; sourceTree = "<group>"; };
 		1623D02E25EE466800E84701 /* SensorCaracteristic.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SensorCaracteristic.swift; sourceTree = "<group>"; };
 		1623D04125EE750400E84701 /* displayObjectCharacteristict.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = displayObjectCharacteristict.swift; sourceTree = "<group>"; };
+		1623D04925EFB74E00E84701 /* UIimage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIimage.swift; sourceTree = "<group>"; };
+		1623D04D25EFB7E700E84701 /* NSregularExpression.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NSregularExpression.swift; sourceTree = "<group>"; };
+		1623D05225EFB95000E84701 /* SideMenuItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SideMenuItem.swift; sourceTree = "<group>"; };
+		16443E5225EFBB56000235B7 /* SensorTypes.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SensorTypes.swift; sourceTree = "<group>"; };
+		16443E5725EFBC1D000235B7 /* sensor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = sensor.swift; sourceTree = "<group>"; };
 		16715DF425C40142007F0AC2 /* Event.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Event.swift; sourceTree = "<group>"; };
 		16920C8625B1B271008ABBF1 /* BlueIDViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BlueIDViewController.swift; sourceTree = "<group>"; };
 		16920C9725B1CD2E008ABBF1 /* Factory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Factory.swift; sourceTree = "<group>"; };
@@ -145,6 +155,8 @@
 				1623D01F25ED4AAC00E84701 /* UIcolor.swift */,
 				1623D02525ED4B0F00E84701 /* UIbutton.swift */,
 				1623D02925ED4B4100E84701 /* UIview.swift */,
+				1623D04925EFB74E00E84701 /* UIimage.swift */,
+				1623D04D25EFB7E700E84701 /* NSregularExpression.swift */,
 			);
 			path = extension;
 			sourceTree = "<group>";
@@ -163,6 +175,23 @@
 				1623D04125EE750400E84701 /* displayObjectCharacteristict.swift */,
 			);
 			path = displayObjectCharacteristic;
+			sourceTree = "<group>";
+		};
+		1623D05125EFB8F200E84701 /* enum */ = {
+			isa = PBXGroup;
+			children = (
+				1623D05225EFB95000E84701 /* SideMenuItem.swift */,
+				16443E5225EFBB56000235B7 /* SensorTypes.swift */,
+			);
+			path = enum;
+			sourceTree = "<group>";
+		};
+		16443E5625EFBC00000235B7 /* ModelSensor */ = {
+			isa = PBXGroup;
+			children = (
+				16443E5725EFBC1D000235B7 /* sensor.swift */,
+			);
+			path = ModelSensor;
 			sourceTree = "<group>";
 		};
 		16920C8825B1B2DC008ABBF1 /* View */ = {
@@ -249,6 +278,8 @@
 		16CB845D25AC6EF80067E1A0 /* ios-blue-tool-box */ = {
 			isa = PBXGroup;
 			children = (
+				16443E5625EFBC00000235B7 /* ModelSensor */,
+				1623D05125EFB8F200E84701 /* enum */,
 				1623D04025EE74B700E84701 /* displayObjectCharacteristic */,
 				1623D02D25EE45D000E84701 /* SensorCaracteristic */,
 				1623D01E25ED4A6100E84701 /* extension */,
@@ -488,6 +519,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				169B5E5625BACD6F00627A55 /* ConvertionToolBox.swift in Sources */,
+				1623D04E25EFB7E700E84701 /* NSregularExpression.swift in Sources */,
 				16CB846325AC6EF80067E1A0 /* ViewController.swift in Sources */,
 				169B5E3C25B9C7C400627A55 /* ParticlePeripheral.swift in Sources */,
 				1623D02625ED4B0F00E84701 /* UIbutton.swift in Sources */,
@@ -495,11 +527,13 @@
 				16CB846125AC6EF80067E1A0 /* SceneDelegate.swift in Sources */,
 				16DFFB7E25B04E4800CCB063 /* ELAViewController.swift in Sources */,
 				16DFFB6025B0322700CCB063 /* SideMenu.swift in Sources */,
+				1623D04A25EFB74E00E84701 /* UIimage.swift in Sources */,
 				16D4398A25E3A99700D4B4C7 /* controllerUI.swift in Sources */,
 				16E3AB5025C85B81001426DD /* Capteur.swift in Sources */,
 				16920C9825B1CD2E008ABBF1 /* Factory.swift in Sources */,
 				16715DF525C40142007F0AC2 /* Event.swift in Sources */,
 				16920C9B25B1FE3C008ABBF1 /* scanner.swift in Sources */,
+				1623D05325EFB95000E84701 /* SideMenuItem.swift in Sources */,
 				16920C8725B1B271008ABBF1 /* BlueIDViewController.swift in Sources */,
 				16DFFB8025B04E6300CCB063 /* BlueTViewController.swift in Sources */,
 				160BD57A25D5235D00F5ED01 /* controllerGrapheUI.swift in Sources */,
@@ -507,10 +541,12 @@
 				160BD57625D3DCBF00F5ED01 /* ConnectViewController.swift in Sources */,
 				16DFFB8425B04E8600CCB063 /* BlueMOVViewController.swift in Sources */,
 				16DFFB8625B04E9500CCB063 /* BlueMAGViewController.swift in Sources */,
+				16443E5825EFBC1D000235B7 /* sensor.swift in Sources */,
 				160BD57025D13C2300F5ED01 /* AproposViewController.swift in Sources */,
 				1623D02A25ED4B4100E84701 /* UIview.swift in Sources */,
 				16D439A025E3EC1900D4B4C7 /* controllerEtatUI.swift in Sources */,
 				16DFFB8825B04EA800CCB063 /* BlueANGViewController.swift in Sources */,
+				16443E5325EFBB56000235B7 /* SensorTypes.swift in Sources */,
 				16DFFB8225B04E7300CCB063 /* BlueRHTViewController.swift in Sources */,
 				1623D02025ED4AAC00E84701 /* UIcolor.swift in Sources */,
 				1623D02F25EE466800E84701 /* SensorCaracteristic.swift in Sources */,
