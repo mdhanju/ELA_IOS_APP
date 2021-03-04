@@ -263,6 +263,13 @@ class Capteur:  UIViewController, UITableViewDataSource, UITableViewDelegate{
                             let objectTemp = Temp(temp: temp.getTemp())
                             cle.addData(data: objectTemp)
                         }
+                    case is SensorTemperatureHumidity:
+                        
+                        if let tempHum = value as? SensorTemperatureHumidity
+                        {
+                            let objectTemp = TempHum(temp: tempHum.getTemp(), hum: tempHum.getHum())
+                            cle.addData(data: objectTemp)
+                        }
                         
                     case is SensorMove:
                         

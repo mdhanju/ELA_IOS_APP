@@ -90,11 +90,11 @@ class ELAViewController: UIViewController, UINavigationControllerDelegate {
         
         self.view.bringSubviewToFront(imageView)
 
-        UImenuImage(namePicture: "temp", size_x: 50, size_y: 450, size_width: 45, size_height: 45, selector: #selector(ELAViewController.imageTapID))
+        UImenuImage(namePicture: "blue", size_x: 50, size_y: 450, size_width: 45, size_height: 45, selector: #selector(ELAViewController.imageTapID))
         UImenuImage(namePicture: "temp", size_x: 150, size_y: 450, size_width: 45, size_height: 45, selector: #selector(ELAViewController.imageTapTemp))
-        UImenuImage(namePicture: "humidite_blue", size_x: 250, size_y: 450, size_width: 45, size_height: 45, selector: #selector(ELAViewController.imageTapMOV))
+        UImenuImage(namePicture: "humidite_blue", size_x: 250, size_y: 450, size_width: 45, size_height: 45, selector: #selector(ELAViewController.imageTapRHT))
         UImenuImage(namePicture: "mouvement_blue", size_x: 50, size_y: 520, size_width: 45, size_height: 45, selector: #selector(ELAViewController.imageTapMOV))
-        UImenuImage(namePicture: "porte_blue", size_x: 150, size_y: 520, size_width: 45, size_height: 45, selector: #selector(ELAViewController.imageTapANG))
+        UImenuImage(namePicture: "porte_blue", size_x: 150, size_y: 520, size_width: 45, size_height: 45, selector: #selector(ELAViewController.imageTapMAG))
         UImenuImage(namePicture: "angle", size_x: 250, size_y: 520, size_width: 45, size_height: 45, selector: #selector(ELAViewController.imageTapANG))
         
         
