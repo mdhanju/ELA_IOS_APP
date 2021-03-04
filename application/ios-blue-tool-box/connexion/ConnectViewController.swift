@@ -40,6 +40,8 @@ class ConnectViewController: UIViewController {
         UIimage(nameOfPicture: "buzz_off", x: 300, y: 470, width: 45, height: 45)
         UIimage(nameOfPicture: "connection", x: 270, y: 100, width: 45, height: 45)
         UIimage(nameOfPicture: "temp", x: 20, y: 70, width: 45, height: 45)
+        UIimage(nameOfPicture: "batt_ask", x: 300, y: 540, width: 45, height: 45)
+    
         
         
         UItext(str: "In progress ...", text_size: 25.0, x: 80, y: 170, width: 350, height: 100)
