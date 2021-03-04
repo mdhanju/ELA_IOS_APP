@@ -86,8 +86,9 @@ class ConnectViewController: UIViewController {
         let imageBattery = nameOfPicture
         let UIBattery = UIImage(named: imageBattery)
         let imageViewBattery = UIImageView(image: UIBattery!)
-        imageViewBattery.frame = CGRect(x: 300, y: 550, width: 45, height: 45)
+        imageViewBattery.frame = CGRect(x: x, y: y, width: width, height: height)
         self.view.addSubview(imageViewBattery)
+        self.view.bringSubviewToFront(imageViewBattery)
     }
     
 }
