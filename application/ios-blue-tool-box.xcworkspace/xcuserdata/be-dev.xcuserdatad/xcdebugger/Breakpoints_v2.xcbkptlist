@@ -1,0 +1,592 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Bucket
+   uuid = "B5E1BFB7-45C9-431E-843F-48A193A79009"
+   type = "0"
+   version = "2.0">
+   <Breakpoints>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "60159889-ECC6-427B-BEB5-04BF1DF42F06"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "ios-blue-tool-box/Tools/ConvertionToolBox.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "161"
+            endingLineNumber = "161"
+            landmarkName = "ConvertHexaToDecimal(str:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "4D8F43D7-79A3-4798-AC59-0C21567457C6"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "ios-blue-tool-box/Factory/Factory.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "192"
+            endingLineNumber = "192"
+            landmarkName = "getDataSensor(id:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "A2085F83-B310-450A-97CC-EA69AAB7D8D0"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "ios-blue-tool-box/Factory/Factory.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "328"
+            endingLineNumber = "328"
+            landmarkName = "get(sensorData:tagname:tagRSSI:tagidentifier:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "B5F61F33-33AA-4AA7-8FED-7F21D2348E6F"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "ios-blue-tool-box/Factory/Factory.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "362"
+            endingLineNumber = "362"
+            landmarkName = "get(sensorData:tagname:tagRSSI:tagidentifier:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "D13F8CCB-C298-47F0-A99D-AC5BFE6DD896"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "ios-blue-tool-box/Factory/Factory.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "343"
+            endingLineNumber = "343"
+            landmarkName = "get(sensorData:tagname:tagRSSI:tagidentifier:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "E243E8A0-6F1A-44B9-8067-CB27BB7CCC0D"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "ios-blue-tool-box/Factory/Factory.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "306"
+            endingLineNumber = "306"
+            landmarkName = "get(sensorData:tagname:tagRSSI:tagidentifier:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "0BC01CCA-E0F6-444A-B6F1-636E236E351D"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "ios-blue-tool-box/Factory/Factory.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "286"
+            endingLineNumber = "286"
+            landmarkName = "get(sensorData:tagname:tagRSSI:tagidentifier:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "C64C6D02-D58E-4D2F-93BA-C96AD408ED36"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "ios-blue-tool-box/scanner/scanner.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "106"
+            endingLineNumber = "106"
+            landmarkName = "centralManager(_:didDiscover:advertisementData:rssi:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "4E2739EE-CD1C-4936-ACB3-6B011B90E05F"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "ios-blue-tool-box/scanner/scanner.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "114"
+            endingLineNumber = "114"
+            landmarkName = "centralManager(_:didDiscover:advertisementData:rssi:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "45102D75-E3EB-4CDD-A309-2BF985E6A24E"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "ios-blue-tool-box/View/BlueTViewController.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "8"
+            endingLineNumber = "8"
+            landmarkName = "BlueTViewController"
+            landmarkType = "3">
+            <Locations>
+               <Location
+                  uuid = "45102D75-E3EB-4CDD-A309-2BF985E6A24E - e92028ff96580c2b"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "ios_blue_tool_box.BlueTViewController.(sensorTemp in _5735E0FEEB7220AE6CD1A13FE5E4F994).getter : ios_blue_tool_box.SensorTypes"
+                  moduleName = "ios-blue-tool-box"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/be-dev/Documents/ELA_IOS_APP-main/application/ios-blue-tool-box/View/BlueTViewController.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "10"
+                  endingLineNumber = "10"
+                  offsetFromSymbolStart = "76">
+               </Location>
+               <Location
+                  uuid = "45102D75-E3EB-4CDD-A309-2BF985E6A24E - e92028ff96580c2b"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "ios_blue_tool_box.BlueTViewController.(sensorTemp in _5735E0FEEB7220AE6CD1A13FE5E4F994).setter : ios_blue_tool_box.SensorTypes"
+                  moduleName = "ios-blue-tool-box"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/be-dev/Documents/ELA_IOS_APP-main/application/ios-blue-tool-box/View/BlueTViewController.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "10"
+                  endingLineNumber = "10"
+                  offsetFromSymbolStart = "160">
+               </Location>
+               <Location
+                  uuid = "45102D75-E3EB-4CDD-A309-2BF985E6A24E - e92028ff96580ef1"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "ios_blue_tool_box.BlueTViewController.(sensorTemp in _5735E0FEEB7220AE6CD1A13FE5E4F994).modify : ios_blue_tool_box.SensorTypes"
+                  moduleName = "ios-blue-tool-box"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/be-dev/Documents/ELA_IOS_APP-main/application/ios-blue-tool-box/View/BlueTViewController.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "0"
+                  endingLineNumber = "0"
+                  offsetFromSymbolStart = "20">
+               </Location>
+               <Location
+                  uuid = "45102D75-E3EB-4CDD-A309-2BF985E6A24E - 90c29108eda0b274"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "ios_blue_tool_box.BlueTViewController.(sensorTemp in _5735E0FEEB7220AE6CD1A13FE5E4F994).modify : ios_blue_tool_box.SensorTypes with unmangled suffix &quot;.resume.0&quot;"
+                  moduleName = "ios-blue-tool-box"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/be-dev/Documents/ELA_IOS_APP-main/application/ios-blue-tool-box/View/BlueTViewController.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "10"
+                  endingLineNumber = "10"
+                  offsetFromSymbolStart = "16">
+               </Location>
+               <Location
+                  uuid = "45102D75-E3EB-4CDD-A309-2BF985E6A24E - a8197ed67ee82e94"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "ios_blue_tool_box.BlueTViewController.init(nibName: Swift.Optional&lt;Swift.String&gt;, bundle: Swift.Optional&lt;__C.NSBundle&gt;) -&gt; ios_blue_tool_box.BlueTViewController"
+                  moduleName = "ios-blue-tool-box"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/be-dev/Documents/ELA_IOS_APP-main/application/ios-blue-tool-box/View/BlueTViewController.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "10"
+                  endingLineNumber = "10"
+                  offsetFromSymbolStart = "172">
+               </Location>
+               <Location
+                  uuid = "45102D75-E3EB-4CDD-A309-2BF985E6A24E - ea45420d133e80c5"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "ios_blue_tool_box.BlueTViewController.init(coder: __C.NSCoder) -&gt; Swift.Optional&lt;ios_blue_tool_box.BlueTViewController&gt;"
+                  moduleName = "ios-blue-tool-box"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/be-dev/Documents/ELA_IOS_APP-main/application/ios-blue-tool-box/View/BlueTViewController.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "10"
+                  endingLineNumber = "10"
+                  offsetFromSymbolStart = "116">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "606BD1C1-DAD6-4730-91A3-7C50DC25C5C9"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "ios-blue-tool-box/scanner/scanner.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "116"
+            endingLineNumber = "116"
+            landmarkName = "centralManager(_:didDiscover:advertisementData:rssi:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "70DD26EB-93DF-4095-B8F5-DF78363EBAEC"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "ios-blue-tool-box/controller/Capteur.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "249"
+            endingLineNumber = "249"
+            landmarkName = "updateSensorUI(data:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "C38CD06E-3B33-4D87-B18A-F4342C5F75CD"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "ios-blue-tool-box/controller/ViewController.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "8"
+            endingLineNumber = "8"
+            landmarkName = "ViewController"
+            landmarkType = "3">
+            <Locations>
+               <Location
+                  uuid = "C38CD06E-3B33-4D87-B18A-F4342C5F75CD - 2cb3deadbf61ec90"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "ios_blue_tool_box.ViewController.init(nibName: Swift.Optional&lt;Swift.String&gt;, bundle: Swift.Optional&lt;__C.NSBundle&gt;) -&gt; ios_blue_tool_box.ViewController"
+                  moduleName = "ios-blue-tool-box"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/be-dev/Documents/ELA_IOS_APP-main/application/ios-blue-tool-box/controller/ViewController.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "18"
+                  endingLineNumber = "18"
+                  offsetFromSymbolStart = "376">
+               </Location>
+               <Location
+                  uuid = "C38CD06E-3B33-4D87-B18A-F4342C5F75CD - 97af219af8622bd2"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "ios_blue_tool_box.ViewController.init(coder: __C.NSCoder) -&gt; Swift.Optional&lt;ios_blue_tool_box.ViewController&gt;"
+                  moduleName = "ios-blue-tool-box"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/be-dev/Documents/ELA_IOS_APP-main/application/ios-blue-tool-box/controller/ViewController.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "18"
+                  endingLineNumber = "18"
+                  offsetFromSymbolStart = "324">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "83877EFA-B9E9-4FF3-ABBD-33EEF6454B67"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "ios-blue-tool-box/controller/ViewController.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "2"
+            endingLineNumber = "2"
+            landmarkName = "unknown"
+            landmarkType = "0">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "9C66E7F0-A7AE-42EB-BB2C-8E45782E5BEC"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "ios-blue-tool-box/View/targetTempViewController.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "155"
+            endingLineNumber = "155"
+            landmarkName = "targetTempViewController"
+            landmarkType = "3">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "163C59B0-3B13-4652-9D2E-DA2CC93ED709"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "ios-blue-tool-box/View/targetTempViewController.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "121"
+            endingLineNumber = "121"
+            landmarkName = "viewDidLoad()"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "8E2C628F-84A7-4316-8CB9-DB819C0D3214"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "ios-blue-tool-box/controller/Capteur.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "362"
+            endingLineNumber = "362"
+            landmarkName = "updateSensorUI(data:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "FDB9BA77-021B-438C-9E7C-1BE6E3B00D1D"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "ios-blue-tool-box/Target_list/targetTempHumViewController.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "188"
+            endingLineNumber = "188"
+            landmarkName = "viewDidLoad()"
+            landmarkType = "9">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "34CA135D-BC4B-4F50-B555-532C3C9A7BCE"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "ios-blue-tool-box/Target_list/targetMagViewController.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "77"
+            endingLineNumber = "77"
+            landmarkName = "viewDidLoad()"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "AB1CC608-67C4-44BC-9109-824BD2B938CC"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "ios-blue-tool-box/scanner/ParticlePeripheral.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "1"
+            endingLineNumber = "1"
+            landmarkName = "unknown"
+            landmarkType = "0">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "A6E5F267-CB05-40F6-B717-FC2F8854C7DE"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "ios-blue-tool-box/View/ELAViewController.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "16"
+            endingLineNumber = "16"
+            landmarkName = "ELAViewController"
+            landmarkType = "3">
+            <Locations>
+               <Location
+                  uuid = "A6E5F267-CB05-40F6-B717-FC2F8854C7DE - 8e26530b06edcc9b"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "ios_blue_tool_box.ELAViewController.delegate.getter : Swift.Optional&lt;ios_blue_tool_box.MenuControllerDelegate&gt;"
+                  moduleName = "ios-blue-tool-box"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/be-dev/Documents/ELA_IOS_APP-main/application/ios-blue-tool-box/View/ELAViewController.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "16"
+                  endingLineNumber = "16"
+                  offsetFromSymbolStart = "104">
+               </Location>
+               <Location
+                  uuid = "A6E5F267-CB05-40F6-B717-FC2F8854C7DE - a5beb38a7b33986f"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "ios_blue_tool_box.ELAViewController.delegate.setter : Swift.Optional&lt;ios_blue_tool_box.MenuControllerDelegate&gt;"
+                  moduleName = "ios-blue-tool-box"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/be-dev/Documents/ELA_IOS_APP-main/application/ios-blue-tool-box/View/ELAViewController.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "16"
+                  endingLineNumber = "16"
+                  offsetFromSymbolStart = "140">
+               </Location>
+               <Location
+                  uuid = "A6E5F267-CB05-40F6-B717-FC2F8854C7DE - 8b84083c8a839d8c"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "ios_blue_tool_box.ELAViewController.delegate.modify : Swift.Optional&lt;ios_blue_tool_box.MenuControllerDelegate&gt;"
+                  moduleName = "ios-blue-tool-box"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/be-dev/Documents/ELA_IOS_APP-main/application/ios-blue-tool-box/View/ELAViewController.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "0"
+                  endingLineNumber = "0"
+                  offsetFromSymbolStart = "16">
+               </Location>
+               <Location
+                  uuid = "A6E5F267-CB05-40F6-B717-FC2F8854C7DE - 1a4e12a9272a8810"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "ios_blue_tool_box.ELAViewController.delegate.modify : Swift.Optional&lt;ios_blue_tool_box.MenuControllerDelegate&gt; with unmangled suffix &quot;.resume.0&quot;"
+                  moduleName = "ios-blue-tool-box"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/be-dev/Documents/ELA_IOS_APP-main/application/ios-blue-tool-box/View/ELAViewController.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "16"
+                  endingLineNumber = "16"
+                  offsetFromSymbolStart = "8">
+               </Location>
+               <Location
+                  uuid = "A6E5F267-CB05-40F6-B717-FC2F8854C7DE - 693f3e74acd2a3e0"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "ios_blue_tool_box.ELAViewController.init(nibName: Swift.Optional&lt;Swift.String&gt;, bundle: Swift.Optional&lt;__C.NSBundle&gt;) -&gt; ios_blue_tool_box.ELAViewController"
+                  moduleName = "ios-blue-tool-box"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/be-dev/Documents/ELA_IOS_APP-main/application/ios-blue-tool-box/View/ELAViewController.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "16"
+                  endingLineNumber = "16"
+                  offsetFromSymbolStart = "208">
+               </Location>
+               <Location
+                  uuid = "A6E5F267-CB05-40F6-B717-FC2F8854C7DE - d9a235d0e9df2038"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "ios_blue_tool_box.ELAViewController.init(coder: __C.NSCoder) -&gt; Swift.Optional&lt;ios_blue_tool_box.ELAViewController&gt;"
+                  moduleName = "ios-blue-tool-box"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/be-dev/Documents/ELA_IOS_APP-main/application/ios-blue-tool-box/View/ELAViewController.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "16"
+                  endingLineNumber = "16"
+                  offsetFromSymbolStart = "188">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "C6A865D5-84C3-41B8-85D6-DFECEC49CE9B"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "ios-blue-tool-box/Target_list/targetTempHumViewController.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "168"
+            endingLineNumber = "168"
+            landmarkName = "updateSensorUI(data:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "5E2D6735-C5FE-477E-B116-7C6A85008D18"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "ios-blue-tool-box/View/ELAViewController.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "108"
+            endingLineNumber = "108"
+            landmarkName = "viewDidLoad()"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+   </Breakpoints>
+</Bucket>

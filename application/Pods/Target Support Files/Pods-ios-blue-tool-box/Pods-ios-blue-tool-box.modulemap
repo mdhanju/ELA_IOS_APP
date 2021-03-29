@@ -1,0 +1,6 @@
+framework module Pods_ios_blue_tool_box {
+  umbrella header "Pods-ios-blue-tool-box-umbrella.h"
+
+  export *
+  module * { export * }
+}
